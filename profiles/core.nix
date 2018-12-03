@@ -7,7 +7,7 @@
     wget pv tree htop zile
     physlock xss-lock
     busybox
-    git
+    git tig
   ];
 
   # Select internationalisation properties.
