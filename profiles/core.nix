@@ -7,6 +7,7 @@
     wget pv tree htop zile
     physlock xss-lock
     busybox
+    screen ag jq file
     git tig
   ];
 
