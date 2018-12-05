@@ -5,6 +5,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # graphical only from here
+    xss-lock
     emacs # TODO: how to into non-graphical emacs? also get rid of the gtk dependency. also user daemon.
     ratpoison  # TODO: make a custom vers ion which is git master + some patches
     icewm
@@ -27,4 +28,8 @@
   # Enable sound.
   sound.enable = true;
   # hardware.pulseaudio.enable = true;
+
+  # Enable physlock
+  services.physlock.enable = true;
+  services.physlock.allowAnyUser = true;
 }
