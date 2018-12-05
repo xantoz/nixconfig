@@ -5,8 +5,8 @@
 
   environment.systemPackages = with pkgs; [
     wget pv tree htop zile
-    busybox
     screen ag jq file
+    (pkgs.runCommand "filtered-busybox" {} "mkdir -p $out/bin && ln -s ${busybox}/bin/{busybox,vi,ash} $out/bin/")
     git tig
   ];
 
