@@ -7,4 +7,8 @@
   environment.systemPackages = with pkgs; [
     wpa_supplicant_gui
   ];
+
+  security.sudo.extraRules = [
+    { commands = [ { command = "${pkgs.rfkill}/bin/rfkill"; options = [ "SETENV" "NOPASSWD" ]; } ]; groups = [ "wheel" ]; }
+  ];
 }
