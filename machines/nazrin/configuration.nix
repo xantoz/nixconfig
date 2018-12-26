@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ../../profiles/core.nix
       ../../profiles/graphical.nix
+      ../../profiles/home.nix
       ../../profiles/wireless.nix
       ./hardware-configuration.nix
     ];
