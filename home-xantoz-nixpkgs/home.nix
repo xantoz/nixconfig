@@ -48,5 +48,24 @@
 
       exec ratpoison
     '';
+
+    ".bashrc".source = pkgs.writeText "dotbashrc" ''
+      export HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S - '
+      shopt -s histappend
+      shopt -s cmdhist
+      shopt -s histverify
+      HISTSIZE=600000
+      HISTFILESIZE=600000
+      PROMPT_COMMAND='history -a;history -n'
+      export HISTCONTROL=ignoreboth
+
+      build_cscope()
+      {
+          find `pwd` -type f -iname '*.[ch]' -print > cscope.files
+          IFS=$'\n' etags $(< cscope.files)
+          cscope -qbi cscope.files
+      }
+    '';
+
   };
 }
