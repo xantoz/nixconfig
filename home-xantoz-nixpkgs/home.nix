@@ -1,15 +1,19 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-#    transset
-    xcompmgr
-    compton
-    stalonetray
-    dmenu
+  nixpkgs.config.allowUnfree = true;
+
+  imports = [
+    ./emacs.nix
+    ./desktop.nix
   ];
 
+  # home.packages = with pkgs; [
+  # ];
+
+  programs.bash.enable = true;
   home.sessionVariables.LESS = "-R";
+
 
   home.file =
   {
