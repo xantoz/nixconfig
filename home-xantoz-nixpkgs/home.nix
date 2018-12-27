@@ -14,7 +14,6 @@
   programs.bash.enable = true;
   home.sessionVariables.LESS = "-R";
 
-
   home.file =
   {
     ".config/emacs".source = ./config/emacs;
@@ -44,6 +43,8 @@
 
     ".xinitrc".source = pkgs.writeText "dotxinitrc" ''
       xrdb -merge ~/.Xresources
+
+      xinput set-prop 'PS/2 Generic Mouse' 'libinput Middle Emulation Enabled' 1
 
       exec ratpoison
     '';
