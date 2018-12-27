@@ -7,6 +7,7 @@
     compton
     stalonetray
     dmenu
+    wmname
 
     firefox
     scrot
