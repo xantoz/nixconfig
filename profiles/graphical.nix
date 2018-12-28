@@ -3,11 +3,24 @@
 {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs;
+  let
+    my_ratpoison = ratpoison.overrideAttrs(old: {
+        src = fetchFromGitHub {
+          repo = "ratpoison";
+          owner = "xantoz";
+          rev = "wip";
+          sha256 = "1gz3dj15pa2mxndhkbr3ls9i7x3g6f4bxk4ifnpa3igl0p36j6gk";
+        };
+        buildInputs = old.buildInputs ++ [autoreconfHook texinfo];
+        version = "1.4.10";
+        name = "ratpoison-1.4.10";
+    });
+  in [
     # graphical only from here
     xss-lock
     emacs # TODO: how to into non-graphical emacs? also get rid of the gtk dependency. also user daemon.
-    ratpoison  # TODO: make a custom vers ion which is git master + some patches
+    my_ratpoison
     icewm
     xorg.twm
   ];
