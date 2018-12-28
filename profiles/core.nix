@@ -31,6 +31,8 @@
 
   programs.command-not-found.enable = true;
 
+  boot.tmpOnTmpfs = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tewi_inaba = {
     isNormalUser = true;
