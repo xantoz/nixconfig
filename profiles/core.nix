@@ -18,6 +18,20 @@
     defaultLocale = "en_US.UTF-8";
   };
 
+  systemd.user.services.ssh-agent = {
+    enable = true;
+    description="SSH key agent";
+    serviceConfig = {
+      Type="simple";
+      Environment="SSH_AUTH_SOCK=%t/ssh-agent.socket";
+      ExecStart="${pkgs.openssh}/bin/ssh-agent -D -a $SSH_AUTH_SOCK";
+    };
+    wantedBy = [ "default.target" ];
+  };
+  environment.sessionVariables = {
+    SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket";
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Stockholm";
 
