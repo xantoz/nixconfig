@@ -15,6 +15,7 @@
     gimp
     feh
     unrar
+    unzip
     transmission_gtk
     rtorrent
     youtube-dl
