@@ -16,11 +16,6 @@
 
   home.file =
   {
-    ".config/emacs".source = ./config/emacs;
-    ".emacs".source = pkgs.writeText "dotemacs" ''
-      (load "~/.config/emacs/init.el")
-    '';
-
     ".config/ratpoison".source = ./config/ratpoison;
     ".ratpoisonrc".source = pkgs.writeText "dotratpoisonrc" ''
       source .config/ratpoison/ratpoisonrc
@@ -69,6 +64,5 @@
           cscope -qbi cscope.files
       }
     '';
-
   };
 }

@@ -9,4 +9,11 @@
     buffer-move
     use-package
   ];
+
+  home.file = {
+    ".config/emacs".source = ./config/emacs;
+    ".emacs".source = pkgs.writeText "dotemacs" ''
+      (load "~/.config/emacs/init.el")
+    '';
+  };
 }
