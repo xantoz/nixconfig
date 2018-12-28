@@ -23,6 +23,7 @@
     my_ratpoison
     icewm
     xorg.twm
+    xsel
   ];
 
   # Enable the X11 windowing system.
