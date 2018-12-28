@@ -12,7 +12,7 @@
   # ];
 
   programs.bash.enable = true;
-  home.sessionVariables.LESS = "-R";
+  pam.sessionVariables.LESS = "-R";
 
   home.file =
   {
