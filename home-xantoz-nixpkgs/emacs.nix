@@ -8,6 +8,7 @@
     ag
     buffer-move
     use-package
+    find-file-in-project
   ];
 
   home.file = {
