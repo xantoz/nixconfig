@@ -23,6 +23,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.openssh.passwordAuthentication = false;
 
   programs.ssh.askPassword = "";
 
