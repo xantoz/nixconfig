@@ -8,6 +8,7 @@
     stalonetray
     dmenu
     wmname
+    redshift
 
     firefox
     scrot
