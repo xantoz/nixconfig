@@ -9,10 +9,12 @@
     [ # Include the results of the hardware scan.
       ../../profiles/core.nix
       ../../profiles/graphical.nix
-      ../../profiles/home.nix
       ../../profiles/wireless.nix
       ./hardware-configuration.nix
+      ../../home-xantoz-nixpkgs/home-manager/nixos
     ];
+
+  home-manager.users.tewi_inaba = import ../../home-xantoz-nixpkgs/home.nazrin.nix;
 
   ## Use the systemd-boot EFI boot loader.
   #boot.loader.systemd-boot.enable = true;
