@@ -9,6 +9,11 @@
     (pkgs.runCommand "filtered-busybox" {} "mkdir -p $out/bin && ln -s ${busybox}/bin/{busybox,vi,ash} $out/bin/")
     git tig
     nload
+    usbutils
+    pciutils
+    gcc
+    gnumake
+    ncurses.dev
   ];
 
   # Select internationalisation properties.
