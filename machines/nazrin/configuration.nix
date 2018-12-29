@@ -10,6 +10,7 @@
       ../../profiles/core.nix
       ../../profiles/graphical.nix
       ../../profiles/wireless.nix
+      ../../profiles/laptop.nix
       ./hardware-configuration.nix
       ../../home-xantoz-nixpkgs/home-manager/nixos
     ];
