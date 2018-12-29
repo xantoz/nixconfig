@@ -16,6 +16,7 @@
 #    ncurses.dev
     unrar
     unzip
+    calc
   ];
 
   # Select internationalisation properties.
