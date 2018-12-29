@@ -14,6 +14,8 @@
     gcc
     gnumake
     ncurses.dev
+    unrar
+    unzip
   ];
 
   # Select internationalisation properties.
