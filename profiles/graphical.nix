@@ -24,6 +24,7 @@
     icewm
     xorg.twm
     xsel
+    glxinfo
   ];
 
   # Enable the X11 windowing system.
