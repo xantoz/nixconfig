@@ -42,7 +42,7 @@
 
   # Enable sound.
   sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # Enable physlock
   services.physlock.enable = true;
