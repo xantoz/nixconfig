@@ -13,6 +13,7 @@
 
       vd-lavc-threads=2
 
+      [hq]
       profile=gpu-hq
       scale=ewa_lanczossharp
       cscale=ewa_lanczossharp
