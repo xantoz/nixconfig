@@ -19,5 +19,7 @@
     youtube-dl
     mpv # TODO: custom build from some WIP branch of mine
     mate.atril
+
+    gajim
   ];
 }
