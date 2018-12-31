@@ -20,7 +20,10 @@
     ".config/ratpoison".source = ./config/ratpoison;
     ".ratpoisonrc".source = pkgs.writeText "dotratpoisonrc" ''
       source .config/ratpoison/ratpoisonrc
+
+      setenv rp_backlight_step_percent 3
       source .config/ratpoison/backlightrc
+
       source .config/ratpoison/volumerc
 
       alias xterm exec xterm -e '$SHELL -c "xprop -id $WINDOWID -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0xeeeeeeee; exec $SHELL -l"'
