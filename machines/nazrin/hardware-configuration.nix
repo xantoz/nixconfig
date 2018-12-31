@@ -28,4 +28,7 @@
 
   nix.maxJobs = lib.mkDefault 4;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
+  hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel ];
 }
