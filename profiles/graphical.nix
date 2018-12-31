@@ -36,7 +36,13 @@
     source-sans-pro
     source-serif-pro
 
+    dejavu_fonts
+
+    noto-fonts
     noto-fonts-cjk
+    noto-fonts-emoji
+    noto-fonts-extra
+
     source-han-code-jp
 
     source-han-sans-japanese
