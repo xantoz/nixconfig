@@ -6,6 +6,7 @@
   imports = [
     ./emacs.nix
     ./desktop.nix
+    ./mpv.nix
   ];
 
   home.packages = with pkgs; [
