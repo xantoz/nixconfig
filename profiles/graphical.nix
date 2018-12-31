@@ -25,6 +25,7 @@
     xorg.twm
     xsel
     glxinfo
+    xfontsel
   ];
 
   fonts.fonts = with pkgs; [
