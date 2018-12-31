@@ -26,6 +26,7 @@
     xsel
     glxinfo
     xfontsel
+    pavucontrol
   ];
 
   fonts.fonts = with pkgs; [
