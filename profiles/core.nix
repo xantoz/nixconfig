@@ -14,6 +14,7 @@
 #    gcc
 #    gnumake
 #    ncurses.dev
+    libarchive
     unrar
     unzip
     calc
