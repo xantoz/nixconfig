@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ../../profiles/core.nix
       ../../profiles/graphical.nix
+      ../../profiles/input-methods.nix
       ../../profiles/wireless.nix
       ../../profiles/laptop.nix
       ./hardware-configuration.nix
