@@ -6,6 +6,9 @@
       alang=jpn
       slang=en
 
+      screenshot-template="shot-%F-%n"
+      screenshot-directory="~/Pictures/Screenshots/"
+
       vo=gpu
       gpu-context=x11egl
       hwdec=vaapi
