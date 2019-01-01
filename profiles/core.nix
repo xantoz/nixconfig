@@ -18,6 +18,7 @@
     unrar
     unzip
     calc
+    sshfs
   ];
 
   # Select internationalisation properties.
