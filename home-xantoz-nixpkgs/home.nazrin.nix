@@ -27,6 +27,8 @@
 
       source .config/ratpoison/volumerc
 
+      source .config/ratpoison/xbattbarrc
+
       alias xterm exec xterm -e '$SHELL -c "xprop -id $WINDOWID -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0xeeeeeeee; exec $SHELL -l"'
       alias reload source .ratpoisonrc
     '';
