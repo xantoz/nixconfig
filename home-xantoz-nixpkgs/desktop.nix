@@ -2,6 +2,8 @@
 
 {
   home.packages = with pkgs; [
+    lm_sensors
+
     # transset
     xcompmgr
     compton
