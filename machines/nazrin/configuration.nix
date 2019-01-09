@@ -69,6 +69,9 @@
   # networking.firewall.enable = false;
 
   services.xserver.videoDrivers = [ "intel" ];
+  services.xserver.deviceSection = ''
+    Option "TearFree" "on"
+  '';
 
   # TODO: set default scheduler for SSD:s to deadline
 
