@@ -23,6 +23,8 @@
   in [
     my_xbattbar
     btrfsProgs
+    libva-utils
+    libva1
   ];
 
   ## Use the systemd-boot EFI boot loader.
