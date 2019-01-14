@@ -80,7 +80,21 @@
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  # Enable pulse with all the modules
+  hardware.pulseaudio = {
+    enable = true;
+    extraModules = [ pkgs.pulseaudio-modules-bt ];
+
+    daemon.config = {
+      flat-volumes = "no";
+      default-sample-format = "s24le";
+      default-sample-rate = "192000";
+      resample-method = "speex-float-10";
+      avoid-resampling = "true";
+    };
+
+    package = pkgs.pulseaudioFull;
+  };
 
   # Enable physlock
   services.physlock.enable = true;
