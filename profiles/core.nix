@@ -59,6 +59,14 @@
 
   services.logind.extraConfig = "HandleLidSwitch=ignore";
 
+  boot.kernel.sysctl = { "net.ipv6.conf.all.use_tempaddr" = 2; };
+  networking.dhcpcd.extraConfig = ''
+    require dhcp_server_identifier
+    clientid
+    slaac private
+    option rapid_commit
+  '';
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tewi_inaba = {
     isNormalUser = true;
