@@ -57,7 +57,10 @@
 
   boot.tmpOnTmpfs = true;
 
-  services.logind.extraConfig = "HandleLidSwitch=ignore";
+  services.logind.extraConfig = ''
+    HandleLidSwitch=ignore
+    HandlePowerKey=ignore
+  '';
 
   boot.kernel.sysctl = { "net.ipv6.conf.all.use_tempaddr" = 2; };
   networking.dhcpcd.extraConfig = ''
