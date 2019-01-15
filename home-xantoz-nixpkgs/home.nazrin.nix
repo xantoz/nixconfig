@@ -55,6 +55,11 @@
 
       feh --bg-fill ~/Pictures/Wallpapers/Touhou/Du0glW6V4AA2fdz.jpg &
 
+      export QT_IM_MODULE=fcitx
+      export GTK_IM_MODULE=fcitx
+      export CLUTTER_IM_MODULE=fcitx
+      fcitx &
+
       exec ratpoison
     '';
 
