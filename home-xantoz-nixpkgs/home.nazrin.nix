@@ -9,10 +9,6 @@
     ./mpv.nix
   ];
 
-  home.packages = with pkgs; [
-    cscope
-  ];
-
   programs.bash.enable = true;
   pam.sessionVariables.LESS = "-R";
 
