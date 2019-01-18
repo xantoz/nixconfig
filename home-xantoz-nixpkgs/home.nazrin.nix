@@ -74,6 +74,8 @@
       PROMPT_COMMAND='history -a;history -n'
       export HISTCONTROL=ignoreboth
 
+      alias dush='du -sh * | sort -h'
+
       build_cscope()
       {
           find `pwd` -type f -iname '*.[ch]' -print > cscope.files
