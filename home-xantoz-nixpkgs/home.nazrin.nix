@@ -50,6 +50,7 @@
       xrdb -merge ~/.Xresources
 
       xinput set-prop 'PS/2 Generic Mouse' 'libinput Middle Emulation Enabled' 1
+      xinput set-prop 'PS/2 Generic Mouse' 'Coordinate Transformation Matrix' 1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.300000
 
       xcompmgr &
 
