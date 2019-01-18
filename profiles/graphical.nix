@@ -23,8 +23,8 @@
           rev = "f2e036a3e2fce17611d35bf9c972d9b75fa04bf6";
           sha256 = "0ig7zajpfhnpv9rjx4p8lk921ha3f8xyqwjkzcy0hz78zk8sgi8g";
         };
-        version = "0.29.1-git";
-        name = "mpv-0.29.1-git";
+        version = "0.29.2-git";
+        name = "mpv-0.29.2-git";
         buildInputs = old.buildInputs ++ [
           mesa_noglu
           libva1
