@@ -11,6 +11,7 @@
       ../../profiles/graphical.nix
       ../../profiles/input-methods.nix
       ../../profiles/wireless.nix
+      ../../profiles/bluetooth.nix
       ../../profiles/laptop.nix
       ./hardware-configuration.nix
       ../../home-xantoz-nixpkgs/home-manager/nixos

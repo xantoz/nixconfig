@@ -9,6 +9,8 @@
     ./mpv.nix
   ];
 
+  services.blueman-applet.enable = true;
+
   programs.bash.enable = true;
   pam.sessionVariables.LESS = "-R";
 
