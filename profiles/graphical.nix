@@ -25,7 +25,14 @@
         };
         version = "0.29.1-git";
         name = "mpv-0.29.1-git";
-        buildInputs = old.buildInputs ++ [ mesa_noglu libva1 ];
+        buildInputs = old.buildInputs ++ [
+          mesa_noglu
+          libva1
+          mujs                  # ./waf configure doesn't seem quite happy with the version provided in nixpkgs. Try upgrading to l8st gr8st?
+          shaderc
+          vulkan-headers
+          vulkan-loader
+        ];
     });
   in [
     # graphical only from here
