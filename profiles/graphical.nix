@@ -27,7 +27,6 @@
         name = "mpv-0.29.2-git";
         buildInputs = old.buildInputs ++ [
           mesa_noglu
-          libva1
           mujs                  # ./waf configure doesn't seem quite happy with the version provided in nixpkgs. Try upgrading to l8st gr8st?
           shaderc
           vulkan-headers
