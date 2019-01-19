@@ -100,8 +100,10 @@
     };
 
     shortcuts = {
-      close = "ctrl+space";
-      close_all = "ctrl+shift+space";
+      close = "mod4+semicolon";
+      close_all = "mod4+colon";
+      history = "mod4+grave";
+      context = "mod4+apostrophe";
     };
 
     urgency_low = {
