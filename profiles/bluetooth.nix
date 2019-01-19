@@ -3,7 +3,8 @@
 { config, pkgs, ... }:
 
 {
-  services.dbus.packages = [ pkgs.blueman ];
+  hardware.bluetooth.enable = true;
+  services.dbus.packages = [ pkgs.bluez pkgs.blueman ];
 
   # environment.systemPackages = with pkgs; [
   #   blueman
