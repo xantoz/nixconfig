@@ -22,5 +22,8 @@
     mate.atril
 
     gajim
+    libnotify
   ];
+
+  services.dunst.enable = true;
 }
