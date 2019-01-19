@@ -31,6 +31,8 @@
 
   hardware.opengl.enable = true;
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel ];
+  hardware.opengl.driSupport = true;
+  hardware.opengl.driSupport32Bit = true;
 
   hardware.cpu.intel.updateMicrocode = true;
 }
