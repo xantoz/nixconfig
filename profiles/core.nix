@@ -76,4 +76,6 @@
     uid = 1000;
     extraGroups = [ "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "cdrom" "floppy" ];
   };
+
+  hardware.opengl.s3tcSupport = true; # Why do I have to enable this? This patent is expired.
 }
