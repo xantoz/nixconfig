@@ -17,11 +17,15 @@
     gimp
     feh
     transmission_gtk
-    rtorrent
     youtube-dl
     mate.atril
-
     gajim
+
+    (writeShellScriptBin "rtorrent" ''
+      ${xtermcontrol}/bin/xtermcontrol --title=rtorrent
+      exec ${rtorrent}/bin/rtorrent "$@"
+    '')
+
     libnotify
   ];
 
