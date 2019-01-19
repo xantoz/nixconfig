@@ -26,6 +26,10 @@
       exec ${rtorrent}/bin/rtorrent "$@"
     '')
 
+    (writeShellScriptBin "ec" ''
+      exec emacsclient "$@"
+    '')
+
     libnotify
   ];
 
