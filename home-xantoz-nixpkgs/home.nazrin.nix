@@ -74,6 +74,11 @@
 
       alias dush='du -sh * | sort -h'
 
+      0x0()
+      {
+          curl -F"file=@$1" https://0x0.st
+      }
+
       build_cscope()
       {
           find `pwd` -type f -iname '*.[ch]' -print > cscope.files
