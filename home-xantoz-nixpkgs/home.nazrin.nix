@@ -9,6 +9,10 @@
     ./mpv.nix
   ];
 
+  xsession.enable = true;
+  xsession.windowManager.command = "/bin/sh ~/.xsession";
+  xsession.scriptPath = ".xinitrc";
+
   services.blueman-applet.enable = true;
 
   programs.bash.enable = true;
@@ -43,7 +47,7 @@
 
     # lib.elemAt (builtins.filter (u: u.isNormalUser) (lib.attrValues config.users.users)) 0
 
-    ".xinitrc".source = pkgs.writeText "dotxinitrc" ''
+    ".xsession".source = pkgs.writeText "dotxinitrc" ''
       xrdb -merge ~/.Xresources
 
       xinput set-prop 'PS/2 Generic Mouse' 'libinput Middle Emulation Enabled' 1
