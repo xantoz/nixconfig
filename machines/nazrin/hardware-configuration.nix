@@ -31,4 +31,6 @@
 
   hardware.opengl.enable = true;
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel ];
+
+  hardware.cpu.intel.updateMicrocode = true;
 }
