@@ -124,5 +124,10 @@
       # erase background with current bg color
       defbce "on"
     '';
+
+    ".config/youtube-dl/config".source = pkgs.writeText "youtube-dl_conf" ''
+      --all-subs
+      --embed-subs
+    '';
   };
 }
