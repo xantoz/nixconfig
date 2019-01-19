@@ -14,6 +14,7 @@
   xsession.scriptPath = ".xinitrc";
 
   services.blueman-applet.enable = true;
+  services.kdeconnect.enable = true;
 
   programs.bash.enable = true;
   pam.sessionVariables.LESS = "-R";
