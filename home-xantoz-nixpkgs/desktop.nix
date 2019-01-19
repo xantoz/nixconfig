@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     lm_sensors
 
-    # transset
+    xorg.transset
     xcompmgr
     compton
     stalonetray
