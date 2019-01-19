@@ -3,6 +3,9 @@
 {
   home.packages = with pkgs; [
     cscope
+    (writeShellScriptBin "ec" ''
+      exec emacsclient "$@"
+    '')
   ];
 
   programs.emacs.enable = true;
@@ -12,6 +15,7 @@
     buffer-move
     use-package
     find-file-in-project
+    # lua-mode
   ];
 
   home.file = {
