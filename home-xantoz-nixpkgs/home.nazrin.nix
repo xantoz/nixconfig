@@ -14,8 +14,7 @@
   programs.bash.enable = true;
   pam.sessionVariables.LESS = "-R";
 
-  home.file =
-  {
+  home.file = {
     ".config/ratpoison".source = ./config/ratpoison;
     ".ratpoisonrc".source = pkgs.writeText "dotratpoisonrc" ''
       source .config/ratpoison/ratpoisonrc
@@ -85,6 +84,8 @@
           IFS=$'\n' etags $(< cscope.files)
           cscope -qbi cscope.files
       }
+
+      export PATH="$HOME/.local/bin:$PATH"
     '';
 
     ".screenrc".source = pkgs.writeText "dotscreenrc" ''
