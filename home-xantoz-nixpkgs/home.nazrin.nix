@@ -16,6 +16,8 @@
   services.blueman-applet.enable = true;
   services.kdeconnect.enable = true;
 
+  services.pasystray.enable = true;
+
   programs.bash.enable = true;
   pam.sessionVariables.LESS = "-R";
 
