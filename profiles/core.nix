@@ -23,6 +23,7 @@
     unzip
     calc
     sshfs
+    lshw
   ];
 
   # Select internationalisation properties.
