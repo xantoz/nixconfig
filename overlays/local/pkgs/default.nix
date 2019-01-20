@@ -1,6 +1,6 @@
 self: super:
 
-{
+with super.lib; rec {
   # back-port of https://github.com/ivan/nixpkgs/commit/b8f9ca39444398e1078bf25859c62f46af18925e
   python37Packages.dateparser = super.python37Packages.dateparser.overridePythonAttrs(old: {
       preCheck =''
@@ -14,4 +14,5 @@ self: super:
   xterm = super.xterm.overrideAttrs(old: {
     configureFlags = old.configureFlags ++ [ "--enable-exec-xterm" ];
   });
+  webmacs = super.callPackage ./webmacs { };
 }
