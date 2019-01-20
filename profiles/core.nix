@@ -32,6 +32,9 @@
     defaultLocale = "en_US.UTF-8";
   };
 
+  services.dbus.enable = true;
+  services.dbus.socketActivated = true;
+
   systemd.user.services.ssh-agent = {
     enable = true;
     description="SSH key agent";
