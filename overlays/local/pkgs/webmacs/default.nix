@@ -2,14 +2,13 @@
 
 python3Packages.buildPythonApplication rec {
   name = "webmacs-${version}";
-  # version = "af40a04d3b713a26d0b00e74eb185f6bfd4978c2";
-  version = "702e600e9e141d2f94616676a75ed8cae97fcae4";
+  version = "96fe2e475c8cc32e2a1dda391d964e966c20144f";
 
   src = fetchFromGitHub {
-    owner = "parkouss";
+    owner = "xantoz";
     repo = "webmacs";
     rev = version;
-    sha256 = "19k9z9i4pr23yx5dw7wgsmly3g3yyc2hr66jk456fc388qk3z7yr";
+    sha256 = "1ip4z7iq2kmfi8jl1j0kxvq8gbgq00x26r71n3bgkyxvazlvp7vp";
     fetchSubmodules = true;
   };
 
