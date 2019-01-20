@@ -20,8 +20,8 @@
         src = fetchFromGitHub {
           repo = "mpv";
           owner = "xantoz";
-          rev = "f2e036a3e2fce17611d35bf9c972d9b75fa04bf6";
-          sha256 = "0ig7zajpfhnpv9rjx4p8lk921ha3f8xyqwjkzcy0hz78zk8sgi8g";
+          rev = "bb62226900d3f5774ac4f35c35e5053eaa035acb";
+          sha256 = "0p645qkl7h96phvd6gaprbcpxafn5055maifrgy62pikczvk0nbc";
         };
         version = "0.29.2-git";
         name = "mpv-0.29.2-git";
