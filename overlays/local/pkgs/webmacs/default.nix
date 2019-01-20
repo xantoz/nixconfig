@@ -2,13 +2,13 @@
 
 python3Packages.buildPythonApplication rec {
   name = "webmacs-${version}";
-  version = "96fe2e475c8cc32e2a1dda391d964e966c20144f";
+  version = "6a0ff0747f04837301b0a1944ec9f27d1ae510f5";
 
   src = fetchFromGitHub {
-    owner = "xantoz";
+    owner = "parkouss";
     repo = "webmacs";
     rev = version;
-    sha256 = "1ip4z7iq2kmfi8jl1j0kxvq8gbgq00x26r71n3bgkyxvazlvp7vp";
+    sha256 = "03fi22l6imm7bv7c897lq1xl3v640gqb7haxmnsnh7jdn13fr1xv";
     fetchSubmodules = true;
   };
 
@@ -35,6 +35,8 @@ python3Packages.buildPythonApplication rec {
     markupsafe
     six
   ];
+
+  doCheck = false;
 
   meta = with stdenv.lib; {
     description = "webmacs - keyboard driven (emacs key bindings) browser";
