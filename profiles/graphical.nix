@@ -34,6 +34,7 @@
         ];
     });
   in [
+    webmacs
     # graphical only from here
     xss-lock
     emacs # TODO: how to into non-graphical emacs? also get rid of the gtk dependency. also user daemon.
