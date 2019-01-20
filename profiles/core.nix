@@ -3,6 +3,10 @@
 {
   nixpkgs.config.allowUnfree = true;   # for broadcom_sta, mainly
 
+  nixpkgs.overlays = [
+    (import ../overlays/local/pkgs/default.nix)
+  ];
+
   environment.systemPackages = with pkgs; [
     wget pv tree htop zile
     screen ag jq file
