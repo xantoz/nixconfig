@@ -21,6 +21,8 @@
     mate.atril
     gajim
 
+    mcomix
+
     (writeShellScriptBin "rtorrent" ''
       ${xtermcontrol}/bin/xtermcontrol --title=rtorrent
       exec ${rtorrent}/bin/rtorrent "$@"
