@@ -20,7 +20,7 @@
   home-manager.users.tewi_inaba = import ../../home-xantoz-nixpkgs/home.nazrin.nix;
 
   environment.systemPackages = with pkgs; let
-    my_xbattbar = haskellPackages.xbattbar.overrideAttrs(old: { patches = [ ../../patches/xbattbar-0.2.patch ]; } );
+    my_xbattbar = haskellPackages.xbattbar.overrideAttrs(old: { patches = [ ../../patches/haskellPackages.xbattbar/xbattbar-0.2.patch ]; } );
   in [
     my_xbattbar
     btrfsProgs

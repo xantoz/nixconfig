@@ -1,0 +1,234 @@
+From a9dc1d6828ca8dce7a11e074c96d0931dacc0cd7 Mon Sep 17 00:00:00 2001
+From: Anton Kindestam <antonki@kth.se>
+Date: Thu, 17 May 2018 10:29:17 +0200
+Subject: [PATCH] add sv-qwerty.mim
+
+---
+ MIM/sv-qwerty.mim | 202 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ po/POTFILES.in    |   1 +
+ 2 files changed, 203 insertions(+)
+ create mode 100644 MIM/sv-qwerty.mim
+
+diff --git a/MIM/sv-qwerty.mim b/MIM/sv-qwerty.mim
+new file mode 100644
+index 0000000..77faf54
+--- /dev/null
++++ b/MIM/sv-qwerty.mim
+@@ -0,0 +1,202 @@
++;; fr-azerty.mim -- Input method for French simulating Azerty keyboard layout
++;; Copyright (C) 2007, 2008, 2009
++;;   National Institute of Advanced Industrial Science and Technology (AIST)
++;;   Registration Number H15PRO112
++
++;; This file is part of the m17n database; a sub-part of the m17n
++;; library.
++
++;; The m17n library is free software; you can redistribute it and/or
++;; modify it under the terms of the GNU Lesser General Public License
++;; as published by the Free Software Foundation; either version 2.1 of
++;; the License, or (at your option) any later version.
++
++;; The m17n library is distributed in the hope that it will be useful,
++;; but WITHOUT ANY WARRANTY; without even the implied warranty of
++;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++;; Lesser General Public License for more details.
++
++;; You should have received a copy of the GNU Lesser General Public
++;; License along with the m17n library; if not, write to the Free
++;; Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++;; Boston, MA 02110-1301, USA.
++
++(input-method sv qwerty)
++
++(description (_"Simulating SV-QWERTY keyboard on English keyboard.
++
++     &1  é2  \"3  '4  (5  -6  è7  _8  ç9  à0  )°  =_  ²~
++      aA  zZ  eE  rR  tT  yY  uU  iI  oO  pP  ^¨  $£
++       qQ  sS  dD  fF  gG  hH  jJ  kK  lL  mM  ù%  *|
++        wW  xX  cC  vV  bB  nN  ,?  ;.  :/  !§
++
++'[' and '{' are used as a dead key to type a character with the
++circumflex and diaeresis respectively (e.g. '[' 'e' -> \"ê\").
++
++'Alt-2' and 'Alt-7' are used as a dead key to type a character
++with tilde and grave respectively (e.g. 'Alt-2' 'n' -> \"ñ\").
++
++'Ctrl-Alt-2' and 'Ctrl-Alt-7' can be used as 'Alt-2' and 'Alt-7'
++respectively.
++
++Azerty keyboard has one more key at the bottom left corner for
++inputting \"<\" and \">\".  As a normal English keyboard doesn't
++have such a key left, type '<' and '>' twice for \"<\" and \">\"
++respectively."))
++
++(title "sv-qwerty")
++
++(map
++ (normal
++  (";" ?ö)
++  (":" ?Ö)
++  ("'" ?ä)
++  ("\"" ?Ä)
++  ("[" ?å)
++  ("{" ?Å)
++  ("\\" ?')
++  ("|" ?\")
++  ("]" ?<)
++  ("}" ?>)
++  ("<" ?\;)
++  (">" ?:)
++  )
++ 
++ ;; Deadkeys
++ ;; (left-square-bracket
++ ;;  ("["))
++
++ ;; (left-curly-bracket
++ ;;  ("{"))
++
++ (alt-7
++   ((A-7))
++   ((C-A-7)))
++ 
++ (alt-8
++   ((A-8))
++   ((C-A-8)))
++
++ (alt-9
++   ((A-9))
++   ((C-A-9)))
++
++ (alt-0
++   ((A-0))
++   ((C-A-0)))
++ 
++ (alt-]
++   ((A-]))
++   ((C-A-])))
++
++ (alt-2
++  ((A-2))
++  ((C-A-2)))
++
++ (alt-=
++  ((A-=))
++  ((C-A-=)))
++
++ (alt-+
++  ((A-+))
++  ((C-A-+)))
++
++ (alt--
++  ((A--))
++  ((C-A--)))
++
++
++ ;; Letters with diacritical marks
++ ;; (circumflex
++ ;;  ("[" ?^)
++ ;;  ("a" ?â)
++ ;;  ("e" ?ê)
++ ;;  ("i" ?î)
++ ;;  ("o" ?ô)
++ ;;  ("u" ?û)
++ ;;  ("A" ?Â)
++ ;;  ("E" ?Ê)
++ ;;  ("I" ?Î)
++ ;;  ("O" ?Ô)
++ ;;  ("U" ?Û))
++
++ ;; (diaeresis
++ ;;  ("{" ?¨)
++ ;;  ("a" ?ä)
++ ;;  ("e" ?ë)
++ ;;  ("i" ?ï)
++ ;;  ("o" ?ö)
++ ;;  ("u" ?ü)
++ ;;  ("y" ?ÿ)
++ ;;  ("A" ?Ä)
++ ;;  ("E" ?Ë)
++ ;;  ("I" ?Ï)
++ ;;  ("O" ?Ö)
++ ;;  ("U" ?Ü)
++ ;;  ("Y" ?Ÿ))
++
++ (tilde
++  ("3" ?~)
++  ("a" ?ã)
++  ("n" ?ñ)
++  ("o" ?õ))
++
++ (grave
++  ("a" ?à)
++  ("e" ?è)
++  ("i" ?ì)
++  ("o" ?ò)
++  ("u" ?ù)
++  ("A" ?À)
++  ("E" ?È)
++  ("I" ?Ì)
++  ("O" ?Ò)
++  ("U" ?Ù))
++
++ (accent
++  ("a" ?á)
++  ("e" ?é)
++  ("i" ?í)
++  ("o" ?ó)
++  ("u" ?ú)
++  ("A" ?Á)
++  ("E" ?É)
++  ("I" ?Í)
++  ("O" ?Ó)
++  ("U" ?Ú))
++)
++
++(state
++ (init
++  (normal)
++  (alt-7 ?{)
++  (alt-8 ?[)
++  (alt-9 ?])
++  (alt-0 ?})
++  (alt-] ?|)
++  (alt-- ?\\)
++  ;; (left-square-bracket (shift circumflex))
++  ;; (left-curly-bracket (shift diaeresis))
++  (alt-2 (shift tilde))
++  (alt-= (shift accent))
++  (alt-+ (shift grave)))
++
++ ;; (circumflex
++ ;;  "AZ^"
++ ;;  (circumflex (shift init)))
++
++ ;; (diaeresis
++ ;;  "AZ¨"
++ ;;  (diaeresis (shift init)))
++
++ (tilde
++  "AZ~"
++  (tilde (shift init)))
++
++ (grave
++  "AZ`"
++  (grave (shift init)))
++
++ (accent
++  "AZ`"
++  (accent (shift init))))
+diff --git a/po/POTFILES.in b/po/POTFILES.in
+index 42becc0..0d21054 100644
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -111,6 +111,7 @@ MIM/sk-kbd.mim
+ MIM/sr-kbd.mim
+ MIM/ssymbol.mim
+ MIM/sv-post.mim
++MIM/sv-qwerty.mim
+ MIM/syrc-phonetic.mim
+ MIM/ta-inscript.mim
+ MIM/ta-itrans.mim
+-- 
+2.16.1
+
