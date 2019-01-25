@@ -26,6 +26,7 @@
     btrfsProgs
     libva-utils
     libva1
+    dmidecode
   ];
 
   ## Use the systemd-boot EFI boot loader.
