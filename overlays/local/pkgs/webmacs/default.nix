@@ -1,6 +1,6 @@
-{ stdenv, fetchFromGitHub, python3Packages }:
+{ stdenv, fetchFromGitHub, python36Packages }:
 
-python3Packages.buildPythonApplication rec {
+python36Packages.buildPythonApplication rec {
   name = "webmacs-${version}";
   version = "6a0ff0747f04837301b0a1944ec9f27d1ae510f5";
 
@@ -16,17 +16,9 @@ python3Packages.buildPythonApplication rec {
     export CC=g++
   '';
 
-  propagatedBuildInputs = with python3Packages; [
+  propagatedBuildInputs = with python36Packages; [
     pyqt5
-    (dateparser.overridePythonAttrs(old: {
-      preCheck =''
-        # skip because of missing convertdate module, which is an extra requirement
-        rm tests/test_jalali.py
-
-        # skip because of failures with Python 3.7: https://github.com/NixOS/nixpkgs/issues/52766
-        rm tests/test_search.py
-      '';
-    }))
+    dateparser
     jinja2
     pygments
     tzlocal
