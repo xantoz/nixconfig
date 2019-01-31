@@ -20,22 +20,17 @@
         src = fetchFromGitHub {
           repo = "mpv";
           owner = "xantoz";
-          rev = "bb62226900d3f5774ac4f35c35e5053eaa035acb";
-          sha256 = "0p645qkl7h96phvd6gaprbcpxafn5055maifrgy62pikczvk0nbc";
+          rev = "drm-presentation-feedback";
+          sha256 = "1fdzqxzyzwnxav8sw4649z881frdnn5jj94ngk42bm46l88ry0r1";
         };
-        version = "0.29.2-git";
-        name = "mpv-0.29.2-git";
+        version = "0.29.1-git";
+        name = "mpv-0.29.1-git";
         buildInputs = old.buildInputs ++ [
           mesa_noglu
-          mujs                  # ./waf configure doesn't seem quite happy with the version provided in nixpkgs. Try upgrading to l8st gr8st?
-          shaderc
-          vulkan-headers
-          vulkan-loader
         ];
     });
   in [
     webmacs
-    # graphical only from here
     xss-lock
     emacs # TODO: how to into non-graphical emacs? also get rid of the gtk dependency. also user daemon.
     my_ratpoison
