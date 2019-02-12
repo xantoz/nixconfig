@@ -16,19 +16,6 @@
         version = "1.4.10";
         name = "ratpoison-1.4.10";
     });
-    my_mpv = mpv.overrideAttrs(old: {
-        src = fetchFromGitHub {
-          repo = "mpv";
-          owner = "xantoz";
-          rev = "drm-presentation-feedback";
-          sha256 = "1fdzqxzyzwnxav8sw4649z881frdnn5jj94ngk42bm46l88ry0r1";
-        };
-        version = "0.29.1-git";
-        name = "mpv-0.29.1-git";
-        buildInputs = old.buildInputs ++ [
-          mesa_noglu
-        ];
-    });
   in [
     webmacs
     xss-lock
@@ -40,7 +27,7 @@
     glxinfo
     xfontsel
     pavucontrol
-    my_mpv
+    mpv
   ];
 
   fonts.fonts = with pkgs; [
