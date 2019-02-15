@@ -18,6 +18,8 @@
     # lua-mode
   ];
 
+  services.emacs.enable = true;
+
   home.file = {
     ".config/emacs".source = ./config/emacs;
     ".emacs".source = pkgs.writeText "dotemacs" ''
