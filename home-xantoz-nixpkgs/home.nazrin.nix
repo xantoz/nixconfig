@@ -15,6 +15,7 @@
 
   services.blueman-applet.enable = true;
   services.kdeconnect.enable = true;
+  services.kdeconnect.indicator = true;
 
   services.pasystray.enable = true;
 
