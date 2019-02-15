@@ -83,7 +83,7 @@
       separator_color = "frame";
 
       # dmenu path
-      dmenu = "${pkgs.rofi}/bin/rofi -dmenu -p dunst -theme glue_pro_blue";
+      dmenu = "${pkgs.dmenu}/bin/dmenu -l 40";
 
       # Browser for opening urls in context menu.
       browser = "/run/current-system/sw/bin/firefox -new-tab";
