@@ -63,8 +63,6 @@
       xinput set-prop 'PS/2 Generic Mouse' 'libinput Middle Emulation Enabled' 1
       xinput set-prop 'PS/2 Generic Mouse' 'Coordinate Transformation Matrix' 1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.300000
 
-      xcompmgr &
-
       feh --bg-fill ~/Pictures/Wallpapers/Touhou/Du0glW6V4AA2fdz.jpg &
 
       export QT_IM_MODULE=fcitx
