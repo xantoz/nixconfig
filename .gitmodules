@@ -10,3 +10,6 @@
 [submodule "home-xantoz-nixpkgs/config/ratpoison"]
 	path = home-xantoz-nixpkgs/config/ratpoison
 	url = https://github.com/xantoz/ratpoisonrc
+[submodule "home-xantoz-nixpkgs/config/dotfiles"]
+	path = home-xantoz-nixpkgs/config/dotfiles
+	url = git@github.com:xantoz/dotfiles.git
