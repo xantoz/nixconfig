@@ -34,8 +34,11 @@
       source .config/ratpoison/backlightrc
 
       source .config/ratpoison/volumerc
-
       source .config/ratpoison/xbattbarrc
+
+      setenv rp_compositor xcompmgr
+      setenv rp_compositor_args --
+      source .config/ratpoison/compositorrc
 
       alias xterm exec xterm -e '$SHELL -c "xprop -id $WINDOWID -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0xeeeeeeee; exec $SHELL -l"'
       alias reload source .ratpoisonrc
