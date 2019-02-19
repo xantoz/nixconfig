@@ -47,18 +47,14 @@
     source-han-code-jp
 
     source-han-sans-japanese
-    source-han-sans-japanese
     source-han-serif-japanese
 
-    source-han-sans-korean
     source-han-sans-korean
     source-han-serif-korean
 
     source-han-sans-simplified-chinese
-    source-han-sans-simplified-chinese
     source-han-serif-simplified-chinese
 
-    source-han-sans-traditional-chinese
     source-han-sans-traditional-chinese
     source-han-serif-traditional-chinese
 
