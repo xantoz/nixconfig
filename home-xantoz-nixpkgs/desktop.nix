@@ -11,6 +11,7 @@
     dmenu
     wmname
     redshift
+    xtermcontrol
 
     firefox
     scrot
