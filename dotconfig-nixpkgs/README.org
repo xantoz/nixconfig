@@ -1,0 +1,32 @@
+#+STARTUP: indent
+
+* What
+Here I put =~/.config/nixpkgs= for a couple different machines. Mainly for
+machines where I don't run NixOS, but run just nix on top of another distro (or
+at the very least machines on which I don't use home-manager).
+
+* To use (in an ideal world)
+*WARNING: this does not work*
+
+Symlink the corresponding folder to =~/.config/nixpkgs=
+
+E.g. for usbee:
+#+BEGIN_EXAMPLE
+$ ln -s ~/src/nixconfig/usbee ~/.config/nixpkgs
+#+END_EXAMPLE
+
+Replace =~/src/nixconfig= with the actual path where you cloned this repo.
+
+*However, this does not work as nix has trouble with resolving the symlinks*
+
+* To actually use (in the real world)
+
+Workaround deficient symlink handling in nix:
+#+BEGIN_EXAMPLE
+$ mkdir -p ~/.config/nixpkgs
+$ ln -s ~/src/nixconfig/dotconfig-nixpkgs/usbee/config.nix ~/.config/nixpkgs/
+$ mkdir -p ~/.config/nixpkgs/overlays
+$ ln -s $(realpath ~/src/nixconfig/dotconfig-nixpkgs/usbee/overlays/pkgs) ~/.config/nixconfig/overlays/
+#+END_EXAMPLE
+
+Yet again replacing =~/src/nixconfig= with where the repo has been cloned to.
