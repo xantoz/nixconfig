@@ -1,6 +1,6 @@
-{ stdenv, fetchFromGitHub, python36Packages }:
+{ stdenv, fetchFromGitHub, python37Packages }:
 
-python36Packages.buildPythonApplication rec {
+python37Packages.buildPythonApplication rec {
   name = "webmacs-${version}";
   version = "d03057cf14491bcbd9f3a64fc126ec3e6f9a590e";
 
@@ -16,7 +16,7 @@ python36Packages.buildPythonApplication rec {
     export CC=g++
   '';
 
-  propagatedBuildInputs = with python36Packages; [
+  propagatedBuildInputs = with python37Packages; [
     pyqt5
     dateparser
     jinja2
