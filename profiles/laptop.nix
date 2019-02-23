@@ -7,4 +7,7 @@
 
   # run powertop --auto-tune on startup
   powerManagement.powertop.enable = true;
+
+  # enable upower (mainly to get autohibernate on low battery)
+  services.upower.enable = true;
 }
