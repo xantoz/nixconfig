@@ -7,6 +7,7 @@
     ./emacs.nix
     ./desktop.nix
     ./mpv.nix
+    ./common.nix
   ];
 
   xsession.enable = true;
@@ -23,12 +24,6 @@
   pam.sessionVariables.LESS = "-R";
 
   home.file = {
-    ".screenrc".source = builtins.path { name = "dotscreenrc"; path = ./config/dotfiles/src/.screenrc; };
-    ".zile".source = builtins.path { name = "dotzile"; path = ./config/dotfiles/src/.zile; };
-    ".config/youtube-dl/config".source = ./config/dotfiles/src/youtube-dl/config;
-    ".config/feh/themes".source = ./config/dotfiles/src/feh/themes;
-    ".config/redshift.conf".source = ./config/dotfiles/src/redshift.conf;
-
     ".config/ratpoison".source = ./config/ratpoison;
     ".ratpoisonrc".source = pkgs.writeText "dotratpoisonrc" ''
       source .config/ratpoison/ratpoisonrc
