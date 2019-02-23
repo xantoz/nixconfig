@@ -31,6 +31,7 @@
   ];
 
   fonts.fonts = with pkgs; [
+    corefonts
     emacs-all-the-icons-fonts
 
     source-code-pro
