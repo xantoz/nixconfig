@@ -42,10 +42,6 @@
       exec ${pkgs.libva-utils}/bin/vainfo "$@"
     '';
 
-    my_emacs = pkgs_.emacs.overrideAttrs(old: {
-      configureFlags = old.configureFlags ++ [ "--with-x=yes" "--with-x-toolkit=no" ];
-    });
-
     # my_pulseview = pkgs.writeShellScriptBin "pulseview" ''
     #   export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
     #   export LD_LIBRARY_PATH='${pkgs.mesa_drivers}/lib':$LD_LIBRARY_PATH
@@ -130,7 +126,7 @@
       paths = [
         pkgs.my_mpv
         pkgs.my_webmacs
-        pkgs.my_emacs
+        pkgs.emacs26
         pkgs.my_pulseview
 
         pkgs.nixGLIntel
