@@ -8,6 +8,7 @@
     '')
   ];
 
+  programs.emacs.package = pkgs.emacs26;
   programs.emacs.enable = true;
   programs.emacs.extraPackages = epkgs: with epkgs; [
     magit
