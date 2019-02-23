@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
-
   imports = [
     ./emacs.nix
     ./desktop.nix
