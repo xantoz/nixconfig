@@ -6,14 +6,14 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      ./hardware-configuration.nix
       ../../profiles/core.nix
       ../../profiles/graphical.nix
       ../../profiles/input-methods.nix
       ../../profiles/wireless.nix
       ../../profiles/bluetooth.nix
       ../../profiles/laptop.nix
-      ./hardware-configuration.nix
       ../../home-xantoz-nixpkgs/home-manager/nixos
     ];
 

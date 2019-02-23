@@ -15,9 +15,6 @@
     nload
     usbutils
     pciutils
-#    gcc
-#    gnumake
-#    ncurses.dev
     libarchive
     unrar
     unzip
