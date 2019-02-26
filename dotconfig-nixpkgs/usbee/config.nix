@@ -3,6 +3,8 @@
 {
   allowUnfree = true;
 
+  nix.maxJobs = 4;
+
   packageOverrides = pkgs_: {
 
     my_mpv = pkgs.writeShellScriptBin "mpv" ''
