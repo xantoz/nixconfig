@@ -14,7 +14,7 @@ with super.lib; {
     src = super.fetchFromGitHub {
       repo = "mpv";
       owner = "xantoz";
-      rev = "personal-build-v3";
+      rev = "0bfb84e1313761bb61499c7b36e623368b6d3214";
       sha256 = "088nyr64djghdrm6cprlki2mjvbqa366lh0k3k930xw3m0nbclc8";
     };
     version = "0.29.1-git";
