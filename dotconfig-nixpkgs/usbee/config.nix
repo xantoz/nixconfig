@@ -136,10 +136,13 @@
         pkgs.xterm
         pkgs.youtube-dl
 
+
+        # fonts
+        pkgs.noto-fonts-emoji
+        pkgs.emacs-all-the-icons-fonts
         pkgs.source-code-pro
         pkgs.source-sans-pro
         pkgs.source-serif-pro
-
         pkgs.source-han-code-jp
         pkgs.source-han-sans-japanese
         pkgs.source-han-serif-japanese
