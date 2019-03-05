@@ -13,5 +13,9 @@
     ".config/youtube-dl/config".source = ./config/dotfiles/src/youtube-dl/config;
     ".config/feh/themes".source = ./config/dotfiles/src/feh/themes;
     ".config/redshift.conf".source = ./config/dotfiles/src/redshift.conf;
+
+    ".config/nixpkgs/config.nix".source = pkgs.writeText "unfree_for_nix-shell" ''
+      { allowUnfree = true; }
+    '';
   };
 }
