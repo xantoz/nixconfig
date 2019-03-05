@@ -14,14 +14,17 @@ with super.lib; {
     src = super.fetchFromGitHub {
       repo = "mpv";
       owner = "xantoz";
-      rev = "0bfb84e1313761bb61499c7b36e623368b6d3214";
-      sha256 = "088nyr64djghdrm6cprlki2mjvbqa366lh0k3k930xw3m0nbclc8";
+      rev = "aa216b53e33ebb44eb004df3d746866dc0fde10d";
+      sha256 = "02vd59c72ry5y2bqbw0a0sj3w2riq8acj7n94m3jaqnx78zq55ns";
     };
     version = "0.29.1-git";
     name = "mpv-0.29.1-git";
-    buildInputs = old.buildInputs ++ [
-      super.pkgs.mesa_noglu
-    ];
+    configureFlags =
+      foldr remove old.configureFlags [ "--enable-dvbin" "--enable-dvdread" "--enable-dvdnav" "--disable-cdda" ]; # to be able to build the wm4 removal branch
+    buildInputs = # TODO: remove things from buildInputs that are no longer used
+      old.buildInputs ++ [
+        super.pkgs.mesa_noglu
+      ];
   });
 
   libsigrokdecode = super.libsigrokdecode.overrideAttrs(old: {
