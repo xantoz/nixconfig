@@ -10,7 +10,15 @@ with super.lib; {
   m17n_db = super.m17n_db.overrideAttrs(old: {
     patches = [ ../../../patches/m17n_db/0001-add-sv-qwerty.mim.patch ];
   });
-  mpv = super.mpv.overrideAttrs(old: {
+
+  # to be able to build the wm4 removal branch first disable support for things
+  # that have been removed, then also remove the --disable-xxx configure flags
+  mpv = (super.mpv.override {
+    cddaSupport = false;
+    dvdnavSupport = false;
+    dvdreadSupport = false;
+    openalSupport = true;
+  }).overrideAttrs(old: {
     src = super.fetchFromGitHub {
       repo = "mpv";
       owner = "xantoz";
@@ -20,11 +28,8 @@ with super.lib; {
     version = "0.29.1-git";
     name = "mpv-0.29.1-git";
     configureFlags =
-      foldr remove old.configureFlags [ "--enable-dvbin" "--enable-dvdread" "--enable-dvdnav" "--disable-cdda" ]; # to be able to build the wm4 removal branch
-    buildInputs = # TODO: remove things from buildInputs that are no longer used
-      old.buildInputs ++ [
-        super.pkgs.mesa_noglu
-      ];
+      foldr remove old.configureFlags [ "--enable-dvbin" "--disable-dvdread" "--disable-dvdnav" "--disable-cdda" ];
+      buildInputs = old.buildInputs ++ [ super.pkgs.mesa_noglu ];
   });
 
   libsigrokdecode = super.libsigrokdecode.overrideAttrs(old: {
