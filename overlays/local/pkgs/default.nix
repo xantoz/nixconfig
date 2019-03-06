@@ -29,7 +29,7 @@ with super.lib; {
     name = "mpv-0.29.1-git";
     configureFlags =
       foldr remove old.configureFlags [ "--enable-dvbin" "--disable-dvdread" "--disable-dvdnav" "--disable-cdda" ];
-      buildInputs = old.buildInputs ++ [ super.pkgs.mesa_noglu ];
+    buildInputs = old.buildInputs ++ [ super.pkgs.mesa_noglu ];
   });
 
   libsigrokdecode = super.libsigrokdecode.overrideAttrs(old: {
