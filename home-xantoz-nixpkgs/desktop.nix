@@ -29,7 +29,7 @@
       exec ${rtorrent}/bin/rtorrent "$@"
     '')
 
-    libnotify
+    libnotify                   # notify-send
   ];
 
   services.dunst.enable = true;
