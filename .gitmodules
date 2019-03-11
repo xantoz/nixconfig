@@ -1,15 +1,15 @@
 [submodule "home-xantoz-nixpkgs/home-manager"]
-	path = home-xantoz-nixpkgs/home-manager
+	path = home/home-manager
 	url = https://github.com/rycee/home-manager.git
 [submodule "home-xantoz-nixpkgs/config/emacs"]
-	path = home-xantoz-nixpkgs/config/emacs
+	path = home/config/emacs
 	url = https://github.com/xantoz/emacsrc.git
 [submodule "home-xantoz-nixpkgs/config/xterm"]
-	path = home-xantoz-nixpkgs/config/xterm
+	path = home/config/xterm
 	url = https://github.com/xantoz/xtermrc
 [submodule "home-xantoz-nixpkgs/config/ratpoison"]
-	path = home-xantoz-nixpkgs/config/ratpoison
+	path = home/config/ratpoison
 	url = https://github.com/xantoz/ratpoisonrc
 [submodule "home-xantoz-nixpkgs/config/dotfiles"]
-	path = home-xantoz-nixpkgs/config/dotfiles
+	path = home/config/dotfiles
 	url = git@github.com:xantoz/dotfiles.git

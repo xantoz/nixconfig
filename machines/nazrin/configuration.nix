@@ -14,10 +14,10 @@
       ../../profiles/wireless.nix
       ../../profiles/bluetooth.nix
       ../../profiles/laptop.nix
-      ../../home-xantoz-nixpkgs/home-manager/nixos
+      ../../home/home-manager/nixos
     ];
 
-  home-manager.users.tewi_inaba = import ../../home-xantoz-nixpkgs/home.nazrin.nix;
+  home-manager.users.tewi_inaba = import ../../home/home.nazrin.nix;
 
   environment.systemPackages = with pkgs; let
     my_xbattbar = haskellPackages.xbattbar.overrideAttrs(old: { patches = [ ../../patches/haskellPackages.xbattbar/xbattbar-0.2.patch ]; } );
