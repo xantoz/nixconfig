@@ -6,15 +6,18 @@
     (writeShellScriptBin "ec" ''
       exec emacsclient "$@"
     '')
-    (let
-      inherit (pkgs.callPackage ./config/emacs/scripts/nix-emacs-with-use-package-pkgs/emacs-with-use-package-pkgs.nix {}) emacsWithUsePackagePkgs;
-    in (emacsWithUsePackagePkgs {
-      config = ./config/emacs/init.el;
-    }))
   ];
 
-  services.emacs.enable = false;
-  programs.emacs.enable = false;
+  services.emacs.enable = true;
+  programs.emacs.enable = true;
+  programs.emacs.package = pkgs.emacs26;
+  programs.emacs.extraPackages =
+    let
+      packages =
+        let
+          inherit (pkgs.callPackage ./config/emacs/scripts/nix-emacs-with-use-package-pkgs/emacs-with-use-package-pkgs.nix {}) parsePackages;
+        in (parsePackages ./config/emacs/init.el);
+    in (epkgs: map (name: epkgs.${name}) (packages ++ [ "use-package" ]));
 
   home.file = {
     ".config/emacs".source = ./config/emacs;
