@@ -27,6 +27,7 @@
     libva-utils
     libva1
     dmidecode
+    units
   ];
 
   ## Use the systemd-boot EFI boot loader.
