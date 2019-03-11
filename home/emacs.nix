@@ -6,16 +6,15 @@
     (writeShellScriptBin "ec" ''
       exec emacsclient "$@"
     '')
-  ];
-
-  services.emacs.enable = true;
-  programs.emacs.enable = true;
-  programs.emacs.package =
-    let
+    (let
       inherit (pkgs.callPackage ./config/emacs/scripts/nix-emacs-with-use-package-pkgs/emacs-with-use-package-pkgs.nix {}) emacsWithUsePackagePkgs;
     in (emacsWithUsePackagePkgs {
       config = ./config/emacs/init.el;
-    });
+    }))
+  ];
+
+  services.emacs.enable = false;
+  programs.emacs.enable = false;
 
   home.file = {
     ".config/emacs".source = ./config/emacs;
