@@ -9,7 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     wget pv tree htop zile
-    screen ag jq file
+    ag jq file
     (pkgs.runCommand "filtered-busybox" {} "mkdir -p $out/bin && ln -s ${busybox}/bin/{busybox,vi,ash,killall} $out/bin/")
     git tig
     nload
@@ -22,6 +22,8 @@
     sshfs
     lshw
   ];
+
+  programs.screen.screenrc = builtins.readFile ../home/config/dotfiles/src/.screenrc;
 
   # Select internationalisation properties.
   i18n = {
