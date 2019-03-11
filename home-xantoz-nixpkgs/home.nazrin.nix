@@ -8,6 +8,10 @@
     ./common.nix
   ];
 
+  home.packages = with pkgs; [
+    pulseview
+  ];
+
   xsession.enable = true;
   xsession.windowManager.command = "/bin/sh ~/.xsession";
   xsession.scriptPath = ".xinitrc";
