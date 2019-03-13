@@ -13,3 +13,6 @@
 [submodule "home-xantoz-nixpkgs/config/dotfiles"]
 	path = home/config/dotfiles
 	url = git@github.com:xantoz/dotfiles.git
+[submodule "nixpkgs"]
+	path = nixpkgs
+	url = git@github.com:xantoz/nixpkgs.git

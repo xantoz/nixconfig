@@ -7,6 +7,12 @@
     (import ../overlays/local/pkgs/default.nix)
   ];
 
+  # Use local nixpkgs checkout
+  nix.nixPath = [
+    "/etc/nixos"
+    "nixos-config=/etc/nixos/configuration.nix"
+  ];
+
   environment.systemPackages = with pkgs; [
     wget pv tree htop zile
     ag jq file
