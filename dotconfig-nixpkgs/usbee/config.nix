@@ -138,6 +138,7 @@
 
         pkgs.xterm
         pkgs.youtube-dl
+        pkgs.hugo
 
 
         # fonts
