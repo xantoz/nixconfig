@@ -22,6 +22,10 @@
     mate.atril
     gajim
 
+    discord
+    tdesktop
+    slack
+
     mcomix
 
     (writeShellScriptBin "rtorrent" ''
