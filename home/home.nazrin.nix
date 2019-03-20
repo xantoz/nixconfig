@@ -26,6 +26,19 @@
   pam.sessionVariables.LESS = "-R";
 
   home.file = {
+    ".drirc".source = pkgs.writeText "drirc" ''
+      <driconf>
+        <!-- Please always enable app-specific workarounds for all drivers and
+             screens. -->
+        <device>
+            <application name="all">
+                <option name="allow_rgb10_configs" value="true"/>
+                <option name="mesa_glthread" value="true"/>
+            </application>
+        </device>
+      </driconf>
+     '';
+
     ".config/ratpoison".source = ./config/ratpoison;
     ".ratpoisonrc".source = pkgs.writeText "dotratpoisonrc" ''
       source .config/ratpoison/ratpoisonrc
