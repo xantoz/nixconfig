@@ -72,6 +72,8 @@
 
   services.logind.extraConfig = ''
     HandleLidSwitch=ignore
+    HandleLidSwitchDocked=ignore
+    HandleLidSwitchExternalPower=ignore
     HandlePowerKey=ignore
   '';
 
