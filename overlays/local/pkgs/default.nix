@@ -22,8 +22,8 @@ with super.lib; {
     src = super.fetchFromGitHub {
       repo = "mpv";
       owner = "xantoz";
-      rev = "5242158819eda79cdebb0bba62812dc46ceb4013";
-      sha256 = "1vz3366ikvaj586bq9fd1c8i2fybvvcw9a1al4fj4q8d6a5vmv0q";
+      rev = "7b29a2ad82b1d29da14bd57c6b90a8a142d7e389";
+      sha256 = "1hy2ffcsgj70j83syrg5vlc9amsg25mxn0r4s09v4qfryqicjqq3";
     };
     version = "0.29.1-git";
     name = "mpv-0.29.1-git";
