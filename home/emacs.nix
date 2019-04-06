@@ -10,7 +10,7 @@
 
   services.emacs.enable = true;
   programs.emacs.enable = true;
-  programs.emacs.package = pkgs.emacs26;
+  programs.emacs.package = pkgs.emacsVcs27;
   programs.emacs.extraPackages =
     let
       inherit (pkgs.callPackage ./config/emacs/scripts/nix-emacs-with-use-package-pkgs/emacs-with-use-package-pkgs.nix {}) usePackagePkgs;
