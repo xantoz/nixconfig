@@ -4,13 +4,18 @@ with super.lib; {
   xterm = super.xterm.overrideAttrs(old: {
     configureFlags = old.configureFlags ++ [ "--enable-exec-xterm" ];
   });
-  emacs26 = super.emacs26.overrideAttrs(old: {
-    configureFlags = old.configureFlags ++ [ "--with-x=yes" "--with-x-toolkit=no" ];
-  });
+
   m17n_db = super.m17n_db.overrideAttrs(old: {
     patches = [ ../../../patches/m17n_db/0001-add-sv-qwerty.mim.patch ];
   });
 
+  emacs26 = (super.emacs26.override {
+    withX = true;
+    withGTK3 = false;
+    withGTK2 = false;
+  }).overrideAttrs(old: {
+    configureFlags = old.configureFlags ++ [ "--with-x=yes" "--with-x-toolkit=no" ];
+  });
   # to be able to build the wm4 removal branch first disable support for things
   # that have been removed, then also remove the --disable-xxx configure flags
   mpv = (super.mpv.override {
