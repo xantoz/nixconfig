@@ -16,6 +16,26 @@ with super.lib; {
   }).overrideAttrs(old: {
     configureFlags = old.configureFlags ++ [ "--with-x=yes" "--with-x-toolkit=no" ];
   });
+
+  emacsVcs27 = (super.emacs26.override {
+    withX = true;
+    withGTK3 = false;
+    withGTK2 = false;
+  }).overrideAttrs(old: {
+    src = super.fetchgit {
+      url = "https://git.savannah.gnu.org/git/emacs.git";
+      rev = "bcc6468b39916de6a3756c98e744ed5d0534eb40";
+      # date = "2019-04-06T11:36:34+02:00";
+      sha256 = "0cpyw5y5i0b4j6cdvifqq3b5342xl14wi4sv1p9rn9my7qf72lq7";
+      fetchSubmodules = false;
+    };
+    version="27.0.9999";
+    name="emacs-vcs-27.0.9999";
+    patches = [];
+    configureFlags = old.configureFlags ++ [ "--with-x=yes" "--with-x-toolkit=no" ];
+    nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook super.texinfo ];
+  });
+
   # to be able to build the wm4 removal branch first disable support for things
   # that have been removed, then also remove the --disable-xxx configure flags
   mpv = (super.mpv.override {
