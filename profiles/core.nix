@@ -11,6 +11,7 @@
   nix.nixPath = [
     "/etc/nixos"
     "nixos-config=/etc/nixos/configuration.nix"
+    # "nixpkgs-overlays=/etc/nixos/overlays/local/pkgs"
   ];
 
   environment.systemPackages = with pkgs; [
@@ -24,6 +25,7 @@
     libarchive
     unrar
     unzip
+    p7zip
     calc
     sshfs
     lshw
