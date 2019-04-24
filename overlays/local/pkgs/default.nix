@@ -24,9 +24,9 @@ with super.lib; {
   }).overrideAttrs(old: {
     src = super.fetchgit {
       url = "https://git.savannah.gnu.org/git/emacs.git";
-      rev = "bcc6468b39916de6a3756c98e744ed5d0534eb40";
+      rev = "5f4e8e2e088de9fb76cb631077c6eddd3219f594";
       # date = "2019-04-06T11:36:34+02:00";
-      sha256 = "0cpyw5y5i0b4j6cdvifqq3b5342xl14wi4sv1p9rn9my7qf72lq7";
+      sha256 = "1dbpdj0mbywjlv0ahr4yyjxsqibjd26qbiz66c1qwadd5kyka32f";
       fetchSubmodules = false;
     };
     version="27.0.9999";
