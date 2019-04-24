@@ -12,13 +12,18 @@
     pulseview
   ];
 
-  xsession.enable = true;
-  xsession.windowManager.command = "/bin/sh ~/.xsession";
-  xsession.scriptPath = ".xinitrc";
+  xsession = {
+    enable = true;
+    windowManager.command = "/bin/sh ~/.xsession";
+    scriptPath = ".xinitrc";
+  };
 
   services.blueman-applet.enable = true;
-  services.kdeconnect.enable = true;
-  services.kdeconnect.indicator = true;
+
+  services.kdeconnect = {
+    enable = true;
+    indicator = true;
+  };
 
   services.pasystray.enable = true;
 
