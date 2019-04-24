@@ -13,7 +13,6 @@
     redshift
     xtermcontrol
 
-    firefox
     scrot
     gimp
     feh

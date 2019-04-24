@@ -18,6 +18,8 @@
     });
   in [
     webmacs
+    firefox
+
     xss-lock
     my_ratpoison
     icewm
