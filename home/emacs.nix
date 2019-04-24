@@ -17,7 +17,7 @@
     (pkgs.runCommand "dumped-emacs" {} ''
       mkdir -p $out/bin
       mkdir -p $out/lib
-      HOME=$out ${config.programs.emacs.finalPackage}/bin/emacs -Q -nw --batch -l ${./config/emacs}/init.el --execute '(progn (write-region (format "(setq load-path (quote %S))" load-path) nil "'$out'/lib/emacs-loadpath.el") (dump-emacs-portable "'$out'/lib/emacs.bdump") (kill-emacs))'
+      HOME=$out ${config.programs.emacs.finalPackage}/bin/emacs -Q -nw --batch -l ${./config/emacs}/init.el --execute '(progn (global-font-lock-mode t) (write-region (format "(setq load-path (quote %S))" load-path) nil "'$out'/lib/emacs-loadpath.el") (dump-emacs-portable "'$out'/lib/emacs.bdump") (kill-emacs))'
       cat > $out/bin/qemacs <<EOF
       #!/bin/sh
       exec ${config.programs.emacs.finalPackage}/bin/emacs -Q --dump-file $out/lib/emacs.bdump --load $out/lib/emacs-loadpath.el "\$@"
