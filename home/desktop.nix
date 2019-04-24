@@ -17,6 +17,7 @@
     scrot
     gimp
     feh
+    imv
     transmission_gtk
     youtube-dl
     mate.atril
