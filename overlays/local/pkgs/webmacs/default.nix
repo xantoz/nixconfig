@@ -1,14 +1,13 @@
-{ stdenv, fetchFromGitHub, python37Packages }:
+{ stdenv, fetchgit, python37Packages }:
 
 python37Packages.buildPythonApplication rec {
   name = "webmacs-${version}";
-  version = "d03057cf14491bcbd9f3a64fc126ec3e6f9a590e";
+  version = "67f10f0238833111676ec7742f46653ab284629f";
 
-  src = fetchFromGitHub {
-    owner = "xantoz";
-    repo = "webmacs";
+  src = fetchgit {
+    url = "https://github.com/xantoz/webmacs";
     rev = version;
-    sha256 = "099ml91jp3q4slhyzdrhf0fkwzgj18r6f6zjwzd99lc72vcihb4g";
+    sha256 = "0lb8panig1k5zpc0wfv1ip1q07g3gjmn0swxsdzi3s66lj8crirx";
     fetchSubmodules = true;
   };
 
