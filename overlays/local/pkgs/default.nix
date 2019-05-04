@@ -97,4 +97,6 @@ with super.lib; {
   });
 
   webmacs = super.callPackage ./webmacs { };
+
+  libplacebo = super.callPackage ./libplacebo { };
 }
