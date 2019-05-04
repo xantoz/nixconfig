@@ -69,8 +69,8 @@ with super.lib; {
       rev = "7592278ad81ee057718b01b4e9e18a99e833b51d";
       sha256 = "0hif9rk10vp0d1wcd3cgaaxnjh136ik5d4q0rvi59g06hxwqylcq";
     };
-    version = "git";
-    name = "libsigrokdecode-git";
+    version = "9999";
+    name = "libsigrokdecode-9999";
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook ];
   });
 
@@ -81,8 +81,8 @@ with super.lib; {
       rev = "7d0f52f7e5cb16d204490ca4006983237bf3df7d";
       sha256 = "0ykxzxsp9zi37i6q33w30n9md94p3lpwbxz36k5z0lfmjyybpy7k";
     };
-    version = "git";
-    name = "libsigrok-git";
+    version = "9999";
+    name = "libsigrok-9999";
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook ];
     firmware = super.fetchurl {
       url = "https://sigrok.org/download/binary/sigrok-firmware-fx2lafw/sigrok-firmware-fx2lafw-bin-0.1.6.tar.gz";
@@ -97,8 +97,8 @@ with super.lib; {
       rev = "96dbf014dad1309d4ade9c14a8b46733e2f531c8";
       sha256 = "1qp1ny31pk9b9lwvsm3363nj5cxmn0453arflrbhpq5ckbd9161y";
     };
-    version = "git";
-    name = "pulseview-git";
+    version = "9999";
+    name = "pulseview-9999";
   });
 
   webmacs = super.callPackage ./webmacs { };
