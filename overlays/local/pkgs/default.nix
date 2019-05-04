@@ -43,18 +43,19 @@ with super.lib; {
     dvdnavSupport = false;
     dvdreadSupport = false;
     openalSupport = true;
+    vulkanSupport = false; # we use libplacebo, so the upstream package is not quite right w.r.t vulkan
   }).overrideAttrs(old: {
     src = super.fetchFromGitHub {
       repo = "mpv";
       owner = "xantoz";
-      rev = "7b29a2ad82b1d29da14bd57c6b90a8a142d7e389";
-      sha256 = "1hy2ffcsgj70j83syrg5vlc9amsg25mxn0r4s09v4qfryqicjqq3";
+      rev = "b89166eaafbe268e9d0db3b8debf62974c7bcdfd";
+      sha256 = "1f4gmi35jprn7pvm25nrwinw4zr3q94bc47a1hanyy461dwi88l2";
     };
     version = "0.29.1-git";
     name = "mpv-0.29.1-git";
     configureFlags =
       foldr remove old.configureFlags [ "--enable-dvbin" "--disable-dvdread" "--disable-dvdnav" "--disable-cdda" ];
-    buildInputs = old.buildInputs ++ [ super.pkgs.mesa_noglu ];
+    buildInputs = old.buildInputs ++ [ super.pkgs.mesa_noglu super.pkgs.libplacebo ];
   });
 
   libsigrokdecode = super.libsigrokdecode.overrideAttrs(old: {
