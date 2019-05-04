@@ -36,6 +36,8 @@ with super.lib; {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook super.texinfo ];
   });
 
+  libplacebo = super.callPackage ./libplacebo { };
+
   # to be able to build the wm4 removal branch first disable support for things
   # that have been removed, then also remove the --disable-xxx configure flags
   mpv = (super.mpv.override {
@@ -45,17 +47,19 @@ with super.lib; {
     openalSupport = true;
     vulkanSupport = false; # we use libplacebo, so the upstream package is not quite right w.r.t vulkan
   }).overrideAttrs(old: {
-    src = super.fetchFromGitHub {
-      repo = "mpv";
-      owner = "xantoz";
+    src = super.fetchgit {
+      url = "https://github.com/xantoz/mpv.git";
       rev = "b89166eaafbe268e9d0db3b8debf62974c7bcdfd";
-      sha256 = "1f4gmi35jprn7pvm25nrwinw4zr3q94bc47a1hanyy461dwi88l2";
+      sha256 = "1d130nnr8q2gq2qzph3pjw116gm6al7d7cfzlvdsbks4qldzv8xv";
+      fetchSubmodules = false;
+      leaveDotGit = true;
     };
-    version = "0.29.1-git";
-    name = "mpv-0.29.1-git";
+    version = "9999";
+    name = "mpv-9999";
     configureFlags =
       foldr remove old.configureFlags [ "--enable-dvbin" "--disable-dvdread" "--disable-dvdnav" "--disable-cdda" ];
-    buildInputs = old.buildInputs ++ [ super.pkgs.mesa_noglu super.pkgs.libplacebo ];
+    buildInputs = old.buildInputs ++ [ super.pkgs.mesa_noglu self.pkgs.libplacebo ];
+    nativeBuildInputs = old.nativeBuildInputs ++ [ super.git ]; # Needed by version.sh
   });
 
   libsigrokdecode = super.libsigrokdecode.overrideAttrs(old: {
@@ -98,6 +102,4 @@ with super.lib; {
   });
 
   webmacs = super.callPackage ./webmacs { };
-
-  libplacebo = super.callPackage ./libplacebo { };
 }
