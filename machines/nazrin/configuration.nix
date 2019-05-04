@@ -82,6 +82,14 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # Order the sound cards using ancient magic
+  boot.extraModprobeConfig = ''
+    # PCH
+    options snd-hda-intel index=0 model=auto vid=8086 pid=9c20
+    # HDMI
+    options snd-hda-intel index=1 model=auto vid=8086 pid=0a0c
+  '';
+
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
