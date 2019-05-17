@@ -77,7 +77,10 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  sound.enable = true;
+  sound = {
+    enable = true;
+    enableOSSEmulation = true;
+  };
   # Enable pulse with all the modules
   hardware.pulseaudio = {
     enable = true;
