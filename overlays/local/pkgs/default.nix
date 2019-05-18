@@ -101,5 +101,10 @@ with super.lib; {
     name = "pulseview-9999";
   });
 
+  # Die, networkmanager, die!
+  libproxy = super.libproxy.overrideAttrs(old: {
+    buildInputs = foldr remove old.buildInputs [ super.networkmanager ];
+  });
+
   webmacs = super.callPackage ./webmacs { };
 }
