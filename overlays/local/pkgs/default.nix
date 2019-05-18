@@ -58,7 +58,11 @@ with super.lib; {
     name = "mpv-9999";
     configureFlags =
       foldr remove old.configureFlags [ "--enable-dvbin" "--disable-dvdread" "--disable-dvdnav" "--disable-cdda" ];
-    buildInputs = old.buildInputs ++ [ super.pkgs.mesa_noglu self.pkgs.libplacebo ];
+    buildInputs = old.buildInputs ++ [
+      super.mesa_noglu
+      self.libplacebo
+      super.libarchive
+    ];
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.git ]; # Needed by version.sh
   });
 
