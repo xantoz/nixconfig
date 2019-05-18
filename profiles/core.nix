@@ -14,6 +14,8 @@
     "nixpkgs-overlays=/etc/nixos/overlays/local"
     "nixos-config=/etc/nixos/configuration.nix"
   ];
+  nix.autoOptimiseStore = true;
+  nix.useSandbox = true;
 
   environment.systemPackages = with pkgs; [
     wget pv tree htop zile
