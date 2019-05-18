@@ -101,6 +101,8 @@ with super.lib; {
     name = "pulseview-9999";
   });
 
+  redshift = (super.redshift.override { withGeolocation = false; });
+
   # Die, networkmanager, die!
   libproxy = super.libproxy.overrideAttrs(old: {
     buildInputs = foldr remove old.buildInputs [ super.networkmanager ];
