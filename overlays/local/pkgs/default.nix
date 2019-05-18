@@ -45,6 +45,7 @@ with super.lib; {
     dvdreadSupport = false;
     openalSupport = true;
     vulkanSupport = false; # we use libplacebo, so the upstream package is not quite right w.r.t vulkan
+    archiveSupport = true;
   }).overrideAttrs(old: {
     src = super.fetchgit {
       url = "https://github.com/xantoz/mpv.git";
@@ -58,11 +59,7 @@ with super.lib; {
     name = "mpv-9999";
     configureFlags =
       foldr remove old.configureFlags [ "--enable-dvbin" "--disable-dvdread" "--disable-dvdnav" "--disable-cdda" ];
-    buildInputs = old.buildInputs ++ [
-      super.mesa_noglu
-      self.libplacebo
-      super.libarchive
-    ];
+    buildInputs = old.buildInputs ++ [ super.mesa_noglu self.libplacebo ];
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.git ]; # Needed by version.sh
   });
 
