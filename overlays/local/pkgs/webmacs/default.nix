@@ -2,12 +2,12 @@
 
 python37Packages.buildPythonApplication rec {
   name = "webmacs-${version}";
-  version = "67f10f0238833111676ec7742f46653ab284629f";
+  version = "90f66817671df3590da5b657a4a0af9f70d6412f";
 
   src = fetchgit {
     url = "https://github.com/xantoz/webmacs";
     rev = version;
-    sha256 = "0lb8panig1k5zpc0wfv1ip1q07g3gjmn0swxsdzi3s66lj8crirx";
+    sha256 = "11b81qdwq1ygwqfbsm2zgbacdlymnv2v3icfy5xd6iwjnlxlsak2";
     fetchSubmodules = true;
   };
 
