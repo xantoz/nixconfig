@@ -3,10 +3,6 @@
 {
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.overlays = [
-    (import ../overlays/local/pkgs/default.nix)
-  ];
-
   home.file = {
     ".zile".source = builtins.path { name = "dotzile"; path = ./config/dotfiles/src/.zile; };
     ".config/youtube-dl/config".source = ./config/dotfiles/src/youtube-dl/config;
