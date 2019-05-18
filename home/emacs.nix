@@ -6,7 +6,7 @@
   programs.emacs.package = pkgs.emacsVcs27;
   programs.emacs.extraPackages =
     let
-      inherit (pkgs.callPackage ./config/emacs/scripts/nix-emacs-with-use-package-pkgs/emacs-with-use-package-pkgs.nix {}) usePackagePkgs;
+      inherit (pkgs.callPackage ./config/emacs/scripts/nix-emacs-with-use-package-pkgs/emacs-with-use-package-pkgs.nix { emacs = pkgs.emacsVcs27; }) usePackagePkgs;
     in usePackagePkgs { config = ./config/emacs/init.el; };
 
   home.packages = with pkgs; [
