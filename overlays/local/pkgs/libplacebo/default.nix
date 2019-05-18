@@ -29,7 +29,7 @@ stdenv.mkDerivation rec {
   meta = with stdenv.lib; {
     description = "libplacebo";
     homepage =  https://github.com/haasn/libplacebo;
-    license = licenses.lgpl21plus;
+    license = licenses.lgpl21Plus;
     platforms = platforms.linux;
   };
 }
