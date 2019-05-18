@@ -32,6 +32,8 @@
     calc
     sshfs
     lshw
+    nix-prefetch-git
+    nix-prefetch-github
   ];
 
   programs.screen.screenrc = builtins.readFile ../home/config/dotfiles/src/.screenrc;
