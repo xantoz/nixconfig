@@ -91,6 +91,88 @@
     options snd-hda-intel index=1 model=auto vid=8086 pid=0a0c
   '';
 
+  # TODO: make into two modules (similar to your ratpoison ones) for this
+  services.triggerhappy =
+    let
+      backlightPath = "/sys/class/backlight/intel_backlight";
+      backlightStep = "28";         # TODO: really want to be able to specify this in percent
+      brightnessUpCmd = pkgs.writeShellScript "brightness_up" ''
+        max_brightness="$(cat ${backlightPath}/max_brightness)"
+        x=$(( $(cat "${backlightPath}/brightness") + ${backlightStep} ))
+        x=$(( (x > $max_brightness) ? $max_brightness : x ))
+        echo "$x" > "${backlightPath}/brightness"
+      '';
+      brightnessDownCmd = pkgs.writeShellScript "brightness_down" ''
+        x=$(( $(cat "${backlightPath}/brightness") - ${backlightStep} ));
+        x=$(( (x < 0) ? 0 : x ));
+        echo "$x" > "${backlightPath}/brightness"
+      '';
+    in {
+      enable = true;
+      user = "tewi_inaba";
+      bindings = [
+        # "Mute" media key
+        {
+          keys = [ "MUTE" ];
+          event = "press";
+          cmd = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master mute";
+        }
+
+        # "Lower Volume" media key
+        {
+          keys = [ "VOLUMEDOWN" ];
+          event = "press";
+          cmd = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master 2%- unmute";
+        }
+        {
+          keys = [ "VOLUMEDOWN" ];
+          event = "hold";
+          cmd = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master 2%- unmute";
+        }
+
+        # "Raise Volume" media key
+        {
+          keys = [ "VOLUMEUP" ];
+          event = "press";
+          cmd = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master 2%+ unmute";
+        }
+        {
+          keys = [ "VOLUMEUP" ];
+          event = "hold";
+          cmd = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master 2%+ unmute";
+        }
+
+        # "Mic Mute" media key
+        {
+          keys = [ "MICMUTE" ];
+          event = "press";
+          cmd = "${pkgs.alsaUtils}/bin/amixer -D default -q set Capture toggle";
+        }
+
+        {
+          keys = [ "BRIGHTNESSUP" ];
+          event = "press";
+          cmd = "${brightnessUpCmd}";
+        }
+        {
+          keys = [ "BRIGHTNESSUP" ];
+          event = "hold";
+          cmd = "${brightnessUpCmd}";
+        }
+
+        {
+          keys = [ "BRIGHTNESSDOWN" ];
+          event = "press";
+          cmd = "${brightnessDownCmd}";
+        }
+        {
+          keys = [ "BRIGHTNESSDOWN" ];
+          event = "hold";
+          cmd = "${brightnessDownCmd}";
+        }
+      ];
+    };
+
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you

@@ -48,10 +48,10 @@
     ".ratpoisonrc".source = pkgs.writeText "dotratpoisonrc" ''
       source .config/ratpoison/ratpoisonrc
 
-      setenv rp_backlight_step_percent 3
-      source .config/ratpoison/backlightrc
+      # setenv rp_backlight_step_percent 3
+      # source .config/ratpoison/backlightrc
 
-      source .config/ratpoison/volumerc
+      # source .config/ratpoison/volumerc
       source .config/ratpoison/xbattbarrc
 
       setenv rp_compositor xcompmgr
