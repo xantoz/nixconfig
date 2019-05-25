@@ -9,6 +9,18 @@ with super.lib; {
     patches = [ ../../../patches/m17n_db/0001-add-sv-qwerty.mim.patch ];
   });
 
+  ratpoison = super.ratpoison.overrideAttrs(old: {
+    src = super.fetchFromGitHub {
+      repo = "ratpoison";
+      owner = "xantoz";
+      rev = "dd7789d99663c410472acb95b2a81269ae765b07";
+      sha256 = "125528rnv7m6qfg0kvq8i6q0sp1br9ck6i8kc2ns4chk8yk4adch";
+    };
+    buildInputs = old.buildInputs ++ [ super.autoreconfHook super.texinfo ];
+    version = "1.4.10";
+    name = "ratpoison-1.4.10";
+  });
+
   emacs26 = (super.emacs26.override {
     withX = true;
     withGTK3 = false;

@@ -3,26 +3,13 @@
 {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs;
-  let
-    my_ratpoison = ratpoison.overrideAttrs(old: {
-        src = fetchFromGitHub {
-          repo = "ratpoison";
-          owner = "xantoz";
-          rev = "dd7789d99663c410472acb95b2a81269ae765b07";
-          sha256 = "125528rnv7m6qfg0kvq8i6q0sp1br9ck6i8kc2ns4chk8yk4adch";
-        };
-        buildInputs = old.buildInputs ++ [autoreconfHook texinfo];
-        version = "1.4.10";
-        name = "ratpoison-1.4.10";
-    });
-  in [
+  environment.systemPackages = with pkgs; [
     webmacs
     firefox
 
     xkbset
     xss-lock
-    my_ratpoison
+    ratpoison
     icewm
     xorg.twm
     xsel
