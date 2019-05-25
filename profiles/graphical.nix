@@ -9,8 +9,8 @@
         src = fetchFromGitHub {
           repo = "ratpoison";
           owner = "xantoz";
-          rev = "wip";
-          sha256 = "1gz3dj15pa2mxndhkbr3ls9i7x3g6f4bxk4ifnpa3igl0p36j6gk";
+          rev = "dd7789d99663c410472acb95b2a81269ae765b07";
+          sha256 = "125528rnv7m6qfg0kvq8i6q0sp1br9ck6i8kc2ns4chk8yk4adch";
         };
         buildInputs = old.buildInputs ++ [autoreconfHook texinfo];
         version = "1.4.10";
@@ -20,6 +20,7 @@
     webmacs
     firefox
 
+    xkbset
     xss-lock
     my_ratpoison
     icewm
