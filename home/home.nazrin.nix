@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -26,6 +26,9 @@
   };
 
   services.pasystray.enable = true;
+  # Get notifications
+  systemd.user.services.pasystray.Service.ExecStart =
+    lib.mkOverride 10 "${pkgs.pasystray}/bin/pasystray --notify=all";
 
   programs.bash.enable = true;
   pam.sessionVariables.LESS = "-R";
