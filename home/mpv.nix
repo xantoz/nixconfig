@@ -9,6 +9,8 @@
       screenshot-template="shot-%F-%n"
       screenshot-directory="~/Pictures/Screenshots/"
 
+      osd-font-size=20
+
       vo=gpu
       gpu-context=x11egl
       hwdec=vaapi
