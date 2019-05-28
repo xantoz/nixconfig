@@ -75,7 +75,9 @@ with super.lib; {
     let
       # TODO: git version of libdav1d
       custom_ffmpeg =
-        super.ffmpeg-full.overrideAttrs(old: {
+        (super.ffmpeg-full.override {
+          nvenc = false;
+        }).overrideAttrs(old: {
           src = super.fetchFromGitHub {
             owner = "FFmpeg";
             repo = "FFmpeg";
