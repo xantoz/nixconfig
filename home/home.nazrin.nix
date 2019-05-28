@@ -61,6 +61,10 @@
       setenv rp_compositor_args --
       source .config/ratpoison/compositorrc
 
+      alias noop exec true
+      definekey top XF86AudioRaiseVolume noop
+      definekey top XF86AudioLowerVolume noop
+
       alias xterm exec xterm -e '$SHELL -c "xprop -id $WINDOWID -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0xeeeeeeee; exec $SHELL -l"'
       alias reload source .ratpoisonrc
     '';
