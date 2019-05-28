@@ -51,29 +51,48 @@ with super.lib; {
 
   # to be able to build the wm4 removal branch first disable support for things
   # that have been removed, then also remove the --disable-xxx configure flags
-  mpv = (super.mpv.override {
-    cddaSupport = false;
-    dvdnavSupport = false;
-    dvdreadSupport = false;
-    openalSupport = true;
-    vulkanSupport = false; # we use libplacebo, so the upstream package is not quite right w.r.t vulkan
-    archiveSupport = true;
-  }).overrideAttrs(old: {
-    src = super.fetchgit {
-      url = "https://github.com/xantoz/mpv.git";
-      rev = "2efaaba1956b681f039927ee57f24a893ee1fab4";
-      sha256 = "19qmrl32f5qgildm69dlkakjv2wamw8nrabyiyihzppnm9qsx1z5";
-      fetchSubmodules = false;
-      leaveDotGit = true;
-      deepClone = true;
-    };
-    version = "9999";
-    name = "mpv-9999";
-    configureFlags =
-      foldr remove old.configureFlags [ "--enable-dvbin" "--disable-dvdread" "--disable-dvdnav" "--disable-cdda" ];
-    buildInputs = old.buildInputs ++ [ super.mesa_noglu self.libplacebo ];
-    nativeBuildInputs = old.nativeBuildInputs ++ [ super.git ]; # Needed by version.sh
-  });
+  mpv =
+    let
+      # TODO: newer non-broken libaom.
+      # TODO: git version of libdav1d
+      custom_ffmpeg =
+        super.ffmpeg-full.overrideAttrs(old: {
+          src = super.fetchFromGitHub {
+            owner = "FFmpeg";
+            repo = "FFmpeg";
+            rev = "9b069eb14e07d8faec32f2eef2d12e514290268f";
+            sha256 = "0fjslhz876xj7pzzkr9877b38yfhqqiwq09q4rzh3k1m709w9i2b";
+          };
+          version = "9999";
+          name = "ffmpeg-full-9999";
+          buildInputs = old.buildInputs ++ [ super.dav1d ];
+          configureFlags = old.configureFlags ++ [ "--enable-libdav1d" ];
+        });
+    in (super.mpv.override {
+      cddaSupport = false;
+      dvdnavSupport = false;
+      dvdreadSupport = false;
+      openalSupport = true;
+      vulkanSupport = false; # we use libplacebo, so the upstream package is not quite right w.r.t vulkan
+      archiveSupport = true;
+    }).overrideAttrs(old: {
+      src = super.fetchgit {
+        url = "https://github.com/xantoz/mpv.git";
+        rev = "2efaaba1956b681f039927ee57f24a893ee1fab4";
+        sha256 = "19qmrl32f5qgildm69dlkakjv2wamw8nrabyiyihzppnm9qsx1z5";
+        fetchSubmodules = false;
+        leaveDotGit = true;
+        deepClone = true;
+      };
+      version = "9999";
+      name = "mpv-9999";
+      configureFlags =
+        foldr remove old.configureFlags [ "--enable-dvbin" "--disable-dvdread" "--disable-dvdnav" "--disable-cdda" ];
+      buildInputs =
+        (remove super.ffmpeg_4 old.buildInputs) ++
+        [ super.mesa_noglu self.libplacebo custom_ffmpeg ];
+      nativeBuildInputs = old.nativeBuildInputs ++ [ super.git ]; # Needed by version.sh
+    });
 
   libsigrokdecode = super.libsigrokdecode.overrideAttrs(old: {
     src = super.fetchFromGitHub {
