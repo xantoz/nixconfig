@@ -47,13 +47,32 @@ with super.lib; {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook super.texinfo ];
   });
 
+  libaom = super.libaom.overrideAttrs(old: let rev = "d00a576dc3196a164ff70666a5e046f5d9b33e95"; in {
+    src = super.fetchgit {
+      url = "https://aomedia.googlesource.com/aom";
+      rev = rev;
+      sha256 = "1jynqqml18182h3nz2yxsdc4wvs3j7nzj17pvy6ic2s4nrk6d1rz";
+      fetchSubmodules = false;
+    };
+    version = rev;
+    name = "libaom-${rev}";
+    # As is way too common, the prefix handling in the libaom build is borked,
+    # and all paths, even ones beginning with /, are treated as relative to the
+    # prefix. So here we change some variables (from the absolute paths that nix
+    # would usually put) to make it work.
+    cmakeFlags = [
+      "-DCMAKE_INSTALL_INCLUDEDIR=include"
+      "-DCMAKE_INSTALL_LIBDIR=lib"
+      "-DCMAKE_INSTALL_NAME_DIR=lib"
+    ];
+  });
+
   libplacebo = super.callPackage ./libplacebo { };
 
   # to be able to build the wm4 removal branch first disable support for things
   # that have been removed, then also remove the --disable-xxx configure flags
   mpv =
     let
-      # TODO: newer non-broken libaom.
       # TODO: git version of libdav1d
       custom_ffmpeg =
         super.ffmpeg-full.overrideAttrs(old: {
