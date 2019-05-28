@@ -91,7 +91,7 @@
     options snd-hda-intel index=1 model=auto vid=8086 pid=0a0c
   '';
 
-  # TODO: make into two modules (similar to your ratpoison ones) for this
+  # TODO: modularize
   services.triggerhappy =
     let
       backlightPath = "/sys/class/backlight/intel_backlight";
@@ -107,6 +107,10 @@
         x=$(( (x < 0) ? 0 : x ));
         echo "$x" > "${backlightPath}/brightness"
       '';
+      mute       = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master mute";
+      volumeDown = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master 2%- unmute";
+      volumeUp   = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master 2%+ unmute";
+      micMute    = "${pkgs.alsaUtils}/bin/amixer -D default -q set Capture toggle";
     in {
       enable = true;
       user = "tewi_inaba";
@@ -115,38 +119,38 @@
         {
           keys = [ "MUTE" ];
           event = "press";
-          cmd = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master mute";
+          cmd = mute;
         }
 
         # "Lower Volume" media key
         {
           keys = [ "VOLUMEDOWN" ];
           event = "press";
-          cmd = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master 2%- unmute";
+          cmd = volumeDown;
         }
         {
           keys = [ "VOLUMEDOWN" ];
           event = "hold";
-          cmd = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master 2%- unmute";
+          cmd = volumeDown;
         }
 
         # "Raise Volume" media key
         {
           keys = [ "VOLUMEUP" ];
           event = "press";
-          cmd = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master 2%+ unmute";
+          cmd = volumeUp;
         }
         {
           keys = [ "VOLUMEUP" ];
           event = "hold";
-          cmd = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master 2%+ unmute";
+          cmd = volumeUp;
         }
 
         # "Mic Mute" media key
         {
           keys = [ "MICMUTE" ];
           event = "press";
-          cmd = "${pkgs.alsaUtils}/bin/amixer -D default -q set Capture toggle";
+          cmd = micMute;
         }
 
         {
