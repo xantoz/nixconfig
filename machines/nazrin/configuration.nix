@@ -107,10 +107,10 @@
         x=$(( (x < 0) ? 0 : x ));
         echo "$x" > "${backlightPath}/brightness"
       '';
-      mute       = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master mute";
-      volumeDown = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master 2%- unmute";
-      volumeUp   = "${pkgs.alsaUtils}/bin/amixer -D default -q set Master 2%+ unmute";
-      micMute    = "${pkgs.alsaUtils}/bin/amixer -D default -q set Capture toggle";
+      mute       = "${pkgs.pamixer}/bin/pamixer --mute";
+      volumeDown = "${pkgs.pamixer}/bin/pamixer --unmute --decrease 2";
+      volumeUp   = "${pkgs.pamixer}/bin/pamixer --unmute --increase 2";
+      micMute    = "${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute";
     in {
       enable = true;
       user = "tewi_inaba";
