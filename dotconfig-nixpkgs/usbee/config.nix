@@ -20,6 +20,7 @@
         pkgs.gcc.cc
         pkgs.expat
         pkgs.llvm_7
+        pkgs.vulkan-loader
       ]}:'$LD_LIBRARY_PATH
       export LIBVA_DRIVERS_PATH='${pkgs.vaapiIntel}/lib/dri'
       exec ${pkgs.mpv}/bin/mpv "$@"
