@@ -161,8 +161,17 @@
         pkgs.youtube-dl
         pkgs.hugo
 
+        pkgs.pamixer
+        pkgs.ponymix
+        # pkgs.pulsemixer
+        # pkgs.ncpamixer
+
+        # pkgs.imv
 
         # fonts
+        pkgs.font-awesome
+        pkgs.font-awesome-ttf
+
         pkgs.noto-fonts-emoji
         pkgs.emacs-all-the-icons-fonts
         pkgs.source-code-pro
