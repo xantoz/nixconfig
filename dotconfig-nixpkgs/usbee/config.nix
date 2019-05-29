@@ -26,6 +26,25 @@
       exec ${pkgs.mpv}/bin/mpv "$@"
     '';
 
+    my_alacritty = pkgs.writeShellScriptBin "alacritty" ''
+      export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
+      export LD_LIBRARY_PATH='${pkgs.lib.makeLibraryPath [
+        pkgs.mesa_drivers
+        pkgs.zlib
+        pkgs.libdrm
+        pkgs.xorg.libX11
+        pkgs.xorg.libxcb
+        pkgs.xorg.libxshmfence
+        pkgs.wayland
+        pkgs.gcc.cc
+        pkgs.expat
+        pkgs.llvm_7
+        pkgs.vulkan-loader
+      ]}:'$LD_LIBRARY_PATH
+      export LIBVA_DRIVERS_PATH='${pkgs.vaapiIntel}/lib/dri'
+      exec ${pkgs.alacritty}/bin/alacritty "$@" -e /bin/sh -c "unset LD_LIBRARY_PATH; unset LIBVA_DRIVERS_PATH; exec $SHELL"
+    '';
+
     my_webmacs = pkgs.writeShellScriptBin "webmacs" ''
       export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
       export LD_LIBRARY_PATH='${pkgs.mesa_drivers}/lib:'$LD_LIBRARY_PATH
@@ -132,6 +151,7 @@
         pkgs.my_webmacs
         pkgs.emacs26
         pkgs.my_pulseview
+        pkgs.my_alacritty
 
         pkgs.nixGLIntel
         pkgs.nixIntel
