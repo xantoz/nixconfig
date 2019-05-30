@@ -47,15 +47,15 @@ with super.lib; {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook super.texinfo ];
   });
 
-  libaom = super.libaom.overrideAttrs(old: let rev = "d00a576dc3196a164ff70666a5e046f5d9b33e95"; in {
+  libaom = super.libaom.overrideAttrs(old: {
     src = super.fetchgit {
       url = "https://aomedia.googlesource.com/aom";
-      rev = rev;
-      sha256 = "1jynqqml18182h3nz2yxsdc4wvs3j7nzj17pvy6ic2s4nrk6d1rz";
+      rev = "c35698139027872899b9d8cd4a871c1bc2c25a1a";
+      sha256 = "1vszkihm7zm41iwcb3j435av5xnjgibgkrmj4lw27msf8mggbwjx";
       fetchSubmodules = false;
     };
-    version = rev;
-    name = "libaom-${rev}";
+    version = "9999";
+    name = "libaom-9999";
     # As is way too common, the prefix handling in the libaom build is borked,
     # and all paths, even ones beginning with /, are treated as relative to the
     # prefix. So here we change some variables (from the absolute paths that nix
