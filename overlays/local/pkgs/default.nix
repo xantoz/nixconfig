@@ -67,13 +67,23 @@ with super.lib; {
     ];
   });
 
+  dav1d = super.dav1d.overrideAttrs(old: {
+    src = super.fetchgit {
+      url = "https://code.videolan.org/videolan/dav1d";
+      rev = "785f00feccb5ed7c5739fc72bdcb9b422d8386ca";
+      sha256 = "1kflqj2sw74x9jl97apmw3pp8sa455hhspqxnlwy7x7cmi7r5yql";
+      fetchSubmodules = false;
+    };
+    version = "9999";
+    name = "dav1d-9999";
+  });
+
   libplacebo = super.callPackage ./libplacebo { };
 
   # to be able to build the wm4 removal branch first disable support for things
   # that have been removed, then also remove the --disable-xxx configure flags
   mpv =
     let
-      # TODO: git version of libdav1d
       custom_ffmpeg =
         (super.ffmpeg-full.override {
           nvenc = false;
@@ -86,7 +96,7 @@ with super.lib; {
           };
           version = "9999";
           name = "ffmpeg-full-9999";
-          buildInputs = old.buildInputs ++ [ super.dav1d ];
+          buildInputs = old.buildInputs ++ [ self.dav1d ];
           configureFlags = old.configureFlags ++ [ "--enable-libdav1d" ];
         });
     in (super.mpv.override {
