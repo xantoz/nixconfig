@@ -4,13 +4,13 @@
 
 stdenv.mkDerivation rec {
   name = "libplacebo-${version}";
-  version = "d1b796875e61af1c54b83180a1d31dd41c52b09d";
+  version = "02c0219529c28a04996b264c04e481f01cc274e5";
 
   src = fetchFromGitHub {
     owner = "haasn";
     repo = "libplacebo";
     rev = version;
-    sha256 = "0m2r35smzcxbil82sr68y6fl8w06p7idgd594w0w1i585q28bcjl";
+    sha256 = "13wa2z06zhqngpmgray92vxxqgs4w3ibl3z7y468l90s5fp8s8yn";
   };
 
   nativeBuildInputs = [ pkgconfig meson ninja ];
