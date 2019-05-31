@@ -27,7 +27,7 @@ stdenv.mkDerivation rec {
   ];
 
   meta = with stdenv.lib; {
-    description = "libplacebo";
+    description = "Reusable library for GPU-accelerated image processing primitives";
     homepage =  https://github.com/haasn/libplacebo;
     license = licenses.lgpl21Plus;
     platforms = platforms.linux;
