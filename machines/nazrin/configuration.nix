@@ -28,6 +28,7 @@
     libva1
     dmidecode
     units
+    f2fs-tools
   ];
 
   ## Use the systemd-boot EFI boot loader.
