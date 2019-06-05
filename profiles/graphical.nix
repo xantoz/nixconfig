@@ -16,6 +16,9 @@
     glxinfo
     xfontsel
     pavucontrol
+    pamixer
+    pulsemixer
+    ponymix
     mpv
   ];
 
