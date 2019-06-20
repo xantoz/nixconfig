@@ -32,6 +32,12 @@
     calc
     sshfs
     lshw
+    lsof
+    psmisc # for fuser
+    keyutils
+    f2fs-tools
+    fuse_exfat
+    exfat-utils
     nix-prefetch-git
     nix-prefetch-github
   ];
