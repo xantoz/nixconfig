@@ -50,8 +50,8 @@ with super.lib; {
   libaom = super.libaom.overrideAttrs(old: {
     src = super.fetchgit {
       url = "https://aomedia.googlesource.com/aom";
-      rev = "76bc70f7ad37632e67404a1cad0ab063ad89d1a9";
-      sha256 = "146zainqp9fj8fq6q7f2yjscqxsdhln9m2wk2dzap6rjlv836dq3";
+      rev = "8a99f6bcf59ea16ac7fa67998961a17cc7ae585f";
+      sha256 = "141jc6yxmy9r491gc7kxvpm1d270vyva08gwhn2p9fbai4x0lc5m";
       fetchSubmodules = false;
     };
     version = "9999";
