@@ -118,7 +118,9 @@ with super.lib; {
       version = "9999";
       name = "mpv-9999";
       configureFlags =
-        foldr remove old.configureFlags [ "--enable-dvbin" "--disable-dvdread" "--disable-dvdnav" "--disable-cdda" ];
+        (foldr remove old.configureFlags [ "--enable-dvbin" "--disable-dvdread" "--disable-dvdnav" "--disable-cdda" ]) ++ [
+          "--enable-vulkan" "--enable-libplacebo"
+        ];
       buildInputs =
         (remove super.ffmpeg_4 old.buildInputs) ++
         [ super.mesa_noglu self.libplacebo custom_ffmpeg ];
