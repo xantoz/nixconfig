@@ -91,8 +91,8 @@ with super.lib; {
           src = super.fetchFromGitHub {
             owner = "FFmpeg";
             repo = "FFmpeg";
-            rev = "ffa64a4db8ba37face9508caee0cf25efff70c4a";
-            sha256 = "02rysdxgz2hl9hsd8gp9mp3x2q5lkigkdkfa5zkhwc93k53m9511";
+            rev = "b19550367fff8d8d77e94c4c5eaac42e70c61fc5";
+            sha256 = "14w1lzyfsd4dlhdpjsgr0alabhzxjaasl1qkyswgy5cfdnzjxfrf";
           };
           version = "9999";
           name = "ffmpeg-full-9999";
