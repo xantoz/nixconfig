@@ -47,26 +47,6 @@ with super.lib; {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook super.texinfo ];
   });
 
-  libaom = super.libaom.overrideAttrs(old: {
-    src = super.fetchgit {
-      url = "https://aomedia.googlesource.com/aom";
-      rev = "8a99f6bcf59ea16ac7fa67998961a17cc7ae585f";
-      sha256 = "141jc6yxmy9r491gc7kxvpm1d270vyva08gwhn2p9fbai4x0lc5m";
-      fetchSubmodules = false;
-    };
-    version = "9999";
-    name = "libaom-9999";
-    # As is way too common, the prefix handling in the libaom build is borked,
-    # and all paths, even ones beginning with /, are treated as relative to the
-    # prefix. So here we change some variables (from the absolute paths that nix
-    # would usually put) to make it work.
-    cmakeFlags = [
-      "-DCMAKE_INSTALL_INCLUDEDIR=include"
-      "-DCMAKE_INSTALL_LIBDIR=lib"
-      "-DCMAKE_INSTALL_NAME_DIR=lib"
-    ];
-  });
-
   dav1d = super.dav1d.overrideAttrs(old: {
     src = super.fetchgit {
       url = "https://code.videolan.org/videolan/dav1d";
@@ -84,8 +64,28 @@ with super.lib; {
   # that have been removed, then also remove the --disable-xxx configure flags
   mpv =
     let
+      custom_libaom = super.libaom.overrideAttrs(old: {
+        src = super.fetchgit {
+          url = "https://aomedia.googlesource.com/aom";
+          rev = "32185d165e0a238a32b20c5bbd59e360bd46d067";
+          sha256 = "1h3w56masgpwrvcf6r033rhzsxhrl16z5pbr8m59i0rd46pzbhlz";
+          fetchSubmodules = false;
+        };
+        version = "9999";
+        name = "libaom-9999";
+        # As is way too common, the prefix handling in the libaom build is borked,
+        # and all paths, even ones beginning with /, are treated as relative to the
+        # prefix. So here we change some variables (from the absolute paths that nix
+        # would usually put) to make it work.
+        cmakeFlags = [
+          "-DCMAKE_INSTALL_INCLUDEDIR=include"
+          "-DCMAKE_INSTALL_LIBDIR=lib"
+          "-DCMAKE_INSTALL_NAME_DIR=lib"
+        ];
+      });
       custom_ffmpeg =
         (super.ffmpeg-full.override {
+          libaom = custom_libaom;
           nvenc = false;
         }).overrideAttrs(old: {
           src = super.fetchFromGitHub {
