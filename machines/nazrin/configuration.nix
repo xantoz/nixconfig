@@ -28,6 +28,14 @@
     libva1
     dmidecode
     units
+
+    # test
+    sway
+    swaybg
+    swaylock
+    swayidle
+    xwayland
+    mako
   ];
 
   ## Use the systemd-boot EFI boot loader.
