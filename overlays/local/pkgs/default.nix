@@ -70,8 +70,8 @@ with super.lib; {
   dav1d = super.dav1d.overrideAttrs(old: {
     src = super.fetchgit {
       url = "https://code.videolan.org/videolan/dav1d";
-      rev = "a1e3f35842de92b526422af05360c84cf233f07f";
-      sha256 = "0ilyb47xcjfizap55d825cv3qj15cs90qanizlq5231kx5p6cwww";
+      rev = "46980237595c3065f15106b0c3483cdd57fd3153";
+      sha256 ="0ibra0gm2x8igjlr4xi4c8r3ahmlljkw8a90kc4z1gy8g30yzj3m";
       fetchSubmodules = false;
     };
     version = "9999";
