@@ -27,9 +27,11 @@
   ];
 
   home.file = {
-    ".config/emacs".source = ./config/emacs;
-    ".emacs".source = pkgs.writeText "dotemacs" ''
-      (load "~/.config/emacs/init.el")
-    '';
+    # TODO: how to deal with ~/.emacs-custom ?
+    ".config/emacs.d".source = ./config/emacs;
+    # ".config/emacs".source = ./config/emacs;
+    # ".emacs".source = pkgs.writeText "dotemacs" ''
+    #   (load "~/.config/emacs/init.el")
+    # '';
   };
 }
