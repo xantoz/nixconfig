@@ -106,6 +106,8 @@ with super.lib; {
       openalSupport = true;
       vulkanSupport = false; # we use libplacebo, so the upstream package is not quite right w.r.t vulkan
       archiveSupport = true;
+      vdpauSupport = false;
+      nv-codec-headers = null;
     }).overrideAttrs(old: {
       src = super.fetchgit {
         url = "https://github.com/xantoz/mpv.git";
