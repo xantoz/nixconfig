@@ -130,6 +130,17 @@ with super.lib; {
       nativeBuildInputs = old.nativeBuildInputs ++ [ super.git ]; # Needed by version.sh
     });
 
+  mpc-qt = super.mpc-qt.overrideAttrs(old: {
+    src = super.fetchFromGitHub {
+      owner = "wm4";
+      repo = "mpc-qt";
+      rev = "2abe6e7fc643068d50522468fe75d614861555ad";
+      sha256 = "1cis8dl9pm91mpnp696zvwsfp96gkwr8jgs45anbwd7ldw78w4x5";
+    };
+    version = "9999";
+    name = "mpc-qt-9999";
+  });
+
   libsigrokdecode = super.libsigrokdecode.overrideAttrs(old: {
     src = super.fetchFromGitHub {
       repo = "libsigrokdecode";
