@@ -111,8 +111,8 @@ with super.lib; {
     }).overrideAttrs(old: {
       src = super.fetchgit {
         url = "https://github.com/xantoz/mpv.git";
-        rev = "da5fdac761e2b380d3e99934667d6970d73bbead";
-        sha256 = "1ki90gqj0bar98psb9j2yjcmll31ckx3gyfi1bn7lls017dj1n3w";
+        rev = "acfbeaa449f479e36310a37fb2b528dad379d6f9";
+        sha256 = "0k1xcgnlv26pqx0hpddlj9k63kxqj1mwkc4q3l5iw6a2ff9c6y7f";
         fetchSubmodules = false;
         leaveDotGit = true;
         deepClone = true;
