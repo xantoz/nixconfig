@@ -1,25 +1,23 @@
 { stdenv, fetchFromGitHub,
   meson, ninja, pkgconfig,
-  vulkan-headers, vulkan-loader, shaderc, lcms2 }:
+  vulkan-headers, vulkan-loader, shaderc, glslang, lcms2 }:
 
 stdenv.mkDerivation rec {
   name = "libplacebo-${version}";
-  version = "02c0219529c28a04996b264c04e481f01cc274e5";
+  version = "22a99191fec9ac14bcc26db72e24ccedad51c027";
 
   src = fetchFromGitHub {
     owner = "haasn";
     repo = "libplacebo";
     rev = version;
-    sha256 = "13wa2z06zhqngpmgray92vxxqgs4w3ibl3z7y468l90s5fp8s8yn";
+    sha256 = "18mplzzr5hz19lcjw2nrypq81ccargj7ydr18zir2afmff4r9s0w";
   };
 
-  nativeBuildInputs = [ pkgconfig meson ninja ];
+  nativeBuildInputs = [ pkgconfig meson ninja shaderc glslang lcms2 ];
 
   propagatedBuildInputs = [
     vulkan-headers
     vulkan-loader
-    shaderc
-    lcms2
   ];
 
   mesonFlags = [
