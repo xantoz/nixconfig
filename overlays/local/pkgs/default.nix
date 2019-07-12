@@ -147,10 +147,10 @@ with super.lib; {
 
   libsigrokdecode = super.libsigrokdecode.overrideAttrs(old: {
     src = super.fetchFromGitHub {
-      repo = "libsigrokdecode";
       owner = "sigrokproject";
-      rev = "7592278ad81ee057718b01b4e9e18a99e833b51d";
-      sha256 = "0hif9rk10vp0d1wcd3cgaaxnjh136ik5d4q0rvi59g06hxwqylcq";
+      repo = "libsigrokdecode";
+      rev = "e64a9722829b78cc9e0c1089307ed76cdadad1fe";
+      sha256 = "1ac2cx2idqp9q8jlmbqr75jpx0mgdg0c3hpjrxzwc79ngxlc3r4m";
     };
     version = "9999";
     name = "libsigrokdecode-9999";
@@ -159,10 +159,10 @@ with super.lib; {
 
   libsigrok = super.libsigrok.overrideAttrs(old: {
     src = super.fetchFromGitHub {
-      repo = "libsigrok";
       owner = "sigrokproject";
-      rev = "7d0f52f7e5cb16d204490ca4006983237bf3df7d";
-      sha256 = "0ykxzxsp9zi37i6q33w30n9md94p3lpwbxz36k5z0lfmjyybpy7k";
+      repo = "libsigrok";
+      rev = "80d349756971fe8c4e3326e0d0e38a45a82a6554";
+      sha256 = "10r128xs5kxxnvcclg7f7r60dnisb8lcgsyhf2rw0x7rynkxwxjp";
     };
     version = "9999";
     name = "libsigrok-9999";
@@ -175,10 +175,10 @@ with super.lib; {
 
   pulseview = super.pulseview.overrideAttrs(old: {
     src = super.fetchFromGitHub {
-      repo = "pulseview";
       owner = "sigrokproject";
-      rev = "96dbf014dad1309d4ade9c14a8b46733e2f531c8";
-      sha256 = "1qp1ny31pk9b9lwvsm3363nj5cxmn0453arflrbhpq5ckbd9161y";
+      repo = "pulseview";
+      rev = "8b4ce4aedc46a464d4ab126ba461e9d39324062d";
+      sha256 = "1x5d648vaqmhv3qpgybnnawp0n8w5g6q0havn64ak90nrg9p69fm";
     };
     version = "9999";
     name = "pulseview-9999";
