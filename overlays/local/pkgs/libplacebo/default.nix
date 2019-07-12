@@ -13,7 +13,9 @@ stdenv.mkDerivation rec {
     sha256 = "18mplzzr5hz19lcjw2nrypq81ccargj7ydr18zir2afmff4r9s0w";
   };
 
-  nativeBuildInputs = [ pkgconfig meson ninja shaderc glslang lcms2 ];
+  nativeBuildInputs = [ pkgconfig meson ninja ];
+
+  buildInputs = [ shaderc glslang lcms2 ];
 
   propagatedBuildInputs = [
     vulkan-headers
