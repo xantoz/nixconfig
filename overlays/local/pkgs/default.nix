@@ -60,8 +60,6 @@ with super.lib; {
 
   libplacebo = super.callPackage ./libplacebo { };
 
-  # to be able to build the wm4 removal branch first disable support for things
-  # that have been removed, then also remove the --disable-xxx configure flags
   mpv =
     let
       custom_libaom = super.libaom.overrideAttrs(old: {
@@ -92,7 +90,7 @@ with super.lib; {
             owner = "FFmpeg";
             repo = "FFmpeg";
             rev = "b19550367fff8d8d77e94c4c5eaac42e70c61fc5";
-            sha256 = "14w1lzyfsd4dlhdpjsgr0alabhzxjaasl1qkyswgy5cfdnzjxfrf";
+            sha256 = "1yzha5rp2dfxyiffl7avzshidyqaxlnfvp1952sjprh5bk4kw2ir";
           };
           version = "9999";
           name = "ffmpeg-full-9999";
@@ -100,6 +98,8 @@ with super.lib; {
           configureFlags = old.configureFlags ++ [ "--enable-libdav1d" ];
         });
     in (super.mpv.override {
+      # to be able to build the wm4 removal branch first disable support for things
+      # that have been removed, then also remove the --disable-xxx configure flags
       cddaSupport = false;
       dvdnavSupport = false;
       dvdreadSupport = false;
@@ -111,8 +111,8 @@ with super.lib; {
     }).overrideAttrs(old: {
       src = super.fetchgit {
         url = "https://github.com/xantoz/mpv.git";
-        rev = "acfbeaa449f479e36310a37fb2b528dad379d6f9";
-        sha256 = "0k1xcgnlv26pqx0hpddlj9k63kxqj1mwkc4q3l5iw6a2ff9c6y7f";
+        rev = "c503899d41b602eff5c550719ad3a9b3140fb8e3";
+        sha256 = "1yzha5rp2dfxyiffl7avzshidyqaxlnfvp1952sjprh5bk4kw2ir";
         fetchSubmodules = false;
         leaveDotGit = true;
         deepClone = true;
@@ -120,7 +120,12 @@ with super.lib; {
       version = "9999";
       name = "mpv-9999";
       configureFlags =
-        (foldr remove old.configureFlags [ "--enable-dvbin" "--disable-dvdread" "--disable-dvdnav" "--disable-cdda" ]) ++ [
+        (foldr remove old.configureFlags [
+          "--enable-dvbin"
+          "--disable-dvdread"
+          "--disable-dvdnav"
+          "--disable-cdda"
+        ]) ++ [
           "--enable-vulkan" "--enable-libplacebo"
         ];
       buildInputs =
