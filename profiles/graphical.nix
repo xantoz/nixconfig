@@ -23,6 +23,8 @@
     pulsemixer
     ponymix
     mpv
+
+    tigervnc
   ];
 
   fonts.fonts = with pkgs; [
