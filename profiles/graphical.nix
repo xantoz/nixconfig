@@ -7,6 +7,9 @@
     webmacs
     firefox
 
+    alacritty
+    kitty
+
     xkbset
     xss-lock
     ratpoison
