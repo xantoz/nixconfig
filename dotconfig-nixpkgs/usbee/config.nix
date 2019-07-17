@@ -85,6 +85,7 @@
       for i in $(cat ${pkgs.pulseview}/nix-support/propagated-user-env-packages | tr ' ' '\n' | sort | uniq); do
           export QT_PLUGIN_PATH="$QT_PLUGIN_PATH''${QT_PLUGIN_PATH:+:}$i/lib/$QTVERSION/plugins/"
       done
+      export QT_PLUGIN_PATH="$QT_PLUGIN_PATH''${QT_PLUGIN_PATH:+:}"'${pkgs.qt5.qtwayland.bin}/lib/qt-${builtins.concatStringsSep "." (pkgs.lib.take 2 (builtins.splitVersion pkgs.qt5.qtbase.version))}/plugins'
       exec ${pkgs.pulseview}/bin/pulseview "$@"
     '';
 
@@ -139,6 +140,7 @@
       ]}':$LD_LIBRARY_PATH
       export LIBVA_DRIVERS_PATH='${pkgs.vaapiIntel}/lib/dri'
       export QT_PLUGIN_PATH='${pkgs.qt5.qtbase.bin}/lib/qt-${builtins.concatStringsSep "." (pkgs.lib.take 2 (builtins.splitVersion pkgs.qt5.qtbase.version))}/plugins'
+      export QT_PLUGIN_PATH="QT_PLUGIN_PATH:"'${pkgs.qt5.qtwayland.bin}/lib/qt-${builtins.concatStringsSep "." (pkgs.lib.take 2 (builtins.splitVersion pkgs.qt5.qtbase.version))}/plugins'
       exec "$@"
     '';
 
