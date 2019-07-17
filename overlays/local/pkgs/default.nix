@@ -109,13 +109,11 @@ with super.lib; {
       vdpauSupport = false;
       nv-codec-headers = null;
     }).overrideAttrs(old: {
-      src = super.fetchgit {
-        url = "https://github.com/xantoz/mpv.git";
-        rev = "c503899d41b602eff5c550719ad3a9b3140fb8e3";
-        sha256 = "1d6av6gy5fwwnijm6fqcf4bmbayilw51zh6pkxqr7bmpzwc8yk1m";
-        fetchSubmodules = false;
-        leaveDotGit = true;
-        deepClone = true;
+      src = super.fetchFromGitHub {
+        owner = "xantoz";
+        repo = "mpv";
+        rev = "5626642b39b00ade9d44821981ef7b1e97f546c9";
+        sha256 = "11xddnzvg5jz4rfrp4h6avg7qb51190fi7i0l5b4jhza06rn2i4s";
       };
       version = "9999";
       name = "mpv-9999";
@@ -131,7 +129,6 @@ with super.lib; {
       buildInputs =
         (remove super.ffmpeg_4 old.buildInputs) ++
         [ super.mesa_noglu self.libplacebo custom_ffmpeg ];
-      nativeBuildInputs = old.nativeBuildInputs ++ [ super.git ]; # Needed by version.sh
     });
 
   mpc-qt = super.mpc-qt.overrideAttrs(old: {
