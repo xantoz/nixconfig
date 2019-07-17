@@ -79,6 +79,8 @@
       Z add sub-delay -10.0
       X add sub-delay 10.0
 
+      ; cycle play-dir
+
       #ctrl+b script-binding Blackbox
       #0x2 script-binding Blackbox
     '';
