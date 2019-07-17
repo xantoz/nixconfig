@@ -169,7 +169,7 @@
         # pkgs.imv
 
         # pkgs.firefox-wayland
-        pkgs.firefox
+        # pkgs.firefox
 
         # fonts
         pkgs.font-awesome
