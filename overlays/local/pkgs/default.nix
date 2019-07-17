@@ -97,6 +97,11 @@ with super.lib; {
           buildInputs = old.buildInputs ++ [ self.dav1d ];
           configureFlags = old.configureFlags ++ [ "--enable-libdav1d" ];
         });
+      mpv_rev = "5626642b39b00ade9d44821981ef7b1e97f546c9";
+      mpv_sha256 = "11xddnzvg5jz4rfrp4h6avg7qb51190fi7i0l5b4jhza06rn2i4s";
+      fakegit = super.writeShellScriptBin "git" ''
+        echo "${mpv_rev}"
+      '';
     in (super.mpv.override {
       # to be able to build the wm4 removal branch first disable support for things
       # that have been removed, then also remove the --disable-xxx configure flags
@@ -112,8 +117,8 @@ with super.lib; {
       src = super.fetchFromGitHub {
         owner = "xantoz";
         repo = "mpv";
-        rev = "5626642b39b00ade9d44821981ef7b1e97f546c9";
-        sha256 = "11xddnzvg5jz4rfrp4h6avg7qb51190fi7i0l5b4jhza06rn2i4s";
+        rev = mpv_rev;
+        sha256 = mpv_sha256;
       };
       version = "9999";
       name = "mpv-9999";
@@ -129,6 +134,7 @@ with super.lib; {
       buildInputs =
         (remove super.ffmpeg_4 old.buildInputs) ++
         [ super.mesa_noglu self.libplacebo custom_ffmpeg ];
+      nativeBuildInputs = old.nativeBuildInputs ++ [ fakegit ];
     });
 
   mpc-qt = super.mpc-qt.overrideAttrs(old: {
