@@ -122,6 +122,8 @@
           cscope -qbi cscope.files
       }
 
+      alias mount-patchouli='sshfs -o reconnect patchouli:/ /mnt/patchouli'
+
       export PATH="$HOME/.local/bin:$PATH"
 
       export EDITOR='emacsclient -t'
