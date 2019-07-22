@@ -21,7 +21,7 @@
   services.blueman-applet.enable = true;
 
   services.kdeconnect = {
-    enable = true;
+    enable = false;
     indicator = true;
   };
 
