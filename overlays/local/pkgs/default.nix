@@ -13,8 +13,8 @@ with super.lib; {
     src = super.fetchFromGitHub {
       repo = "ratpoison";
       owner = "xantoz";
-      rev = "dd7789d99663c410472acb95b2a81269ae765b07";
-      sha256 = "125528rnv7m6qfg0kvq8i6q0sp1br9ck6i8kc2ns4chk8yk4adch";
+      rev = "ce52592c128a7feec9949d458912087a0823f80e";
+      sha256 = "0x7g5hz0mrjnj59w5frl71jmxf5cz71l801b1fahm3fr4qcidjck";
     };
     buildInputs = old.buildInputs ++ [ super.autoreconfHook super.texinfo ];
     version = "1.4.10";
