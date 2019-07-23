@@ -138,8 +138,8 @@ with super.lib; {
     });
 
   mpc-qt = super.mpc-qt.overrideAttrs(old: {
-    src = super.fetchFromGitHub {
-      owner = "wm4";
+    src = super.fetchFromGitLab {
+      owner = "mpc-qt";
       repo = "mpc-qt";
       rev = "2abe6e7fc643068d50522468fe75d614861555ad";
       sha256 = "1cis8dl9pm91mpnp696zvwsfp96gkwr8jgs45anbwd7ldw78w4x5";
