@@ -45,12 +45,6 @@
       exec ${pkgs.alacritty}/bin/alacritty "$@" -e /bin/sh -c "unset LD_LIBRARY_PATH; unset LIBVA_DRIVERS_PATH; exec $SHELL"
     '';
 
-    my_webmacs = pkgs.writeShellScriptBin "webmacs" ''
-      export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
-      export LD_LIBRARY_PATH='${pkgs.mesa_drivers}/lib:'$LD_LIBRARY_PATH
-      export QT_PLUGIN_PATH='${pkgs.qt5.qtbase.bin}/lib/qt-${builtins.concatStringsSep "." (pkgs.lib.take 2 (builtins.splitVersion pkgs.qt5.qtbase.version))}/plugins'
-      exec ${pkgs.webmacs}/bin/webmacs "$@"
-    '';
 
     my_mpc-qt = pkgs.writeShellScriptBin "mpc-qt" ''
       export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
@@ -150,7 +144,6 @@
       paths = [
         pkgs.my_mpc-qt
         pkgs.my_mpv
-        pkgs.my_webmacs
         pkgs.emacs26
         pkgs.my_pulseview
         pkgs.my_alacritty
