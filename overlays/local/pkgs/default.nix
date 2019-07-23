@@ -146,6 +146,7 @@ with super.lib; {
     };
     version = "9999";
     name = "mpc-qt-9999";
+    nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
   });
 
   libsigrokdecode = super.libsigrokdecode.overrideAttrs(old: {
