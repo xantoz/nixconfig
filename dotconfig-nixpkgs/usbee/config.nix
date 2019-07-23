@@ -45,11 +45,9 @@
       exec ${pkgs.alacritty}/bin/alacritty "$@" -e /bin/sh -c "unset LD_LIBRARY_PATH; unset LIBVA_DRIVERS_PATH; exec $SHELL"
     '';
 
-
     my_mpc-qt = pkgs.writeShellScriptBin "mpc-qt" ''
       export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
       export LD_LIBRARY_PATH='${pkgs.mesa_drivers}/lib':$LD_LIBRARY_PATH
-      export QT_PLUGIN_PATH='${pkgs.qt5.qtbase.bin}/lib/qt-${builtins.concatStringsSep "." (pkgs.lib.take 2 (builtins.splitVersion pkgs.qt5.qtbase.version))}/plugins'
       exec ${pkgs.mpc-qt}/bin/mpc-qt "$@"
     '';
 
@@ -58,40 +56,13 @@
       exec ${pkgs.libva-utils}/bin/vainfo "$@"
     '';
 
-    # my_pulseview = pkgs.writeShellScriptBin "pulseview" ''
-    #   export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
-    #   export LD_LIBRARY_PATH='${pkgs.mesa_drivers}/lib':$LD_LIBRARY_PATH
-    #   export QT_PLUGIN_PATH='${pkgs.qt5.qtbase.bin}/lib/qt-${builtins.concatStringsSep "." (pkgs.lib.take 2 (builtins.splitVersion pkgs.qt5.qtbase.version))}/plugins'
-    #   export PYTHONHASHSEED=0
-    #   export PYTHONNOUSERSITE=1
-    #   export PYTHONPATH="$(nix-shell -p python3 --run 'echo $PYTHONPATH')"   # lolololol
-    #   exec ${pkgs.pulseview}/bin/pulseview "$@"
-    # '';
-
     my_pulseview = pkgs.writeScriptBin "pulseview" ''
       #!/usr/bin/env nix-shell
       #!nix-shell -i bash -p python3
 
       export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
       export LD_LIBRARY_PATH='${pkgs.mesa_drivers}/lib'""''${LD_LIBRARY_PATH:+:}$LD_LIBRARY_PATH
-      QTVERSION='qt-${builtins.concatStringsSep "." (pkgs.lib.take 2 (builtins.splitVersion pkgs.qt5.qtbase.version))}'
-      # TODO: probably needs to be recursive...
-      for i in $(cat ${pkgs.pulseview}/nix-support/propagated-user-env-packages | tr ' ' '\n' | sort | uniq); do
-          export QT_PLUGIN_PATH="$QT_PLUGIN_PATH''${QT_PLUGIN_PATH:+:}$i/lib/$QTVERSION/plugins/"
-      done
-      export QT_PLUGIN_PATH="$QT_PLUGIN_PATH''${QT_PLUGIN_PATH:+:}"'${pkgs.qt5.qtwayland.bin}/lib/qt-${builtins.concatStringsSep "." (pkgs.lib.take 2 (builtins.splitVersion pkgs.qt5.qtbase.version))}/plugins'
       exec ${pkgs.pulseview}/bin/pulseview "$@"
-    '';
-
-    my_dolphin = pkgs.writeShellScriptBin "dolphin" ''
-      export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
-      export LD_LIBRARY_PATH='${pkgs.mesa_drivers}/lib'""''${LD_LIBRARY_PATH:+:}$LD_LIBRARY_PATH
-      QTVERSION='qt-${builtins.concatStringsSep "." (pkgs.lib.take 2 (builtins.splitVersion pkgs.qt5.qtbase.version))}'
-      # TODO: probably needs to be recursive...
-      for i in $(cat ${pkgs.dolphin}/nix-support/propagated-user-env-packages | tr ' ' '\n' | sort | uniq); do
-          export QT_PLUGIN_PATH="$QT_PLUGIN_PATH''${QT_PLUGIN_PATH:+:}$i/lib/$QTVERSION/plugins/"
-      done
-      exec ${pkgs.dolphin}/bin/dolphin "$@"
     '';
 
     nixGLIntel = pkgs.writeShellScriptBin "nixGLIntel" ''
@@ -118,39 +89,20 @@
       exec "$@"
     '';
 
-    nixQt = pkgs.writeShellScriptBin "nixQt" ''
-      export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
-      export LD_LIBRARY_PATH='${pkgs.lib.makeLibraryPath [
-        pkgs.mesa_drivers
-        pkgs.zlib
-        pkgs.libdrm
-        pkgs.xorg.libX11
-        pkgs.xorg.libxcb
-        pkgs.xorg.libxshmfence
-        pkgs.wayland
-        pkgs.gcc.cc
-        pkgs.expat
-        pkgs.llvm_7
-      ]}':$LD_LIBRARY_PATH
-      export LIBVA_DRIVERS_PATH='${pkgs.vaapiIntel}/lib/dri'
-      export QT_PLUGIN_PATH='${pkgs.qt5.qtbase.bin}/lib/qt-${builtins.concatStringsSep "." (pkgs.lib.take 2 (builtins.splitVersion pkgs.qt5.qtbase.version))}/plugins'
-      export QT_PLUGIN_PATH="QT_PLUGIN_PATH:"'${pkgs.qt5.qtwayland.bin}/lib/qt-${builtins.concatStringsSep "." (pkgs.lib.take 2 (builtins.splitVersion pkgs.qt5.qtbase.version))}/plugins'
-      exec "$@"
-    '';
-
     all = pkgs.buildEnv {
       name = "all";
 
       paths = [
         pkgs.my_mpc-qt
         pkgs.my_mpv
+
         pkgs.emacs26
+
         pkgs.my_pulseview
         pkgs.my_alacritty
 
         pkgs.nixGLIntel
         pkgs.nixIntel
-        pkgs.nixQt
 
         pkgs.xterm
         pkgs.youtube-dl
