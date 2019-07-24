@@ -83,6 +83,9 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+  # Needed by the home-manager dconf module
+  services.dbus.packages = with pkgs; [ gnome3.dconf ];
+
   # Enable sound.
   sound = {
     enable = true;

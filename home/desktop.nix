@@ -36,6 +36,16 @@
     libnotify                   # notify-send
   ];
 
+  # ah... dconf/gsettings. Re-inventing the windows registry, but worse!
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gtk/settings/file-chooser" = {
+        sort-directories-first = true;
+      };
+    };
+  };
+
   services.dunst.enable = true;
   services.dunst.settings = {
     global = {
