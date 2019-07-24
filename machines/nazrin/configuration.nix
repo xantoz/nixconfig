@@ -88,8 +88,7 @@
 
   # TODO: set default scheduler for SSD:s to deadline
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.kernelPackages = pkgs.linuxPackages_5_0;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Order the sound cards using ancient magic
   boot.extraModprobeConfig = ''
