@@ -17,6 +17,8 @@
     xorg.twm
     xsel
     glxinfo
+    drm_info
+    vulkan-tools
     xfontsel
     pavucontrol
     pamixer
