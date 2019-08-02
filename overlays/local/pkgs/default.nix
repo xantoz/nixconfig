@@ -96,6 +96,7 @@ with super.lib; {
           name = "ffmpeg-full-9999";
           buildInputs = old.buildInputs ++ [ self.dav1d ];
           configureFlags = old.configureFlags ++ [ "--enable-libdav1d" ];
+          patches = [];
         });
       mpv_rev = "5626642b39b00ade9d44821981ef7b1e97f546c9";
       mpv_sha256 = "11xddnzvg5jz4rfrp4h6avg7qb51190fi7i0l5b4jhza06rn2i4s";
