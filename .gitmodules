@@ -15,4 +15,4 @@
 	url = git@github.com:xantoz/dotfiles.git
 [submodule "nixpkgs"]
 	path = nixpkgs
-	url = https://github.com/NixOS/nixpkgs-channels.git
+	url = https://github.com/NixOS/nixpkgs.git
