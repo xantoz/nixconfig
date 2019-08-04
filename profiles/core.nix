@@ -38,6 +38,7 @@
     f2fs-tools
     fuse_exfat
     exfat-utils
+    smartmontools
     nix-prefetch-git
     nix-prefetch-github
   ];
