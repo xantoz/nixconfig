@@ -201,5 +201,9 @@ with super.lib; {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
   });
 
+  mkvtoolnix = super.mkvtoolnix.overrideAttrs(old: {
+    nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
+  });
+
   webmacs = super.libsForQt5.callPackage ./webmacs { };
 }
