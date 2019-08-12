@@ -51,6 +51,12 @@
       exec ${pkgs.mpc-qt}/bin/mpc-qt "$@"
     '';
 
+    my_webmacs = pkgs.writeShellScriptBin "webmacs" ''
+      export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
+      export LD_LIBRARY_PATH='${pkgs.mesa_drivers}/lib':$LD_LIBRARY_PATH
+      exec ${pkgs.webmacs}/bin/webmacs "$@"
+    '';
+
     my_vainfo = pkgs.writeShellScriptBin "vainfo" ''
       export LIBVA_DRIVERS_PATH='${pkgs.vaapiIntel}/lib/dri'
       exec ${pkgs.libva-utils}/bin/vainfo "$@"
@@ -95,6 +101,7 @@
       paths = [
         pkgs.my_mpc-qt
         pkgs.my_mpv
+        pkgs.my_webmacs
 
         pkgs.emacs26
 
