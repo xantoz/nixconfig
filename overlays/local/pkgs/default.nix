@@ -201,5 +201,5 @@ with super.lib; {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
   });
 
-  webmacs = super.callPackage ./webmacs { };
+  webmacs = super.libsForQt5.callPackage ./webmacs { };
 }

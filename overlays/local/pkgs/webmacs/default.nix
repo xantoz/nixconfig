@@ -1,6 +1,12 @@
-{ stdenv, fetchgit, python37Packages }:
+{ stdenv,
+  fetchgit,
+  python3Packages,
+  mkDerivationWith,
+  wrapQtAppsHook,
+  qtbase
+}:
 
-python37Packages.buildPythonApplication rec {
+mkDerivationWith python3Packages.buildPythonApplication rec {
   name = "webmacs-${version}";
   version = "90f66817671df3590da5b657a4a0af9f70d6412f";
 
@@ -15,8 +21,17 @@ python37Packages.buildPythonApplication rec {
     export CC=g++
   '';
 
-  propagatedBuildInputs = with python37Packages; [
+  buildInputs = [
+    qtbase
+  ];
+
+  nativeBuildINputs = [
+    wrapQtAppsHook
+  ];
+
+  propagatedBuildInputs = with python3Packages; [
     pyqt5
+    pyqtwebengine
     dateparser
     jinja2
     pygments
@@ -26,6 +41,14 @@ python37Packages.buildPythonApplication rec {
     markupsafe
     six
   ];
+
+  dontWrapGApps = true;
+  dontWrapQtApps = true;
+
+  postFixup = ''
+    wrapProgram $out/bin/webmacs \
+      "''${qtWrapperArgs[@]}"
+  '';
 
   doCheck = false;
 
