@@ -62,12 +62,6 @@
     }
   ];
 
-  services.udev.extraRules = ''
-    SUBSYSTEM=="backlight", ACTION=="add", \
-      RUN+="${pkgs.coreutils}/bin/chgrp wheel %S%p/brightness", \
-      RUN+="${pkgs.coreutils}/bin/chmod g+w %S%p/brightness"
-  '';
-
   networking.hostName = "nazrin"; # Define your hostname.
 
   # Some programs need SUID wrappers, can be configured further or are
