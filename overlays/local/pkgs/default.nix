@@ -205,5 +205,13 @@ with super.lib; {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
   });
 
+  dolphinEmu = super.dolphinEmu.overrideAttrs(old: {
+    nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
+  });
+
+  dolphinEmuMaster = super.dolphinEmuMaster.overrideAttrs(old: {
+    nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
+  });
+
   webmacs = super.libsForQt5.callPackage ./webmacs { };
 }
