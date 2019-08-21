@@ -103,6 +103,9 @@
     SUBSYSTEM=="backlight", ACTION=="add", \
       RUN+="${pkgs.coreutils}/bin/chgrp wheel %S%p/brightness", \
       RUN+="${pkgs.coreutils}/bin/chmod g+w %S%p/brightness"
+
+    # gamecube wii u usb adapter
+    ATTRS{idVender}=="057e" ATTRS{idProduct}="0337", MODE="666", SUBSYSTEM="usb", ENV{DEVTYPE}=="usb_device TAG+="uaccess"
   '';
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
