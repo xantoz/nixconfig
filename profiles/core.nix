@@ -105,7 +105,15 @@
       RUN+="${pkgs.coreutils}/bin/chmod g+w %S%p/brightness"
 
     # gamecube wii u usb adapter
-    ATTRS{idVender}=="057e" ATTRS{idProduct}="0337", MODE="666", SUBSYSTEM="usb", ENV{DEVTYPE}=="usb_device TAG+="uaccess"
+    ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="666", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device" TAG+="uaccess"
+    # This rule is needed for basic functionality of the controller in Steam and keyboard/mouse emulation
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", MODE="0666"
+    # This rule is necessary for gamepad emulation; make sure you replace 'pgriffais' with a group that the user that runs Steam belongs to
+    KERNEL=="uinput", MODE="0660", GROUP="wheel", OPTIONS+="static_node=uinput"
+    # Nintendo Switch Pro Controller over USB hidraw
+    KERNEL=="hidraw*", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2009", MODE="0666"
+    # Nintendo Switch Pro Controller over bluetooth hidraw
+    KERNEL=="hidraw*", KERNELS=="*057E:2009*", MODE="0666"
   '';
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
