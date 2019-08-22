@@ -36,6 +36,8 @@
     swayidle
     xwayland
     mako
+
+    dolphinEmuMaster
   ];
 
   ## Use the systemd-boot EFI boot loader.
