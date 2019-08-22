@@ -82,18 +82,10 @@ with super.lib; {
         ];
       });
       custom_ffmpeg =
-        (super.ffmpeg-full.override {
+        (super.ffmpeg_4.override {
           libaom = custom_libaom;
           nvenc = false;
         }).overrideAttrs(old: {
-          src = super.fetchFromGitHub {
-            owner = "FFmpeg";
-            repo = "FFmpeg";
-            rev = "7cb4f8c962bdd0e08881f8ce15f7bdd2d546ba44";
-            sha256 = "1bkzjj692q38w1pk4yj33fl3h28ggwjv2sj3y5gr9z2n84gakcvf";
-          };
-          version = "9999";
-          name = "ffmpeg-full-9999";
           buildInputs = old.buildInputs ++ [ self.dav1d ];
           configureFlags = old.configureFlags ++ [ "--enable-libdav1d" ];
           patches = [];
