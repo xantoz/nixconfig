@@ -1,1 +1,0 @@
-machines/nazrin/configuration.nix
