@@ -196,10 +196,6 @@ with super.lib; {
     buildInputs = foldr remove old.buildInputs [ super.networkmanager ];
   });
 
-  wpa_supplicant_gui = super.wpa_supplicant_gui.overrideAttrs(old: {
-    nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
-  });
-
   mkvtoolnix = super.mkvtoolnix.overrideAttrs(old: {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
   });
