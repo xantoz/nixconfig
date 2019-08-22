@@ -196,10 +196,6 @@ with super.lib; {
     buildInputs = foldr remove old.buildInputs [ super.networkmanager ];
   });
 
-  mkvtoolnix = super.mkvtoolnix.overrideAttrs(old: {
-    nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
-  });
-
   dolphinEmu = super.dolphinEmu.overrideAttrs(old: {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
   });
