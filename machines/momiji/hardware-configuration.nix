@@ -23,5 +23,13 @@
     ];
 
   nix.maxJobs = lib.mkDefault 2;
-  networking.enableIntel3945ABGFirmware = true;
+  hardware.enableRedistributableFirmware = true;
+
+  hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel ];
+  hardware.opengl.driSupport = true;
+  hardware.opengl.driSupport32Bit = true;
+
+  hardware.cpu.intel.updateMicrocode = true;
+
 }
