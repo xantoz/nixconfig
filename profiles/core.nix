@@ -45,6 +45,8 @@
 
   programs.screen.screenrc = builtins.readFile ../home/config/dotfiles/src/.screenrc;
 
+  services.gpm.enable = true;
+
   # Select internationalisation properties.
   i18n = {
     consoleFont = "Lat2-Terminus16";
