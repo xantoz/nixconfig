@@ -41,6 +41,7 @@
     smartmontools
     nix-prefetch-git
     nix-prefetch-github
+    graphviz # for visualizing closures
   ];
 
   programs.screen.screenrc = builtins.readFile ../home/config/dotfiles/src/.screenrc;
