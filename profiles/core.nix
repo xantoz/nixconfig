@@ -41,6 +41,7 @@
     smartmontools
     nix-prefetch-git
     nix-prefetch-github
+    libsixel
     graphviz # for visualizing closures
   ];
 
