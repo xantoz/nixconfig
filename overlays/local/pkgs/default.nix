@@ -83,11 +83,10 @@ with super.lib; {
       });
       custom_ffmpeg =
         (super.ffmpeg_4.override {
-          libaom = custom_libaom;
           nvenc = false;
         }).overrideAttrs(old: {
-          buildInputs = old.buildInputs ++ [ self.dav1d ];
-          configureFlags = old.configureFlags ++ [ "--enable-libdav1d" ];
+          buildInputs = old.buildInputs ++ [ self.dav1d custom_libaom ];
+          configureFlags = old.configureFlags ++ [ "--enable-libdav1d" "--enable-libaom" ];
           patches = [];
         });
       mpv_rev = "5626642b39b00ade9d44821981ef7b1e97f546c9";
