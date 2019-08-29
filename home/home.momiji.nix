@@ -50,6 +50,8 @@
 
     ".config/ratpoison".source = ./config/ratpoison;
     ".ratpoisonrc".source = pkgs.writeText "dotratpoisonrc" ''
+      # Bit of an ugly hack to use the ids, since the long names contain spaces and the scripting in ratpoisonrc is not equipped to handle this
+      setenv rp_wacomdevices 12 13
       source .config/ratpoison/ratpoisonrc
 
       setenv rp_backlight_step_percent 3
