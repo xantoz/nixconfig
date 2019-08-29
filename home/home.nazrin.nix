@@ -6,6 +6,7 @@
     ./desktop.nix
     ./mpv.nix
     ./common.nix
+    ./git.nix
   ];
 
   home.packages = with pkgs; [
