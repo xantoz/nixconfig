@@ -45,6 +45,25 @@
       exec ${pkgs.alacritty}/bin/alacritty "$@" -e /bin/sh -c "unset LIBGL_DRIVERS_PATH; unset LD_LIBRARY_PATH; unset LIBVA_DRIVERS_PATH; exec $SHELL"
     '';
 
+    my_kitty = pkgs.writeShellScriptBin "kitty" ''
+      export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
+      export LD_LIBRARY_PATH='${pkgs.lib.makeLibraryPath [
+        pkgs.mesa_drivers
+        pkgs.zlib
+        pkgs.libdrm
+        pkgs.xorg.libX11
+        pkgs.xorg.libxcb
+        pkgs.xorg.libxshmfence
+        pkgs.wayland
+        pkgs.gcc.cc
+        pkgs.expat
+        pkgs.llvm_7
+        pkgs.vulkan-loader
+      ]}:'$LD_LIBRARY_PATH
+      export LIBVA_DRIVERS_PATH='${pkgs.vaapiIntel}/lib/dri'
+      exec ${pkgs.kitty}/bin/kitty "$@" -e /bin/sh -c "unset LIBGL_DRIVERS_PATH; unset LD_LIBRARY_PATH; unset LIBVA_DRIVERS_PATH; exec $SHELL -l"
+    '';
+
     my_mpc-qt = pkgs.writeShellScriptBin "mpc-qt" ''
       export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
       export LD_LIBRARY_PATH='${pkgs.mesa_drivers}/lib':$LD_LIBRARY_PATH
@@ -107,6 +126,7 @@
 
         pkgs.my_pulseview
         pkgs.my_alacritty
+        pkgs.my_kitty
 
         pkgs.nixGLIntel
         pkgs.nixIntel
