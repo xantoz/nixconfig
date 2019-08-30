@@ -42,7 +42,7 @@
         pkgs.vulkan-loader
       ]}:'$LD_LIBRARY_PATH
       export LIBVA_DRIVERS_PATH='${pkgs.vaapiIntel}/lib/dri'
-      exec ${pkgs.alacritty}/bin/alacritty "$@" -e /bin/sh -c "unset LD_LIBRARY_PATH; unset LIBVA_DRIVERS_PATH; exec $SHELL"
+      exec ${pkgs.alacritty}/bin/alacritty "$@" -e /bin/sh -c "unset LIBGL_DRIVERS_PATH; unset LD_LIBRARY_PATH; unset LIBVA_DRIVERS_PATH; exec $SHELL"
     '';
 
     my_mpc-qt = pkgs.writeShellScriptBin "mpc-qt" ''
