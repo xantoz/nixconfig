@@ -9,16 +9,6 @@
     ./git.nix
   ];
 
-  home.packages = with pkgs; [
-    pulseview
-  ];
-
-  xsession = {
-    enable = true;
-    windowManager.command = "/bin/sh ~/.xsession";
-    scriptPath = ".xinitrc";
-  };
-
   services.blueman-applet.enable = true;
 
   # services.kdeconnect = {
@@ -31,23 +21,7 @@
   systemd.user.services.pasystray.Service.ExecStart =
     lib.mkOverride 10 "${pkgs.pasystray}/bin/pasystray --notify=all";
 
-  programs.bash.enable = true;
-  pam.sessionVariables.LESS = "-R";
-
   home.file = {
-    ".drirc".source = pkgs.writeText "drirc" ''
-      <driconf>
-        <!-- Please always enable app-specific workarounds for all drivers and
-             screens. -->
-        <device>
-            <application name="all">
-                <option name="allow_rgb10_configs" value="true"/>
-                <option name="mesa_glthread" value="true"/>
-            </application>
-        </device>
-      </driconf>
-     '';
-
     ".config/ratpoison".source = ./config/ratpoison;
     ".ratpoisonrc".source = pkgs.writeText "dotratpoisonrc" ''
       # Bit of an ugly hack to use the ids, since the long names contain spaces and the scripting in ratpoisonrc is not equipped to handle this
@@ -94,37 +68,6 @@
       fcitx &
 
       exec ratpoison
-    '';
-
-    ".bashrc".source = pkgs.writeText "dotbashrc" ''
-      export HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S - '
-      shopt -s histappend
-      shopt -s cmdhist
-      shopt -s histverify
-      HISTSIZE=600000
-      HISTFILESIZE=600000
-      PROMPT_COMMAND='history -a;history -n'
-      export HISTCONTROL=ignoreboth
-
-      alias dush='du -sh * | sort -h'
-
-      0x0()
-      {
-          curl -F"file=@$1" https://0x0.st
-      }
-
-      build_cscope()
-      {
-          find `pwd` -type f -iname '*.[ch]' -print > cscope.files
-          IFS=$'\n' etags $(< cscope.files)
-          cscope -qbi cscope.files
-      }
-
-      alias mount-patchouli='sshfs -o reconnect patchouli:/ /mnt/patchouli'
-
-      export PATH="$HOME/.local/bin:$PATH"
-
-      export EDITOR='emacsclient -t'
     '';
   };
 }

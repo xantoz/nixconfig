@@ -34,7 +34,18 @@
     '')
 
     libnotify                   # notify-send
+
+    pulseview
   ];
+
+  xsession = {
+    enable = true;
+    windowManager.command = "/bin/sh ~/.xsession";
+    scriptPath = ".xinitrc";
+  };
+
+  programs.bash.enable = true;
+  pam.sessionVariables.LESS = "-R";
 
   # ah... dconf/gsettings. Re-inventing the windows registry, but worse!
   dconf = {
@@ -138,5 +149,20 @@
       background = "#191311";
       timeout = 8;
     };
+  };
+
+  home.file = {
+    ".drirc".source = pkgs.writeText "drirc" ''
+      <driconf>
+        <!-- Please always enable app-specific workarounds for all drivers and
+             screens. -->
+        <device>
+            <application name="all">
+                <option name="allow_rgb10_configs" value="true"/>
+                <option name="mesa_glthread" value="true"/>
+            </application>
+        </device>
+      </driconf>
+     '';
   };
 }
