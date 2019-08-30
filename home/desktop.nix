@@ -164,5 +164,7 @@
         </device>
       </driconf>
      '';
+
+   ".webmacs/init".source = ./config/webmacs;
   };
 }

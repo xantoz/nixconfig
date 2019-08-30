@@ -16,3 +16,6 @@
 [submodule "nixpkgs"]
 	path = nixpkgs
 	url = https://github.com/NixOS/nixpkgs.git
+[submodule "home/config/webmacs"]
+	path = home/config/webmacs
+	url = git@github.com:xantoz/webmacs-conf.git
