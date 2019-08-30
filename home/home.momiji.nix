@@ -28,9 +28,6 @@
       setenv rp_wacomdevices 12 13
       source .config/ratpoison/ratpoisonrc
 
-      setenv rp_backlight_step_percent 3
-      source .config/ratpoison/backlightrc
-
       source .config/ratpoison/volumerc
 
       setenv rp_compositor xcompmgr
