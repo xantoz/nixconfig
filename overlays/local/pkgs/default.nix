@@ -47,17 +47,6 @@ with super.lib; {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook super.texinfo ];
   });
 
-  dav1d = super.dav1d.overrideAttrs(old: {
-    src = super.fetchgit {
-      url = "https://code.videolan.org/videolan/dav1d";
-      rev = "3d94fb9aff5d2837c9ee0c13fff3d4e2424623ae";
-      sha256 = "087b5lq21ikj5zpwz8rhblaav3kb4xdfhka7bvsv6vbc526s722d";
-      fetchSubmodules = false;
-    };
-    version = "9999";
-    name = "dav1d-9999";
-  });
-
   libplacebo = super.callPackage ./libplacebo { };
 
   mpv =
@@ -82,12 +71,9 @@ with super.lib; {
         ];
       });
       custom_ffmpeg =
-        (super.ffmpeg_4.override {
+        (super.ffmpeg_full.override {
+          libaom = custom_libaom;
           nvenc = false;
-        }).overrideAttrs(old: {
-          buildInputs = old.buildInputs ++ [ self.dav1d custom_libaom ];
-          configureFlags = old.configureFlags ++ [ "--enable-libdav1d" "--enable-libaom" ];
-          patches = [];
         });
       mpv_rev = "5626642b39b00ade9d44821981ef7b1e97f546c9";
       mpv_sha256 = "11xddnzvg5jz4rfrp4h6avg7qb51190fi7i0l5b4jhza06rn2i4s";
