@@ -30,7 +30,7 @@ in {
         buildInputs = [ pkgs.makeWrapper ];
         postBuild = ''
           wrapProgram $out/bin/cellwriter \
-          --add-flags "--profile=${cfg.profile}"
+          --add-flags "--profile=${cfg.profile} --read-only"
         '';
       })
     ];
