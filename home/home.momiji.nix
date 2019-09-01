@@ -34,6 +34,8 @@
       setenv rp_compositor_args --
       source .config/ratpoison/compositorrc
 
+      source .config/ratpoison/cellwriterrc
+
       alias noop exec true
       definekey top XF86AudioRaiseVolume noop
       definekey top XF86AudioLowerVolume noop
