@@ -32,4 +32,5 @@
 
   hardware.cpu.intel.updateMicrocode = true;
 
+  powerManagement.cpuFreqGovernor = lib.mkDefault "schedutil";
 }
