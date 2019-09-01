@@ -116,6 +116,12 @@
     profile = ../../config/cellwriter/profile;
   };
 
+  environment.systemPackages = with pkgs; [
+    easystroke                  # TODO: module for this when you are somewhat more ready to freeze the config
+    xournal
+    # xournalpp
+  ];
+
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
