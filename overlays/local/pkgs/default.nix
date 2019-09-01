@@ -182,4 +182,6 @@ with super.lib; {
   cellwriter = super.callPackage ./cellwriter { };
 
   easystroke = super.callPackage ./easystroke { };
+
+  libdrc = super.callPackage ./libdrc { };
 }
