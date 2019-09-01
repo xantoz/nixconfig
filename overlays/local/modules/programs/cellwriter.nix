@@ -24,9 +24,15 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      (pkgs.writeShellScriptBin "cellwriter" ''
-        exec ${cfg.package}/bin/cellwriter --profile=${cfg.profile} "$@"
-      '')
+      (pkgs.symlinkJoin {
+        name = "cellwriter";
+        paths = [ cfg.package ];
+        buildInputs = [ pkgs.makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/cellwriter \
+          --add-flags "--profile=${cfg.profile}"
+        '';
+      })
     ];
   };
 }
