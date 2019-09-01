@@ -63,6 +63,16 @@
       export CLUTTER_IM_MODULE=fcitx
       fcitx &
 
+      # WACOM_IDS="12 13"
+      # for i in $WACOM_IDS; do xsetwacom --set $i Threshold 1000; done
+      # for i in $WACOM_IDS; do xsetwacom --set $i Threshold 800; done
+      # for i in $WACOM_IDS; do xsetwacom --set $i Threshold 400; done
+      # for i in $WACOM_IDS; do xsetwacom set $i Area 59 -60 24576 18288; done
+      # for i in $WACOM_IDS; do xsetwacom set $i Area 30 -99 24639 18293; done
+      # for i in $WACOM_IDS; do xsetwacom set $i Area 29 -102 24685 18262; done
+      # for i in $WACOM_IDS; do xsetwacom set $i Area 56 -45 24788 18277; done
+      xsetwacom --set 13 Button 1 2  # make the eraser do a middle-click
+
       exec ratpoison
     '';
   };
