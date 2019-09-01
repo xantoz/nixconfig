@@ -14,6 +14,7 @@
       ../../profiles/wireless.nix
       ../../profiles/bluetooth.nix
       ../../profiles/laptop.nix
+      ../../profiles/sway.nix
       ../../home/home-manager/nixos
     ];
 
@@ -28,14 +29,6 @@
     libva1
     dmidecode
     units
-
-    # test
-    sway
-    swaybg
-    swaylock
-    swayidle
-    xwayland
-    mako
 
     dolphinEmuMaster
   ];
