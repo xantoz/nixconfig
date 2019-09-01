@@ -178,4 +178,6 @@ with super.lib; {
   });
 
   webmacs = super.libsForQt5.callPackage ./webmacs { };
+
+  cellwriter = super.callPackage ./cellwriter { };
 }
