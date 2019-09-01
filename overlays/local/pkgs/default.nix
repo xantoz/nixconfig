@@ -71,7 +71,7 @@ with super.lib; {
         ];
       });
       custom_ffmpeg =
-        (super.ffmpeg_full.override {
+        (super.ffmpeg-full.override {
           libaom = custom_libaom;
           nvenc = false;
         });
