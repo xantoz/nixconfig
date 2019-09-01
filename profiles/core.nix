@@ -6,6 +6,7 @@
   nixpkgs.overlays = [
     (import ../overlays/local/pkgs/default.nix)
   ];
+  imports = import ../overlays/local/modules/module-list.nix;
 
   # Use local nixpkgs checkout
   nix.nixPath = [
