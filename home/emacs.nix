@@ -32,6 +32,6 @@
     # ".config/emacs".source = ./config/emacs;
     ".emacs".source = pkgs.writeText "dotemacs" ''
       (load "~/.config/emacs.d/init.el")
-    # '';
+    '';
   };
 }
