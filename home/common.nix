@@ -37,6 +37,14 @@
           cscope -qbi cscope.files
       }
 
+      fingerprints()
+      {
+          local file="''${1:-$HOME/.ssh/authorized_keys}"
+          while read l; do
+          [[ -n $l && ''${l###} = $l ]] && ssh-keygen -l -f /dev/stdin <<<$l
+          done < "''${file}"
+      }
+
       alias mount-patchouli='sshfs -o reconnect patchouli:/ /mnt/patchouli'
 
       export PATH="$HOME/.local/bin:$PATH"
