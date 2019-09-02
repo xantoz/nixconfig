@@ -184,4 +184,6 @@ with super.lib; {
   easystroke = super.callPackage ./easystroke { };
 
   libdrc = super.callPackage ./libdrc { };
+
+  simpleserver = super.callPackage ./simpleserver { };
 }
