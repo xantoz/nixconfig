@@ -57,7 +57,7 @@ stdenv.mkDerivation rec {
   makeFlags = [ "DESTDIR=$(out) PREFIX=" ];
 
   meta = with stdenv.lib; {
-    description = "A gesture-recognition applicaiton for X11";
+    description = "A gesture-recognition application for X11";
     homepage =  https://github.com/thjaeger/easystroke;
     license = licenses.isc;
     platforms = platforms.linux;
