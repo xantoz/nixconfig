@@ -30,8 +30,8 @@
     # TODO: how to deal with ~/.emacs-custom ?
     ".config/emacs.d".source = ./config/emacs;
     # ".config/emacs".source = ./config/emacs;
-    # ".emacs".source = pkgs.writeText "dotemacs" ''
-    #   (load "~/.config/emacs/init.el")
+    ".emacs".source = pkgs.writeText "dotemacs" ''
+      (load "~/.config/emacs.d/init.el")
     # '';
   };
 }
