@@ -135,6 +135,8 @@
         pkgs.youtube-dl
         pkgs.hugo
 
+        pkgs.bemenu
+
         pkgs.pamixer
         pkgs.ponymix
         # pkgs.pulsemixer
