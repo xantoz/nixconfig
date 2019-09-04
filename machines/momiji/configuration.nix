@@ -120,7 +120,8 @@
     easystroke                  # TODO: module for this when you are somewhat more ready to freeze the config
     xournal
     # xournalpp
-    wineUnstable
+    #wineUnstable
+    wineFull
   ];
 
   # This value determines the NixOS release with which your system is to be
