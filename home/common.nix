@@ -17,7 +17,6 @@
       export HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S - '
       shopt -s histappend
       shopt -s cmdhist
-      shopt -s histverify
       HISTSIZE=600000
       HISTFILESIZE=600000
       PROMPT_COMMAND='history -a;history -n'
