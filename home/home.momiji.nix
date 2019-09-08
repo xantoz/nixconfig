@@ -21,6 +21,8 @@
   systemd.user.services.pasystray.Service.ExecStart =
     lib.mkOverride 10 "${pkgs.pasystray}/bin/pasystray --notify=all";
 
+  services.easystroke.enable = true;
+
   home.file = {
     ".config/ratpoison".source = ./config/ratpoison;
     ".ratpoisonrc".source = pkgs.writeText "dotratpoisonrc" ''

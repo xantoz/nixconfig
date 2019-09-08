@@ -3,6 +3,8 @@
 {
   nixpkgs.config.allowUnfree = true;
 
+  imports = import ./modules/module-list.nix;
+
   home.file = {
     ".zile".source = builtins.path { name = "dotzile"; path = ./config/dotfiles/src/.zile; };
     ".config/youtube-dl/config".source = ./config/dotfiles/src/youtube-dl/config;
