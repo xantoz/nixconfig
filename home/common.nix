@@ -24,7 +24,7 @@
       PROMPT_COMMAND='history -a;history -n'
       export HISTCONTROL=ignoreboth
 
-      alias dush='du -sh * | sort -h'
+      alias dush='du -sh -- * | sort -h'
 
       0x0()
       {
