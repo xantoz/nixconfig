@@ -75,14 +75,15 @@ with super.lib; {
           libaom = custom_libaom;
           nvenc = false;
         });
-      mpv_rev = "5626642b39b00ade9d44821981ef7b1e97f546c9";
-      mpv_sha256 = "11xddnzvg5jz4rfrp4h6avg7qb51190fi7i0l5b4jhza06rn2i4s";
+      mpv_rev = "d9bc6466d542457cf7cfae9a4a1bca2f42dd9ba3";
+      mpv_sha256 = "1zsw418xvh4lyqmisppmn8bjaklbb34rk1y546dknz25djszkhrw";
       fakegit = super.writeShellScriptBin "git" ''
         echo "${mpv_rev}"
       '';
     in (super.mpv.override {
-      # to be able to build the wm4 removal branch first disable support for things
-      # that have been removed, then also remove the --disable-xxx configure flags
+      # to be able to build after a lot of stuff got removed on git master,
+      # first disable support for things that have been removed, then also
+      # remove the --disable-xxx configure flags
       cddaSupport = false;
       dvdnavSupport = false;
       dvdreadSupport = false;
