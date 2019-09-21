@@ -112,7 +112,7 @@ with super.lib; {
         ];
       buildInputs =
         (remove super.ffmpeg_4 old.buildInputs) ++
-        [ super.mesa_noglu self.libplacebo custom_ffmpeg ];
+        [ super.mesa_noglu self.libplacebo custom_ffmpeg super.zimg ];
       nativeBuildInputs = old.nativeBuildInputs ++ [ fakegit ];
     });
 
