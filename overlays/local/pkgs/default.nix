@@ -75,8 +75,8 @@ with super.lib; {
           libaom = custom_libaom;
           nvenc = false;
         });
-      mpv_rev = "6c76af9c76a3e956322542cacbdd8e5d4b412641";
-      mpv_sha256 = "1y05y9xvyj9268gy68lax77v9jv9gdxm6hm49m4va0nxqa87fg9r";
+      mpv_rev = "91b5b4a7b74f94d825f003bc45aea49cf4fecaf5";
+      mpv_sha256 = "0w3q0x4m5b28y3n5q8l1lypr8yd96vsfnplahvqi99svn84gam5p";
       fakegit = super.writeShellScriptBin "git" ''
         echo "${mpv_rev}"
       '';
@@ -107,6 +107,7 @@ with super.lib; {
           "--disable-dvdread"
           "--disable-dvdnav"
           "--disable-cdda"
+          "--enable-zsh-comp"   # this has changed a bit. disable because I don't use zsh anyway
         ]) ++ [
           "--enable-vulkan" "--enable-libplacebo"
         ];
