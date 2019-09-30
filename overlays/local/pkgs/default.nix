@@ -47,7 +47,7 @@ with super.lib; {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook super.texinfo ];
   });
 
-  libplacebo = super.callPackage ./libplacebo { };
+  # libplacebo = super.callPackage ./libplacebo { };
 
   mpv =
     let
@@ -113,7 +113,8 @@ with super.lib; {
         ];
       buildInputs =
         (remove super.ffmpeg_4 old.buildInputs) ++
-        [ super.mesa_noglu self.libplacebo custom_ffmpeg super.zimg ];
+        [ super.mesa_noglu super.libplacebo custom_ffmpeg super.zimg
+          super.vulkan-headers super.vulkan-loader ];
       nativeBuildInputs = old.nativeBuildInputs ++ [ fakegit ];
     });
 
