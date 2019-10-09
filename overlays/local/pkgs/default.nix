@@ -47,8 +47,6 @@ with super.lib; {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook super.texinfo ];
   });
 
-  # libplacebo = super.callPackage ./libplacebo { };
-
   mpv =
     let
       custom_libaom = super.libaom.overrideAttrs(old: {
@@ -179,8 +177,6 @@ with super.lib; {
   dolphinEmu = super.dolphinEmu.overrideAttrs(old: {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
   });
-
-  # webmacs = super.libsForQt5.callPackage ./webmacs { };
 
   cellwriter = super.callPackage ./cellwriter { };
 
