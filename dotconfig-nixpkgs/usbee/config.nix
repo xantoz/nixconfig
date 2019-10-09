@@ -161,7 +161,7 @@ in
       paths = [
         pkgs.my_mpc-qt
         pkgs.my_mpv
-        #pkgs.my_webmacs
+        pkgs.my_webmacs
 
         pkgs.emacs26
 
