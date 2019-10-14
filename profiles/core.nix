@@ -44,6 +44,7 @@
     nix-prefetch-github
     libsixel
     graphviz # for visualizing closures
+    cv # for progress
   ];
 
   programs.screen.screenrc = builtins.readFile ../home/config/dotfiles/src/.screenrc;
