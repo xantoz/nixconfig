@@ -73,8 +73,8 @@ with super.lib; {
           libaom = custom_libaom;
           nvenc = false;
         });
-      mpv_rev = "572adb97e2385b4e884dc8b03192f01c706bdfd1";
-      mpv_sha256 = "01iw42aqmyqiwakpmqjgxd8hdasyl18wxmk39a99csvz3q1yszg4";
+      mpv_rev = "44bef0738eeece51e7233ca6200096ee93bb461c";
+      mpv_sha256 = "0bdndmssxlpzdp90k0adm7yn8isidkns6nn3ppyks6d3dvs68lch";
       fakegit = super.writeShellScriptBin "git" ''
         echo "${mpv_rev}"
       '';
