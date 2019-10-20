@@ -88,7 +88,7 @@
   '';
 
   # TODO: modularize
-  services.triggerhappy =
+  services.actkbd =
     let
       backlightPath = "/sys/class/backlight/intel_backlight";
       backlightStep = "28";         # TODO: really want to be able to specify this in percent
@@ -107,68 +107,55 @@
       volumeDown = "${pkgs.pamixer}/bin/pamixer --unmute --decrease 2";
       volumeUp   = "${pkgs.pamixer}/bin/pamixer --unmute --increase 2";
       micMute    = "${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute";
+      key = {
+        mute = 113;
+        volumeDown = 114;
+        volumeUp = 115;
+        micMute = 190;
+        brightnessDown = 224;
+        brightnessUp = 225;
+      };
     in {
       enable = true;
-      user = "tewi_inaba";
       bindings = [
         # "Mute" media key
         {
-          keys = [ "MUTE" ];
-          event = "press";
-          cmd = mute;
+          keys = [ key.mute ];
+          events = [ "key" ];
+          command = mute;
         }
 
         # "Lower Volume" media key
         {
-          keys = [ "VOLUMEDOWN" ];
-          event = "press";
-          cmd = volumeDown;
-        }
-        {
-          keys = [ "VOLUMEDOWN" ];
-          event = "hold";
-          cmd = volumeDown;
+          keys = [ key.volumeDown ];
+          events = [ "key" "rep" ];
+          command = volumeDown;
         }
 
         # "Raise Volume" media key
         {
-          keys = [ "VOLUMEUP" ];
-          event = "press";
-          cmd = volumeUp;
-        }
-        {
-          keys = [ "VOLUMEUP" ];
-          event = "hold";
-          cmd = volumeUp;
+          keys = [ key.volumeUp ];
+          events = [ "key" "rep" ];
+          command = volumeUp;
         }
 
         # "Mic Mute" media key
         {
-          keys = [ "MICMUTE" ];
-          event = "press";
-          cmd = micMute;
+          keys = [ key.micMute ];
+          events = [ "key" ];
+          command = micMute;
         }
 
         {
-          keys = [ "BRIGHTNESSUP" ];
-          event = "press";
-          cmd = "${brightnessUpCmd}";
-        }
-        {
-          keys = [ "BRIGHTNESSUP" ];
-          event = "hold";
-          cmd = "${brightnessUpCmd}";
+          keys = [ key.brightnessUp ];
+          events = [ "key" "rep" ];
+          command = "${brightnessUpCmd}";
         }
 
         {
-          keys = [ "BRIGHTNESSDOWN" ];
-          event = "press";
-          cmd = "${brightnessDownCmd}";
-        }
-        {
-          keys = [ "BRIGHTNESSDOWN" ];
-          event = "hold";
-          cmd = "${brightnessDownCmd}";
+          keys = [ key.brightnessDown ];
+          events = [ "key" "rep" ];
+          command = "${brightnessDownCmd}";
         }
       ];
     };
