@@ -103,10 +103,12 @@
         x=$(( (x < 0) ? 0 : x ));
         echo "$x" > "${backlightPath}/brightness"
       '';
-      mute       = "${pkgs.pamixer}/bin/pamixer --mute";
-      volumeDown = "${pkgs.pamixer}/bin/pamixer --unmute --decrease 2";
-      volumeUp   = "${pkgs.pamixer}/bin/pamixer --unmute --increase 2";
-      micMute    = "${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute";
+
+      fuckingDbus = "${pkgs.systemd}/bin/machinectl shell --uid=tewi_inaba .host";
+      mute       = "${fuckingDbus} ${pkgs.pamixer}/bin/pamixer --mute";
+      volumeDown = "${fuckingDbus} ${pkgs.pamixer}/bin/pamixer --unmute --decrease 2";
+      volumeUp   = "${fuckingDbus} ${pkgs.pamixer}/bin/pamixer --unmute --increase 2";
+      micMute    = "${fuckingDbus} ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute";
       key = {
         mute = 113;
         volumeDown = 114;
