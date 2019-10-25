@@ -14,6 +14,8 @@
     ".config/alacritty".source = ./config/dotfiles/src/alacritty;
     ".config/kitty".source = ./config/dotfiles/src/kitty;
 
+    ".config/mako".source = ./config/dotfiles/src/mako;
+
     ".config/nixpkgs/config.nix".source = pkgs.writeText "unfree_for_nix-shell" ''
       { allowUnfree = true; }
     '';
