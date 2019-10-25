@@ -178,6 +178,28 @@ with super.lib; {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
   });
 
+  sway = super.sway.overrideAttrs(old: {
+    src = super.fetchFromGitHub {
+      owner = "swaywm";
+      repo = "sway";
+      rev = "43bd8dc437866ce1e6ba8e276af511a9ddebe71d";
+      sha256 = "12yqkd9v74y63ag4zb0pp0rf27mzqhcy2px8q398dy4bjlwcjcdk";
+    };
+    version = "9999";
+    name = "sway-9999";
+  });
+
+  wlroots = super.wlroots.overrideAttrs(old: {
+    src = super.fetchFromGitHub {
+      owner = "swaywm";
+      repo = "wlroots";
+      rev = "e97c2c3639119831ced4f6b9f704b096c2075973";
+      sha256 = "000f96pf9n8mmq11gj8yhbc56z80g79ccla2and5wk8gg47nblix";
+    };
+    version = "9999";
+    name = "wlroots-9999";
+  });
+
   cellwriter = super.callPackage ./cellwriter { };
 
   easystroke = super.callPackage ./easystroke { };
