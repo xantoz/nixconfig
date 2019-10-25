@@ -10,6 +10,7 @@
     alacritty
     kitty
 
+    xorg.xeyes
     xkbset
     xss-lock
     ratpoison
