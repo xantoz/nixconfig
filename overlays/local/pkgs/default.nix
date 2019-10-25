@@ -75,7 +75,7 @@ with super.lib; {
         });
       mpv_rev = "ae407030016fbd8128b5ac092670a290c0e9f12c";
       mpv_sha256 = "04rjwyald77p7yg0hl6il7wcqsz0x1dxip71nc4sk303zi9yg39w";
-      Fakegit = super.writeShellScriptBin "git" ''
+      fakegit = super.writeShellScriptBin "git" ''
         echo "${mpv_rev}"
       '';
     in (super.mpv.override {
