@@ -34,6 +34,7 @@
       qt5.qtwayland
       dmenu rofi
       mako
+      acpi
     ];
   };
 }
