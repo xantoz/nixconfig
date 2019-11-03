@@ -7,7 +7,7 @@
     webmacs
     firefox
 
-    alacritty
+    #alacritty
     kitty
 
     xorg.xeyes

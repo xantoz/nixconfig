@@ -79,14 +79,7 @@ with super.lib; {
         echo "${mpv_rev}"
       '';
     in (super.mpv.override {
-      # to be able to build after a lot of stuff got removed on git master,
-      # first disable support for things that have been removed, then also
-      # remove the --disable-xxx configure flags
-      cddaSupport = false;
-      dvdnavSupport = false;
-      dvdreadSupport = false;
       openalSupport = true;
-      vulkanSupport = false; # we use libplacebo, so the upstream package is not quite right w.r.t vulkan
       archiveSupport = true;
       vdpauSupport = false;
       nv-codec-headers = null;
@@ -99,20 +92,9 @@ with super.lib; {
       };
       version = "9999";
       name = "mpv-9999";
-      configureFlags =
-        (foldr remove old.configureFlags [
-          "--enable-dvbin"
-          "--disable-dvdread"
-          "--disable-dvdnav"
-          "--disable-cdda"
-          "--enable-zsh-comp"   # this has changed a bit. disable because I don't use zsh anyway
-        ]) ++ [
-          "--enable-vulkan" "--enable-libplacebo"
-        ];
       buildInputs =
         (remove super.ffmpeg_4 old.buildInputs) ++
-        [ super.mesa_noglu super.libplacebo custom_ffmpeg super.zimg
-          super.vulkan-headers super.vulkan-loader ];
+        [ super.mesa_noglu  custom_ffmpeg ];
       nativeBuildInputs = old.nativeBuildInputs ++ [ fakegit ];
     });
 
