@@ -1,0 +1,11 @@
+--- a/mcomix/run.py	2019-06-03 21:22:44.923063509 +0200
++++ b/mcomix/run.py	2019-06-03 21:24:41.509030400 +0200
+@@ -203,7 +203,7 @@
+ 
+     try:
+         import PIL.Image
+-        assert PIL.Image.VERSION >= '1.1.5'
++#        assert PIL.Image.VERSION >= '1.1.5'
+ 
+     except AssertionError:
+         log.error( _("You don't have the required version of the Python Imaging"), end=' ')

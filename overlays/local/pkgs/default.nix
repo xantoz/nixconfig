@@ -9,6 +9,10 @@ with super.lib; {
     patches = [ ../../../patches/m17n_db/0001-add-sv-qwerty.mim.patch ];
   });
 
+  mcomix = super.mcomix.overrideAttrs(old: {
+    patches = [ ../../../patches/mcomix/fix-PIL-image-version.patch ];
+  });
+
   ratpoison = super.ratpoison.overrideAttrs(old: {
     src = super.fetchFromGitHub {
       repo = "ratpoison";
