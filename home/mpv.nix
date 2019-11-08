@@ -23,6 +23,10 @@
       scale=ewa_lanczossharp
       cscale=ewa_lanczossharp
 
+      [hq-]
+      profile=gpu-hq
+      scale=ewa_lanczossharp
+      cscale=bilinear
       [smoothmotion]
       interpolation=yes
       tscale=oversample
