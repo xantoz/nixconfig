@@ -47,6 +47,8 @@
     cv # for progress
   ];
 
+  programs.simpleserver.enable = true;
+
   programs.screen.screenrc = builtins.readFile ../home/config/dotfiles/src/.screenrc;
 
   services.gpm.enable = true;
