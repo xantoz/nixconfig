@@ -97,8 +97,7 @@ with super.lib; {
       version = "9999";
       name = "mpv-9999";
       buildInputs =
-        (remove super.ffmpeg_4 old.buildInputs) ++
-        [ super.mesa_noglu  custom_ffmpeg ];
+        (remove super.ffmpeg_4 old.buildInputs) ++ [ custom_ffmpeg ];
       nativeBuildInputs = old.nativeBuildInputs ++ [ fakegit ];
     });
 
