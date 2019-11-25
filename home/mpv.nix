@@ -12,11 +12,7 @@
       osd-font-size=20
 
       vo=gpu
-      gpu-context=x11egl
-      hwdec=vaapi
       video-sync=display-resample
-
-      vd-lavc-threads=2
 
       [hq]
       profile=gpu-hq
@@ -27,6 +23,15 @@
       profile=gpu-hq
       scale=ewa_lanczossharp
       cscale=bilinear
+
+      # FIXME: this is a bit too nazrin-specific
+      [hqd]
+      profile=gpu-hq
+      cscale=bilinear
+      dither=error-diffusion
+      temporal-dither=yes
+      dither-depth=6
+
       [smoothmotion]
       interpolation=yes
       tscale=oversample
