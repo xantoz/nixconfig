@@ -26,6 +26,8 @@
     tdesktop
     slack
 
+    audacity
+
     mcomix
 
     (writeShellScriptBin "rtorrent" ''
