@@ -4,7 +4,7 @@
   # ffmpeg_2,
   ffmpeg_4,
   yasm, perl, pkg-config,
-  mesa_noglu, libGLU_combined, glew, SDL }:
+  mesa_noglu, libGLU, glew, SDL }:
 
 let
   custom_x264 = x264.overrideAttrs(old: {
@@ -46,5 +46,5 @@ in stdenv.mkDerivation {
   '';
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [ ffmpeg_4 custom_x264 mesa_noglu libGLU_combined glew SDL ];
+  buildInputs = [ ffmpeg_4 custom_x264 mesa_noglu libGLU glew SDL ];
 }
