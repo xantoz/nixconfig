@@ -170,6 +170,7 @@ with super.lib; {
       rev = "f576bcdb8cb3ed1506ad03503815ad159c1c0479";
       sha256 = "08rn61prp9v88i088bdcgzsjwd3cx4h8gvsysfy2pd7y14qad5q2";
     };
+    patches = [];
     version = "9999";
     name = "sway-9999";
   });
@@ -181,6 +182,7 @@ with super.lib; {
       rev = "aa9ea95e1fffde31be72ffaf204a3aaf2893858e";
       sha256 = "0l0pz7x317q60kmnj1bnm4z1n0f9chmk037ac4nzpxchs13pf560";
     };
+    patches = [];
     version = "9999";
     name = "wlroots-9999";
   });
