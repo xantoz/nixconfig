@@ -56,8 +56,8 @@ with super.lib; {
       custom_libaom = super.libaom.overrideAttrs(old: {
         src = super.fetchgit {
           url = "https://aomedia.googlesource.com/aom";
-          rev = "32185d165e0a238a32b20c5bbd59e360bd46d067";
-          sha256 = "1h3w56masgpwrvcf6r033rhzsxhrl16z5pbr8m59i0rd46pzbhlz";
+          rev = "d53f175e3a90e20e850d32d8bbffbd29b0a35282"; # v1.0.0-errata1-avif-27-gd53f175e3
+          sha256 = "15fnanpgnicjh7ndh6c68g8ciwpwkzyh209d99ffk6453s59qw54";
           fetchSubmodules = false;
         };
         version = "9999";
@@ -77,8 +77,8 @@ with super.lib; {
           libaom = custom_libaom;
           nvenc = false;
         });
-      mpv_rev = "f527d7b11c31de0f73956cc4eaf92efe637b8809";
-      mpv_sha256 = "1g1qn2ikxh4ns82bbifsp79la9n6vz4x7dyr2xyns4bfn9bdb7j1";
+      mpv_rev = "127b6e9823cfad806fb04e3e9893289ae47b3c60";
+      mpv_sha256 = "0k6ldn4p9yxamp42b7sv4aqdkmhih7hgzhrsqvrk4p1h1cr1zq7z";
       fakegit = super.writeShellScriptBin "git" ''
         echo "${mpv_rev}"
       '';
