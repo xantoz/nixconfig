@@ -167,8 +167,8 @@ with super.lib; {
     src = super.fetchFromGitHub {
       owner = "swaywm";
       repo = "sway";
-      rev = "f576bcdb8cb3ed1506ad03503815ad159c1c0479";
-      sha256 = "08rn61prp9v88i088bdcgzsjwd3cx4h8gvsysfy2pd7y14qad5q2";
+      rev = "aa8fe584215d29e31ae5af43afa81db03b997f85";
+      sha256 = "0zpq14h3jxb2igmf3jil475ifqd45506h0vvf3s6hg2qmhmrrwvm";
     };
     patches = [];
     version = "9999";
@@ -179,8 +179,8 @@ with super.lib; {
     src = super.fetchFromGitHub {
       owner = "swaywm";
       repo = "wlroots";
-      rev = "aa9ea95e1fffde31be72ffaf204a3aaf2893858e";
-      sha256 = "0l0pz7x317q60kmnj1bnm4z1n0f9chmk037ac4nzpxchs13pf560";
+      rev = "774548696c0a5f3164a3ce5a85d893da6c3b18be";
+      sha256 = "0ij8fdi83kxzf4mi1mpn2zyy8zb5nk5nxhnqgzksb3zsiylwkpd6";
     };
     patches = [];
     version = "9999";
