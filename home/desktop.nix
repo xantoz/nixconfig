@@ -22,13 +22,13 @@
     mate.atril
     gajim
 
+    qcomicbook
+
     discord
     tdesktop
     slack
 
     audacity
-
-    mcomix
 
     (writeShellScriptBin "rtorrent" ''
       ${xtermcontrol}/bin/xtermcontrol --title=rtorrent
