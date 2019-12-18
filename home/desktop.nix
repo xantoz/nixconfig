@@ -22,6 +22,7 @@
     mate.atril
     gajim
 
+    mcomix
     qcomicbook
 
     discord
