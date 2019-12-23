@@ -90,8 +90,19 @@
 
       ; cycle play-dir
 
-      #ctrl+b script-binding Blackbox
-      #0x2 script-binding Blackbox
+      b script-binding Blackbox
+      ctrl+b script-binding Blackbox
+      0x2 script-binding Blackbox
     '';
+
+    ".config/mpv/scripts/modules.js".source = ./config/mpv-tools/scripts/modules.js;
+    ".config/mpv/scripts/Blackbox.js".source = ./config/mpv-tools/scripts/Blackbox.js;
+    ".config/mpv/script-settings/Blackbox.conf".source = pkgs.writeText "Blackbox.conf" ''
+      max_lines=24
+      font_size=20
+      auto_close=10
+      include_regex=\.(?:rar|zip)$
+      favorites={/home/tewi_inaba/Video}+{/mnt/files/Movies}+{/mnt/files/Movies/Anime}+{/mnt/files/Movies/Series}+{/mnt/files/Video/Anime}+{/mnt/colgate/home/tewi_inaba/Video}+{/}+{/mnt/migon/mnt/MiniNet}
+      '';
   };
 }

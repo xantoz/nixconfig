@@ -19,3 +19,6 @@
 [submodule "home/config/webmacs"]
 	path = home/config/webmacs
 	url = git@github.com:xantoz/webmacs-conf.git
+[submodule "home/config/mpv-tools"]
+	path = home/config/mpv-tools
+	url = git@github.com:xantoz/mpv-tools.git
