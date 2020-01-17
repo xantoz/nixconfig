@@ -65,6 +65,12 @@
     unifont_upper
   ];
 
+  # Subpixel hinting always manages to look bad for some reason
+  fonts.fontconfig.subpixel = {
+    rgba = "none";
+    lcdfilter = "none";
+  };
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
