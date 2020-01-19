@@ -30,6 +30,7 @@
     '';
     extraPackages = with pkgs; [
       swaybg swaylock swayidle
+      waybar
       xwayland rxvt_unicode
       qt5.qtwayland
       dmenu rofi
