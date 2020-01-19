@@ -48,14 +48,14 @@
     extraInitrd = /boot/initrd.keys.gz;
   };
 
-  boot.initrd.luks.devices = [{
-      name = "root-decrypt";
+  boot.initrd.luks.devices = {
+    root-decrypt = {
       device = "/dev/disk/by-uuid/4ff87337-7366-4329-bed1-e30291b4878c";
       preLVM = true;
       keyFile = "/keyfile0.bin";
       allowDiscards = true;
-    }
-  ];
+    };
+  };
 
   networking.hostName = "nazrin"; # Define your hostname.
 
