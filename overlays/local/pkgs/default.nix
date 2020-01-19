@@ -150,37 +150,13 @@ with super.lib; {
 
   redshift = (super.redshift.override { withGeolocation = false; });
 
-  # Die, networkmanager, die!
-  libproxy = super.libproxy.overrideAttrs(old: {
-    buildInputs = foldr remove old.buildInputs [ super.networkmanager ];
-  });
+  # # Die, networkmanager, die!
+  # libproxy = super.libproxy.overrideAttrs(old: {
+  #   buildInputs = foldr remove old.buildInputs [ super.networkmanager ];
+  # });
 
   dolphinEmu = super.dolphinEmu.overrideAttrs(old: {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
-  });
-
-  sway = super.sway.overrideAttrs(old: {
-    src = super.fetchFromGitHub {
-      owner = "swaywm";
-      repo = "sway";
-      rev = "aa8fe584215d29e31ae5af43afa81db03b997f85";
-      sha256 = "0zpq14h3jxb2igmf3jil475ifqd45506h0vvf3s6hg2qmhmrrwvm";
-    };
-    patches = [];
-    version = "9999";
-    name = "sway-9999";
-  });
-
-  wlroots = super.wlroots.overrideAttrs(old: {
-    src = super.fetchFromGitHub {
-      owner = "swaywm";
-      repo = "wlroots";
-      rev = "774548696c0a5f3164a3ce5a85d893da6c3b18be";
-      sha256 = "0ij8fdi83kxzf4mi1mpn2zyy8zb5nk5nxhnqgzksb3zsiylwkpd6";
-    };
-    patches = [];
-    version = "9999";
-    name = "wlroots-9999";
   });
 
   cellwriter = super.callPackage ./cellwriter { };
