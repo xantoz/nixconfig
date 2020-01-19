@@ -16,6 +16,8 @@
 
     ".config/mako".source = ./config/dotfiles/src/mako;
 
+    ".config/waybar".source = ./config/dotfiles/src/waybar;
+
     ".config/nixpkgs/config.nix".source = pkgs.writeText "unfree_for_nix-shell" ''
       { allowUnfree = true; }
     '';
