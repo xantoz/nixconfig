@@ -87,6 +87,12 @@
     options snd-hda-intel index=1 model=auto vid=8086 pid=0a0c
   '';
 
+  # Set up ZRAM swap devices
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+  };
+
   # TODO: modularize
   services.actkbd =
     let
