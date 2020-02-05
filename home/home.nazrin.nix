@@ -50,7 +50,7 @@
               "webmacs '%URL%'"              \
               "firefox '%URL%'"              \
               "mpv '%URL%'"                  \
-              "echo -n '%URL%' | xsel -i"    \
+              "echo -n '%URL%' | xsel -b"    \
               "xterm -e \\\"youtube-dl -o '/tmp/%(title)s.%(ext)s' '%URL%'\\\""
         #include ".config/xterm/Xresources"
     '';
