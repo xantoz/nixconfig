@@ -49,32 +49,8 @@ with super.lib; {
 
   mpv =
     let
-      custom_libaom = super.libaom.overrideAttrs(old: {
-        src = super.fetchgit {
-          url = "https://aomedia.googlesource.com/aom";
-          rev = "d53f175e3a90e20e850d32d8bbffbd29b0a35282"; # v1.0.0-errata1-avif-27-gd53f175e3
-          sha256 = "15fnanpgnicjh7ndh6c68g8ciwpwkzyh209d99ffk6453s59qw54";
-          fetchSubmodules = false;
-        };
-        version = "9999";
-        name = "libaom-9999";
-        # As is way too common, the prefix handling in the libaom build is borked,
-        # and all paths, even ones beginning with /, are treated as relative to the
-        # prefix. So here we change some variables (from the absolute paths that nix
-        # would usually put) to make it work.
-        cmakeFlags = [
-          "-DCMAKE_INSTALL_INCLUDEDIR=include"
-          "-DCMAKE_INSTALL_LIBDIR=lib"
-          "-DCMAKE_INSTALL_NAME_DIR=lib"
-        ];
-      });
-      custom_ffmpeg =
-        (super.ffmpeg-full.override {
-          libaom = custom_libaom;
-          nvenc = false;
-        });
-      mpv_rev = "1f66709af4e6de071fa8552bbd4cea00af99b9c3";
-      mpv_sha256 = "19n5xvycpnbbwwxdry818kk8c29za8mcbb8gg6rsya3lnnllbc6i";
+      mpv_rev = "71d3fbaaf10d8688a6b5cec125029043341dca8f";
+      mpv_sha256 = "0hzc8azvaaxmrdb7b0v5svhlvz3pbpl9gkxccj0gq4dcfhp3qyi0";
       fakegit = super.writeShellScriptBin "git" ''
         echo "${mpv_rev}"
       '';
@@ -92,8 +68,6 @@ with super.lib; {
       };
       version = "9999";
       name = "mpv-9999";
-      buildInputs =
-        (remove super.ffmpeg_4 old.buildInputs) ++ [ custom_ffmpeg ];
       nativeBuildInputs = old.nativeBuildInputs ++ [ fakegit ];
     });
 
