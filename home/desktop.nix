@@ -24,6 +24,8 @@
 
     mcomix
     qcomicbook
+    comical
+    yacreader
 
     discord
     tdesktop
