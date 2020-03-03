@@ -7,6 +7,11 @@
       # Fix Java on non-reparenting WM:s
       export _JAVA_AWT_WM_NONREPARENTING=1
 
+      # IME
+      export QT_IM_MODULE=fcitx
+      export GTK_IM_MODULE=fcitx
+      export CLUTTER_IM_MODULE=fcitx
+
       # GTK
       export GDK_BACKEND=wayland
       export CLUTTER_BACKEND=wayland
