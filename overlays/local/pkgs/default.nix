@@ -49,8 +49,8 @@ with super.lib; {
 
   mpv =
     let
-      mpv_rev = "71d3fbaaf10d8688a6b5cec125029043341dca8f";
-      mpv_sha256 = "0hzc8azvaaxmrdb7b0v5svhlvz3pbpl9gkxccj0gq4dcfhp3qyi0";
+      mpv_rev = "4d0d2826ad3dfef46d2bd3bdd46c26ed433786f5";
+      mpv_sha256 = "0pzjisdlwqwiaxnyb93r7h3rzz29f6gn67ssv75ndrxpgh1pqknk";
       fakegit = super.writeShellScriptBin "git" ''
         echo "${mpv_rev}"
       '';
@@ -59,6 +59,7 @@ with super.lib; {
       archiveSupport = true;
       vdpauSupport = false;
       nv-codec-headers = null;
+      sambaSupport = false;     # libsmbclient support was removed in git master
     }).overrideAttrs(old: {
       src = super.fetchFromGitHub {
         owner = "xantoz";
@@ -68,6 +69,7 @@ with super.lib; {
       };
       version = "9999";
       name = "mpv-9999";
+      wafConfigureFlags = foldr remove old.wafConfigureFlags [ "--disable-libsmbclient" ]; # libsmbclient support was removed in git master
       nativeBuildInputs = old.nativeBuildInputs ++ [ fakegit ];
     });
 
