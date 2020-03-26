@@ -29,7 +29,7 @@
 
     qt5.qtbase # for some reason I need to add this manually now to have xcb platform
 
-    # tigervnc
+    tigervnc
   ];
 
   fonts.fonts = with pkgs; [
