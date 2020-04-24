@@ -30,6 +30,7 @@
     unrar
     unzip
     p7zip
+    unar
     calc
     sshfs
     lshw
