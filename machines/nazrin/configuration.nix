@@ -31,6 +31,8 @@
     units
 
     dolphinEmuMaster
+
+    wineWowPackages.full
   ];
 
   ## Use the systemd-boot EFI boot loader.
