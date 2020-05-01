@@ -16,6 +16,7 @@
     scrot
     gimp
     feh
+    pqiv
     imv
     transmission_gtk
     youtube-dl

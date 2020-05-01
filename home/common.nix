@@ -18,6 +18,12 @@
 
     ".config/waybar".source = ./config/dotfiles/src/waybar;
 
+    ".config/pqivrc".source = pkgs.writeText "pqiv-config" ''
+      [options]
+      fullscreen=1
+      sort=1
+    '';
+
     ".config/nixpkgs/config.nix".source = pkgs.writeText "unfree_for_nix-shell" ''
       { allowUnfree = true; }
     '';
