@@ -46,6 +46,8 @@
     libsixel
     graphviz # for visualizing closures
     cv # for progress
+
+    poppler_utils # for pdfimages
   ];
 
   programs.simpleserver.enable = true;
