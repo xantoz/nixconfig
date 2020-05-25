@@ -46,6 +46,10 @@
     graphviz # for visualizing closures
     cv # for progress
 
+    unixtools.fdisk
+    gptfdisk
+    ntfsprogs
+
     poppler_utils # for pdfimages
   ];
 
