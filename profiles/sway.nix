@@ -41,6 +41,7 @@
       dmenu rofi bemenu
       mako
       acpi
+      grim
     ];
   };
 }
