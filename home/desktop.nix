@@ -21,6 +21,7 @@
     transmission_gtk
     youtube-dl
     mate.atril
+    evince
     gajim
 
     mcomix
