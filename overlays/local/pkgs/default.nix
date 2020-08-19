@@ -126,6 +126,8 @@ with super.lib; {
     };
     version = "9999";
     name = "pulseview-9999";
+    nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.qttools ];
+
   });
 
   redshift = (super.redshift.override { withGeolocation = false; });
