@@ -47,14 +47,14 @@ with super.lib; {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook super.texinfo ];
   });
 
-  mpv =
+  mpv-unwrapped =
     let
       mpv_rev = "1b3fc556890bce16c89836bf7fd611be807dead3";
       mpv_sha256 = "137favpik37h7dckqvppi8mbk2d2bghhygfvgi28jy8v95lf19vs";
       fakegit = super.writeShellScriptBin "git" ''
         echo "${mpv_rev}"
       '';
-    in (super.mpv.override {
+    in (super.mpv-unwrapped.override {
       openalSupport = true;
       archiveSupport = true;
       vdpauSupport = false;
