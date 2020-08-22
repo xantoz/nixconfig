@@ -25,9 +25,9 @@
     gajim
 
     mcomix
-    qcomicbook
-    comical
-    yacreader
+    # qcomicbook
+    # comical
+    # yacreader
 
     discord
     tdesktop
