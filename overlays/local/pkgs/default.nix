@@ -29,22 +29,12 @@ with super.lib; {
     configureFlags = old.configureFlags ++ [ "--with-x=yes" "--with-x-toolkit=no" ];
   });
 
-  emacsVcs27 = (super.emacs26.override {
+  emacs = (super.emacs.override {
     withX = true;
     withGTK3 = false;
     withGTK2 = false;
   }).overrideAttrs(old: {
-    src = super.fetchgit {
-      url = "https://git.savannah.gnu.org/git/emacs.git";
-      rev = "4051fa3ba9b4527b57b4cd114ddaaf72a3b23528";
-      sha256 = "0c1cld0g2dbxawj5pygygxxp2p56fbiw9zv01vzv99xc4p9sglr0";
-      fetchSubmodules = false;
-    };
-    version="27.0.9999";
-    name="emacs-vcs-27.0.9999";
-    patches = [];
     configureFlags = old.configureFlags ++ [ "--with-x=yes" "--with-x-toolkit=no" ];
-    nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook super.texinfo ];
   });
 
   mpv-unwrapped =
