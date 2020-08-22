@@ -47,7 +47,10 @@
     version = 2;
     efiSupport = true;
     enableCryptodisk = true;
-    extraInitrd = /boot/initrd.keys.gz;
+  };
+
+  boot.initrd.secrets = {
+    "keyfile0.bin" = "/etc/secrets/initrd/keyfile0.bin";
   };
 
   boot.initrd.luks.devices = {
