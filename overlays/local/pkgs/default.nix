@@ -21,21 +21,19 @@ with super.lib; {
     name = "ratpoison-1.4.10";
   });
 
-  emacs26 = (super.emacs26.override {
+  emacs26 = super.emacs26.override {
     withX = true;
     withGTK3 = false;
     withGTK2 = false;
-  }).overrideAttrs(old: {
-    configureFlags = old.configureFlags ++ [ "--with-x=yes" "--with-x-toolkit=no" ];
-  });
+    toolkit = "no";
+  };
 
-  emacs = (super.emacs.override {
+  emacs27 = super.emacs27.override {
     withX = true;
     withGTK3 = false;
     withGTK2 = false;
-  }).overrideAttrs(old: {
-    configureFlags = old.configureFlags ++ [ "--with-x=yes" "--with-x-toolkit=no" ];
-  });
+    toolkit = "no";
+  };
 
   mpv-unwrapped =
     let
