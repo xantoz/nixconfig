@@ -165,7 +165,7 @@ in
 
         pkgs.qt5.qtbase # need this or Qt apps don't have any platform backends for some stupid reason
         pkgs.qt5.qtwayland # same but for wayland
-        pkgs.emacs26
+        pkgs.emacs27
 
         pkgs.my_pulseview
         pkgs.my_alacritty
