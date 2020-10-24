@@ -45,6 +45,7 @@
     libsixel
     graphviz # for visualizing closures
     cv # for progress
+    cifs-utils   # for mounting SMB shares
 
     unixtools.fdisk
     gptfdisk
