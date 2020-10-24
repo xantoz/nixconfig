@@ -9,6 +9,6 @@
   ];
 
   security.sudo.extraRules = [
-    { commands = [ { command = "${pkgs.rfkill}/bin/rfkill"; options = [ "SETENV" "NOPASSWD" ]; } ]; groups = [ "wheel" ]; }
+    { commands = [ { command = "${pkgs.utillinux}/bin/rfkill"; options = [ "SETENV" "NOPASSWD" ]; } ]; groups = [ "wheel" ]; }
   ];
 }
