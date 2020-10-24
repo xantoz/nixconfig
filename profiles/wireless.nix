@@ -2,7 +2,7 @@
 
 {
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.wireless.userControlled.enable = true;
+  networking.wireless.userControlled.enable = false;
 
   environment.systemPackages = with pkgs; [
     wpa_supplicant_gui
