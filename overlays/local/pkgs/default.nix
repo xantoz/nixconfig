@@ -37,8 +37,8 @@ with super.lib; {
 
   mpv-unwrapped =
     let
-      mpv_rev = "cb5a836046d40d0a58f7d33c077f0b0f581adc9a";
-      mpv_sha256 = "0lyqnw75fajzd8pxrfa2l3fw6bky3ri6kc4rmfp7hj7cd029qkfm";
+      mpv_rev = "c1c0da34eb7536682f5f452f678a0d30fc8a1fec";
+      mpv_sha256 = "17z4fid1j3gcym5ljq97pyzv10sxhasy2bi3igldhwyq1q50d85j";
       fakegit = super.writeShellScriptBin "git" ''
         echo "${mpv_rev}"
       '';
