@@ -47,8 +47,6 @@ with super.lib; {
       archiveSupport = true;
       vdpauSupport = false;
       nv-codec-headers = null;
-      sambaSupport = false;     # libsmbclient support was removed in git master
-      sndioSupport = false;     # sndio support was removed in git master
     }).overrideAttrs(old: {
       src = super.fetchFromGitHub {
         owner = "xantoz";
@@ -58,10 +56,6 @@ with super.lib; {
       };
       version = "9999";
       name = "mpv-9999";
-      wafConfigureFlags = foldr remove old.wafConfigureFlags [
-        "--disable-libsmbclient" # libsmbclient support was removed in git maste
-        "--disable-sndio"        # sndio support was removed in git master
-      ];
       nativeBuildInputs = old.nativeBuildInputs ++ [ fakegit ];
     });
 
