@@ -29,7 +29,7 @@
     libarchive
     unrar
     unzip
-    unar
+    # unar
     calc
     sshfs
     lshw
