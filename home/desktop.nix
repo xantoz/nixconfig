@@ -17,7 +17,7 @@
     gimp
     feh
     pqiv
-    imv
+    #imv  # not on aarch64
     transmission_gtk
     youtube-dl
     mate.atril
@@ -29,11 +29,11 @@
     # comical
     # yacreader
 
-    discord
-    tdesktop
-    slack
+    # discord   # not on aarch64
+    # tdesktop  # same
+    # slack     # same
 
-    audacity
+    # audacity
 
     (writeShellScriptBin "rtorrent" ''
       ${xtermcontrol}/bin/xtermcontrol --title=rtorrent
