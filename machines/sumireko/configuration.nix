@@ -18,4 +18,6 @@
   nixpkgs.config.allowUnfree = true;
 
   networking.hostName = "sumireko";
+
+  services.xserver.videoDrivers = [ "modesetting" ];
 }
