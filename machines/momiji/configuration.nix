@@ -111,6 +111,8 @@
   #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   # };
 
+  boot.tmpOnTmpfs = true;
+
   programs.cellwriter = {
     enable = true;
     profile = ../../config/cellwriter/profile;

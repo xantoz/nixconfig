@@ -99,8 +99,6 @@
 
   programs.command-not-found.enable = true;
 
-  boot.tmpOnTmpfs = true;
-
   services.logind.extraConfig = ''
     HandleLidSwitch=ignore
     HandleLidSwitchDocked=ignore
