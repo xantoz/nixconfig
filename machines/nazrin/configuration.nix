@@ -59,6 +59,8 @@
     };
   };
 
+  boot.tmpOnTmpfs = true;
+
   networking.hostName = "nazrin"; # Define your hostname.
 
   # Some programs need SUID wrappers, can be configured further or are
