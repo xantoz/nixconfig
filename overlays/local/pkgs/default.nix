@@ -148,4 +148,16 @@ with super.lib; {
   simpleserver = super.callPackage ./simpleserver { };
 
   mcomix = super.callPackage ./mcomix { };
+
+  # imv = super.imv.overrideAttrs(old: {
+  #   meta = old.meta // {
+  #     platforms = platforms.all;
+  #   };
+  # });
+	
+  # audacity = super.audacity.overrideAttrs(old: {
+  #   meta = old.meta // {
+  #     platforms = platforms.all;
+  #   };
+  # });
 }
