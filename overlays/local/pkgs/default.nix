@@ -35,6 +35,15 @@ with super.lib; {
   #   toolkit = "no";
   # };
 
+  # x11 doesn't want to build in bemenu so disable it for now (I use dmenu in x11 anyway)
+  # Building fails with:
+  #    lib/renderers/x11/window.c:4:10: fatal error: cairo-xlib.h: No such file or directory
+  #      4 | #include <cairo-xlib.h>
+  #        |          ^~~~~~~~~~~~~~
+  bemenu = super.bemenu.override {
+    x11Support = false;
+  };
+
   mpv-unwrapped =
     let
       mpv_rev = "cb5a836046d40d0a58f7d33c077f0b0f581adc9a";
