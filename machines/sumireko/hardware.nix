@@ -6,7 +6,7 @@ in
 {
   imports = [
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-    ./wip-pinebook-pro/nixos/sd-image-aarch64.nix
+    ./sd-image-aarch64.nix
     ./wip-pinebook-pro/pinebook_pro.nix
   ];
 
