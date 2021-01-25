@@ -5,18 +5,10 @@ let
 in
 {
   imports = [
-    <nixpkgs/nixos/modules/profiles/base.nix>
-    <nixpkgs/nixos/modules/profiles/minimal.nix>
+    <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ./wip-pinebook-pro/nixos/sd-image-aarch64.nix
     ./wip-pinebook-pro/pinebook_pro.nix
   ];
-
-#  options.installer = {
-#    cloneConfig = lib.mkOption {
-#      type = lib.types.bool;
-#      default = false;
-#    };
-#  };
 
   hardware.enableRedistributableFirmware = true;
 

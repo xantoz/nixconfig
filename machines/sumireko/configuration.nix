@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, ... }:
 
 {
   imports = [
@@ -13,8 +13,8 @@
     ../../home/home-manager/nixos
   ];
 
-  home-manager.users.tewi_inaba = import ../../home/home.nazrin.nix;
-  
+  home-manager.users.tewi_inaba = import ../../home/home.nazrin.nix; # TODO: fixme
+
   nixpkgs.config.allowUnfree = true;
 
   networking.hostName = "sumireko";
