@@ -13,7 +13,7 @@
     ../../home/home-manager/nixos
   ];
 
-  home-manager.users.tewi_inaba = import ../../home/home.nazrin.nix; # TODO: fixme
+  home-manager.users.tewi_inaba = import ../../home/home.sumireko.nix;
 
   nixpkgs.config.allowUnfree = true;
 
