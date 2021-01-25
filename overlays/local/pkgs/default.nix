@@ -5,9 +5,9 @@ with super.lib; {
     configureFlags = old.configureFlags ++ [ "--enable-exec-xterm" ];
   });
 
-  # m17n_db = super.m17n_db.overrideAttrs(old: {
-  #   patches = [ ../../../patches/m17n_db/0001-add-sv-qwerty.mim.patch ];
-  # });
+  m17n_db = super.m17n_db.overrideAttrs(old: {
+    patches = [ ../../../patches/m17n_db/0001-add-sv-qwerty.mim.patch ];
+  });
 
   ratpoison = super.ratpoison.overrideAttrs(old: {
     src = super.fetchFromGitHub {
@@ -21,20 +21,18 @@ with super.lib; {
     name = "ratpoison-1.4.10";
   });
 
-  # emacs26 = super.emacs26.override {
-  #   withX = true;
-  #   withGTK3 = false;
-  #   withGTK2 = false;
-  #   toolkit = "no";
-  # };
+  emacs26 = super.emacs26.override {
+    withX = true;
+    withGTK3 = false;
+    withGTK2 = false;
+    toolkit = "no";
+  };
 
-  # emacs27 = super.emacs27.override {
-  #   withX = true;
-  #   withGTK3 = false;
-  #   withGTK2 = false;
-  #   toolkit = "no";
-  # };
-
+  emacs27 = super.emacs27.override {
+    withX = true;
+    withGTK3 = false;
+    withGTK2 = false;
+    toolkit = "no";
   };
 
   mpv-unwrapped =
