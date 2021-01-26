@@ -28,7 +28,7 @@ in
     "console=tty0"
   ];
 
-  services.mingetty.serialSpeed = [ 1500000 115200 57600 38400 9600 ];
+  services.getty.serialSpeed = [ 1500000 115200 57600 38400 9600 ];
 
   boot.initrd.availableKernelModules = [
   ];
