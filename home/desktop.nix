@@ -30,7 +30,7 @@
     # yacreader
 
     # discord   # not on aarch64
-    # tdesktop  # same
+    tdesktop
     # slack     # same
 
     # audacity
