@@ -20,4 +20,12 @@
   networking.hostName = "sumireko";
 
   services.xserver.videoDrivers = [ "modesetting" ];
+
+  environment.systemPackages = with pkgs; [
+    ardour
+
+    # try getting the icons of the home manager services to work this way??
+    pasystray
+    blueman
+  ];
 }
