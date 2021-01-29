@@ -2,8 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    lm_sensors
-
     xorg.transset
     xcompmgr
     compton
@@ -17,7 +15,7 @@
     gimp
     feh
     pqiv
-    imv
+    #imv  # not on aarch64
     transmission_gtk
     youtube-dl
     mate.atril
@@ -29,11 +27,11 @@
     # comical
     # yacreader
 
-    discord
+    # discord   # not on aarch64
     tdesktop
-    slack
+    # slack     # same
 
-    audacity
+    # audacity
 
     (writeShellScriptBin "rtorrent" ''
       ${xtermcontrol}/bin/xtermcontrol --title=rtorrent

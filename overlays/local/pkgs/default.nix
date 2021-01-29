@@ -56,6 +56,7 @@ with super.lib; {
       };
       version = "9999";
       name = "mpv-9999";
+      patches = [ ];
       nativeBuildInputs = old.nativeBuildInputs ++ [ fakegit ];
     });
 

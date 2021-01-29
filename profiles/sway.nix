@@ -38,7 +38,7 @@
       waybar
       xwayland rxvt_unicode
       qt5.qtwayland
-      dmenu rofi bemenu
+      dmenu bemenu
       mako
       acpi
       grim

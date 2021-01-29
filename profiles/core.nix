@@ -24,12 +24,13 @@
     (pkgs.runCommand "filtered-busybox" {} "mkdir -p $out/bin && ln -s ${busybox}/bin/{busybox,vi,ash,killall} $out/bin/")
     git tig
     nload
+    lm_sensors
     usbutils
     pciutils
     libarchive
     unrar
     unzip
-    unar
+    # unar
     calc
     sshfs
     lshw
@@ -95,11 +96,17 @@
 
   programs.ssh.askPassword = "";
 
-  security.sudo.extraConfig = "Defaults rootpw";
+  # CVE-2021-3516 was the straw the broke the camels back. How many
+  # more bugs are hiding in there? Just say no to usdo!
+  security.sudo.enable = false;
+
+  # Enable doas to replace sudo
+  security.doas.enable = true;
+  security.doas.extraRules = [
+    { groups = [ "wheel" ]; noPass = false; persist = true; setEnv = [ "NIX_PATH" ]; }
+  ];
 
   programs.command-not-found.enable = true;
-
-  boot.tmpOnTmpfs = true;
 
   services.logind.extraConfig = ''
     HandleLidSwitch=ignore

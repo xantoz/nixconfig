@@ -8,7 +8,7 @@
     wpa_supplicant_gui
   ];
 
-  security.sudo.extraRules = [
-    { commands = [ { command = "${pkgs.utillinux}/bin/rfkill"; options = [ "SETENV" "NOPASSWD" ]; } ]; groups = [ "wheel" ]; }
+  security.doas.extraRules = [
+    { groups = [ "wheel" ]; noPass = true; cmd = "${pkgs.utillinux}/bin/rfkill"; }
   ];
 }
