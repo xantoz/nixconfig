@@ -96,7 +96,15 @@
 
   programs.ssh.askPassword = "";
 
-  security.sudo.extraConfig = "Defaults rootpw";
+  # CVE-2021-3516 was the straw the broke the camels back. How many
+  # more bugs are hiding in there? Just say no to usdo!
+  security.sudo.enable = false;
+
+  # Enable doas to replace sudo
+  security.doas.enable = true;
+  security.doas.extraRules = [
+    { groups = [ "wheel" ]; noPass = false; persist = true; setEnv = [ "NIX_PATH" ]; }
+  ];
 
   programs.command-not-found.enable = true;
 
