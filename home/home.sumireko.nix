@@ -26,19 +26,19 @@
     ".ratpoisonrc".source = pkgs.writeText "dotratpoisonrc" ''
       source .config/ratpoison/ratpoisonrc
 
-      # setenv rp_backlight_step_percent 3
-      # source .config/ratpoison/backlightrc
+      setenv rp_backlight_step_percent 3
+      setenv rp_backlight_path /sys/class/backlight/edp-backlight
+      source .config/ratpoison/backlightrc
 
-      # source .config/ratpoison/volumerc
+      source .config/ratpoison/volumerc
       source .config/ratpoison/xbattbarrc
 
-      setenv rp_compositor xcompmgr
-      setenv rp_compositor_args --
+      setenv rp_compositor compton
+      setenv rp_compositor_args --glx-no-stencil --backend glx --opengl --vsync
       source .config/ratpoison/compositorrc
 
-      alias noop exec true
-      definekey top XF86AudioRaiseVolume noop
-      definekey top XF86AudioLowerVolume noop
+      # Emacs battery module is not working right on PBP (maybe you could reconfig emacs to use upower?)
+      alias battery exec ratpoison -c "echo $(upower -i /org/freedesktop/UPower/devices/battery_cw2015_battery)"
 
       alias xterm exec xterm -e '$SHELL -c "xprop -id $WINDOWID -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0xeeeeeeee; exec $SHELL -l"'
       alias reload source .ratpoisonrc
