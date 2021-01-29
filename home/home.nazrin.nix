@@ -36,6 +36,8 @@
       setenv rp_compositor_args --
       source .config/ratpoison/compositorrc
 
+      # This is just to make ratpoison swallow these key inputs so they don't get sent on to other programs
+      # They keys are actually handled by actkbd or whatever
       alias noop exec true
       definekey top XF86AudioRaiseVolume noop
       definekey top XF86AudioLowerVolume noop
