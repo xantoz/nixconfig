@@ -24,6 +24,7 @@
     (pkgs.runCommand "filtered-busybox" {} "mkdir -p $out/bin && ln -s ${busybox}/bin/{busybox,vi,ash,killall} $out/bin/")
     git tig
     nload
+    lm_sensors
     usbutils
     pciutils
     libarchive
