@@ -18,14 +18,22 @@ in {
 
     keys = mkOption {
       description = "Keyboard scancodes to associate with the media buttons";
+      default = {
+        mute = 113;
+        volumeDown = 114;
+        volumeUp = 115;
+        micMute = 190;
+        brightnessDown = 224;
+        brightnessUp = 225;
+      };
       type = types.submodule {
         options = {
-          mute = mkOption           { type = types.int; default = 113; };
-          volumeDown = mkOption     { type = types.int; default = 114; };
-          volumeUp = mkOption       { type = types.int; default = 115; };
-          micMute = mkOption        { type = types.int; default = 190; };
-          brightnessDown = mkOption { type = types.int; default = 224; };
-          brightnessUp = mkOption   { type = types.int; default = 225; };
+          mute           = mkOption { type = types.int; };
+          volumeDown     = mkOption { type = types.int; };
+          volumeUp       = mkOption { type = types.int; };
+          micMute        = mkOption { type = types.int; };
+          brightnessDown = mkOption { type = types.int; };
+          brightnessUp   = mkOption { type = types.int; };
         };
       };
     };
