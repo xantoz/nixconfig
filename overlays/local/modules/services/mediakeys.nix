@@ -16,6 +16,15 @@ in {
       '';
     };
 
+    backlightStepPercent = mkOption {
+      type = types.int;
+      default = 3;
+      description = ''
+        How much to step the backlight for each press of the button
+        expressed in percent of the maximum value.
+      '';
+    };
+
     keys = mkOption {
       description = "Keyboard scancodes to associate with the media buttons";
       default = {
@@ -45,15 +54,18 @@ in {
     services.actkbd =
       let
         backlightPath = cfg.backlightPath;
-        backlightStep = "28";         # TODO: really want to be able to specify this in percent. Also for it to be a configurable.
+        backlightStepPercent = builtins.toString cfg.backlightStepPercent;
         brightnessUpCmd = pkgs.writeShellScript "brightness_up" ''
           max_brightness="$(cat ${backlightPath}/max_brightness)"
-          x=$(( $(cat "${backlightPath}/brightness") + ${backlightStep} ))
+          backlight_step=$(( ${backlightStepPercent} * max_brightness / 100 ))
+          x=$(( $(cat "${backlightPath}/brightness") + backlight_step ))
           x=$(( (x > $max_brightness) ? $max_brightness : x ))
           echo "$x" > "${backlightPath}/brightness"
         '';
         brightnessDownCmd = pkgs.writeShellScript "brightness_down" ''
-          x=$(( $(cat "${backlightPath}/brightness") - ${backlightStep} ));
+          max_brightness="$(cat ${backlightPath}/max_brightness)"
+          backlight_step=$(( ${backlightStepPercent} * max_brightness / 100 ))
+          x=$(( $(cat "${backlightPath}/brightness") - backlight_step ));
           x=$(( (x < 0) ? 0 : x ));
           echo "$x" > "${backlightPath}/brightness"
         '';
