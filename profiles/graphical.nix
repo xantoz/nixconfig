@@ -11,6 +11,7 @@
     kitty
 
     xorg.xeyes
+    xorg.xkill
     xkbset
     xss-lock
     ratpoison
