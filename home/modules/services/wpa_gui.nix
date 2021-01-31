@@ -18,12 +18,12 @@ in {
       };
 
       meterInterval = mkOption {
-        type = types.int;
-        default = -1;
+        type = types.nullOr types.int;
+        default = null;
         description = ''
           Set the update interval in seconds for the signal strength
-          meter. If not set to a positive integer the signal strength
-          meter is not enabled (default).
+          meter. This needs to be a positive integer. If not set, the
+          meter is not enabled. (default).
         '';
       };
 
@@ -52,7 +52,7 @@ in {
       };
 
       Service = {
-        ExecStart = "${pkgs.stdenv.shell} -l -c 'exec ${pkgs.wpa_supplicant_gui}/bin/wpa_gui ${optionalString (cfg.interface != null) "-i${cfg.interface}"} -m${builtins.toString cfg.meterInterval} ${optionalString (cfg.startInTray) "-t"}'";
+        ExecStart = "${pkgs.stdenv.shell} -l -c 'exec ${pkgs.wpa_supplicant_gui}/bin/wpa_gui ${optionalString (cfg.interface != null) "-i${cfg.interface}"} ${optionalString (cfg.meterInterval != null) "-m${builtins.toString cfg.meterInterval}"} ${optionalString (cfg.startInTray) "-t"}'";
         Restart = "on-failure";
       };
     };
