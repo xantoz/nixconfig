@@ -133,4 +133,6 @@ with super.lib; {
   simpleserver = super.callPackage ./simpleserver { };
 
   mcomix = super.callPackage ./mcomix { };
+
+  lsix = super.callPackage ./lsix { };
 }
