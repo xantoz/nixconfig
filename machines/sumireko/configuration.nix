@@ -27,5 +27,8 @@
     # try getting the icons of the home manager services to work this way??
     pasystray
     blueman
+
+    # stupidterm for use in sway as a wayland-native terminal
+    stupidterm
   ];
 }
