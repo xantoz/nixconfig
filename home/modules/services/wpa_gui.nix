@@ -52,7 +52,7 @@ in {
       };
 
       Service = {
-        ExecStart = "${pkgs.stdenv.shell} -l -c 'exec ${pkgs.wpa_supplicant_gui}/bin/wpa_gui ${optionalString (cfg.interface != null) "-i${cfg.interface}"} -m${cfg.meterInterval} ${optionalString (cfg.startInTray) "-t"}'";
+        ExecStart = "${pkgs.stdenv.shell} -l -c 'exec ${pkgs.wpa_supplicant_gui}/bin/wpa_gui ${optionalString (cfg.interface != null) "-i${cfg.interface}"} -m${builtins.toString cfg.meterInterval} ${optionalString (cfg.startInTray) "-t"}'";
         Restart = "on-failure";
       };
     };
