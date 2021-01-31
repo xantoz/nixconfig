@@ -101,80 +101,9 @@
     memoryPercent = 50;
   };
 
-  # TODO: modularize
-  services.actkbd =
-    let
-      backlightPath = "/sys/class/backlight/intel_backlight";
-      backlightStep = "28";         # TODO: really want to be able to specify this in percent
-      brightnessUpCmd = pkgs.writeShellScript "brightness_up" ''
-        max_brightness="$(cat ${backlightPath}/max_brightness)"
-        x=$(( $(cat "${backlightPath}/brightness") + ${backlightStep} ))
-        x=$(( (x > $max_brightness) ? $max_brightness : x ))
-        echo "$x" > "${backlightPath}/brightness"
-      '';
-      brightnessDownCmd = pkgs.writeShellScript "brightness_down" ''
-        x=$(( $(cat "${backlightPath}/brightness") - ${backlightStep} ));
-        x=$(( (x < 0) ? 0 : x ));
-        echo "$x" > "${backlightPath}/brightness"
-      '';
-
-      fuckingDbus = "${pkgs.systemd}/bin/machinectl shell --uid=tewi_inaba .host";
-      mute       = "${fuckingDbus} ${pkgs.pamixer}/bin/pamixer --mute";
-      volumeDown = "${fuckingDbus} ${pkgs.pamixer}/bin/pamixer --unmute --decrease 2";
-      volumeUp   = "${fuckingDbus} ${pkgs.pamixer}/bin/pamixer --unmute --increase 2";
-      micMute    = "${fuckingDbus} ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute";
-      key = {
-        mute = 113;
-        volumeDown = 114;
-        volumeUp = 115;
-        micMute = 190;
-        brightnessDown = 224;
-        brightnessUp = 225;
-      };
-    in {
-      enable = true;
-      bindings = [
-        # "Mute" media key
-        {
-          keys = [ key.mute ];
-          events = [ "key" ];
-          command = mute;
-        }
-
-        # "Lower Volume" media key
-        {
-          keys = [ key.volumeDown ];
-          events = [ "key" "rep" ];
-          command = volumeDown;
-        }
-
-        # "Raise Volume" media key
-        {
-          keys = [ key.volumeUp ];
-          events = [ "key" "rep" ];
-          command = volumeUp;
-        }
-
-        # "Mic Mute" media key
-        {
-          keys = [ key.micMute ];
-          events = [ "key" ];
-          command = micMute;
-        }
-
-        {
-          keys = [ key.brightnessUp ];
-          events = [ "key" "rep" ];
-          command = "${brightnessUpCmd}";
-        }
-
-        {
-          keys = [ key.brightnessDown ];
-          events = [ "key" "rep" ];
-          command = "${brightnessDownCmd}";
-        }
-      ];
-    };
+  services.mediakeys = {
+    enable = true;
+  };
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
