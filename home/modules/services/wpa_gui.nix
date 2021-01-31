@@ -8,34 +8,34 @@ in {
   options = {
     services.wpa_gui = {
       enable = mkEnableOption "WPA Graphical User Interface";
-    };
 
-    startInTray = mkOption {
-      types = types.bool;
-      default = true;
-      description = ''
-        Starts minimized to system tray if true (default).
-      '';
-    };
+      startInTray = mkOption {
+        type = types.bool;
+        default = true;
+        description = ''
+          Starts minimized to system tray if true (default).
+        '';
+      };
 
-    meterInterval = mkOption {
-      types = types.int;
-      default = -1;
-      description = ''
-        Set the update interval in seconds for the signal strength
-        meter. If not set to a positive integer the signal strength
-        meter is not enabled (default).
-      '';
-    };
+      meterInterval = mkOption {
+        type = types.int;
+        default = -1;
+        description = ''
+          Set the update interval in seconds for the signal strength
+          meter. If not set to a positive integer the signal strength
+          meter is not enabled (default).
+        '';
+      };
 
-    interface = mkOption {
-      types = types.nullOr types.str;
-      default = null;
-      description = ''
-        Specify the interface that is being configured. By default,
-        choose the first interface found with a control socket in the
-        socket path.
-      '';
+      interface = mkOption {
+        type = types.nullOr types.str;
+        default = null;
+        description = ''
+          Specify the interface that is being configured. By default,
+          choose the first interface found with a control socket in the
+          socket path.
+        '';
+      };
     };
   };
 
