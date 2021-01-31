@@ -25,6 +25,15 @@ in {
       '';
     };
 
+    username = mkOption {
+      type = types.str;
+      default = "tewi_inaba";
+      description = ''
+        Username whose session we should be running pamixer commands
+        in, because pulseaudio is modern stuff which is complicated.
+      '';
+    };
+
     keys = mkOption {
       description = "Keyboard scancodes to associate with the media buttons";
       default = {
@@ -70,7 +79,7 @@ in {
           echo "$x" > "${backlightPath}/brightness"
         '';
 
-        fuckingDbus = "${pkgs.systemd}/bin/machinectl shell --uid=tewi_inaba .host";
+        fuckingDbus = "${pkgs.systemd}/bin/machinectl shell --uid=${cfg.username} .host";
         mute       = "${fuckingDbus} ${pkgs.pamixer}/bin/pamixer --mute";
         volumeDown = "${fuckingDbus} ${pkgs.pamixer}/bin/pamixer --unmute --decrease 2";
         volumeUp   = "${fuckingDbus} ${pkgs.pamixer}/bin/pamixer --unmute --increase 2";
