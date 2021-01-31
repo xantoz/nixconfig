@@ -21,6 +21,13 @@
 
   services.xserver.videoDrivers = [ "modesetting" ];
 
+  # Set up ZRAM swap devices
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 25;
+  };
+
   environment.systemPackages = with pkgs; [
     ardour
 
