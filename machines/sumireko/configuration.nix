@@ -28,6 +28,11 @@
     memoryPercent = 25;
   };
 
+  services.mediakeys = {
+    enable = true;
+    backlightPath = "/sys/class/backlight/edp-backlight";
+  };
+
   environment.systemPackages = with pkgs; [
     ardour
 

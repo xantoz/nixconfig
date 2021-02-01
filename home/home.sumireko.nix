@@ -26,16 +26,17 @@
     ".ratpoisonrc".source = pkgs.writeText "dotratpoisonrc" ''
       source .config/ratpoison/ratpoisonrc
 
-      setenv rp_backlight_step_percent 3
-      setenv rp_backlight_path /sys/class/backlight/edp-backlight
-      source .config/ratpoison/backlightrc
-
-      source .config/ratpoison/volumerc
       source .config/ratpoison/xbattbarrc
 
       setenv rp_compositor compton
       setenv rp_compositor_args --glx-no-stencil --backend glx --opengl --vsync
       source .config/ratpoison/compositorrc
+
+      # This is just to make ratpoison swallow these key inputs so they don't get sent on to other programs
+      # They keys are actually handled by actkbd or whatever
+      alias noop exec true
+      definekey top XF86AudioRaiseVolume noop
+      definekey top XF86AudioLowerVolume noop
 
       # Emacs battery module is not working right on PBP (maybe you could reconfig emacs to use upower?)
       alias battery exec ratpoison -c "echo $(upower -i /org/freedesktop/UPower/devices/battery_cw2015_battery)"
