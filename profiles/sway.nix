@@ -42,6 +42,7 @@
       mako
       acpi
       grim
+      sway-contrib.grimshot
     ];
   };
 }

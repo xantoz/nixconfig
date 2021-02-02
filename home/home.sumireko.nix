@@ -11,6 +11,12 @@
 
   services.blueman-applet.enable = true;
 
+
+  services.wpa_gui = {
+    enable = true;
+    interface = "wlan0";
+  };
+
   # services.kdeconnect = {
   #   enable = false;
   #   indicator = true;
