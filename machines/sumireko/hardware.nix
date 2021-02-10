@@ -12,6 +12,9 @@ in
 
   hardware.enableRedistributableFirmware = true;
 
+  nix.maxJobs = lib.mkDefault 2; # Using more than two threads tends to overload the poor thing (mostly a RAM issue)
+  powerManagement.cpuFreqGovernor = lib.mkDefault "schedutil";
+
   sdImage = {
     manipulateImageCommands = ''
       (PS4=" $ "; set -x
