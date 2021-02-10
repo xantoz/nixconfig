@@ -55,6 +55,10 @@
     poppler_utils # for pdfimages
   ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "libsixel-1.8.6" # CVE-2020-11721 and CVE-2020-19668
+  ];
+
   programs.simpleserver.enable = true;
 
   programs.screen.screenrc = builtins.readFile ../home/config/dotfiles/src/.screenrc;
