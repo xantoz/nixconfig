@@ -15,6 +15,13 @@ in
   nix.maxJobs = lib.mkDefault 2; # Using more than two threads tends to overload the poor thing (mostly a RAM issue)
   powerManagement.cpuFreqGovernor = lib.mkDefault "schedutil";
 
+  # TODO: replace swap file with a swap partition
+  swapDevices = [ { device = "/swapfile"; } ];
+  # boot.resumeDevice = "/dev/mmcblk0p1"
+  # Gotten with "filefrag -v /swapfile | awk '{if($1=="0:"){print $4}}'"
+  # boot.kernelParams = [ "resume_offset=4761600" ];
+  boot.kernelParams = [ "resume=/dev/mmcblk0p1" "resume_offset=4761600" ];
+
   sdImage = {
     manipulateImageCommands = ''
       (PS4=" $ "; set -x
