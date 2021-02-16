@@ -55,6 +55,7 @@
     nix-top
 
     poppler_utils # for pdfimages
+    lsix
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
