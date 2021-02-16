@@ -18,7 +18,7 @@
     #imv  # not on aarch64
     transmission_gtk
     youtube-dl
-    mate.atril
+    # mate.atril
     evince
     gajim
 
@@ -28,7 +28,7 @@
     # yacreader
 
     # discord   # not on aarch64
-    tdesktop
+    # tdesktop
     # slack     # same
 
     # audacity
