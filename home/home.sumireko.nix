@@ -75,6 +75,10 @@
       export CLUTTER_IM_MODULE=fcitx
       fcitx &
 
+      # Enable experimental OpenGL 3 support: makes kitty and alacritty run.
+      # To be seen if this causes issues with other programs (maybe set it per program?)
+      export PAN_MESA_DEBUG=gl3,gles3
+
       exec ratpoison
     '';
   };
