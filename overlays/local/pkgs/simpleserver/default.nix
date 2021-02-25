@@ -1,4 +1,4 @@
-{ stdenv, buildGoPackage, fetchFromGitHub, libcap }:
+{ stdenv, lib, buildGoPackage, fetchFromGitHub, libcap }:
 
 buildGoPackage rec {
   name = "simpleserver-${version}";
@@ -14,7 +14,7 @@ buildGoPackage rec {
     sha256 = "19y3j3fg8ccy574j0aswh4bna0cx14abdy2fsl0x0iw56nqfaznv";
   };
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = https://github.com/adisbladis/simpleserver;
     description = " A simple directory listing webserver ";
     license = with licenses; [ mit ];

@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ pkgconfig xorg.xorgproto ];
   buildInputs = [ gtk2 xorg.libX11 xorg.libXtst ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Grid-entry natural handwriting input panel";
     homepage =  https://github.com/risujin/cellwriter;
     license = licenses.gpl2Plus;

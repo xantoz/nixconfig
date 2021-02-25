@@ -25,7 +25,7 @@ stdenv.mkDerivation rec {
     sed -i "2 i export PATH=${runtimePath}:\$PATH" $out/bin/lsix
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Shows thumbnails in terminal using sixel graphics";
     homepage =  https://github.com/hackerb9/lsix;
     license = licenses.gpl3Plus;

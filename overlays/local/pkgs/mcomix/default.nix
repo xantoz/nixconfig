@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, python27Packages }:
+{ stdenv, lib, fetchurl, python27Packages }:
 
 python27Packages.buildPythonApplication rec {
     name = "mcomix-${version}";
@@ -28,7 +28,7 @@ python27Packages.buildPythonApplication rec {
         stability improvements after Comix development came to a halt in late 2009.
       '';
       homepage = http://mcomix.sourceforge.net/;
-      license = stdenv.lib.licenses.gpl2;
+      license = lib.licenses.gpl2;
     };
 }
 # TODO:
