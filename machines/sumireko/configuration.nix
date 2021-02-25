@@ -13,6 +13,10 @@
     ../../home/home-manager/nixos
   ];
 
+  nixpkgs.overlays = [
+    (import ../../overlays/rockchip/pkgs/default.nix)
+  ];
+
   home-manager.users.tewi_inaba = import ../../home/home.sumireko.nix;
 
   nixpkgs.config.allowUnfree = true;
