@@ -6,8 +6,8 @@ with super.lib; {
     src = super.fetchFromGitHub {
       owner = "Kwiboo";
       repo = "FFmpeg";
-      rev = "9236ad7c3e4048f18c4cb79eafbe2a89085de381";
-      sha256 = "0lv1cvh6fnwqbxnxpkpsmny4q24hhbqykj22q0npxnzxh165882m";
+      rev = "88ed0434a2030b9b3332c5134dc7e6d979054b45";
+      sha256 = "1liyfmpyf02bdrpcz1511dliqwy9n7m2vd0d6h42lhmpz8kgcc88";
     };
     buildInputs = old.buildInputs ++ [ super.libudev super.libv4l ];
     configureFlags = old.configureFlags ++ [ "--enable-libudev" "--enable-libv4l2" "--enable-v4l2-request" ];
