@@ -1,5 +1,5 @@
 {
-  stdenv, fetchFromGitHub, writeShellScriptBin, pkgconfig,
+  stdenv, lib, fetchFromGitHub, writeShellScriptBin, pkgconfig,
   xorg,
   gtkmm3,
   glib,

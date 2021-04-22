@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, pkgconfig, xorg, gtk2 }:
+{ stdenv, lib, fetchFromGitHub, pkgconfig, xorg, gtk2 }:
 
 stdenv.mkDerivation rec {
   name = "cellwriter-${version}";
