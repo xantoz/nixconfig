@@ -190,6 +190,8 @@ in
 
         pkgs.nix-prefetch-github
 
+        pkgs.black  # because ubuntu black is outdated
+
         # fonts
         pkgs.font-awesome
         pkgs.font-awesome-ttf
