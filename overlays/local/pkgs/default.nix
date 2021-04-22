@@ -21,13 +21,6 @@ with super.lib; {
     name = "ratpoison-1.4.10";
   });
 
-  emacs26 = super.emacs26.override {
-    withX = true;
-    withGTK3 = false;
-    withGTK2 = false;
-    toolkit = "no";
-  };
-
   emacs27 = super.emacs27.override {
     withX = true;
     withGTK3 = false;
