@@ -103,7 +103,7 @@
 
   programs.ssh.askPassword = "";
 
-  # CVE-2021-3516 was the straw the broke the camels back. How many
+  # CVE-2021-3156 was the straw the broke the camels back. How many
   # more bugs are hiding in there? Just say no to usdo!
   security.sudo.enable = false;
 
