@@ -16,6 +16,9 @@
   nixpkgs.overlays = [
     (import ../../overlays/rockchip/pkgs/default.nix)
   ];
+  nix.nixPath = [
+    "nixpkgs-overlays=/etc/nixos/overlays/rockchip"
+  ];
 
   home-manager.users.tewi_inaba = import ../../home/home.sumireko.nix;
 
