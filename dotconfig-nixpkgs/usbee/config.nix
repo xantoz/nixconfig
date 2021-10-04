@@ -188,6 +188,8 @@ in
         # pkgs.firefox-wayland
         # pkgs.firefox
 
+        pkgs.google-drive-ocamlfuse
+
         pkgs.nix-prefetch-github
 
         pkgs.black  # because ubuntu black is outdated
