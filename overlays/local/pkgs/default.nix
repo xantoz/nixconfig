@@ -70,8 +70,8 @@ with super.lib; {
     src = super.fetchFromGitHub {
       owner = "sigrokproject";
       repo = "libsigrokdecode";
-      rev = "296c29a33b9894b27686e56cb4368d61c7c815aa";
-      sha256 = "0f6jvg4x169q6878mgk9g129k6nwzc60hmac69fhcjsn4fj2ldwx";
+      rev = "02aa01ad5f05f2730309200abda0ac75d3721e1d";
+      sha256 = "054p2sja32d5shlbsvrpaw3pq7gg4n03327ml1dn53pjnsl0wbjz";
     };
     version = "9999";
     name = "libsigrokdecode-9999";
@@ -82,15 +82,15 @@ with super.lib; {
     src = super.fetchFromGitHub {
       owner = "sigrokproject";
       repo = "libsigrok";
-      rev = "25879a34e925ce58e62a59382b9a287a75350564";
-      sha256 = "020hxhvfsx5wnj1pa5cns3dr3g4vdhan1bc0xp21n9f8rl78pc41";
+      rev = "e972674d0b30b98dcc354b707a80b6bfc1aeb532";
+      sha256 = "0sp9y0wb6caw6d69h0z10hd6vgjgmi8z1a93i3yjbzxx8a48iyzg";
     };
     version = "9999";
     name = "libsigrok-9999";
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook ];
     firmware = super.fetchurl {
-      url = "https://sigrok.org/download/binary/sigrok-firmware-fx2lafw/sigrok-firmware-fx2lafw-bin-0.1.6.tar.gz";
-      sha256 = "14sd8xqph4kb109g073daiavpadb20fcz7ch1ipn0waz7nlly4sw";
+      url = "https://sigrok.org/download/binary/sigrok-firmware-fx2lafw/sigrok-firmware-fx2lafw-bin-0.1.7.tar.gz";
+      sha256 = "1br32wfkbyg3v0bh5smwvn1wbkwmlscqvz2vdlx7irs9al3zsxn8";
     };
   });
 
@@ -98,13 +98,13 @@ with super.lib; {
     src = super.fetchFromGitHub {
       owner = "sigrokproject";
       repo = "pulseview";
-      rev = "9d307c60d7fc2dee27bca6eaadd1e68bf7ab0cbf";
-      sha256 = "0y2syvzwln82g2wk4xawyyfrkx9pq13faj159694v8f9da96yw6s";
+      rev = "a6fa4d477d783478935a78c1b70596e38ae8ca64";
+      sha256 = "1j5g8w74zmskq1r0rj68yz4xqv4z9j91v2hwr3i2jyk4g3yfxvd3";
     };
+    patches = [];
     version = "9999";
     name = "pulseview-9999";
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt514.qttools ];
-
   });
 
   redshift = (super.redshift.override { withGeolocation = false; });
