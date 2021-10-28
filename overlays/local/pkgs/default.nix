@@ -30,13 +30,11 @@ with super.lib; {
 
   mpv-unwrapped =
     let
-      mpv_rev = "c1c0da34eb7536682f5f452f678a0d30fc8a1fec";
-      mpv_sha256 = "17z4fid1j3gcym5ljq97pyzv10sxhasy2bi3igldhwyq1q50d85j";
-      fakegit = super.writeShellScriptBin "git" ''
-        echo "${mpv_rev}"
-      '';
+      # mpv_rev = "4a80de90d299ca4986945939e5b1bada057b26b3";
+      # mpv_sha256 = "107dhsgabpfv1qrbci9jsghsla1qxlsx4ym18kkhgjy7bh3s9f98";
+      mpv_rev = "ab6ecbac8c85433fd4d9d7cac8f3f5094ee4e80a"; # personal-build--v76
+      mpv_sha256 = "0wcrqnjywa33bkpqwbab0wj2h4jgawhwvzgld4b7b2mxa6wj49ss";
     in (super.mpv-unwrapped.override {
-
       openalSupport = true;
       archiveSupport = true;
       vdpauSupport = false;
@@ -51,7 +49,9 @@ with super.lib; {
       version = "9999";
       name = "mpv-9999";
       patches = [ ];
-      nativeBuildInputs = old.nativeBuildInputs ++ [ fakegit ];
+      postPatch = old.postPatch + ''
+        sed 's/UNKNOWN/g${mpv_rev}/' VERSION > snapshot_version
+      '';
     });
 
   mpc-qt = super.mpc-qt.overrideAttrs(old: {
