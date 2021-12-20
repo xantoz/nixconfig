@@ -194,6 +194,10 @@ in
 
         pkgs.black  # because ubuntu black is outdated
 
+        # Ubuntu waybar doesn't include the clock module for some reason (also nix waybar is a bit newer).
+        # (TODO: consider using nix sway again?)
+        pkgs.waybar
+
         # fonts
         pkgs.font-awesome
         pkgs.font-awesome-ttf
