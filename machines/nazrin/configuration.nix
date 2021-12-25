@@ -33,6 +33,9 @@
     dolphinEmuMaster
 
     wineWowPackages.full
+
+    discord
+    steam
   ];
 
   ## Use the systemd-boot EFI boot loader.
