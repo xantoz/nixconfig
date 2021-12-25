@@ -17,7 +17,7 @@
     pqiv
     #imv  # not on aarch64
     transmission_gtk
-    youtube-dl
+    yt-dlp
     # mate.atril
     evince
     gajim
