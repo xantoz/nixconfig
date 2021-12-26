@@ -124,7 +124,7 @@ with super.lib; {
 
   simpleserver = super.callPackage ./simpleserver { };
 
-  mcomix = super.callPackage ./mcomix { };
+  mcomix-lite = super.callPackage ./mcomix-lite { };
 
   lsix = super.callPackage ./lsix { };
 }
