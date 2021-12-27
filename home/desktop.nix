@@ -22,7 +22,7 @@
     evince
     gajim
 
-    # mcomix
+    mcomix3
     # qcomicbook
     # comical
     # yacreader
