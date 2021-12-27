@@ -22,6 +22,8 @@
     evince
     gajim
 
+    remmina
+
     mcomix3
     # qcomicbook
     # comical
