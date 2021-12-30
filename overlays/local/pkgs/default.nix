@@ -30,13 +30,15 @@ with super.lib; {
 
   mpv-unwrapped =
     let
-      mpv_rev = "341a334bc2b8a11bdfffd0fd570d614c476578ec"; # personal-build--v79
-      mpv_sha256 = "1s4cri03sfcmvb005d55fj4zwhbl38n6jcrl3lpf0x0xhyyvl35n";
+      mpv_rev = "c23d35b383025807a3b21e8c7cfa803904cd3521"; # personal-build--v80
+      mpv_sha256 = "9B0Vgk99+EROIazxu+/eZ+U9w5F/lax+MpoE3ph6JGc=";
     in (super.mpv-unwrapped.override {
       openalSupport = true;
       archiveSupport = true;
       vdpauSupport = false;
       nv-codec-headers = null;
+      jackaudioSupport = true;
+      sixelSupport = true;
     }).overrideAttrs(old: {
       src = super.fetchFromGitHub {
         owner = "xantoz";
