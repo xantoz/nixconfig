@@ -28,6 +28,18 @@ with super.lib; {
     toolkit = "no";
   };
 
+  libplacebo = super.libplacebo.overrideAttrs(old: {
+    src = super.fetchFromGitLab {
+      domain = "code.videolan.org";
+      owner = "videolan";
+      repo = "libplacebo";
+      rev = "9d5064230ea0943f0795f7baeb126657c27e05cc";
+      sha256 = "n0beCq3BRaPIYwEicT1NW7e5Ke+0ToY/8+igv6TrYc8=";
+    };
+    buildInputs = old.buildInputs ++ [ super.libunwind ];
+    version = "9999";
+  });
+
   mpv-unwrapped =
     let
       mpv_rev = "c23d35b383025807a3b21e8c7cfa803904cd3521"; # personal-build--v80
@@ -47,7 +59,6 @@ with super.lib; {
         sha256 = mpv_sha256;
       };
       version = "9999";
-      name = "mpv-9999";
       patches = [ ];
       postPatch = old.postPatch + ''
         sed 's/UNKNOWN/g${mpv_rev}/' VERSION > snapshot_version
