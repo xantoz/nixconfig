@@ -31,6 +31,10 @@ in {
     security.wrappers.simpleserver = {
       source = "${simpleserver}/bin/simpleserver";
       capabilities = "cap_sys_chroot+ep";
+      owner = "root";
+      group = "root";
+      setgid = false;
+      setuid = false;
     };
   };
 }
