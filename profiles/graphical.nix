@@ -103,19 +103,32 @@
     enable = true;
     enableOSSEmulation = true;
   };
-  # Enable pulse with all the modules
-  hardware.pulseaudio = {
+  hardware.pulseaudio.enable = false; # Because we want pipewire instead
+  services.pipewire = {
     enable = true;
-    extraModules = [ pkgs.pulseaudio-modules-bt ];
+    pulse.enable = true;
+    jack.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    # media-session.config.bluez-monitor = {
+    #   properties = {
+    #     "bluez5.sbc-xq-support" = true;
+    #     "bluez5.headset-roles" = [
+    #       # "hsp_hs"
+    #       # "hsp_ag"
+    #       "hfp_hf"
+    #       "hfp_ag"
+    #     ];
+    #   };
 
-    daemon.config = {
-      flat-volumes = "no";
-      default-sample-format = "s24le";
-      resample-method = "speex-float-10";
-      avoid-resampling = "true";
-    };
-
-    package = pkgs.pulseaudioFull;
+    #   rules = [{
+    #     matches = [{
+    #       # This matches all cards.
+    #       "device.name" = "~bluez_card.*";
+    #     }];
+    #     actions.update-props."bluez5.msbc-support" = true;
+    #   }];
+    # };
   };
 
   # Enable physlock
