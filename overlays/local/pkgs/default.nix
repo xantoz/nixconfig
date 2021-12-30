@@ -114,10 +114,6 @@ with super.lib; {
   #   buildInputs = foldr remove old.buildInputs [ super.networkmanager ];
   # });
 
-  dolphinEmu = super.dolphinEmu.overrideAttrs(old: {
-    nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
-  });
-
   cellwriter = super.callPackage ./cellwriter { };
 
   easystroke = super.callPackage ./easystroke { };
