@@ -33,6 +33,9 @@
     dolphinEmuMaster
 
     wineWowPackages.full
+
+    discord
+    steam
   ];
 
   ## Use the systemd-boot EFI boot loader.
@@ -84,7 +87,7 @@
 
   # TODO: set default scheduler for SSD:s to deadline
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Order the sound cards using ancient magic
   boot.extraModprobeConfig = ''
@@ -104,6 +107,12 @@
   services.mediakeys = {
     enable = true;
   };
+
+  # # Printing settings
+  # services.avahi.enable = true;
+  # services.printing = {
+  #   enable = true;
+  # };
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database

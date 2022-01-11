@@ -8,15 +8,20 @@
   ];
   imports = import ../overlays/local/modules/module-list.nix;
 
-  # Use local nixpkgs checkout
-  nix.nixPath = [
-    "/etc/nixos"
-    "nixpkgs=/etc/nixos/nixpkgs"
-    "nixpkgs-overlays=/etc/nixos/overlays/local"
-    "nixos-config=/etc/nixos/configuration.nix"
-  ];
-  nix.autoOptimiseStore = true;
-  nix.useSandbox = true;
+  nix = {
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+    autoOptimiseStore = true;
+    useSandbox = true;
+    # Use local nixpkgs checkout
+    nixPath = [
+      "/etc/nixos"
+      "nixpkgs=/etc/nixos/nixpkgs"
+      "nixpkgs-overlays=/etc/nixos/overlays/local"
+      "nixos-config=/etc/nixos/configuration.nix"
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     wget pv tree htop zile
@@ -30,7 +35,7 @@
     libarchive
     unrar
     unzip
-    # unar
+    unar
     calc
     sshfs
     lshw

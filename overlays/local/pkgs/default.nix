@@ -28,15 +28,28 @@ with super.lib; {
     toolkit = "no";
   };
 
+  libplacebo = super.libplacebo.overrideAttrs(old: {
+    src = super.fetchFromGitLab {
+      domain = "code.videolan.org";
+      owner = "videolan";
+      repo = "libplacebo";
+      rev = "9d5064230ea0943f0795f7baeb126657c27e05cc";
+      sha256 = "n0beCq3BRaPIYwEicT1NW7e5Ke+0ToY/8+igv6TrYc8=";
+    };
+    buildInputs = old.buildInputs ++ [ super.libunwind ];
+    version = "9999";
+  });
+
   mpv-unwrapped =
     let
-      mpv_rev = "341a334bc2b8a11bdfffd0fd570d614c476578ec"; # personal-build--v79
-      mpv_sha256 = "1s4cri03sfcmvb005d55fj4zwhbl38n6jcrl3lpf0x0xhyyvl35n";
+      mpv_rev = "c23d35b383025807a3b21e8c7cfa803904cd3521"; # personal-build--v80
+      mpv_sha256 = "9B0Vgk99+EROIazxu+/eZ+U9w5F/lax+MpoE3ph6JGc=";
     in (super.mpv-unwrapped.override {
       openalSupport = true;
       archiveSupport = true;
       vdpauSupport = false;
       nv-codec-headers = null;
+      jackaudioSupport = true;
       sixelSupport = true;
     }).overrideAttrs(old: {
       src = super.fetchFromGitHub {
@@ -46,7 +59,6 @@ with super.lib; {
         sha256 = mpv_sha256;
       };
       version = "9999";
-      name = "mpv-9999";
       patches = [ ];
       postPatch = old.postPatch + ''
         sed 's/UNKNOWN/g${mpv_rev}/' VERSION > snapshot_version
@@ -113,10 +125,6 @@ with super.lib; {
   #   buildInputs = foldr remove old.buildInputs [ super.networkmanager ];
   # });
 
-  dolphinEmu = super.dolphinEmu.overrideAttrs(old: {
-    nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
-  });
-
   cellwriter = super.callPackage ./cellwriter { };
 
   easystroke = super.callPackage ./easystroke { };
@@ -125,7 +133,7 @@ with super.lib; {
 
   simpleserver = super.callPackage ./simpleserver { };
 
-  mcomix = super.callPackage ./mcomix { };
+  mcomix-lite = super.callPackage ./mcomix-lite { };
 
   lsix = super.callPackage ./lsix { };
 }
