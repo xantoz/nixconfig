@@ -12,7 +12,6 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    autoOptimiseStore = true;
     # Use local nixpkgs checkout
     nixPath = [
       "/etc/nixos"
