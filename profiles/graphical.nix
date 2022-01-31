@@ -96,7 +96,7 @@
   # services.printing.enable = true;
 
   # Needed by the home-manager dconf module
-  services.dbus.packages = with pkgs; [ gnome3.dconf ];
+  services.dbus.packages = with pkgs; [ dconf ];
 
   # Enable sound.
   sound = {
