@@ -6,7 +6,6 @@ in
 {
   imports = [
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-    ./sd-image-aarch64.nix
     ./wip-pinebook-pro/pinebook_pro.nix
   ];
 
@@ -20,15 +19,28 @@ in
   # boot.resumeDevice = "/dev/mmcblk0p1"
   # Gotten with "filefrag -v /swapfile | awk '{if($1=="0:"){print $4}}'"
   # boot.kernelParams = [ "resume_offset=4761600" ];
-  boot.kernelParams = [ "resume=/dev/mmcblk0p1" "resume_offset=4761600" ];
+  boot.kernelParams = [
+    "resume=/dev/mmcblk0p1"
+    "resume_offset=4761600"
 
-  sdImage = {
-    manipulateImageCommands = ''
-      (PS4=" $ "; set -x
-      dd if=${uboot}/idbloader.img of=$img bs=512 seek=64 conv=notrunc
-      dd if=${uboot}/u-boot.itb of=$img bs=512 seek=16384 conv=notrunc
-      )
-    '';
-    compressImage = lib.mkForce false;
+    # "cma=32M"
+    "console=ttyS2,1500000n8"
+    "earlycon=uart8250,mmio32,0xff1a0000" "earlyprintk"
+
+    # The last console parameter will be where the boot process will print
+    # its messages. Comment or move abot ttyS2 for better serial debugging.
+    "console=tty0"
+
+  ];
+
+  boot.loader.grub.enable = false;
+  boot.loader.generic-extlinux-compatible.enable = true;
+
+  boot.consoleLogLevel = lib.mkDefault 7;
+
+  fileSystems."/" = {
+    # TODO: change the label...
+    device = "/dev/disk/by-label/NIXOS_SD";
+    fsType = "ext4";
   };
 }
