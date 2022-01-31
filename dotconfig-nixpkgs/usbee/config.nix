@@ -161,7 +161,7 @@ in
       paths = [
         # pkgs.my_mpc-qt
         pkgs.my_mpv
-        # pkgs.my_webmacs
+        pkgs.my_webmacs
 
         pkgs.qt5.qtbase # need this or Qt apps don't have any platform backends for some stupid reason
         pkgs.qt5.qtwayland # same but for wayland
@@ -188,9 +188,15 @@ in
         # pkgs.firefox-wayland
         # pkgs.firefox
 
+        pkgs.google-drive-ocamlfuse
+
         pkgs.nix-prefetch-github
 
         pkgs.black  # because ubuntu black is outdated
+
+        # Ubuntu waybar doesn't include the clock module for some reason (also nix waybar is a bit newer).
+        # (TODO: consider using nix sway again?)
+        pkgs.waybar
 
         # fonts
         pkgs.font-awesome
