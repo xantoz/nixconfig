@@ -26,7 +26,7 @@
     [ { device = "/dev/disk/by-uuid/f17d4220-f9b6-4652-adbb-44e5bfdbeada"; }
     ];
 
-  nix.settings.max-jobs = lib.mkDefault 4;
+  nix.maxJobs = lib.mkDefault 4;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   hardware.opengl.enable = true;

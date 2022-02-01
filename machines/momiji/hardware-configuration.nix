@@ -22,7 +22,7 @@
     [ { device = "/dev/disk/by-uuid/cb207f5b-a0e6-4c5f-87db-41b0a5fc8bdf"; }
     ];
 
-  nix.settings.max-jobs = lib.mkDefault 2;
+  nix.maxJobs = lib.mkDefault 2;
   hardware.enableRedistributableFirmware = true;
 
   hardware.opengl.enable = true;
