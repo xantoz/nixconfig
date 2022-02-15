@@ -11,7 +11,7 @@ in
 
   hardware.enableRedistributableFirmware = true;
 
-  nix.maxJobs = lib.mkDefault 2; # Using more than two threads tends to overload the poor thing (mostly a RAM issue)
+  nix.settings.max-jobs = lib.mkDefault 2; # Using more than two threads tends to overload the poor thing (mostly a RAM issue)
   powerManagement.cpuFreqGovernor = lib.mkDefault "schedutil";
 
   # TODO: replace swap file with a swap partition

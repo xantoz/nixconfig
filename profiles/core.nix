@@ -12,8 +12,6 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    autoOptimiseStore = true;
-    useSandbox = true;
     # Use local nixpkgs checkout
     nixPath = [
       "/etc/nixos"
@@ -21,6 +19,10 @@
       "nixpkgs-overlays=/etc/nixos/overlays/local"
       "nixos-config=/etc/nixos/configuration.nix"
     ];
+    settings = {
+      sandbox = true;
+      auto-optimise-store = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [
