@@ -64,6 +64,8 @@
 
     unifont
     unifont_upper
+
+    qpwgraph # pipewire patchbay thingy
   ];
 
   # Subpixel hinting always manages to look bad for some reason
