@@ -24,7 +24,7 @@
     my_xbattbar = haskellPackages.xbattbar.overrideAttrs(old: { patches = [ ../../patches/haskellPackages.xbattbar/xbattbar-0.2.patch ]; } );
   in [
     my_xbattbar
-    btrfsProgs
+    btrfs-progs
     libva-utils
     libva1
     dmidecode
