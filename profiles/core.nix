@@ -45,8 +45,7 @@
     psmisc # for fuser
     keyutils
     f2fs-tools
-    fuse_exfat
-    exfat-utils
+    exfat
     smartmontools
     nix-prefetch-git
     nix-prefetch-github
