@@ -16,7 +16,7 @@
     feh
     pqiv
     #imv  # not on aarch64
-    transmission_gtk
+    transmission-gtk
     yt-dlp
     # mate.atril
     evince
