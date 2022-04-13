@@ -200,7 +200,6 @@ in
 
         # fonts
         pkgs.font-awesome
-        pkgs.font-awesome-ttf
 
         pkgs.noto-fonts-emoji
         pkgs.emacs-all-the-icons-fonts
