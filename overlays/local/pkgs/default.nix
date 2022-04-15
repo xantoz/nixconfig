@@ -33,8 +33,8 @@ with super.lib; {
       domain = "code.videolan.org";
       owner = "videolan";
       repo = "libplacebo";
-      rev = "411594243c7eb1628910a1e995f461dd1fadb4fb";
-      sha256 = "w7dCxbFueycFKjCqyQUhVN1FogfIisG7TvU/Fv97VZ0=";
+      rev = "22d06a7a25fb4b96a66543b6c4af78d1d4b2fff4";
+      sha256 = "Orf8K5IYI2wqpyIFdeuzVLHqM+N2OAkkgXMp7+a/Rgk=";
     };
     buildInputs = old.buildInputs ++ [ super.libunwind ];
     version = "9999";
