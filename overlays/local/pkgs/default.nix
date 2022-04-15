@@ -42,8 +42,8 @@ with super.lib; {
 
   mpv-unwrapped =
     let
-      mpv_rev = "e46b70be81c18fb56782670f461fb87fe24c30e9"; # personal-build--v82
-      mpv_sha256 = "+SJAa6ibOq7Q8lcb7fNXyUZHo4ajbgmaf4Eamx5d8zM=";
+      mpv_rev = "0a63f3c41ef7e21342555fd05b2028618b1bd941"; # personal-build--v83
+      mpv_sha256 = "GwPiorYlBJw2V+dhE6fwt7QzDoNvhir6aO3Ij7/lNuc=";
     in (super.mpv-unwrapped.override {
       openalSupport = true;
       archiveSupport = true;
