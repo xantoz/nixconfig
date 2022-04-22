@@ -81,8 +81,8 @@ with super.lib; {
     src = super.fetchFromGitHub {
       owner = "sigrokproject";
       repo = "libsigrokdecode";
-      rev = "02aa01ad5f05f2730309200abda0ac75d3721e1d";
-      sha256 = "054p2sja32d5shlbsvrpaw3pq7gg4n03327ml1dn53pjnsl0wbjz";
+      rev = "24ba9e1bdfe107e394176eda3116b714463a8437";
+      sha256 = "KUl3zwzgl7FlKHZGjcXmCN9EyRa6R4IGJEBJxEDe9Fo=";
     };
     version = "9999";
     name = "libsigrokdecode-9999";
@@ -93,8 +93,8 @@ with super.lib; {
     src = super.fetchFromGitHub {
       owner = "sigrokproject";
       repo = "libsigrok";
-      rev = "e972674d0b30b98dcc354b707a80b6bfc1aeb532";
-      sha256 = "0sp9y0wb6caw6d69h0z10hd6vgjgmi8z1a93i3yjbzxx8a48iyzg";
+      rev = "c1f32601c47daec77012fd761611c503bf4cd104";
+      sha256 = "LFLBvTrD12w+gtaE9v1zd2Z7vp18xeq5Vwk7LE4uDkg=";
     };
     version = "9999";
     name = "libsigrok-9999";
@@ -109,8 +109,8 @@ with super.lib; {
     src = super.fetchFromGitHub {
       owner = "sigrokproject";
       repo = "pulseview";
-      rev = "a6fa4d477d783478935a78c1b70596e38ae8ca64";
-      sha256 = "1j5g8w74zmskq1r0rj68yz4xqv4z9j91v2hwr3i2jyk4g3yfxvd3";
+      rev = "7e5c8396624b94ad0c92382cfe3652c07800592d";
+      sha256 = "W3Tvi+zN+6zp8FDSFTOPR7F8rtFynwiRFIzhSemqM04=";
     };
     patches = [];
     version = "9999";
