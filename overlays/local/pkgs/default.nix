@@ -105,7 +105,9 @@ with super.lib; {
     };
   });
 
-  pulseview = super.pulseview.overrideAttrs(old: {
+  pulseview = (super.libsForQt5.callPackage
+    ../../../nixpkgs/pkgs/applications/science/electronics/pulseview { }
+  ).overrideAttrs(old: {
     src = super.fetchFromGitHub {
       owner = "sigrokproject";
       repo = "pulseview";
@@ -115,7 +117,7 @@ with super.lib; {
     patches = [];
     version = "9999";
     name = "pulseview-9999";
-    nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt514.qttools ];
+    nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.qttools ];
   });
 
   redshift = (super.redshift.override { withGeolocation = false; });
