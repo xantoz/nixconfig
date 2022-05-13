@@ -13,7 +13,7 @@
 
   services.wpa_gui = {
     enable = true;
-    interface = "wlo1";
+    # interface = "wlo1";
     meterInterval = 10;
   };
 
