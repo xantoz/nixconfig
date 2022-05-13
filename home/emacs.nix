@@ -3,11 +3,11 @@
 {
   services.emacs.enable = true;
   programs.emacs.enable = true;
-  programs.emacs.package = pkgs.emacs27;
+  programs.emacs.package = pkgs.emacs28;
   programs.emacs.extraPackages =
     let
       inherit (pkgs.callPackage ./config/emacs/scripts/nix-emacs-with-use-package-pkgs/emacs-with-use-package-pkgs.nix {
-        emacs = pkgs.emacs27;
+        emacs = pkgs.emacs28;
       }) usePackagePkgs;
     in usePackagePkgs {
       config = ./config/emacs/init.el;
