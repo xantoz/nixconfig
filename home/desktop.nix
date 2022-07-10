@@ -18,6 +18,7 @@
     #imv  # not on aarch64
     transmission-gtk
     yt-dlp
+    gallery-dl
     # mate.atril
     evince
     gajim
