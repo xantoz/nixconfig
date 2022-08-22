@@ -5,6 +5,9 @@
 
   imports = import ./modules/module-list.nix;
 
+  # Prevent home-manager from controlling the KB
+  home.keyboard = null;
+
   programs.bash = {
     shellOptions = [
       "histappend" # Append to history file rather than replacing it.
