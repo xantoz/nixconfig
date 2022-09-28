@@ -9,6 +9,6 @@
   ];
 
   security.doas.extraRules = [
-    { groups = [ "wheel" ]; noPass = true; cmd = "${pkgs.utillinux}/bin/rfkill"; }
+    { groups = [ "wheel" ]; noPass = true; cmd = "${pkgs.util-linux}/bin/rfkill"; }
   ];
 }
