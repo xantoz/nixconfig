@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     xorg.transset
     xcompmgr
-    compton
+    picom
     stalonetray
     dmenu
     wmname
