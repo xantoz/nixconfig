@@ -36,7 +36,7 @@
     extraPackages = with pkgs; [
       swaybg swaylock swayidle
       waybar
-      xwayland rxvt_unicode
+      xwayland foot
       qt5.qtwayland
       dmenu bemenu
       mako
