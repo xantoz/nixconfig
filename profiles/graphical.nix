@@ -6,6 +6,7 @@
   environment.systemPackages = with pkgs; [
     webmacs
     firefox
+    ungoogled-chromium
 
     #alacritty
     kitty
