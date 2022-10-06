@@ -198,6 +198,8 @@ in
         # (TODO: consider using nix sway again?)
         pkgs.waybar
 
+        pkgs.insomnia
+
         # fonts
         pkgs.font-awesome
 
