@@ -13,10 +13,10 @@ let
         postBuild = ''
           for binary in ${pkgs.lib.concatStringsSep " " binaries}; do
               wrapProgram "$out$binary"                                     \
-                --set LIBGL_DRIVERS_PATH "${pkgs.mesa_drivers}/lib/dri"     \
+                --set LIBGL_DRIVERS_PATH "${pkgs.mesa.drivers}/lib/dri"     \
                 --set LIBVA_DRIVERS_PATH '${pkgs.vaapiIntel}/lib/dri'       \
                 --prefix LD_LIBRARY_PATH ":" ${pkgs.lib.makeLibraryPath [
-                    pkgs.mesa_drivers
+                    pkgs.mesa.drivers
                     pkgs.zlib
                     pkgs.libdrm
                     pkgs.xorg.libX11
@@ -46,10 +46,10 @@ let
                 --set PYTHONNOUSERSITE 1                                    \
                 --set PYTHONHASHSEED 0                                      \
                 --prefix PYTHONPATH : "${pkgs.python3}/lib/${pkgs.python3.libPrefix}/site-packages" \
-                --set LIBGL_DRIVERS_PATH "${pkgs.mesa_drivers}/lib/dri"     \
+                --set LIBGL_DRIVERS_PATH "${pkgs.mesa.drivers}/lib/dri"     \
                 --set LIBVA_DRIVERS_PATH '${pkgs.vaapiIntel}/lib/dri'       \
                 --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath [
-                    pkgs.mesa_drivers
+                    pkgs.mesa.drivers
                     pkgs.zlib
                     pkgs.libdrm
                     pkgs.xorg.libX11
@@ -94,9 +94,9 @@ in
     '';
 
     my_kitty = pkgs.writeShellScriptBin "kitty" ''
-      export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
+      export LIBGL_DRIVERS_PATH='${pkgs.mesa.drivers}/lib/dri'
       export LD_LIBRARY_PATH='${pkgs.lib.makeLibraryPath [
-        pkgs.mesa_drivers
+        pkgs.mesa.drivers
         pkgs.zlib
         pkgs.libdrm
         pkgs.xorg.libX11
@@ -122,8 +122,8 @@ in
       #!/usr/bin/env nix-shell
       #!nix-shell -i bash -p python3
 
-      export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
-      export LD_LIBRARY_PATH='${pkgs.mesa_drivers}/lib'""''${LD_LIBRARY_PATH:+:}$LD_LIBRARY_PATH
+      export LIBGL_DRIVERS_PATH='${pkgs.mesa.drivers}/lib/dri'
+      export LD_LIBRARY_PATH='${pkgs.mesa.drivers}/lib'""''${LD_LIBRARY_PATH:+:}$LD_LIBRARY_PATH
       exec ${pkgs.pulseview}/bin/pulseview "$@"
     '';
 
@@ -132,15 +132,15 @@ in
     */
 
     nixGLIntel = pkgs.writeShellScriptBin "nixGLIntel" ''
-      export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
-      export LD_LIBRARY_PATH='${pkgs.mesa_drivers}/lib':$LD_LIBRARY_PATH
+      export LIBGL_DRIVERS_PATH='${pkgs.mesa.drivers}/lib/dri'
+      export LD_LIBRARY_PATH='${pkgs.mesa.drivers}/lib':$LD_LIBRARY_PATH
       exec "$@"
     '';
 
     nixIntel = pkgs.writeShellScriptBin "nixIntel" ''
-      export LIBGL_DRIVERS_PATH='${pkgs.mesa_drivers}/lib/dri'
+      export LIBGL_DRIVERS_PATH='${pkgs.mesa.drivers}/lib/dri'
       export LD_LIBRARY_PATH='${pkgs.lib.makeLibraryPath [
-        pkgs.mesa_drivers
+        pkgs.mesa.drivers
         pkgs.zlib
         pkgs.libdrm
         pkgs.xorg.libX11
