@@ -174,7 +174,7 @@ in
         pkgs.nixGLIntel
         pkgs.nixIntel
 
-        pkgs.xterm
+        # pkgs.xterm
         pkgs.youtube-dl
         pkgs.hugo
 
