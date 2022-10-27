@@ -203,6 +203,9 @@ in
         # fonts
         pkgs.font-awesome
 
+        # Too old version in ubuntu
+        pkgs.isort
+
         pkgs.noto-fonts-emoji
         pkgs.emacs-all-the-icons-fonts
         pkgs.source-code-pro
