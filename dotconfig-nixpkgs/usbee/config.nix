@@ -209,18 +209,10 @@ in
 
         pkgs.noto-fonts-emoji
         pkgs.emacs-all-the-icons-fonts
+
+        pkgs.source-han-sans
+        pkgs.source-han-serif
         pkgs.source-code-pro
-        pkgs.source-sans-pro
-        pkgs.source-serif-pro
-        pkgs.source-han-code-jp
-        pkgs.source-han-sans-japanese
-        pkgs.source-han-serif-japanese
-        pkgs.source-han-sans-korean
-        pkgs.source-han-serif-korean
-        pkgs.source-han-sans-simplified-chinese
-        pkgs.source-han-serif-simplified-chinese
-        pkgs.source-han-sans-traditional-chinese
-        pkgs.source-han-serif-traditional-chinese
       ];
     };
   };
