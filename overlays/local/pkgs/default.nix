@@ -28,22 +28,10 @@ with super.lib; {
     toolkit = "no";
   };
 
-  libplacebo = super.libplacebo.overrideAttrs(old: {
-    src = super.fetchFromGitLab {
-      domain = "code.videolan.org";
-      owner = "videolan";
-      repo = "libplacebo";
-      rev = "22d06a7a25fb4b96a66543b6c4af78d1d4b2fff4";
-      sha256 = "Orf8K5IYI2wqpyIFdeuzVLHqM+N2OAkkgXMp7+a/Rgk=";
-    };
-    buildInputs = old.buildInputs ++ [ super.libunwind ];
-    version = "9999";
-  });
-
   mpv-unwrapped =
     let
-      mpv_rev = "0a63f3c41ef7e21342555fd05b2028618b1bd941"; # personal-build--v83
-      mpv_sha256 = "GwPiorYlBJw2V+dhE6fwt7QzDoNvhir6aO3Ij7/lNuc=";
+      mpv_rev = "11fcbc4a0beefde109a0251d255359a5586de7f8"; # personal-build--v85
+      mpv_sha256 = "sha256-F6VjcSfDtrJxnXvYtBy97VLi6mWe8U1/z6GLNdvvknQ=";
     in (super.mpv-unwrapped.override {
       openalSupport = true;
       archiveSupport = true;
