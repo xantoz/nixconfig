@@ -66,6 +66,10 @@ let
     };
 in
 {
+
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  allowUnsupported = true;
   allowUnfree = true;
 
   nix.maxJobs = 4;
