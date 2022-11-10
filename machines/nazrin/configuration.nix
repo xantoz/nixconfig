@@ -82,6 +82,8 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  networking.enableB43Firmware = true;
+
   services.xserver.videoDrivers = [ "intel" ];
   services.xserver.deviceSection = ''
     Option "TearFree" "on"
