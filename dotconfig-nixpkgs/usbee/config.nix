@@ -139,6 +139,9 @@ in
         # pkgs.pulsemixer
         # pkgs.ncpamixer
 
+        # pkgs.firefox
+        # pkgs.chromium
+
         # pkgs.imv
 
         # pkgs.firefox-wayland
