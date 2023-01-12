@@ -75,6 +75,53 @@ in
   nix.maxJobs = 4;
 
   packageOverrides = pkgs_: {
+
+    my_mpv = nixIntelWrap pkgs.mpv "mpv" [ "/bin/mpv" "/bin/umpv" ];
+
+    # my_alacritty = pkgs.writeShellScriptBin "alacritty" ''
+    #   export LIBGL_DRIVERS_PATH='${pkgs.mesa.drivers}/lib/dri'
+    #   export LD_LIBRARY_PATH='${pkgs.lib.makeLibraryPath [
+    #     pkgs.mesa.drivers
+    #     pkgs.zlib
+    #     pkgs.libdrm
+    #     pkgs.xorg.libX11
+    #     pkgs.xorg.libxcb
+    #     pkgs.xorg.libxshmfence
+    #     pkgs.wayland
+    #     pkgs.gcc.cc
+    #     pkgs.expat
+    #     pkgs.llvm_7
+    #     pkgs.vulkan-loader
+    #   ]}:'$LD_LIBRARY_PATH
+    #   export LIBVA_DRIVERS_PATH='${pkgs.vaapiIntel}/lib/dri'
+    #   exec ${pkgs.alacritty}/bin/alacritty "$@" -e /bin/sh -c "unset LIBGL_DRIVERS_PATH; unset LD_LIBRARY_PATH; unset LIBVA_DRIVERS_PATH; exec $SHELL"
+    # '';
+
+    my_kitty = pkgs.writeShellScriptBin "kitty" ''
+      export LIBGL_DRIVERS_PATH='${pkgs.mesa.drivers}/lib/dri'
+      export LD_LIBRARY_PATH='${pkgs.lib.makeLibraryPath [
+        pkgs.mesa.drivers
+        pkgs.zlib
+        pkgs.libdrm
+        pkgs.xorg.libX11
+        pkgs.xorg.libxcb
+        pkgs.xorg.libxshmfence
+        pkgs.wayland
+        pkgs.gcc.cc
+        pkgs.expat
+        pkgs.llvm_7
+        pkgs.vulkan-loader
+      ]}:'$LD_LIBRARY_PATH
+      export LIBVA_DRIVERS_PATH='${pkgs.vaapiIntel}/lib/dri'
+      exec ${pkgs.kitty}/bin/kitty "$@" -e /bin/sh -c "unset LIBGL_DRIVERS_PATH; unset LD_LIBRARY_PATH; unset LIBVA_DRIVERS_PATH; exec $SHELL -l"
+    '';
+
+    my_mpc-qt = nixIntelWrap pkgs.mpc-qt "mpc-qt" [ "/bin/mpc-qt" ];
+
+    my_webmacs = nixIntelWrap pkgs.webmacs "webmacs" [ "/bin/webmacs" ];
+
+    my_vainfo = nixIntelWrap pkgs.vainfo "vainfo" [ "/bin/vainfo" ];
+
     my_pulseview = pkgs.writeScriptBin "pulseview" ''
       #!/usr/bin/env nix-shell
       #!nix-shell -i bash -p python3
@@ -116,16 +163,18 @@ in
       name = "all";
 
       paths = [
-        pkgs.mpv
-        pkgs.webmacs
+        # pkgs.my_mpc-qt
+        pkgs.my_mpv
+        pkgs.my_webmacs
 
         pkgs.qt5.qtbase # need this or Qt apps don't have any platform backends for some stupid reason
         pkgs.qt5.qtwayland # same but for wayland
         pkgs.emacs
 
         pkgs.my_pulseview
+        # pkgs.my_alacritty
         pkgs.alacritty
-        pkgs.kitty
+        pkgs.my_kitty
 
         pkgs.nixGLIntel
         pkgs.nixIntel
