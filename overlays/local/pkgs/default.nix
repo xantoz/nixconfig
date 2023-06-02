@@ -30,8 +30,8 @@ with super.lib; {
 
   mpv-unwrapped =
     let
-      mpv_rev = "11fcbc4a0beefde109a0251d255359a5586de7f8"; # personal-build--v85
-      mpv_sha256 = "sha256-F6VjcSfDtrJxnXvYtBy97VLi6mWe8U1/z6GLNdvvknQ=";
+      mpv_rev = "c1bef0f084b339b79f7b6551267bf59fe12f9389";
+      mpv_sha256 = "sha256-xn8HHglm39FhCi3CNCrFsYTiT3ptZdDimBjQ18s0aaw=";
     in (super.mpv-unwrapped.override {
       openalSupport = true;
       archiveSupport = true;
