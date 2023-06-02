@@ -7,9 +7,19 @@
 { config, pkgs, ... }:
 
 {
+  # NOTE: no profiles/wireless.nix because we use networkmanager on zeke
   imports = [
       ./hardware-configuration.nix
+      ../../profiles/core.nix
+      ../../profiles/graphical-kde.nix
+      ../../profiles/input-methods.nix
+      ../../profiles/bluetooth.nix
+      ../../profiles/laptop.nix
+      ../../profiles/sway.nix
+      ../../home/home-manager/nixos
     ];
+
+  home-manager.users.akindestam = import ../../home/home.zeke.nix;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -25,7 +35,7 @@
   boot.initrd.luks.devices."luks-ca2251ba-8e8e-43ff-b9a4-21b6a8dd5e7e".device = "/dev/disk/by-uuid/ca2251ba-8e8e-43ff-b9a4-21b6a8dd5e7e";
   boot.initrd.luks.devices."luks-ca2251ba-8e8e-43ff-b9a4-21b6a8dd5e7e".keyFile = "/crypto_keyfile.bin";
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "zeke"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -34,9 +44,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "Europe/Stockholm";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -52,22 +59,6 @@
     LC_TELEPHONE = "sv_SE.UTF-8";
     LC_TIME = "sv_SE.UTF-8";
   };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -93,8 +84,8 @@
   users.users.akindestam = {
     isNormalUser = true;
     uid = 1000;
-    description = "xantoz";
-x    extraGroups = [ "networkmanager" "wheel" ];
+    description = "Anton Kindestam";
+    extraGroups = [ "networkmanager" "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "cdrom" "floppy" ];
     packages = with pkgs; [
       firefox
       kate
