@@ -82,4 +82,6 @@
       exec ratpoison
     '';
   };
+
+  home.stateVersion = "22.05";
 }
