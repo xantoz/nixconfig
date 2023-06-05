@@ -67,8 +67,6 @@
       xinput set-prop 'HAILUCK CO.,LTD USB KEYBOARD Touchpad' 'Coordinate Transformation Matrix' 1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.4
       xinput set-prop 'HAILUCK CO.,LTD USB KEYBOARD Touchpad' 'libinput Tapping Enabled' 1
 
-      feh --bg-fill ~/Pictures/Wallpapers/Touhou/Du0glW6V4AA2fdz.jpg &
-
       export QT_IM_MODULE=fcitx
       export GTK_IM_MODULE=fcitx
       export CLUTTER_IM_MODULE=fcitx
