@@ -103,6 +103,18 @@
   #  wget
   ];
 
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.opengl.enable = true;
+  hardware.opengl.driSupport32Bit = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;   # Optionally, you may need to select the appropriate driver version for your specific GPU.
+  hardware.nvidia.modesetting.enable = true;   # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway
+  hardware.nvidia.prime = {
+    offload.enable = true;
+    offload.enableOffloadCmd = true; # Gives us the nvidia-offload convenience script
+    intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:1:0:0";
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
