@@ -9,6 +9,7 @@
   # Override settings from profiles/graphical.nix, since we are going full ham KDE
   services.xserver.autorun = lib.mkForce true;
   services.xserver.displayManager.startx.enable = lib.mkForce false;
+  services.physlock.enable = lib.mkForce false;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
