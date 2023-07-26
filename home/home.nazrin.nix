@@ -4,6 +4,7 @@
   imports = [
     ./emacs.nix
     ./desktop.nix
+    ./dunst.nix
     ./mpv.nix
     ./common.nix
     ./git.nix
