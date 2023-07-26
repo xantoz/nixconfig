@@ -33,7 +33,7 @@
 
       source .config/ratpoison/xbattbarrc
 
-      setenv rp_compositor compton
+      setenv rp_compositor ${pkgs.picom}/bin/compton
       setenv rp_compositor_args --glx-no-stencil --backend glx --opengl --vsync
       source .config/ratpoison/compositorrc
 

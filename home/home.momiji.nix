@@ -32,7 +32,7 @@
 
       source .config/ratpoison/volumerc
 
-      setenv rp_compositor xcompmgr
+      setenv rp_compositor ${pkgs.xcompmgr}/bin/xcompmgr
       setenv rp_compositor_args --
       source .config/ratpoison/compositorrc
 

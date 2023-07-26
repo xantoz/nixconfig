@@ -3,8 +3,6 @@
 {
   home.packages = with pkgs; [
     xorg.transset
-    xcompmgr
-    # picom
     stalonetray
     dmenu
     wmname
