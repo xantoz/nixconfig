@@ -28,6 +28,13 @@ with super.lib; {
     toolkit = "no";
   };
 
+  mpv-unwrapped = super.mpv-unwrapped.override {
+    openalSupport = true;
+    archiveSupport = true;
+    jackaudioSupport = true;
+    sixelSupport = true;
+  };
+
   # mpv-unwrapped =
   #   let
   #     mpv_rev = "c1bef0f084b339b79f7b6551267bf59fe12f9389";
