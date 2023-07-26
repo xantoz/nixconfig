@@ -117,4 +117,11 @@
   # Enable physlock
   services.physlock.enable = true;
   services.physlock.allowAnyUser = true;
+
+  # Fixing xwayland font shenanigans? At least partially?
+  # from here: https://github.com/NixOS/nixpkgs/issues/155044
+  programs.xwayland.enable = true; # I think this one is actually set already by default
+  fonts.fontDir.enable = true;
+  fonts.enableGhostscriptFonts = true;
+  fonts.fontconfig.allowType1 = true;
 }
