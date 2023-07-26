@@ -158,7 +158,6 @@
   };
 
   home.file = {
-    ".drirc".source = ./config/dotfiles/src/.drirc;
    ".webmacs/init".source = ./config/webmacs;
   };
 }
