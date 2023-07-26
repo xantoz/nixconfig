@@ -53,6 +53,8 @@ with super.lib; {
   #     '';
   #   });
 
+  doas = super.doas.override { withPAM = false; };
+
   mpc-qt = super.mpc-qt.overrideAttrs(old: {
     src = super.fetchFromGitLab {
       owner = "mpc-qt";
