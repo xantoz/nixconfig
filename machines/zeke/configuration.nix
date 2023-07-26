@@ -87,9 +87,12 @@
     description = "Anton Kindestam";
     extraGroups = [ "networkmanager" "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "cdrom" "floppy" ];
     packages = with pkgs; [
-      firefox
-      kate
-    #  thunderbird
+      kalendar
+      kmail
+      kontact
+      # firefox
+      # kate
+      # thunderbird
     ];
   };
 
