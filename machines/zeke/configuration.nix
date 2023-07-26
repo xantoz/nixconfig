@@ -90,6 +90,7 @@
       kalendar
       kmail
       kontact
+      blender
       # firefox
       # kate
       # thunderbird
@@ -98,6 +99,9 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  # CUDA support in Blender and more (See: https://discourse.nixos.org/t/how-to-get-cuda-working-in-blender/5918/12)
+  nixpkgs.config.cudaSupport = true;
+
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

@@ -135,10 +135,4 @@ with super.lib; {
   mcomix-lite = super.callPackage ./mcomix-lite { };
 
   lsix = super.callPackage ./lsix { };
-
-  # CUDA support in blender (from https://discourse.nixos.org/t/how-to-get-cuda-working-in-blender/5918/4)
-  # TODO: Perhaps nvidia-related tweaks should be in their own overlay or something so I can avoid pulling them in on non-nvidia-encumbered systems
-  blender = super.blender.override {
-    cudaSupport = true;
-  };
 }
