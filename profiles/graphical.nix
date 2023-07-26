@@ -70,6 +70,7 @@
 
   services.xserver.autorun = false;
   services.xserver.displayManager.startx.enable = true;
+  services.xserver.desktopManager.runXdgAutostartIfNone = true;
 
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
