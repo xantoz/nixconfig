@@ -12,6 +12,7 @@
       ./hardware-configuration.nix
       ../../profiles/core.nix
       ../../profiles/graphical-kde.nix
+      ../../profiles/input-methods-ibus.nix
       ../../profiles/bluetooth.nix
       ../../profiles/laptop.nix
       ../../profiles/sway.nix
@@ -126,14 +127,6 @@
     intelBusId = "PCI:0:2:0";
     nvidiaBusId = "PCI:1:0:0";
   };
-
-  # Input method configs
-  i18n.inputMethod = {
-    enabled = "ibus";
-    ibus.engines = with pkgs.ibus-engines; [ mozc m17n ];
-  };
-  services.xserver.layout = "se(us)";
-  services.xserver.xkbOptions = "ctrl:nocaps";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
