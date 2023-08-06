@@ -31,6 +31,9 @@
     qt5.qtbase # for some reason I need to add this manually now to have xcb platform
 
     tigervnc
+
+    qpwgraph # pipewire patchbay thingy
+    helvum # another pipewire patchbay thingy
   ];
 
   fonts.fonts = with pkgs; [
@@ -54,9 +57,6 @@
 
     unifont
     unifont_upper
-
-    qpwgraph # pipewire patchbay thingy
-    helvum # another pipewire patchbay thingy
   ];
 
   # Subpixel hinting always manages to look bad for some reason
