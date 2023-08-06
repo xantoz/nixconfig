@@ -36,7 +36,7 @@
     helvum # another pipewire patchbay thingy
   ];
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     corefonts
     emacs-all-the-icons-fonts
 
