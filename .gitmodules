@@ -25,3 +25,6 @@
 [submodule "machines/sumireko/wip-pinebook-pro"]
 	path = machines/sumireko/wip-pinebook-pro
 	url = https://github.com/samueldr/wip-pinebook-pro.git
+[submodule "fromElisp"]
+	path = emacs-parse/fromElisp
+	url = https://github.com/talyz/fromElisp.git
