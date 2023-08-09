@@ -5,11 +5,7 @@
   programs.emacs.enable = true;
   programs.emacs.package = pkgs.emacs28;
   programs.emacs.extraPackages =
-    let
-      inherit (pkgs.callPackage ./config/emacs/scripts/nix-emacs-with-use-package-pkgs/emacs-with-use-package-pkgs.nix {
-        emacs = pkgs.emacs28;
-      }) usePackagePkgs;
-    in usePackagePkgs {
+    ((import ../emacs-parse/parse.nix) { inherit pkgs; inherit lib; }).usePackagePkgs {
       config = ./config/emacs/init.el;
       extraPackages = [ "vterm" ];
     };
