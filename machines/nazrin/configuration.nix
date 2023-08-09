@@ -120,6 +120,12 @@
     enable = true;
   };
 
+  users.users.tewi_inaba = {
+    isNormalUser = true;
+    uid = 1000;
+    extraGroups = [ "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "cdrom" "floppy" ];
+  };
+
   # # Printing settings
   # services.avahi.enable = true;
   # services.printing = {

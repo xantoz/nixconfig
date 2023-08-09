@@ -4,6 +4,7 @@
   imports = [
     ./emacs.nix
     ./desktop.nix
+    ./dunst.nix
     ./mpv.nix
     ./common.nix
     ./git.nix
@@ -34,7 +35,7 @@
 
       source .config/ratpoison/xbattbarrc
 
-      setenv rp_compositor compton
+      setenv rp_compositor ${pkgs.picom}/bin/compton
       setenv rp_compositor_args --glx-no-stencil --backend glx --opengl --vsync
       source .config/ratpoison/compositorrc
 
@@ -82,4 +83,6 @@
       exec ratpoison
     '';
   };
+
+  home.stateVersion = "22.05";
 }

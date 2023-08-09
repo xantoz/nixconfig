@@ -6,7 +6,6 @@
   environment.systemPackages = with pkgs; [
     webmacs
     firefox
-    ungoogled-chromium
 
     #alacritty
     kitty
@@ -71,21 +70,11 @@
 
   services.xserver.autorun = false;
   services.xserver.displayManager.startx.enable = true;
+  services.xserver.desktopManager.runXdgAutostartIfNone = true;
 
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
 
-  # Portals seem to be kinda broken on NixOs, so disable them. In particular
-  # with GTK_USE_PORTAL=1 (which will be set in the environment if portals are
-  # enabled, see the xdg.portal nix module), modern version of firefox will try
-  # to use the org.freedesktop.portal.FileChooser API and not find it.
-  #
-  # Trying to add pkgs.xdg-desktop-portal-gtk or pkgs.xdg-desktop-portal-kde to
-  # xdg.portal.extraPortals does not help. Starting the
-  # xdg-desktop-portal-{gtk,kde} binary manually only gives me
-  # org.freedesktop.impl.portal.desktop.{gtk,kde} which is not what firefox is
-  # looking for.
-  xdg.portal.enable = false;
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
@@ -128,4 +117,11 @@
   # Enable physlock
   services.physlock.enable = true;
   services.physlock.allowAnyUser = true;
+
+  # Fixing xwayland font shenanigans? At least partially?
+  # from here: https://github.com/NixOS/nixpkgs/issues/155044
+  programs.xwayland.enable = true; # I think this one is actually set already by default
+  fonts.fontDir.enable = true;
+  fonts.enableGhostscriptFonts = true;
+  fonts.fontconfig.allowType1 = true;
 }

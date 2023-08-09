@@ -126,6 +126,12 @@
     wineFull
   ];
 
+  users.users.tewi_inaba = {
+    isNormalUser = true;
+    uid = 1000;
+    extraGroups = [ "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "cdrom" "floppy" ];
+  };
+
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you

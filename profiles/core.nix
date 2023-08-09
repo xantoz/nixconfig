@@ -105,7 +105,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  services.openssh.passwordAuthentication = false;
+  services.openssh.settings.PasswordAuthentication = false;
 
   programs.ssh.askPassword = "";
 
@@ -152,11 +152,4 @@
     # Nintendo Switch Pro Controller over bluetooth hidraw
     KERNEL=="hidraw*", KERNELS=="*057E:2009*", MODE="0666"
   '';
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.tewi_inaba = {
-    isNormalUser = true;
-    uid = 1000;
-    extraGroups = [ "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "cdrom" "floppy" ];
-  };
 }

@@ -65,6 +65,8 @@
       export PATH="$HOME/.local/bin:$PATH"
 
       export EDITOR='emacsclient -t'
+
+      source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
     '';
   };
 
@@ -91,6 +93,4 @@
       { allowUnfree = true; }
     '';
   };
-
-  home.stateVersion = "22.05";
 }

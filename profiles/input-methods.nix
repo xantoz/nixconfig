@@ -1,8 +1,20 @@
 { config, pkgs, ... }:
 
 {
-  i18n.inputMethod.enabled = "fcitx";
-  i18n.inputMethod.fcitx.engines = with pkgs.fcitx-engines; [ mozc m17n ];
+  # # TODO: consider going with more widely supported ibus instead? although at least we are at fcitx5 now, which should work better in wayland?
+  # i18n.inputMethod = {
+  #   enabled = "fcitx5";
+  #   fcitx5.addons = with pkgs; [
+  #     fcitx5-mozc
+  #     fcitx5-gtk
+  #     fcitx5-m17n
+  #   ];
+  # };
+
+  i18n.inputMethod = {
+    enabled = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [ mozc m17n ];
+  };
 
   services.xserver.layout = "se(us)";
   services.xserver.xkbOptions = "ctrl:nocaps";

@@ -28,30 +28,39 @@ with super.lib; {
     toolkit = "no";
   };
 
-  mpv-unwrapped =
-    let
-      mpv_rev = "11fcbc4a0beefde109a0251d255359a5586de7f8"; # personal-build--v85
-      mpv_sha256 = "sha256-F6VjcSfDtrJxnXvYtBy97VLi6mWe8U1/z6GLNdvvknQ=";
-    in (super.mpv-unwrapped.override {
-      openalSupport = true;
-      archiveSupport = true;
-      vdpauSupport = false;
-      nv-codec-headers = null;
-      jackaudioSupport = true;
-      sixelSupport = true;
-    }).overrideAttrs(old: {
-      src = super.fetchFromGitHub {
-        owner = "xantoz";
-        repo = "mpv";
-        rev = mpv_rev;
-        sha256 = mpv_sha256;
-      };
-      version = "9999";
-      patches = [ ];
-      postPatch = old.postPatch + ''
-        sed 's/UNKNOWN/g${mpv_rev}/' VERSION > snapshot_version
-      '';
-    });
+  mpv-unwrapped = super.mpv-unwrapped.override {
+    openalSupport = true;
+    archiveSupport = true;
+    jackaudioSupport = true;
+    sixelSupport = true;
+  };
+
+  # mpv-unwrapped =
+  #   let
+  #     mpv_rev = "c1bef0f084b339b79f7b6551267bf59fe12f9389";
+  #     mpv_sha256 = "sha256-xn8HHglm39FhCi3CNCrFsYTiT3ptZdDimBjQ18s0aaw=";
+  #   in (super.mpv-unwrapped.override {
+  #     openalSupport = true;
+  #     archiveSupport = true;
+  #     vdpauSupport = false;
+  #     nv-codec-headers = null;
+  #     jackaudioSupport = true;
+  #     sixelSupport = true;
+  #   }).overrideAttrs(old: {
+  #     src = super.fetchFromGitHub {
+  #       owner = "xantoz";
+  #       repo = "mpv";
+  #       rev = mpv_rev;
+  #       sha256 = mpv_sha256;
+  #     };
+  #     version = "9999";
+  #     patches = [ ];
+  #     postPatch = old.postPatch + ''
+  #       sed 's/UNKNOWN/g${mpv_rev}/' VERSION > snapshot_version
+  #     '';
+  #   });
+
+  doas = super.doas.override { withPAM = false; };
 
   mpc-qt = super.mpc-qt.overrideAttrs(old: {
     src = super.fetchFromGitLab {
