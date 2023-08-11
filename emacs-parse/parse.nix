@@ -73,6 +73,8 @@ rec {
       []
     else if (car tree) == "defun" || (car tree == "defmacro") then
       walk (cddr tree)
+    else if (car tree) == "lambda" then
+      walk (cddr tree)
     else if (car tree) == "let" || (car tree) == "let*" then
       (lib.flatten
         (map
