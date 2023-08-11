@@ -25,11 +25,10 @@ rec {
   memq = keyword: lst:
     if lst == [] then
       []
+    else if (car lst) == keyword then
+      lst
     else
-      if (car lst) == keyword then
-        lst
-      else
-        memq keyword (cdr lst);
+      memq keyword (cdr lst);
 
   getParameter = keyword: body:
     let
@@ -70,6 +69,18 @@ rec {
       []
     else if (car tree) == "unless" && (cadr tree) != [] then # Ignore parts commented out with (unless t ...) or similar
       []
+    else if (car tree) == "quote" || (car tree) == "backquote" then # Note: To handle backquote accurately would require doing macro expansion
+      []
+    else if (car tree) == "defun" || (car tree == "defmacro") then
+      walk (cddr tree)
+    else if (car tree) == "let" || (car tree) == "let*" then
+      (lib.flatten
+        (map
+          (x: if builtins.isList x then (walk (cdr x)) else [])
+          (cadr tree)))
+      ++ (walk (cddr tree))
+    else if (car tree) == "progn" then # This is pretty much kind of superfluous
+      walk (cdr tree)
     else if (car tree) == "use-package" then
       handleUsePackage tree
     else
