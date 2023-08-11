@@ -84,6 +84,7 @@ with super.lib; {
     version = "9999";
     name = "libsigrokdecode-9999";
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook ];
+    doCheck = false; # Tests seem to fail in some remote-building scenarios (at least when building aarch64 on x86_64 with the help of qemu)
   });
 
   libsigrok = super.libsigrok.overrideAttrs(old: {
