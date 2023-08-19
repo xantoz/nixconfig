@@ -15,6 +15,7 @@
       ../../profiles/bluetooth.nix
       ../../profiles/laptop.nix
       ../../profiles/sway.nix
+      ../../profiles/printing-and-scanning.nix
       ../../home/home-manager/nixos
     ];
 
@@ -125,12 +126,6 @@
     uid = 1000;
     extraGroups = [ "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "cdrom" "floppy" ];
   };
-
-  # # Printing settings
-  # services.avahi.enable = true;
-  # services.printing = {
-  #   enable = true;
-  # };
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
