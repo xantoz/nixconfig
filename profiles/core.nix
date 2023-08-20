@@ -62,6 +62,9 @@
 
     poppler_utils # for pdfimages
     lsix
+
+    # man page havings
+    linux-manual man-pages man-pages-posix
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
@@ -152,4 +155,12 @@
     # Nintendo Switch Pro Controller over bluetooth hidraw
     KERNEL=="hidraw*", KERNELS=="*057E:2009*", MODE="0666"
   '';
+
+  # Have man pages, in particular for C and POSIX functions etc.
+  documentation = {
+    enable = true;
+    man.enable = true;
+    dev.enable = true;
+    man.generateCaches = true;
+  };
 }
