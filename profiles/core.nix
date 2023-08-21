@@ -161,6 +161,7 @@
     enable = true;
     man.enable = true;
     dev.enable = true;
-    man.generateCaches = true;
+    # Enable the below for whatis and apropos and stuff. But it will make build times quite slow...
+    # man.generateCaches = true;
   };
 }
