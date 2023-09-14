@@ -77,7 +77,7 @@
 
   boot.initrd.systemd.enable = true;
 
-  boot.tmpOnTmpfs = true;
+  # boot.tmpOnTmpfs = true;
 
   networking.hostName = "nazrin"; # Define your hostname.
 
