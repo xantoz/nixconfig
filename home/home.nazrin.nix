@@ -8,6 +8,7 @@
     ./mpv.nix
     ./common.nix
     ./git.nix
+    ./gimpscan.nix
   ];
 
   services.blueman-applet.enable = true;
