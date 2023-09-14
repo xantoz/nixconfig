@@ -7,11 +7,15 @@
     enable = true;
     drivers = with pkgs; [ hplipWithPlugin ];
   };
-  # services.ipp-usb.enable = true;
+  services.ipp-usb.enable = true;
 
   # scan
   hardware.sane = {
     enable = true;
-    extraBackends = with pkgs; [ hplipWithPlugin ];
+    extraBackends = with pkgs; [
+      hplipWithPlugin
+      epkowa
+      # epsonscan2
+    ];
   };
 }
