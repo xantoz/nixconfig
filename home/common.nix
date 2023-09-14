@@ -100,7 +100,7 @@
 
     ".config/waybar".source = ./config/dotfiles/src/waybar;
 
-    ".config/pqivrc".source = pkgs.writeText "pqiv-config" ''
+    ".config/pqivrc".text = ''
       [options]
       fullscreen=1
       sort=1
