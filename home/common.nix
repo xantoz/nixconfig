@@ -88,6 +88,13 @@
   };
 
   home.file = {
+    ".config/foot/foot.ini".source = pkgs.writeText "foot.ini" ''
+      [main]
+
+      [colors]
+      alpha=0.85
+    '';
+
     ".zile".source = builtins.path { name = "dotzile"; path = ./config/dotfiles/src/.zile; };
     ".config/youtube-dl/config".source = ./config/dotfiles/src/youtube-dl/config;
     ".config/feh/themes".source = ./config/dotfiles/src/feh/themes;

@@ -26,7 +26,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    wget pv tree htop zile
+    wget pv tree htop btop zile
     silver-searcher jq file
     (pkgs.runCommand "filtered-busybox" {} "mkdir -p $out/bin && ln -s ${busybox}/bin/{busybox,vi,ash,killall} $out/bin/")
     git tig
@@ -161,7 +161,7 @@
     enable = true;
     man.enable = true;
     dev.enable = true;
-    # Enable the below for whatis and apropos and stuff. But it will make build times quite slow...
+    # Enabling the below apparently helps whatis and apropos a bit. Unfortunately it also makes build times very long, so do not enable it for now
     # man.generateCaches = true;
   };
 }
