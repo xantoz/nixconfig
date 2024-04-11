@@ -3,7 +3,7 @@
 {
   services.emacs.enable = true;
   programs.emacs.enable = true;
-  programs.emacs.package = pkgs.emacs28;
+  programs.emacs.package = pkgs.emacs29;
   programs.emacs.extraPackages =
     ((import ../emacs-parse/parse.nix) { inherit pkgs; inherit lib; }).usePackagePkgs {
       config = ./config/emacs/init.el;
