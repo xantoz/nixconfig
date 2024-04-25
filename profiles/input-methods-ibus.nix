@@ -6,6 +6,8 @@
     enabled = "ibus";
     ibus.engines = with pkgs.ibus-engines; [ mozc m17n ];
   };
-  services.xserver.layout = "se(us)";
-  services.xserver.xkbOptions = "ctrl:nocaps";
+  services.xserver.xkb = {
+    layout = "se(us)";
+    options = "ctrl:nocaps";
+  };
 }

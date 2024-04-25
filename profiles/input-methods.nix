@@ -10,6 +10,8 @@
     ];
   };
 
-  services.xserver.layout = "se(us)";
-  services.xserver.xkbOptions = "ctrl:nocaps";
+  services.xserver.xkb = {
+    layout = "se(us)";
+    options = "ctrl:nocaps";
+  };
 }
