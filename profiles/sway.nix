@@ -36,13 +36,17 @@
     extraPackages = with pkgs; [
       swaybg swaylock swayidle
       waybar
-      xwayland foot
+      xwayland
       qt5.qtwayland
       dmenu bemenu
       mako
       acpi
       grim
       sway-contrib.grimshot
+
+      # Usable minimal wayland-native terminals
+      foot
+      #stupidterm
     ];
   };
 }
