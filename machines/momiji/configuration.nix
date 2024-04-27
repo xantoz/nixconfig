@@ -22,7 +22,6 @@
   # Use the GRUB 2 boot loader.
   boot.loader.grub = {
       enable = true;
-      version = 2;
       efiSupport = false;
       device = "/dev/disk/by-id/ata-ST9500423AS_S2V0JH08";
       enableCryptodisk = true;
