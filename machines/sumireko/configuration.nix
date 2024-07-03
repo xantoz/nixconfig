@@ -47,9 +47,6 @@
     pasystray
     blueman
 
-    # stupidterm for use in sway as a wayland-native terminal
-    stupidterm
-
     remmina
 
     nyxt

@@ -5,25 +5,34 @@
 { config, pkgs, ... }:
 
 {
+  # NOTE: no profiles/wireless.nix because we use networkmanager
   imports =
     [
       ./hardware-configuration.nix
       ../../profiles/core.nix
       ../../profiles/graphical.nix
       ../../profiles/input-methods.nix
-      ../../profiles/wireless.nix
       ../../profiles/bluetooth.nix
       ../../profiles/laptop.nix
       ../../profiles/sway.nix
       ../../profiles/printing-and-scanning.nix
       ../../home/home-manager/nixos
     ];
+  networking.networkmanager = {
+    enable = true;
+    wifi.backend = "iwd";
+  };
+  services.resolved.enable = true; # Use resolved together with networkmanager (Enabling this should set networking.networkmanager.dns to "systemd-resolved")
 
   home-manager.users.tewi_inaba = import ../../home/home.nazrin.nix;
 
   environment.systemPackages = with pkgs; let
     my_xbattbar = haskellPackages.xbattbar.overrideAttrs(old: { patches = [ ../../patches/haskellPackages.xbattbar/xbattbar-0.2.patch ]; } );
   in [
+    wirelesstools
+    iw
+    iwgtk
+
     my_xbattbar
     btrfs-progs
     libva-utils
@@ -125,7 +134,7 @@
   users.users.tewi_inaba = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "scanner" "cdrom" "floppy" ];
+    extraGroups = [ "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "scanner" "cdrom" "floppy" "networkmanager" ];
   };
 
   # This value determines the NixOS release with which your system is to be

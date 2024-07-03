@@ -27,11 +27,7 @@
     };
   };
 
-  services.wpa_gui = {
-    enable = true;
-    # interface = "wlo1";
-    meterInterval = 10;
-  };
+  services.network-manager-applet.enable = true;
 
   # services.kdeconnect = {
   #   enable = false;
