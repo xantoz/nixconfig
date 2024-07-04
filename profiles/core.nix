@@ -58,8 +58,6 @@
     gptfdisk
     ntfsprogs
 
-    nix-top
-
     poppler_utils # for pdfimages
     lsix
 
