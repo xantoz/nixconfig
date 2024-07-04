@@ -74,6 +74,7 @@
   programs.simpleserver.enable = true;
 
   programs.screen.screenrc = builtins.readFile ../home/config/dotfiles/src/.screenrc;
+  programs.screen.enable = true;
 
   services.gpm.enable = true;
 
