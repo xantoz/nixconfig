@@ -15,7 +15,7 @@
       ../../profiles/input-methods-ibus.nix
       ../../profiles/bluetooth.nix
       ../../profiles/laptop.nix
-      ../../profiles/sway.nix
+      # ../../profiles/sway.nix
       ../../home/home-manager/nixos
     ];
 
