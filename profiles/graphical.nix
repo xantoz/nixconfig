@@ -80,12 +80,6 @@
 
   # Needed by the home-manager dconf module
   services.dbus.packages = with pkgs; [ dconf ];
-
-  # Enable sound.
-  sound = {
-    enable = true;
-    enableOSSEmulation = true;
-  };
   hardware.pulseaudio.enable = false; # Because we want pipewire instead
   services.pipewire = {
     enable = true;
