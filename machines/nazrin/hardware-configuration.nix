@@ -32,10 +32,10 @@
   nix.settings.max-jobs = lib.mkDefault 4;
   powerManagement.cpuFreqGovernor = lib.mkDefault "schedutil";
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel ];
   hardware.opengl.driSupport = true;
-  hardware.opengl.driSupport32Bit = true;
+  hardware.graphics.enable32Bit = true;
 
   hardware.cpu.intel.updateMicrocode = true;
 }
