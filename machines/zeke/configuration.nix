@@ -70,6 +70,9 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
+  # Enable flatpak for installing flatpaks because sometimes maybe it might make sense?
+  services.flatpak.enable = true;
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
