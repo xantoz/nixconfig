@@ -16,6 +16,7 @@
       hplipWithPlugin
       epkowa
       # epsonscan2
+      pixma
     ];
   };
 }
