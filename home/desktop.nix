@@ -14,7 +14,7 @@
     feh
     pqiv
     #imv  # not on aarch64
-    transmission-gtk
+    transmission_4-gtk
     yt-dlp
     gallery-dl
     # mate.atril
