@@ -104,6 +104,8 @@
       # firefox
       # kate
       # thunderbird
+      xsane
+      darktable
     ];
   };
 
