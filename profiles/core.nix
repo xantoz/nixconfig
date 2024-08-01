@@ -26,7 +26,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    nix-btm
+    nix-btm nix-output-monitor
     wget pv tree htop btop zile
     silver-searcher jq file
     (pkgs.runCommand "filtered-busybox" {} "mkdir -p $out/bin && ln -s ${busybox}/bin/{busybox,vi,ash,killall} $out/bin/")
