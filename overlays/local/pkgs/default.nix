@@ -74,49 +74,49 @@ with super.lib; {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
   });
 
-  libsigrokdecode = super.libsigrokdecode.overrideAttrs(old: {
-    src = super.fetchFromGitHub {
-      owner = "sigrokproject";
-      repo = "libsigrokdecode";
-      rev = "24ba9e1bdfe107e394176eda3116b714463a8437";
-      sha256 = "KUl3zwzgl7FlKHZGjcXmCN9EyRa6R4IGJEBJxEDe9Fo=";
-    };
-    version = "9999";
-    name = "libsigrokdecode-9999";
-    nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook ];
-    doCheck = false; # Tests seem to fail in some remote-building scenarios (at least when building aarch64 on x86_64 with the help of qemu)
-  });
+  # libsigrokdecode = super.libsigrokdecode.overrideAttrs(old: {
+  #   src = super.fetchFromGitHub {
+  #     owner = "sigrokproject";
+  #     repo = "libsigrokdecode";
+  #     rev = "24ba9e1bdfe107e394176eda3116b714463a8437";
+  #     sha256 = "KUl3zwzgl7FlKHZGjcXmCN9EyRa6R4IGJEBJxEDe9Fo=";
+  #   };
+  #   version = "9999";
+  #   name = "libsigrokdecode-9999";
+  #   nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook ];
+  #   doCheck = false; # Tests seem to fail in some remote-building scenarios (at least when building aarch64 on x86_64 with the help of qemu)
+  # });
 
-  libsigrok = super.libsigrok.overrideAttrs(old: {
-    src = super.fetchFromGitHub {
-      owner = "sigrokproject";
-      repo = "libsigrok";
-      rev = "c1f32601c47daec77012fd761611c503bf4cd104";
-      sha256 = "LFLBvTrD12w+gtaE9v1zd2Z7vp18xeq5Vwk7LE4uDkg=";
-    };
-    version = "9999";
-    name = "libsigrok-9999";
-    nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook ];
-    firmware = super.fetchurl {
-      url = "https://sigrok.org/download/binary/sigrok-firmware-fx2lafw/sigrok-firmware-fx2lafw-bin-0.1.7.tar.gz";
-      sha256 = "1br32wfkbyg3v0bh5smwvn1wbkwmlscqvz2vdlx7irs9al3zsxn8";
-    };
-  });
+  # libsigrok = super.libsigrok.overrideAttrs(old: {
+  #   src = super.fetchFromGitHub {
+  #     owner = "sigrokproject";
+  #     repo = "libsigrok";
+  #     rev = "c1f32601c47daec77012fd761611c503bf4cd104";
+  #     sha256 = "LFLBvTrD12w+gtaE9v1zd2Z7vp18xeq5Vwk7LE4uDkg=";
+  #   };
+  #   version = "9999";
+  #   name = "libsigrok-9999";
+  #   nativeBuildInputs = old.nativeBuildInputs ++ [ super.autoreconfHook ];
+  #   firmware = super.fetchurl {
+  #     url = "https://sigrok.org/download/binary/sigrok-firmware-fx2lafw/sigrok-firmware-fx2lafw-bin-0.1.7.tar.gz";
+  #     sha256 = "1br32wfkbyg3v0bh5smwvn1wbkwmlscqvz2vdlx7irs9al3zsxn8";
+  #   };
+  # });
 
-  pulseview = (super.libsForQt5.callPackage
-    ../../../nixpkgs/pkgs/applications/science/electronics/pulseview { }
-  ).overrideAttrs(old: {
-    src = super.fetchFromGitHub {
-      owner = "sigrokproject";
-      repo = "pulseview";
-      rev = "7e5c8396624b94ad0c92382cfe3652c07800592d";
-      sha256 = "W3Tvi+zN+6zp8FDSFTOPR7F8rtFynwiRFIzhSemqM04=";
-    };
-    patches = [];
-    version = "9999";
-    name = "pulseview-9999";
-    nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.qttools ];
-  });
+  # pulseview = (super.libsForQt5.callPackage
+  #   ../../../nixpkgs/pkgs/applications/science/electronics/pulseview { }
+  # ).overrideAttrs(old: {
+  #   src = super.fetchFromGitHub {
+  #     owner = "sigrokproject";
+  #     repo = "pulseview";
+  #     rev = "7e5c8396624b94ad0c92382cfe3652c07800592d";
+  #     sha256 = "W3Tvi+zN+6zp8FDSFTOPR7F8rtFynwiRFIzhSemqM04=";
+  #   };
+  #   patches = [];
+  #   version = "9999";
+  #   name = "pulseview-9999";
+  #   nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.qttools ];
+  # });
 
   redshift = (super.redshift.override { withGeolocation = false; });
 
