@@ -103,7 +103,6 @@
       kmail
       kontact
       blender
-      # firefox
       # kate
       # thunderbird
       xsane

@@ -56,7 +56,7 @@
       dmenu = "${pkgs.dmenu}/bin/dmenu -l 40";
 
       # Browser for opening urls in context menu.
-      browser = "/run/current-system/sw/bin/firefox -new-tab";
+      browser = "/run/current-system/sw/bin/librewolf -new-tab";
 
       # Align icons left/right/off
       icon_position = "left";

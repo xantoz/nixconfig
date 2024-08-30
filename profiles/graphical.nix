@@ -5,7 +5,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     webmacs
-    firefox
+    librewolf
 
     #alacritty
     kitty
