@@ -28,6 +28,13 @@ with super.lib; {
     toolkit = "no";
   };
 
+  emacs29 = super.emacs29.override {
+    withX = true;
+    withGTK3 = false;
+    withGTK2 = false;
+    toolkit = "no";
+  };
+
   mpv-unwrapped = super.mpv-unwrapped.override {
     openalSupport = true;
     archiveSupport = true;
