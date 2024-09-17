@@ -19,6 +19,14 @@
       ../../home/home-manager/nixos
     ];
 
+  # Limit the amount of resources available to the nix daemon
+  systemd.services.nix-daemon.serviceConfig = {
+    AllowedCPUs = "0-6";
+    MemoryAccounting = "yes";
+    MemoryHigh = "8G";
+    MemoryMax = "9G";
+  };
+
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
     "armv7l-linux"
