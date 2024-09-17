@@ -23,7 +23,7 @@
 
     remmina
 
-    mcomix3
+    # mcomix3
     # qcomicbook
     # comical
     # yacreader
