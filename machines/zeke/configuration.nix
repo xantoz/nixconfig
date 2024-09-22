@@ -31,6 +31,11 @@
     MemoryMax = "9G";
   };
 
+  boot.kernelParams = [
+    # Somewhat of a fix for modern insomniac laptops. At least the ones that actuall support S3 sleep
+    "mem_sleep_default=deep"
+  ];
+
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
     "armv7l-linux"
