@@ -23,6 +23,7 @@
   fileSystems."/boot/efi" =
     { device = "/dev/disk/by-uuid/A86D-DBA8";
       fsType = "vfat";
+      options = [ "umask=0077" ]; # Fix bootctl complaining about /boot/efi accessibility
     };
 
   swapDevices =
