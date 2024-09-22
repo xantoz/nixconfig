@@ -20,6 +20,10 @@
     ];
 
   # Limit the amount of resources available to the nix daemon
+  #
+  # In theory this might make `nixos-rebuild switch` be more nice to
+  # other programs. OTOH I might simply have better results using
+  # something like: systemd-run --scope -p 'CPUAccounting=yes' -p 'AllowedCPUs=0-4' -p 'CPUWeight=50' -p 'MemoryHigh=14G' sh -c 'nixos-rebuild boot 2>&1 | nom'
   systemd.services.nix-daemon.serviceConfig = {
     AllowedCPUs = "0-6";
     MemoryAccounting = "yes";
