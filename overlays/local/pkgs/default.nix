@@ -35,6 +35,30 @@ with super.lib; {
     toolkit = "no";
   };
 
+  emacsNativeNoAOT = (super.emacs.override {
+    withX = true;
+    withGTK3 = false;
+    withGTK2 = false;
+    toolkit = "no";
+  }).overrideAttrs(old: {
+    env = super.lib.attrsets.overrideExisting old.env { NATIVE_FULL_AOT = "0"; };
+  });
+
+  emacsNoNativeComp = super.emacs.override {
+    withX = true;
+    withGTK3 = false;
+    withGTK2 = false;
+    withNativeCompilation = false;
+    toolkit = "no";
+  };
+
+  emacsPgtkNoNativeComp = super.emacs.override {
+    withX = false;
+    withGTK3 = true;
+    withPgtk = true;
+    withNativeCompilation = false;
+  };
+
   mpv-unwrapped = super.mpv-unwrapped.override {
     openalSupport = true;
     archiveSupport = true;
