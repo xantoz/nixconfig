@@ -33,9 +33,8 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "schedutil";
 
   hardware.graphics.enable = true;
-  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel ];
-  hardware.opengl.driSupport = true;
   hardware.graphics.enable32Bit = true;
+  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel ];
 
   hardware.cpu.intel.updateMicrocode = true;
 }
