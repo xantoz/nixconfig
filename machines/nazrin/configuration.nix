@@ -132,6 +132,9 @@
       wineWowPackages.full
       dolphinEmuMaster
       # discord
+
+      cargo
+      rustc
     ];
   };
 
