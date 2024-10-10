@@ -39,12 +39,6 @@
     libva1
     dmidecode
     units
-
-    dolphinEmuMaster
-
-    wineWowPackages.full
-
-    discord
   ];
 
   # programs.steam.enable = true;
@@ -134,6 +128,11 @@
     isNormalUser = true;
     uid = 1000;
     extraGroups = [ "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "scanner" "cdrom" "floppy" "networkmanager" ];
+    packages = with pkgs; [
+      wineWowPackages.full
+      dolphinEmuMaster
+      # discord
+    ];
   };
 
   # This value determines the NixOS release with which your system is to be
