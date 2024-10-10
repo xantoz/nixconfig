@@ -34,7 +34,7 @@
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
-  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel ];
+  hardware.graphics.extraPackages = with pkgs; [ vaapiIntel ];
 
   hardware.cpu.intel.updateMicrocode = true;
 }
