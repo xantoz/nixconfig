@@ -138,6 +138,12 @@
     ];
   };
 
+  # have udisks2 because hyper-modern stuff might want to d-bus against it or something
+  services.udisks2 = {
+    enable = true;
+    mountOnMedia = false;
+  };
+
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
