@@ -24,14 +24,12 @@ with super.lib; {
   emacs28 = super.emacs28.override {
     withX = true;
     withGTK3 = false;
-    withGTK2 = false;
     toolkit = "no";
   };
 
   emacs29 = super.emacs29.override {
     withX = true;
     withGTK3 = false;
-    withGTK2 = false;
     toolkit = "no";
   };
 
