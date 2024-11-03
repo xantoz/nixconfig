@@ -135,6 +135,18 @@
 
       cargo
       rustc
+
+      # # Temporary addition for rust_image_fiddler (TODO: start using direnv?)
+      # rustfmt
+      # rust-analyzer
+      # clippy
+      # cmake
+      # pkg-config
+      # fltk
+      # pango
+      # xorg.libXft
+    ];
+  };
     ];
   };
 
