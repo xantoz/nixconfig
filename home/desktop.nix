@@ -44,6 +44,7 @@
     pulseview
   ];
 
+  # TODO: Might be a nicer way to do this? Also maybe try to run the WM as a service or so?
   xsession = {
     enable = true;
     windowManager.command = "/bin/sh ~/.xsession";
