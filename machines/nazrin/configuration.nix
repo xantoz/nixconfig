@@ -130,7 +130,7 @@
     extraGroups = [ "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "scanner" "cdrom" "floppy" "networkmanager" ];
     packages = with pkgs; [
       wineWowPackages.full
-      dolphinEmuMaster
+      dolphin-emu-beta
       # discord
 
       cargo
