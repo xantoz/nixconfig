@@ -96,10 +96,10 @@
 
   networking.enableB43Firmware = true;
 
-  services.xserver.videoDrivers = [ "intel" ];
-  services.xserver.deviceSection = ''
-    Option "TearFree" "on"
-  '';
+#  services.xserver.videoDrivers = [ "intel" ];
+#  services.xserver.deviceSection = ''
+#    Option "TearFree" "on"
+#  '';
 
   # TODO: set default scheduler for SSD:s to deadline
 
