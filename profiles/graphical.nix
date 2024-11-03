@@ -8,7 +8,7 @@
     librewolf
 
     #alacritty
-    kitty
+    # kitty
 
     xorg.xeyes
     xorg.xkill
