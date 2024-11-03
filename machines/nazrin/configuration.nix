@@ -161,6 +161,11 @@
       ratpoison = {
         default = "lxqt";
       };
+      # Example of how to set settings for all desktops, I think? (disregard XDG_CURRENT_DESKTOP)
+      # common = {
+      #   default = "gtk";
+      #   "org.freedesktop.impl.portal.FileChooser" = "lxqt";
+      # };
     };
     extraPortals = with pkgs; [
       lxqt.xdg-desktop-portal-lxqt
