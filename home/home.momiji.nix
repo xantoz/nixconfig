@@ -61,6 +61,10 @@
     ".xsession".source = pkgs.writeText "dotxinitrc" ''
       xrdb -merge ~/.Xresources
 
+      export XDG_CURRENT_DESKTOP="ratpoison"
+      systemctl --user import-environment XDG_CURRENT_DESKTOP
+      dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP="''${XDG_CURRENT_DESKTOP}"
+
       feh --bg-fill ${./wallpapers/Touhou.full.1536689.jpg} &
 
       export QT_IM_MODULE=fcitx
