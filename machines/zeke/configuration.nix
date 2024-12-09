@@ -119,11 +119,14 @@
       kalendar
       kmail
       kontact
-      blender
+      #blender
       # kate
       # thunderbird
+
       xsane
-      darktable
+      #darktable
+      #ansel
+      #vkdt
     ];
   };
 
