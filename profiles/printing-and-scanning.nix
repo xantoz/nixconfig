@@ -5,6 +5,7 @@
   services.avahi.enable = true;
   services.printing = {
     enable = true;
+    browsed.enable = false;     # I don't trust this one
     drivers = with pkgs; [ hplipWithPlugin ];
   };
   services.ipp-usb.enable = true;
@@ -16,7 +17,7 @@
       hplipWithPlugin
       epkowa
       # epsonscan2
-      pixma
+      # pixma
     ];
   };
 }

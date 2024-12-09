@@ -8,7 +8,7 @@
     librewolf
 
     #alacritty
-    kitty
+    # kitty
 
     xorg.xeyes
     xorg.xkill
@@ -47,7 +47,7 @@
     dejavu_fonts
 
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     noto-fonts-extra
 
@@ -80,6 +80,8 @@
 
   # Needed by the home-manager dconf module
   services.dbus.packages = with pkgs; [ dconf ];
+
+  # Audio settings (pipewire)
   hardware.pulseaudio.enable = false; # Because we want pipewire instead
   services.pipewire = {
     enable = true;

@@ -64,6 +64,9 @@
 
     # man page havings
     linux-manual man-pages man-pages-posix
+
+    # Have a python interpreter at hand
+    python3
   ];
 
   nixpkgs.config.permittedInsecurePackages = [

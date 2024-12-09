@@ -64,6 +64,10 @@
     ".xsession".source = pkgs.writeText "dotxinitrc" ''
       xrdb -merge ~/.Xresources
 
+      export XDG_CURRENT_DESKTOP="ratpoison"
+      systemctl --user import-environment XDG_CURRENT_DESKTOP
+      dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP="''${XDG_CURRENT_DESKTOP}"
+
       xinput set-prop 'HAILUCK CO.,LTD USB KEYBOARD Touchpad' 'Coordinate Transformation Matrix' 1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.4
       xinput set-prop 'HAILUCK CO.,LTD USB KEYBOARD Touchpad' 'libinput Tapping Enabled' 1
 

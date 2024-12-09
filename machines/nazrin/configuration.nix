@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # NOTE: no profiles/wireless.nix because we use networkmanager
@@ -39,15 +39,9 @@
     libva1
     dmidecode
     units
-
-    dolphinEmuMaster
-
-    wineWowPackages.full
-
-    discord
   ];
 
-  programs.steam.enable = true;
+  # programs.steam.enable = true;
 
   # boot.kernelPatches = [{
   #   name = "atari-partitioning";
@@ -66,7 +60,6 @@
   boot.loader.grub = {
     enable = true;
     device = "nodev";
-    version = 2;
     efiSupport = true;
     enableCryptodisk = true;
   };
@@ -103,10 +96,10 @@
 
   networking.enableB43Firmware = true;
 
-  services.xserver.videoDrivers = [ "intel" ];
-  services.xserver.deviceSection = ''
-    Option "TearFree" "on"
-  '';
+#  services.xserver.videoDrivers = [ "intel" ];
+#  services.xserver.deviceSection = ''
+#    Option "TearFree" "on"
+#  '';
 
   # TODO: set default scheduler for SSD:s to deadline
 
@@ -135,6 +128,64 @@
     isNormalUser = true;
     uid = 1000;
     extraGroups = [ "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "scanner" "cdrom" "floppy" "networkmanager" ];
+    packages = with pkgs; [
+      wineWowPackages.full
+      dolphin-emu-beta
+      # discord
+
+      cargo
+      rustc
+
+      # # Temporary addition for rust_image_fiddler (TODO: start using direnv?)
+      # rustfmt
+      # rust-analyzer
+      # clippy
+      # cmake
+      # pkg-config
+      # fltk
+      # pango
+      # xorg.libXft
+    ];
+  };
+
+  # Enable portals and stuff?
+  xdg.portal = {
+    enable = true;
+    config = {
+      sway = {
+        default = lib.mkForce "lxqt"; # Use lxqt over GTK on sway as the fallback
+        # TODO: Use xdg-desktop-portal-luminous over xdg-desktop-wlr for nicer screenshotting? (xdg-desktop-portal-luminous currently not available in nixpkgs)
+        # "org.freedesktop.impl.portal.ScreenCast" = lib.mkForce "luminous";
+        # "org.freedesktop.impl.portal.ScreenCast" = lib.mkForce "luminous";
+      };
+      ratpoison = {
+        default = "lxqt";
+      };
+      # Example of how to set settings for all desktops, I think? (disregard XDG_CURRENT_DESKTOP)
+      # common = {
+      #   default = "gtk";
+      #   "org.freedesktop.impl.portal.FileChooser" = "lxqt";
+      # };
+    };
+    extraPortals = with pkgs; [
+      lxqt.xdg-desktop-portal-lxqt
+      # xdg-desktop-portal-hyprland
+      # pantheon.xdg-desktop-portal-pantheon
+      # xdg-desktop-portal-kde
+      # xdg-desktop-portal-cosmic
+      # xdg-desktop-portal-xapp
+      # xdg-desktop-portal-lxqt
+      # xdg-desktop-portal-shana
+    ];
+
+    # Some NixOS-specific fix for xdg-open or so?
+    xdgOpenUsePortal = true;
+  };
+
+  # have udisks2 because hyper-modern stuff might want to d-bus against it or something
+  services.udisks2 = {
+    enable = true;
+    mountOnMedia = false;
   };
 
   # This value determines the NixOS release with which your system is to be
