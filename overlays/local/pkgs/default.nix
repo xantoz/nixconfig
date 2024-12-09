@@ -36,7 +36,6 @@ with super.lib; {
   emacsNativeNoAOT = (super.emacs.override {
     withX = true;
     withGTK3 = false;
-    withGTK2 = false;
     toolkit = "no";
   }).overrideAttrs(old: {
     env = super.lib.attrsets.overrideExisting old.env { NATIVE_FULL_AOT = "0"; };
@@ -45,7 +44,6 @@ with super.lib; {
   emacsNoNativeComp = super.emacs.override {
     withX = true;
     withGTK3 = false;
-    withGTK2 = false;
     withNativeCompilation = false;
     toolkit = "no";
   };
