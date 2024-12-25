@@ -9,9 +9,6 @@
   imports = import ../overlays/local/modules/module-list.nix;
 
   nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
     # # Use local nixpkgs checkout
     # nixPath = [
     #   "/etc/nixos"
@@ -22,6 +19,7 @@
     settings = {
       sandbox = true;
       auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
     };
   };
 
