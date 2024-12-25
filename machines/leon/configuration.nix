@@ -14,17 +14,17 @@
       ../../profiles/bluetooth.nix
       ../../profiles/laptop.nix
       # ../../profiles/sway.nix
-      # ../../home/home-manager/nixos
+      ../../home/home-manager/nixos
       # inputs.home-manager.nixosModules.home-manager
     ];
 
-  # home-manager = {
-  #   backupFileExtension = "back";
-  #   useGlobalPkgs = true;
-  #   useUserPackages = true;
-  #   extraSpecialArgs = { inherit inputs; };
-  #   users.tewi_inaba = import ../../home/home.leon.nix;
-  # };
+  home-manager = {
+    backupFileExtension = "back";
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs; };
+    users.tewi_inaba = import ../../home/home.leon.nix;
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
