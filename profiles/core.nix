@@ -12,13 +12,13 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    # Use local nixpkgs checkout
-    nixPath = [
-      "/etc/nixos"
-      "nixpkgs=/etc/nixos/nixpkgs"
-      "nixpkgs-overlays=/etc/nixos/overlays/local"
-      "nixos-config=/etc/nixos/configuration.nix"
-    ];
+    # # Use local nixpkgs checkout
+    # nixPath = [
+    #   "/etc/nixos"
+    #   "nixpkgs=/etc/nixos/nixpkgs"
+    #   "nixpkgs-overlays=/etc/nixos/overlays/local"
+    #   "nixos-config=/etc/nixos/configuration.nix"
+    # ];
     settings = {
       sandbox = true;
       auto-optimise-store = true;
