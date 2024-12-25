@@ -8,6 +8,13 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../profiles/core.nix
+      ../../profiles/graphical-kde.nix
+      ../../profiles/input-methods-ibus.nix
+      ../../profiles/bluetooth.nix
+      ../../profiles/laptop.nix
+      # ../../profiles/sway.nix
+      ../../home/home-manager/nixos
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -35,6 +42,35 @@
     LC_TELEPHONE = "sv_SE.UTF-8";
     LC_TIME = "sv_SE.UTF-8";
   };
+
+  # Limit the amount of resources available to the nix daemon
+  #
+  # In theory this might make `nixos-rebuild switch` be more nice to
+  # other programs. OTOH I might simply have better results using
+  # something like: systemd-run --scope -p 'CPUAccounting=yes' -p 'AllowedCPUs=0-4' -p 'CPUWeight=50' -p 'MemoryHigh=14G' sh -c 'nixos-rebuild boot 2>&1 | nom'
+  systemd.services.nix-daemon.serviceConfig = {
+    AllowedCPUs = "0-6";
+    MemoryAccounting = "yes";
+    MemoryHigh = "8G";
+    MemoryMax = "9G";
+  };
+
+  boot.kernelParams = [
+    # Somewhat of a fix for modern insomniac laptops. At least the ones that actuall support S3 sleep
+    "mem_sleep_default=deep"
+  ];
+
+
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+    "armv7l-linux"
+  ];
+  # remote cross-compile for sumireko
+  users.users.root.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA8SxDuqn+vUfXgxzKx91U0auCiWU3kT/wmqiK5uqUme akindestam@sumireko"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHtYDCEy09OUvuD6gZLinAcPuUuGYPPi18a5QXAcMF1l sumireko-root"
+  ];
+
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -76,6 +112,17 @@
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
+      kalendar
+      kmail
+      kontact
+      #blender
+      # kate
+      # thunderbird
+
+      xsane
+      #darktable
+      #ansel
+      #vkdt
     ];
   };
 
@@ -127,6 +174,14 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+  # Open ports in the firewall.
+  networking.firewall =
+    let ports = [ 22 5900 5906 8000 8080 8888 ];
+    in {
+      allowedTCPPorts = ports;
+      allowedUDPPorts = ports;
+    };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
