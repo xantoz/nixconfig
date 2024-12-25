@@ -76,10 +76,6 @@
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      tree
-      pv
-      htop
-      networkmanager
     ];
   };
 
@@ -109,9 +105,14 @@
   environment.systemPackages = with pkgs; [
     emacs
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
     zile
+    wget
     drm_info
+    git
+    tig
+    tree
+    pv
+    htop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
