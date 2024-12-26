@@ -129,7 +129,7 @@
   # CUDA support in Blender and more (See: https://discourse.nixos.org/t/how-to-get-cuda-working-in-blender/5918/12)
   nixpkgs.config.cudaSupport = true;
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;   # Optionally, you may need to select the appropriate driver version for your specific GPU.
