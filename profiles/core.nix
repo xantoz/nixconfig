@@ -92,6 +92,9 @@
 
   services.dbus.enable = true;
 
+  # TODO: Switch over to the service in the nixpkgs "ssh" module?
+  #       Or the one in home-manager?
+  #       Or do we switch to use gpg-agent?
   systemd.user.services.ssh-agent = {
     enable = true;
     description="SSH key agent";
