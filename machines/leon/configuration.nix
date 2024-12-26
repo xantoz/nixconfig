@@ -165,6 +165,14 @@
   ];
 
   programs.steam.enable = true;
+  programs.envision = {
+    enable = true;
+    openFirewall = true;
+  };
+  programs.alvr = {
+    enable = true;
+    openFirewall = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
