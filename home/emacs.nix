@@ -3,7 +3,8 @@
 {
   services.emacs.enable = true;
   programs.emacs.enable = true;
-  programs.emacs.package = pkgs.emacsNoNativeComp;
+  # programs.emacs.package = pkgs.emacsNoNativeComp;
+  programs.emacs.package = pkgs.emacs;
   programs.emacs.extraPackages =
     ((import ../emacs-parse/parse.nix) { inherit pkgs; inherit lib; }).usePackagePkgs {
       config = ./config/emacs/init.el;
