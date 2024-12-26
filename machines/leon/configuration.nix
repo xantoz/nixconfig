@@ -17,7 +17,12 @@
       ../../home/home-manager/nixos
     ];
 
-  home-manager.users.tewi_inaba = import ../../home/home.leon.nix;
+  home-manager = {
+    users.tewi_inaba = import ../../home/home.leon.nix;
+    backupFileExtension = "back";
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
