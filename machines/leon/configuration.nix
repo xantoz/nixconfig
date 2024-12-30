@@ -163,9 +163,19 @@
     tree
     pv
     htop
+    mangohud
   ];
 
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+    package = pkgs.steam.override {
+      extraEnv = {
+        MANGOHUD = true;
+        # OBS_VKCAPTURE = true;
+      };
+    };
+  };
   programs.envision = {
     enable = true;
     openFirewall = true;
