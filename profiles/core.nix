@@ -67,6 +67,8 @@
 
     # Have a python interpreter at hand
     python3
+
+    doas-sudo-shim
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
