@@ -214,6 +214,10 @@
     enable = true;
     openFirewall = true;
   };
+  services.wivrn = {
+    enable = true;
+    openFirewall = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
