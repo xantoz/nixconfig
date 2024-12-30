@@ -137,7 +137,8 @@
   services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;   # Optionally, you may need to select the appropriate driver version for your specific GPU.
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;   # Optionally, you may need to select the appropriate driver version for your specific GPU.
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;   # Optionally, you may need to select the appropriate driver version for your specific GPU.
   hardware.nvidia.modesetting.enable = true;   # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway
   hardware.nvidia.open = false; # should be fine with the open kernel module because we are Mobile RTX 3070 => Ampere. Testing non-open though, since I had trouble
   hardware.nvidia.prime = {
