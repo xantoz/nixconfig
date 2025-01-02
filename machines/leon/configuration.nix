@@ -24,6 +24,11 @@
     useUserPackages = true;
   };
 
+  # TODO: Lock to specific commit
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball "https://github.com/nix-community/nixpkgs-xr/archive/main.tar.gz")).overlays.default
+  ];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
