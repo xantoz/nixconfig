@@ -199,6 +199,11 @@
     pv
     htop
     mangohud
+
+    # VR related
+    opencomposite
+    xrgears
+    wlx-overlay-s
   ];
 
   programs.steam = {
@@ -222,6 +227,7 @@
   services.wivrn = {
     enable = true;
     openFirewall = true;
+    defaultRuntime = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
