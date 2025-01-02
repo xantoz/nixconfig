@@ -114,10 +114,11 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
+  programs.adb.enable = true;   # Add ADB for WiVRn etc. to quest 2
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tewi_inaba = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "networkmanager" "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       kalendar
       kmail
