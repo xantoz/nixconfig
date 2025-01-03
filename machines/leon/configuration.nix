@@ -67,6 +67,7 @@
     MemoryMax = "9G";
   };
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [
     # Somewhat of a fix for modern insomniac laptops. At least the ones that actuall support S3 sleep
     "mem_sleep_default=deep"
