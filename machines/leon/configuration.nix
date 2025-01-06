@@ -133,6 +133,9 @@
       #ansel
       #vkdt
 
+      obs-studio
+      mcomix
+
       (writeShellScriptBin "gs.sh" ''
         #!/usr/bin/env bash
         set -xeuo pipefail
