@@ -10,12 +10,12 @@
   ];
 
   # # For Monado:
-  # xdg.configFile."openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
+  xdg.configFile."openxr/1/active_runtime.json.Monado".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
 
   # For WiVRn:
-  xdg.configFile."openxr/1/active_runtime.json".source = "${pkgs.wivrn}/share/openxr/1/openxr_wivrn.json";
+  xdg.configFile."openxr/1/active_runtime.json.WiVRn".source = "${pkgs.wivrn}/share/openxr/1/openxr_wivrn.json";
 
-  xdg.configFile."openvr/openvrpaths.vrpath".text = ''
+  xdg.configFile."openvr/openvrpaths.vrpath.Monado".text = ''
     {
       "config" :
       [
