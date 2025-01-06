@@ -77,7 +77,7 @@
     # Somewhat of a fix for modern insomniac laptops. At least the ones that actuall support S3 sleep
     "mem_sleep_default=deep"
   ];
-
+  boot.kernel.sysctl."kernel.sysrq" = 502;
 
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
