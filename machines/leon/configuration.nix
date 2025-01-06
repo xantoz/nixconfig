@@ -24,10 +24,15 @@
     useUserPackages = true;
   };
 
-  # TODO: Lock to specific commit
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball "https://github.com/nix-community/nixpkgs-xr/archive/main.tar.gz")).overlays.default
-  ];
+  nixpkgs.overlays =
+    let
+      nixpkgs-xr = import (builtins.fetchGit {
+        url = "https://github.com/nix-community/nixpkgs-xr.git";
+        rev = "894efe24a43d5412f638790feca6d06bfe88bd9b";
+      });
+    in [
+      nixpkgs-xr.overlays.default
+    ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
