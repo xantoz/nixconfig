@@ -101,6 +101,10 @@ with super.lib; {
     nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.wrapQtAppsHook ];
   });
 
+  # I have back-ported the build from a newer nixpkgs than I currently am using.
+  # It is likely I will no longer need this once I graduate from running stable 24.11
+  alvr = super.callPackage ./alvr/package.nix { };
+
   # libsigrokdecode = super.libsigrokdecode.overrideAttrs(old: {
   #   src = super.fetchFromGitHub {
   #     owner = "sigrokproject";
