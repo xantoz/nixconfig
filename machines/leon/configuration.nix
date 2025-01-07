@@ -209,6 +209,7 @@
     pv
     htop
     mangohud
+    nvtop                       # GPU stats like htop
 
     # VR related
     opencomposite
