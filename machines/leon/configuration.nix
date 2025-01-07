@@ -129,9 +129,12 @@
       kalendar
       kmail
       kontact
-      #blender
+      blender
       # kate
       # thunderbird
+
+      alcom
+      unityhub
 
       xsane
       #darktable
