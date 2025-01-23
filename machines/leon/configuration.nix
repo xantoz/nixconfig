@@ -219,6 +219,7 @@
     opencomposite
     xrgears
     wlx-overlay-s
+    motoc
   ];
 
   programs.steam = {
