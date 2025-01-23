@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./wayland-general.nix
+  ];
+
   programs.sway = {
     enable = true;
     extraSessionCommands = ''
@@ -38,15 +42,10 @@
       waybar
       xwayland
       qt5.qtwayland
-      dmenu bemenu
       mako
       acpi
       grim
       sway-contrib.grimshot
-
-      # Usable minimal wayland-native terminals
-      foot
-      #stupidterm
     ];
   };
 }

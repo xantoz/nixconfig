@@ -32,6 +32,8 @@
 
     tigervnc
 
+    dmenu
+
     qpwgraph # pipewire patchbay thingy
     helvum # another pipewire patchbay thingy
   ];
