@@ -261,7 +261,7 @@
 
   # Open ports in the firewall.
   networking.firewall =
-    let ports = [ 22 5900 5906 8000 8080 8888 ];
+    let ports = [ 22 53 67 68 5900 5906 8000 8080 8888 ];
     in {
       allowedTCPPorts = ports;
       allowedUDPPorts = ports;
