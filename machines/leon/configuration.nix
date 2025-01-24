@@ -125,7 +125,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tewi_inaba = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "networkmanager" "wheel" "adbusers" "video" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       kalendar
       kmail
