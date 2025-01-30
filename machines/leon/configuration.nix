@@ -182,6 +182,15 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # CUDA support in Blender and more (See: https://discourse.nixos.org/t/how-to-get-cuda-working-in-blender/5918/12)
   nixpkgs.config.cudaSupport = true;
+  nix.settings = {              # Add cache for CUDA-things (hopefully lowers the need for builds of blender etc.)
+    substituters = [
+      "https://cuda-maintainers.cachix.org"
+    ];
+    trusted-public-keys = [
+      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+    ];
+  };
+
 
   services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
   hardware.graphics.enable = true;
