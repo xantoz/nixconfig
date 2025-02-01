@@ -194,7 +194,7 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.stable;   # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    package = config.boot.kernelPackages.nvidiaPackages.latest;   # Optionally, you may need to select the appropriate driver version for your specific GPU.
     modesetting.enable = true;   # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway
     open = false; # should be fine with the open kernel module because we are Mobile RTX 3070 => Ampere. Testing non-open though, since I had trouble
     prime = {
