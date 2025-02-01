@@ -182,7 +182,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # CUDA support in Blender and more (See: https://discourse.nixos.org/t/how-to-get-cuda-working-in-blender/5918/12)
   nixpkgs.config.cudaSupport = true;
-
+  # Add the nix-community cachix. This should hopefully give me binary cache for packages built with cuda enabled, so I don't have to rebuild blender all the time
   nix.settings.substituters = [
     "https://nix-community.cachix.org"
   ];
