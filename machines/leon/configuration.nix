@@ -41,8 +41,13 @@
 
   boot.initrd.luks.devices."luks-7c41bfcf-840d-454f-81e4-79a9bc562401".device = "/dev/disk/by-uuid/7c41bfcf-840d-454f-81e4-79a9bc562401";
 
-  networking.hostName = "leon"; # Define your hostname.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking = {
+    hostName = "leon";          # Define your hostname.
+    networkmanager = {
+      enable = true; # Easiest to use and most distros use this by default.
+      wifi.backend = "iwd";
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Stockholm";
