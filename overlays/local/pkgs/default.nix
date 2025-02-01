@@ -24,36 +24,52 @@ with super.lib; {
   emacs28 = super.emacs28.override {
     withX = true;
     withGTK3 = false;
+    withNativeCompilation = false;
     toolkit = "no";
   };
 
   emacs29 = super.emacs29.override {
     withX = true;
     withGTK3 = false;
+    withNativeCompilation = false;
     toolkit = "no";
   };
 
-  emacsNativeNoAOT = (super.emacs.override {
-    withX = true;
-    withGTK3 = false;
-    toolkit = "no";
-  }).overrideAttrs(old: {
-    env = super.lib.attrsets.overrideExisting old.env { NATIVE_FULL_AOT = "0"; };
-  });
-
-  emacsNoNativeComp = super.emacs.override {
+  emacs30 = super.emacs30.override {
     withX = true;
     withGTK3 = false;
     withNativeCompilation = false;
     toolkit = "no";
   };
 
-  emacsPgtkNoNativeComp = super.emacs.override {
-    withX = false;
-    withGTK3 = true;
-    withPgtk = true;
+  emacs = super.emacs.override {
+    withX = true;
+    withGTK3 = false;
     withNativeCompilation = false;
+    toolkit = "no";
   };
+
+  # emacsNativeNoAOT = (super.emacs.override {
+  #   withX = true;
+  #   withGTK3 = false;
+  #   toolkit = "no";
+  # }).overrideAttrs(old: {
+  #   env = super.lib.attrsets.overrideExisting old.env { NATIVE_FULL_AOT = "0"; };
+  # });
+
+  # emacsNoNativeComp = super.emacs.override {
+  #   withX = true;
+  #   withGTK3 = false;
+  #   withNativeCompilation = false;
+  #   toolkit = "no";
+  # };
+
+  # emacsPgtkNoNativeComp = super.emacs.override {
+  #   withX = false;
+  #   withGTK3 = true;
+  #   withPgtk = true;
+  #   withNativeCompilation = false;
+  # };
 
   mpv-unwrapped = super.mpv-unwrapped.override {
     openalSupport = true;

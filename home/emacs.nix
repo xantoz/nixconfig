@@ -3,7 +3,7 @@
 {
   services.emacs.enable = true;
   programs.emacs.enable = true;
-  programs.emacs.package = pkgs.emacsNoNativeComp;
+  programs.emacs.package = pkgs.emacs;
   programs.emacs.extraPackages =
     ((import ../emacs-parse/parse.nix) { inherit pkgs; inherit lib; }).usePackagePkgs {
       config = ./config/emacs/init.el;
@@ -11,7 +11,7 @@
     };
 
   home.packages = with pkgs; [
-    cscope
+    cscope                      # FIXME?: This also pulls in emacs, and not neccessarily the one we pass for emacs package above. This can cause double builds of emacs.
     (writeShellScriptBin "ec" ''
       exec emacsclient "$@"
     '')
