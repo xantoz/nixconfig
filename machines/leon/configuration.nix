@@ -196,13 +196,13 @@
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.latest;   # Optionally, you may need to select the appropriate driver version for your specific GPU.
     modesetting.enable = true;   # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway
-    open = false; # should be fine with the open kernel module because we are Mobile RTX 3070 => Ampere. Testing non-open though, since I had trouble
     prime = {
       offload.enable = true;
       offload.enableOffloadCmd = true; # Gives us the nvidia-offload convenience script
       amdgpuBusId = "PCI:34:0:0";
       nvidiaBusId = "PCI:1:0:0";
     };
+    open = true; # should be fine with the open kernel module because we are Mobile RTX 3070 => Ampere. Testing non-open though, since I had trouble
   };
 
   programs.firefox.enable = true;
