@@ -78,6 +78,8 @@
     MemoryMax = "9G";
   };
 
+  programs.gamemode.enable = true;
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelPatches = [
     {
