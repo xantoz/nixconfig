@@ -82,6 +82,8 @@
   boot.kernelParams = [
     # Somewhat of a fix for modern insomniac laptops. At least the ones that actuall support S3 sleep
     "mem_sleep_default=deep"
+    # Since nvidia driver 570, potentially less stuttering in VR?
+    "nvidia.NVreg_RegistryDwords=RMIntrLockingMode=1"
   ];
   boot.kernel.sysctl."kernel.sysrq" = 502;
 
@@ -202,7 +204,7 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.latest;   # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    package = config.boot.kernelPackages.nvidiaPackages.beta;   # Optionally, you may need to select the appropriate driver version for your specific GPU.
     modesetting.enable = true;   # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway
     open = true; # should be fine with the open kernel module because we are Mobile RTX 3070 => Ampere. Testing non-open though, since I had trouble
     powerManagement.enable = true; # Should help with graphics going derp on suspend?
