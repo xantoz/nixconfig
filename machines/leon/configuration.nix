@@ -88,14 +88,22 @@
         hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
       };
     }
-    {
-      name = "preempt_rt";
-      patch = null;
-      extraConfig = ''
-        PREEMPT_VOLUNTARY n
-        PREEMPT_RT y
-      '';
-    }
+    # {
+    #   name = "preempt_rt";
+    #   patch = null;
+    #   extraConfig = ''
+    #     PREEMPT_LAZY n
+    #     PREEMPT_RT y
+    #   '';
+    #   # extraConfig = ''
+    #   #   EXPERT y
+    #   #   PREEMPT_NONE n
+    #   #   PREEMPT_VOLUNTARY n
+    #   #   PREEMPT y
+    #   #   PREEMPT_LAZY n
+    #   #   PREEMPT_RT y
+    #   # '';
+    # }
   ];
   boot.kernelParams = [
     # Somewhat of a fix for modern insomniac laptops. At least the ones that actuall support S3 sleep
