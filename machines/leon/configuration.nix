@@ -237,37 +237,11 @@
     # FIXME: I'm not too sure that this actually applies the overriden package where we want it
     package =
       let
-        nvidiaPkg = config.boot.kernelPackages.nvidiaPackages.beta;
+        nvidiaPkg = config.boot.kernelPackages.nvidiaPackages.latest;
       in nvidiaPkg.overrideAttrs (old: {
         patches = old.patches ++ [ ./0001-behave-like-cap_sys_nice-is-always-set.patch ];
         # patchesOpen = old.patchesOpen ++ [ ./0001-behave-like-cap_sys_nice-is-always-set.patch ];
       });
-
-      # let
-      #   nvidiaPkg = config.boot.kernelPackages.nvidiaPackages.beta;
-      # in nvidiaPkg.overrideAttrs (old1: {
-      #   open = nvidiaPkg.open.overrideAttrs(old2: {
-      #     patches = old2.patches ++ [ ./0001-behave-like-cap_sys_nice-is-always-set.patch ];
-      #   });
-      # });
-
-      # let
-      #   nvidiaPkg = config.boot.kernelPackages.nvidiaPackages.beta;
-      # in nvidiaPkg.overrideAttrs (old: {
-      #   patches = old.patches ++ [ ./0001-behave-like-cap_sys_nice-is-always-set.patch ];
-      # });
-      # config.boot.kernelPackages.nvidiaPackages.beta.overrideAttrs (old1: {
-      #   open = old1.open.overrideAttrs(old2: {
-      #     patches = old2.patches ++ [ ./0001-behave-like-cap_sys_nice-is-always-set.patch ];
-      #   });
-      # });
-      # let
-      #   nvidiaPkg = config.boot.kernelPackages.nvidiaPackages.beta;
-      # in nvidiaPkg.override {
-      #   open = nvidiaPkg.overrideAttrs(old: {
-      #     patches = old.patches ++ [ ./0001-behave-like-cap_sys_nice-is-always-set.patch ];
-      #   });
-      # };
     modesetting.enable = true;   # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway
     gsp.enable = true;           # We have a GSP-enabled nvidia GPU (I think this is implied by open = true, but probably best to put this here too)
     open = true; # should be fine with the open kernel module because we are Mobile RTX 3070 => Ampere. Testing non-open though, since I had trouble
@@ -281,7 +255,7 @@
   };
   # Ugly-hack the extraModules setting because the override above doesn't quite work
   boot.extraModulePackages = lib.mkForce [
-    (config.boot.kernelPackages.nvidiaPackages.beta.open.overrideAttrs(old: {
+    (config.boot.kernelPackages.nvidiaPackages.latest.open.overrideAttrs(old: {
       patches = old.patches ++ [ ./0001-behave-like-cap_sys_nice-is-always-set.patch ];
     }))
   ];
