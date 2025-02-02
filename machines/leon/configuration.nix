@@ -250,6 +250,23 @@
       };
     };
   };
+  services.monado = {
+    enable = true;
+    defaultRuntime = true; # Register as default OpenXR runtime
+  };
+  systemd.user.services.monado.environment = {
+    STEAMVR_LH_ENABLE = "1";
+    XRT_COMPOSITOR_COMPUTE = "1";
+    XRT_COMPOSITOR_DEFAULT_FRAMERATE="90";
+    U_PACING_APP_US_MIN_FRAME_PERIOD = "5";
+    U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET="10";
+    XRT_COMPOSITOR_SCALE_PERCENTAGE = "100";
+    # XRT_COMPOSITOR_FORCE_NVIDIA = "1";
+    # XRT_COMPOSITOR_FORCE_NVIDIA_DISPLAY = "1";
+    WMR_HANDTRACKING = "0";
+    LH_HANDTRACKING = "0";
+  };
+
   # programs.envision = {
   #   enable = true;
   #   openFirewall = true;
@@ -261,7 +278,7 @@
   services.wivrn = {
     enable = true;
     openFirewall = true;
-    defaultRuntime = true;
+    # defaultRuntime = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
