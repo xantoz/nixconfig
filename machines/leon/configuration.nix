@@ -79,6 +79,16 @@
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPatches = [
+    {
+      name = "preempt_rt";
+      patch = null;
+      extraConfig = ''
+        PREEMPT_VOLUNTARY N
+        PREEMPT_RT Y
+      '';
+    }
+  ];
   boot.kernelParams = [
     # Somewhat of a fix for modern insomniac laptops. At least the ones that actuall support S3 sleep
     "mem_sleep_default=deep"
