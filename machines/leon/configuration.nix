@@ -216,7 +216,7 @@
   ];
 
   services.xserver.videoDrivers = [
-    # "amdgpu"
+    "amdgpu"
     "nvidia"
   ];
   hardware.graphics.enable = true;
