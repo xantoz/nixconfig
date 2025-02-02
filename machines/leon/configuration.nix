@@ -84,8 +84,8 @@
       name = "preempt_rt";
       patch = null;
       extraConfig = ''
-        PREEMPT_VOLUNTARY N
-        PREEMPT_RT Y
+        PREEMPT_VOLUNTARY n
+        PREEMPT_RT y
       '';
     }
   ];
