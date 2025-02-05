@@ -26,6 +26,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    appimage-run
     nix-btm nix-output-monitor
     wget pv tree htop btop zile
     silver-searcher jq file
