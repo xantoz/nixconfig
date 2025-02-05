@@ -113,6 +113,7 @@
     "preempt=full"
     # Since nvidia driver 570, potentially less stuttering in VR?
     "nvidia.NVreg_RegistryDwords=RMIntrLockingMode=1"
+    "nvidia-modeset.conceal_vrr_caps=1"
   ];
   boot.kernel.sysctl."kernel.sysrq" = 502;
 
