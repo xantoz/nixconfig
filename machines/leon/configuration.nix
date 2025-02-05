@@ -110,6 +110,7 @@
   boot.kernelParams = [
     # Somewhat of a fix for modern insomniac laptops. At least the ones that actuall support S3 sleep
     "mem_sleep_default=deep"
+    "preempt=full"
     # Since nvidia driver 570, potentially less stuttering in VR?
     "nvidia.NVreg_RegistryDwords=RMIntrLockingMode=1"
   ];
