@@ -161,6 +161,11 @@ with super.lib; {
   #   nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.qttools ];
   # });
 
+
+  wivrn = super.wivrn.overrideAttrs(old: {
+    patches = [ ../../../patches/wivrn/0001-Attempt-to-make-vive-wands-take-precedence-over-ques.patch];
+  });
+
   redshift = (super.redshift.override { withGeolocation = false; });
 
   # # Die, networkmanager, die!
