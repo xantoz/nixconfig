@@ -233,12 +233,12 @@
     gsp.enable = true;           # We have a GSP-enabled nvidia GPU (I think this is implied by open = true, but probably best to put this here too)
     open = true; # should be fine with the open kernel module because we are Mobile RTX 3070 => Ampere. Testing non-open though, since I had trouble
     powerManagement.enable = true; # Should help with graphics going derp on suspend?
-    # prime = {
-    #   offload.enable = true;
-    #   offload.enableOffloadCmd = true; # Gives us the nvidia-offload convenience script
-    #   amdgpuBusId = "PCI:34:0:0";
-    #   nvidiaBusId = "PCI:1:0:0";
-    # };
+    prime = {
+      offload.enable = true;
+      offload.enableOffloadCmd = true; # Gives us the nvidia-offload convenience script
+      amdgpuBusId = "PCI:34:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
   # # Ugly-hack the extraModules setting because the override above doesn't quite work
   # boot.extraModulePackages = lib.mkForce [
