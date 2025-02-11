@@ -140,6 +140,8 @@
     HandlePowerKey=ignore
   '';
 
+  boot.kernel.sysctl."kernel.sysrq" = 502; # Enables more sysrq stuff
+
   boot.kernel.sysctl = { "net.ipv6.conf.all.use_tempaddr" = 2; };
   networking.dhcpcd.extraConfig = ''
     require dhcp_server_identifier
