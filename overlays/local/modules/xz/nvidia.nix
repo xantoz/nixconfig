@@ -1,20 +1,18 @@
 { lib, pkgs, config, ... }:
 
-with lib;
-
 let
   cfg = config.xz.nvidia;
 in {
   options.xz.nvidia = {
-    enable = mkEnableOption "Xantoz custom nvidia module";
+    enable = lib.mkEnableOption "Xantoz custom nvidia module";
 
-    rmIntrLockingMode = mkEnableOption ''
+    rmIntrLockingMode = lib.mkEnableOption ''
       Whether to use nvidia.NVreg_RegistryDwords=RMIntrLockingMode=1 or not.
       This options exists since nvidia driver 570, and gives potentially less stuttering in VR.
       It has issues with VRR displays though.
     '';
-    gspMode = mkOption {
-      type = types.enum [
+    gspMode = lib.mkOption {
+      type = lib.types.enum [
         "no"
         # Option to even disable modesetting (probably not possible to use wayland in such a conf)
         # this will require some more smarts with offload config and such though than the simple passing on we currently do
@@ -30,13 +28,13 @@ in {
 
     # TODO: support various modes such as: AMD drivers only, nouveau/nvk only, nouveau/nvk + amd, nvidia + amd
     #       probalby also set services.xserver.videoDrivers based on that?
-    disableOthers = mkEnableOption ''
+    disableOthers = lib.mkEnableOption ''
       disable e.g. AMD or intel drivers?"
     '';
     # disableNouveau = mkEnableOption "disable the nouveau driver entirely?";
 
-    prime = mkOption {
-      type = types.attrs;
+    prime = lib.mkOption {
+      type = lib.types.attrs;
       default = { };
       description = ''
         Just passed on to hardware.nvidia.modprime
@@ -50,7 +48,7 @@ in {
       noModeSetting = (cfg.gspMode == "no-without-modesetting");
       gspEnabled = (cfg.gspMode == "yes" || cfg.gspMode == "yes-with-open-driver");
       useOpenModule = (cfg.gspMode == "yes-with-open-driver");
-    in mkIf cfg.enable {
+    in lib.mkIf cfg.enable {
       nixpkgs.config.cudaSupport = true;
 
       # Add the nix-community cachix. This should hopefully give me binary cache for packages built with cuda enabled, so I don't have to rebuild blender all the time
