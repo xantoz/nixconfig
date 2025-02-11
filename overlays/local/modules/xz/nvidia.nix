@@ -15,11 +15,12 @@ in {
     '';
     gspMode = mkOption {
       type = types.enum [
-        # TODO: option to even disable modesetting (probably not possible to use wayland in such a conf)
-        #       this will require some more smarts with offload config and such though than the simple passing on we currently do
-        #       as we'd like kernel params nvidia-drm.modeset=0 nvidia-drm.fbdev=0 basically, but hardware.nvidia.offloadCfgEnable adds those.
-        #       I guess we could have such a setup in theory with GSP or even the open driver. But I'm not interested in trying/supporting that possible combo anyway. If I'm using the open driver I want all the modernities I think.
         "no"
+        # Option to even disable modesetting (probably not possible to use wayland in such a conf)
+        # this will require some more smarts with offload config and such though than the simple passing on we currently do
+        # as we'd like kernel params nvidia-drm.modeset=0 nvidia-drm.fbdev=0 basically, but hardware.nvidia.offloadCfgEnable adds those.
+        # I guess we could have such a setup in theory with GSP or even the open driver. But I'm not interested in trying/supporting that possible combo anyway. If I'm using the open driver I want all the modernities I think.
+        "no-without-modesetting"
         "no-without-simpledrm"
         "yes"
         "yes-with-open-driver"
@@ -45,7 +46,8 @@ in {
 
   config =
     let
-      disableSimpleDrm = (cfg.gspMode == "no-without-simpledrm");
+      disableSimpleDrm = (cfg.gspMode == "no-without-simpledrm" || cfg.gspMode == "no-without-modesetting");
+      noModeSetting = (cfg.gspMode == "no-without-modesetting");
       gspEnabled = (cfg.gspMode == "yes" || cfg.gspMode == "yes-with-open-driver");
       useOpenModule = (cfg.gspMode == "yes-with-open-driver");
     in mkIf cfg.enable {
@@ -69,7 +71,8 @@ in {
 
       hardware.nvidia = {
         # Hopefully this is 570.
-        package = config.boot.kernelPackages.nvidiaPackages.latest;
+        # package = config.boot.kernelPackages.nvidiaPackages.latest; # FIXME: This should probably be beta. But right now testing GSP off with 565 for whatever reason
+        package = config.boot.kernelPackages.nvidiaPackages.beta;
         # We patch the open kernel module to behave like CAP_SYS_NICE is always set for the benefit of SteamVR (since NixOS bwraps it and stuff)
         # FIXME: I'm not too sure that this actually applies the overriden package where we want it
         # package =
@@ -79,11 +82,11 @@ in {
         #     patches = old.patches ++ [ ./0001-behave-like-cap_sys_nice-is-always-set.patch ];
         #     # patchesOpen = old.patchesOpen ++ [ ./0001-behave-like-cap_sys_nice-is-always-set.patch ];
         #   });
-        modesetting.enable = true;   # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway
+        modesetting.enable = (!noModeSetting);
         gsp.enable = gspEnabled;
         open = useOpenModule;
         powerManagement.enable = true; # Should help with graphics going derp on suspend?
-        prime = cfg.prime;
+        prime = lib.mkIf (!noModeSetting) cfg.prime;
       };
       # # Ugly-hack the extraModules setting because the override above doesn't quite work
       # boot.extraModulePackages = lib.mkForce [
