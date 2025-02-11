@@ -41,6 +41,12 @@
 
   boot.initrd.luks.devices."luks-7c41bfcf-840d-454f-81e4-79a9bc562401".device = "/dev/disk/by-uuid/7c41bfcf-840d-454f-81e4-79a9bc562401";
 
+  boot.kernelParams = [
+    # Somewhat of a fix for modern insomniac laptops. At least the ones that actuall support S3 sleep
+    "mem_sleep_default=deep"
+    "preempt=full"
+  ];
+
   networking = {
     hostName = "leon";          # Define your hostname.
     networkmanager = {
@@ -90,14 +96,6 @@
         hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
       };
     }
-  ];
-  boot.kernelParams = [
-    # Somewhat of a fix for modern insomniac laptops. At least the ones that actuall support S3 sleep
-    "mem_sleep_default=deep"
-    "preempt=full"
-    # Since nvidia driver 570, potentially less stuttering in VR?
-    "nvidia.NVreg_RegistryDwords=RMIntrLockingMode=1"
-    "nvidia-modeset.conceal_vrr_caps=1"
   ];
 
   boot.binfmt.emulatedSystems = [
@@ -201,50 +199,8 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # CUDA support in Blender and more (See: https://discourse.nixos.org/t/how-to-get-cuda-working-in-blender/5918/12)
-  nixpkgs.config.cudaSupport = true;
-  # Add the nix-community cachix. This should hopefully give me binary cache for packages built with cuda enabled, so I don't have to rebuild blender all the time
-  nix.settings.substituters = [
-    "https://nix-community.cachix.org"
-  ];
-  nix.settings.trusted-public-keys = [
-    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-  ];
 
-  services.xserver.videoDrivers = [
-    "amdgpu"
-    "nvidia"
-  ];
-  hardware.graphics.enable = true;
-  hardware.graphics.enable32Bit = true;
-  hardware.nvidia = {
-    # Hopefully this is 570.
-    # We patch the open kernel module to behave like CAP_SYS_NICE is always set for the benefit of SteamVR (since NixOS bwraps it and stuff)
-    # FIXME: I'm not too sure that this actually applies the overriden package where we want it
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
-    # package =
-    #   let
-    #     nvidiaPkg = config.boot.kernelPackages.nvidiaPackages.beta;
-    #   in nvidiaPkg.overrideAttrs (old: {
-    #     patches = old.patches ++ [ ./0001-behave-like-cap_sys_nice-is-always-set.patch ];
-    #     # patchesOpen = old.patchesOpen ++ [ ./0001-behave-like-cap_sys_nice-is-always-set.patch ];
-    #   });
-    modesetting.enable = true;   # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway
-    gsp.enable = true;           # We have a GSP-enabled nvidia GPU (I think this is implied by open = true, but probably best to put this here too)
-    open = true; # should be fine with the open kernel module because we are Mobile RTX 3070 => Ampere. Testing non-open though, since I had trouble
-    powerManagement.enable = true; # Should help with graphics going derp on suspend?
-    prime = {
-      offload.enable = true;
-      offload.enableOffloadCmd = true; # Gives us the nvidia-offload convenience script
-      amdgpuBusId = "PCI:34:0:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
-  # # Ugly-hack the extraModules setting because the override above doesn't quite work
-  # boot.extraModulePackages = lib.mkForce [
-  #   (config.boot.kernelPackages.nvidiaPackages.beta.open.overrideAttrs(old: {
-  #     patches = old.patches ++ [ ./0001-behave-like-cap_sys_nice-is-always-set.patch ];
-  #   }))
-  # ];
+
 
 
   programs.firefox.enable = true;
@@ -329,6 +285,25 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+
+  services.xserver.videoDrivers = [
+    "amdgpu"
+    "nvidia"
+  ];
+
+  xz.nvidia = {
+    enable = true;
+    gspMode = "no-without-simpledrm";
+    rmIntrLockingMode = true;
+    disableOthers = false;
+    prime = {
+      offload.enable = true;
+      offload.enableOffloadCmd = true; # Gives us the nvidia-offload convenience script
+      amdgpuBusId = "PCI:34:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
 
   # Open ports in the firewall.
   networking.firewall =
