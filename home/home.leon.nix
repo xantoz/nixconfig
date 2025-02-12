@@ -94,8 +94,11 @@
       systemctl --user import-environment XDG_CURRENT_DESKTOP
       dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP="''${XDG_CURRENT_DESKTOP}"
 
-      xinput set-prop 'HAILUCK CO.,LTD USB KEYBOARD Touchpad' 'Coordinate Transformation Matrix' 1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.4
-      xinput set-prop 'HAILUCK CO.,LTD USB KEYBOARD Touchpad' 'libinput Tapping Enabled' 1
+      # Disable tap to click (as the clicker in the pad is still healthy)
+      xinput set-prop 'MSFT0001:00 06CB:CE78 Touchpad'   'libinput Tapping Enabled' 0
+      # Make clicks work with two-finger for right click and three-finger for middle click
+      # (It seems like it might've worked for taps only without this for some reason... but I just disabled taps)
+      xinput set-prop  'MSFT0001:00 06CB:CE78 Touchpad'   'libinput Click Method Enabled' 0, 1
 
       exec ratpoison
     '';
