@@ -61,9 +61,13 @@ in {
 
       boot.kernelParams =
         lib.optional (!gspEnabled) "NVreg_EnableGpuFirmware=0"
-        ++ lib.optional cfg.rmIntrLockingMode "nvidia.NVreg_RegistryDwords=RMIntrLockingMode=1"
-        ++ lib.optional cfg.rmIntrLockingMode "nvidia-modeset.conceal_vrr_caps=1"; # (This option doesn't actually exist yet in 570 beta, but we wish for it to exist soon as a way to disable VRR)
-
+        ++ lib.optionals cfg.rmIntrLockingMode [
+          "nvidia.NVreg_RegistryDwords=RMIntrLockingMode=1"
+          "nvidia-modeset.conceal_vrr_caps=1"  # (This option doesn't actually exist yet in 570 beta, but we wish for it to exist soon as a way to disable VRR...)
+        ] ++ lib.optionals noModeSetting [
+          "nvidia-drm.modeset=0"
+          "nvidia-drm.fbdev=0"
+        ];
       hardware.graphics.enable = true;
       hardware.graphics.enable32Bit = true;
 
