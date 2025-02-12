@@ -173,6 +173,8 @@
     enable = true;
     man.enable = true;
     dev.enable = true;
+    info.enable = true;
+    doc.enable = true;
     # Enabling the below apparently helps whatis and apropos a bit. Unfortunately it also makes build times very long, so do not enable it for now
     # man.generateCaches = true;
   };
