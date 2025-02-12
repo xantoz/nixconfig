@@ -93,7 +93,7 @@ in {
       #   }))
       # ];
 
-      boot.blacklistedKernelModules = lib.optionals cfg.disableOthers [
+      boot.blacklistedKernelModules = lib.optionals (cfg.disableOthers || noModeSetting) [
         "amdgpu"
         "i915"
       ];
