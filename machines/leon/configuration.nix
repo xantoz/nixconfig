@@ -156,7 +156,7 @@
       unityhub
 
       xsane
-      #darktable
+      darktable
       #ansel
       #vkdt
 
