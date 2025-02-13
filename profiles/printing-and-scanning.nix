@@ -19,7 +19,7 @@
     extraBackends = with pkgs; [
       hplipWithPlugin
       epkowa
-      # epsonscan2
+      epsonscan2
       # pixma
     ];
   };
