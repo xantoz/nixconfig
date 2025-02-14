@@ -235,6 +235,7 @@
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
+    extraCompatPackages = [ pkgs.proton-ge-rtsp-bin ];
     package = pkgs.steam.override {
       extraEnv = {
         MANGOHUD = true;
