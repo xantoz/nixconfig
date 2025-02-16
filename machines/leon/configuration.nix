@@ -227,7 +227,7 @@
     wlx-overlay-s
     motoc
     (writeShellScriptBin "wivrn-dashboard-trackers" ''
-       env WIVRN_USE_STEAMVR_LH=1 LH_DISCOVER_WAIT_MS=6000 steam-run wivrn-dashboard
+       env ADB_LIBUSB=0 WIVRN_USE_STEAMVR_LH=1 LH_DISCOVER_WAIT_MS=6000 steam-run wivrn-dashboard
     '')
     wayvr-dashboard
   ];
