@@ -234,7 +234,6 @@
     WMR_HANDTRACKING = "0";
     LH_HANDTRACKING = "0";
   };
-
   # programs.envision = {
   #   enable = true;
   #   openFirewall = true;
@@ -256,11 +255,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
 
   services.xserver.videoDrivers = [
