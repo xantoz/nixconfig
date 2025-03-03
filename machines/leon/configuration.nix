@@ -128,9 +128,9 @@
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "adbusers" "audio" "video" "kvm" "render" "input" "gamemode" "dialout" ];
     packages = with pkgs; [
-      kalendar
-      kmail
-      kontact
+      # kalendar
+      # kmail
+      # kontact
       blender
       # kate
       # thunderbird
