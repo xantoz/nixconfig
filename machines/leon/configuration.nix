@@ -254,12 +254,12 @@
     #disableOthers = true;
     gspMode = "yes-with-open-driver";
     disableOthers = false;
-   prime = {
-     offload.enable = true;
-     offload.enableOffloadCmd = true; # Gives us the nvidia-offload convenience script
-     amdgpuBusId = "PCI:34:0:0";
-     nvidiaBusId = "PCI:1:0:0";
-   };
+    prime = {
+      offload.enable = true;
+      offload.enableOffloadCmd = true; # Gives us the nvidia-offload convenience script
+      amdgpuBusId = "PCI:34:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
 
   # Open ports in the firewall.
