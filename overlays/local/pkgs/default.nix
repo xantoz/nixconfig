@@ -183,7 +183,5 @@ with super.lib; {
 
   mcomix-lite = super.callPackage ./mcomix-lite { };
 
-  lsix = super.callPackage ./lsix { };
-
   wayvr-dashboard = super.callPackage ./wayvr-dashboard { };
 }
