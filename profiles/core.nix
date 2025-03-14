@@ -1,13 +1,18 @@
 { config, pkgs, ... }:
 
 let
-  nixpkgs-xr = (import ../overlays/nixpkgs-xr/default.nix);
+  # flake-compat freaks out when it sees the .git in my submodule... For now lets just continue getting this submodule using fetchGit. I'm going to have to use a patched flake-compat eventually
+  # nixpkgs-xr = (import ../overlays/nixpkgs-xr);
+  nixpkgs-xr = import (builtins.fetchGit {
+    url = "https://github.com/nix-community/nixpkgs-xr.git";
+    rev = "99383a8dda24c47f13418c505937338cbb05194e";
+  });
 in {
   nixpkgs.config.allowUnfree = true;   # for broadcom_sta, mainly
 
   nixpkgs.overlays = [
     (import ../overlays/local/pkgs/default.nix)
-    nixpkgs-xr.overlays.default
+    nixpkgs-xr.outputs.overlays.default
   ];
   imports = import ../overlays/local/modules/module-list.nix;
 
