@@ -52,7 +52,11 @@
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
-    extraCompatPackages = [ pkgs.proton-ge-rtsp-bin pkgs.steam-play-none ];
+    # But this proton-ge-rtsp-bin (from nixpkgs-xr overlay) is kinda of tangetially XR related (better video playback in VRC)
+    extraCompatPackages = [
+      pkgs.proton-ge-rtsp-bin
+      pkgs.steam-play-none
+    ];
     package = pkgs.steam.override {
       extraEnv = {
         MANGOHUD = true;
