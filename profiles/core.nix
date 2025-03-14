@@ -1,10 +1,13 @@
 { config, pkgs, ... }:
 
-{
+let
+  nixpkgs-xr = (import ../overlays/nixpkgs-xr/default.nix);
+in {
   nixpkgs.config.allowUnfree = true;   # for broadcom_sta, mainly
 
   nixpkgs.overlays = [
     (import ../overlays/local/pkgs/default.nix)
+    nixpkgs-xr.overlays.default
   ];
   imports = import ../overlays/local/modules/module-list.nix;
 
