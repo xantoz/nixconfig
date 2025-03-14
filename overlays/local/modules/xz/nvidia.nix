@@ -44,7 +44,7 @@ in {
 
   config =
     let
-      disableSimpleDrm = (cfg.gspMode == "no-without-simpledrm" || cfg.gspMode == "no-without-modesetting");
+      disableSimpleDrm = (cfg.gspMode == "no-without-simpledrm" || cfg.gspMode == "no-without-modesetting"); # The simpledrm driver needs to be disabled if using the nvidia driver in non-modesetting mode, lest things get confusing (avoid having three /dev/dri/cardX)
       noModeSetting = (cfg.gspMode == "no-without-modesetting");
       gspEnabled = (cfg.gspMode == "yes" || cfg.gspMode == "yes-with-open-driver");
       useOpenModule = (cfg.gspMode == "yes-with-open-driver");
