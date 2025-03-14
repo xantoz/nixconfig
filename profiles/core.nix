@@ -71,6 +71,14 @@
     python3
 
     doas-sudo-shim
+
+    # Useful alias for nix repl automatically loading default nixpkgs and also config
+    (writeShellScriptBin "nr" ''
+      exec nix repl --file \<nixpkgs\> "$@"
+    '')
+    (writeShellScriptBin "nro" ''
+      exec nix repl --file \<nixpkgs/nixos\> "$@"
+    '')
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
