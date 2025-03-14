@@ -181,7 +181,34 @@ with super.lib; {
 
   simpleserver = super.callPackage ./simpleserver { };
 
-  mcomix-lite = super.callPackage ./mcomix-lite { };
-
   wayvr-dashboard = super.callPackage ./wayvr-dashboard { };
+  # mcomix-lite = super.callPackage ./mcomix-lite { };
+  # mcomix-lite =
+  #   let
+  #     version = "c4906bda9ba54045a476a4d6fb88b5b236f913fe";
+  #   in super.mcomix.overrideAttrs(old: {
+  #     name = "mcomix-lite-${version}";
+  #     version = version;
+  #     src = super.fetchFromGitHub {
+  #       owner = "thermitegod";
+  #       repo = "mcomix-lite";
+  #       rev = version;
+  #     sha256 = "sha256-xbeSKIIfJxBAUZ67jh3FMkts272dt4tIWaAa2cHCMkA=";
+  #     fetchSubmodules = true;
+  #   };
+  #   # meta = {
+  #   #   description = "A fork of mcomix, a GTK3 image viewer for comic book archives";
+  #   #   longDescription = ''
+  #   #     MComix-Lite is a manga/comic reader written in Python3 / Gtk+3
+
+  #   #     MComix-Lite is a fork of MComix3 which is a fork of MComix
+  #   #     which is a fork of Comix.
+
+  #   #     The main focus is ONLY on the reader and all other features,
+  #   #     i.e. library, have been removed or could be subject to a
+  #   #     future removal.
+  #   #   '';
+  #   #   homepage = https://github.com/thermitegod/mcomix-lite;
+  #   # };
+  #   });
 }
