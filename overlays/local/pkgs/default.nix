@@ -210,4 +210,18 @@ with super.lib; {
   #   #   homepage = https://github.com/thermitegod/mcomix-lite;
   #   # };
   #   });
+
+  # Fix build-issue with CUDA by fetching latest version
+  # The actual fix, though, would probably be commit ce92fa766cc85099ef1da12aa2fef571c76dddd9 in case we want to just extract that as a patch in the future or whatever
+  basalt-monado = super.basalt-monado.overrideAttrs(old: {
+    src = super.fetchFromGitLab {
+      domain = "gitlab.freedesktop.org";
+      owner = "mateosss";
+      repo = "basalt";
+      rev = "bm9a71a94376ee85ea0ffadb19b5ac6b52d01159d";
+      hash = "sha256-lhCgFVXvGW/Nytm462JMYrLeNJY2I/TH03/hzchelqw=";
+      fetchSubmodules = true;
+    };
+    version = "0-unstable-2025-02-27";
+  });
 }
