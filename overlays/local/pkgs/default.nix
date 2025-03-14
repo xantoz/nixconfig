@@ -211,11 +211,8 @@ with super.lib; {
   #   # };
   #   });
 
-  # Fix build-issue with CUDA by fetching latest version
-  # The actual fix, though, would probably be commit ce92fa766cc85099ef1da12aa2fef571c76dddd9 in case we want to just extract that as a patch in the future or whatever
-  # Actually it was neither of those. I did end up having to patch CMakeLists.txt myself...
-  # Actually that didn't work either. I had to modify cmakeFlags
-  # Actually I had to add cuda packages to deps. YUAY!
+  # Fix build-issue with CUDA
+  # Also bump the package to latest gitlab while we are at it, because why not
   basalt-monado = super.basalt-monado.overrideAttrs(old: {
     src = super.fetchFromGitLab {
       domain = "gitlab.freedesktop.org";
@@ -226,27 +223,7 @@ with super.lib; {
       fetchSubmodules = true;
     };
     version = "0-unstable-2025-02-27";
-    # Fix the CMP0146 policy warning (that turns into an error due to other settings)
-    # patchPhase = ''
-    #   # sed -i '1i cmake_policy(SET CMP0146 OLD)' CMakeLists.txt thirdparty/CMakeLists.txt
-    #   # sed -i '1i add_definitions(-w)' CMakeLists.txt thirdparty/CMakeLists.txt
-    #   sed -i '1i add_definitions(-Wno-dev)' CMakeLists.txt thirdparty/CMakeLists.txt
-    # '';
-    # Ignore the CMP0146 policy warning on opencv when CUDA has been globally enabled
-    # cmakeFlags = old.cmakeFlags ++ [ "-Wno-dev" ];
-
-    # Upstream doesn't enable CUDA properly
-    # buildInputs = old.buildInputs ++ lib.optionals config.nixpkgs.config.cudaSupport [
-    #     super.cudaPackages.cuda_cudart
-    #     super.cudaPackages.cuda_cccl # <thrust/*>
-    #     super.cudaPackages.libnpp # npp.h
-    #     super.nvidia-optical-flow-sdk
-    #     super.cudaPackages.libcublas # cublas_v2.h
-    #     super.cudaPackages.libcufft # cufft.h
-    #   ];
-    # nativeBuildInputs = old.nativeBuildInputs ++ lib.optionals config.nixpkgs.config.cudaSupport [
-    #   super.cudaPackages.cuda_nvcc
-    # ];
+    # TODO: Make this conditional on config.nixpkgs.config.cudaSupport
     buildInputs = old.buildInputs ++ [
         super.cudaPackages.cuda_cudart
         super.cudaPackages.cuda_cccl # <thrust/*>
