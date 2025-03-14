@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./xr.nix
+      ./gpu.nix
       ../../profiles/core.nix
       ../../profiles/graphical-kde.nix
       ../../profiles/input-methods.nix
@@ -76,16 +77,6 @@
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.kernelPatches = [
-  #   {
-  #     name = "amdgpu-ignore-ctx-privileges";
-  #     patch = pkgs.fetchpatch {
-  #       name = "cap_sys_nice_begone.patch";
-  #       url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
-  #       hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
-  #     };
-  #   }
-  # ];
 
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
@@ -166,29 +157,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-
-  services.xserver.videoDrivers = [
-   "amdgpu"
-    "nvidia"
-  ];
-
-  xz.nvidia = {
-    enable = true;
-    rmIntrLockingMode = true;
-    # gspMode = "no-without-modesetting";
-    # disableOthers = true;
-    #gspMode = "no-without-simpledrm";
-    #disableOthers = true;
-    gspMode = "yes-with-open-driver";
-    disableOthers = false;
-    prime = {
-      offload.enable = true;
-      offload.enableOffloadCmd = true; # Gives us the nvidia-offload convenience script
-      amdgpuBusId = "PCI:34:0:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
 
   # Open ports in the firewall.
   networking.firewall =
