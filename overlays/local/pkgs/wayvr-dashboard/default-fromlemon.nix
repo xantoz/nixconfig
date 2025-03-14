@@ -18,20 +18,20 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "wayvr-dashboard";
-  version = "0.2.0";
+  version = "0.2.8";
 
   src = fetchFromGitHub {
     owner = "olekolek1000";
     repo = "wayvr-dashboard";
-    hash = "sha256-lcL+igZdZB5GM2bZTZaR0sRy78Jx4kv58P+dBhrN7Ac=";
-    rev = "a927e7a20268c521e508c4a9521b12530f6e8422";
+    hash = "sha256-VqHVTPOCQWzNM7X++FXOkdc0uNqtXGsZ3yYgf3Hg1k0=";
+    rev = "cdd5982da9497509cb5fbb5c499289e506cf2499"; # 0.2.8
   };
 
 
   sourceRoot = "${src.name}/src-tauri";
 
   useFetchCargoVendor = true;
-  cargoHash = "sha256-2Rz51zr6O8eCez1UnjkD4FYjdkhmjS/0SvfHV90og1k=";
+  cargoHash = "sha256-Hfl5zIQ4IgDp4SQnwIfekDkiZ8vs2N8CzjlVDc7W4VM=";
 
   frontend = buildNpmPackage {
     inherit version src;
