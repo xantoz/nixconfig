@@ -181,7 +181,6 @@ with super.lib; {
 
   simpleserver = super.callPackage ./simpleserver { };
 
-  wayvr-dashboard = super.callPackage ./wayvr-dashboard { };
   # mcomix-lite = super.callPackage ./mcomix-lite { };
   # mcomix-lite =
   #   let
