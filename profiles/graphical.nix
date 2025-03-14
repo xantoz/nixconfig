@@ -22,10 +22,6 @@
     # drm_info
     vulkan-tools
     xfontsel
-    pavucontrol
-    pamixer
-    pulsemixer
-    ponymix
     mpv
 
     qt5.qtbase # for some reason I need to add this manually now to have xcb platform
@@ -34,8 +30,22 @@
 
     dmenu
 
+    ################################################################################
+    ## Pulseaudio mixers etc
+    ################################################################################
+    pavucontrol
+    pamixer
+    pulsemixer
+    ponymix
+    ################################################################################
+    ## Pipewire mixers and patchbays etc.
+    ################################################################################
+    patchage # JACK patchbay thingy (usable for parts of pipewire due to backwards compat)
     qpwgraph # pipewire patchbay thingy
     helvum # another pipewire patchbay thingy
+    coppwr # another patchbay thingy/low-level control
+    sonusmix # another thing to control pipewire connections, but now different
+    pwvucontrol # pipewire replpacement for pavucontrol
   ];
 
   fonts.packages = with pkgs; [
