@@ -11,8 +11,8 @@ in {
   nixpkgs.config.allowUnfree = true;   # for broadcom_sta, mainly
 
   nixpkgs.overlays = [
-    (import ../overlays/local/pkgs/default.nix)
     nixpkgs-xr.outputs.overlays.default
+    (import ../overlays/local/pkgs/default.nix)
   ];
   imports = import ../overlays/local/modules/module-list.nix;
 
