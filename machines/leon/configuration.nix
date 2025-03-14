@@ -105,7 +105,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tewi_inaba = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "adbusers" "audio" "video" "kvm" "render" "input" "gamemode" "dialout" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" "audio" "video" "kvm" "render" "input" "gamemode" "dialout" "pipewire" ];
     packages = with pkgs; [
       # kalendar
       # kmail

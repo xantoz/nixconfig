@@ -114,7 +114,7 @@
     isNormalUser = true;
     uid = 1000;
     description = "Anton Kindestam";
-    extraGroups = [ "networkmanager" "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "cdrom" "floppy" ];
+    extraGroups = [ "networkmanager" "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "cdrom" "floppy" "pipewire" ];
     packages = with pkgs; [
       # kalendar
       # kmail
