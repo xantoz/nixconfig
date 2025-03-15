@@ -1,6 +1,16 @@
 { config, lib, pkgs, ... }:
 
 {
+  nixpkgs.overlays =
+    let
+      nixpkgs-xr = import (builtins.fetchGit {
+        url = "https://github.com/nix-community/nixpkgs-xr.git";
+        rev = "99383a8dda24c47f13418c505937338cbb05194e";
+      });
+    in [
+      nixpkgs-xr.overlays.default
+    ];
+
   environment.systemPackages = with pkgs; [
     # VR related
     opencomposite
