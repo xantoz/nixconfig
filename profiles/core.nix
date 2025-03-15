@@ -16,7 +16,7 @@
     nixPath = [
       "/etc/nixos"
       "nixpkgs=/etc/nixos/nixpkgs"
-      "nixpkgs-overlays=/etc/nixos/overlays/local"
+      # "nixpkgs-overlays=/etc/nixos/overlays/local"
       "nixos-config=/etc/nixos/configuration.nix"
     ];
     settings = {
