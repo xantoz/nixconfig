@@ -40,6 +40,7 @@
     extraPackages = with pkgs; [
       swaybg swaylock swayidle
       waybar
+      sfwbar
       xwayland
       qt5.qtwayland
       mako
