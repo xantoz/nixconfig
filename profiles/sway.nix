@@ -57,4 +57,8 @@
       # niri
     ];
   };
+
+  xz.obs.plugins = with pkgs.obs-studio-plugins; [
+    wlrobs # Screencapture for wlroots compositors (I guess this is different from using pipewire?)
+  ];
 }
