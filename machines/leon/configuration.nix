@@ -122,9 +122,18 @@
       #ansel
       #vkdt
 
-      obs-studio
       mcomix
     ];
+  };
+
+  xz.obs = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-backgroundremoval
+      obs-3d-effect
+      obs-pipewire-audio-capture
+    ];
+    loopBackSupport = true;
   };
 
   # Allow unfree packages

@@ -3,4 +3,5 @@
   ./programs/simpleserver.nix
   ./services/mediakeys.nix
   ./xz/nvidia.nix
+  ./xz/obs.nix
 ]
