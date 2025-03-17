@@ -128,12 +128,29 @@
 
   xz.obs = {
     enable = true;
+    loopBackSupport = true;
     plugins = with pkgs.obs-studio-plugins; [
-      obs-backgroundremoval
       obs-3d-effect
       obs-pipewire-audio-capture
+
+      (
+      # Fugly-hack-fix so it builds properly under CUDA
+      obs-backgroundremoval.overrideAttrs(old: {
+        # TODO: Make this conditional on config.nixpkgs.config.cudaSupport
+        buildInputs = old.buildInputs ++ [
+          pkgs.cudaPackages.cuda_cudart
+          pkgs.cudaPackages.cuda_cccl # <thrust/*>
+          pkgs.cudaPackages.libnpp # npp.h
+          pkgs.nvidia-optical-flow-sdk
+          pkgs.cudaPackages.libcublas # cublas_v2.h
+          pkgs.cudaPackages.libcufft # cufft.h
+        ];
+        nativeBuildInputs = old.nativeBuildInputs ++ [
+          pkgs.cudaPackages.cuda_nvcc
+        ];
+      })
+      )
     ];
-    loopBackSupport = true;
   };
 
   # Allow unfree packages
