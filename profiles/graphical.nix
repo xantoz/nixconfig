@@ -17,7 +17,7 @@
     ratpoison
     icewm
     xorg.twm
-    xsel
+    xsel xclip
     glxinfo
     # drm_info
     vulkan-tools
