@@ -126,6 +126,9 @@
     ];
   };
 
+  # Enable waydroid
+  virtualisation.waydroid.enable = true;
+
   xz.obs = {
     enable = true;
     loopBackSupport = true;
