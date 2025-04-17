@@ -9,6 +9,8 @@
     foot
     #stupidterm
 
+    wev
+
     wl-clipboard                # Clipboard management and stuff
     # wl-clip-persist
     # cliphist                  # more fancy clipboard manager. home-manager module exists
