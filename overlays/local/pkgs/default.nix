@@ -236,4 +236,7 @@ with super.lib; {
       super.cudaPackages.cuda_nvcc
     ];
   });
+
+  # put this here while waiting on https://github.com/NixOS/nixpkgs/pull/396149 to get merged
+  wivrn = super.callPackage ./wivrn { };
 }
