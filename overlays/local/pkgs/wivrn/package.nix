@@ -71,6 +71,7 @@ stdenv.mkDerivation (finalAttrs: {
 
     patches = [
       ./force-enable-steamvr_lh.patch
+      ../../../../patches/wivrn/0001-Attempt-to-make-vive-wands-take-precedence-over-ques.patch
     ];
 
     postPatch = ''
