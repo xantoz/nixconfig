@@ -100,7 +100,7 @@
   services.pulseaudio.enable = false; # Because we want pipewire instead
   services.pipewire = {
     enable = true;
-    systemWide = true;          # Let's run pipewire system-wide, yay
+    systemWide = false;          # Let's run pipewire system-wide, yay
     pulse.enable = true;
     jack.enable = true;
     alsa.enable = true;
