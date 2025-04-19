@@ -43,12 +43,13 @@
     ################################################################################
     ## Pipewire mixers and patchbays etc.
     ################################################################################
-    patchage # JACK patchbay thingy (usable for parts of pipewire due to backwards compat)
+    patchage # JACK patchbay thingy (usable for parts of pipewire due to backwards compat). nixpkgs version is not latest version though... (TODO: add to overlay?)
+    patchance # a slightly different patchage kind of
     qpwgraph # pipewire patchbay thingy
     helvum # another pipewire patchbay thingy
     coppwr # another patchbay thingy/low-level control
     sonusmix # another thing to control pipewire connections, but now different
-    # pwvucontrol # pipewire replpacement for pavucontrol
+    pwvucontrol # pipewire replpacement for pavucontrol
   ];
 
   fonts.packages = with pkgs; [
