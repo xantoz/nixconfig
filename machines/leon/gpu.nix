@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
+  # TODO: Perhaps make this into a machine-specific module (still leveraging my xz.nvidia which is a bit more generic)
+
   #################################################################################
   ## settings for amdgpu main with nvidia offload (might happen to work even if mux set to nvidia if you are lucky)
   #################################################################################
