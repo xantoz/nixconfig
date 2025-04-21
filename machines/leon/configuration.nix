@@ -17,6 +17,7 @@
       ../../profiles/laptop.nix
       ../../profiles/sway.nix
       ../../profiles/printing-and-scanning.nix
+      ../../profiles/appimage.nix
       ../../home/home-manager/nixos
     ];
 
