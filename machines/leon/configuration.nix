@@ -123,6 +123,8 @@
       #vkdt
 
       mcomix
+
+      dolphin-emu
     ];
   };
 
