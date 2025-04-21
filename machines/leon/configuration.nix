@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./xr.nix
       ./gpu.nix
+      ./vrctools.nix
       ../../profiles/core.nix
       ../../profiles/graphical-kde.nix
       ../../profiles/input-methods.nix
@@ -111,7 +112,6 @@
       # kalendar
       # kmail
       # kontact
-      blender
       # kate
       # thunderbird
 
