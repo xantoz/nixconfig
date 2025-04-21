@@ -115,8 +115,7 @@
       # kate
       # thunderbird
 
-      alcom
-      unityhub
+      vrrtest
 
       xsane
       darktable
