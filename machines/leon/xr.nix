@@ -1,3 +1,11 @@
+# TODO: Now we should try and split the xr profile out eventually I think.
+#       Make it a module, since we need to at least choose between wivrn and monado
+#
+#       Bonus points if I make a module that gives me some scripts to choose between wivrn and monado using a CLI script, and same for opencomposite and xrizer.
+#       In fact having it be a CLI tool for the choosing makes it easier, since we won't need home-manager to write in ~/.config/openvr and ~/.config/openxr I think?
+#       One problem though: services.{wivrn,monado}.defaultRuntime does something in /etc/xdg/openxr/1/active_runtime.json. But I think ~/.config/openxr/1/active_runtime.json takes precedence?
+
+
 { config, lib, pkgs, ... }:
 
 {
