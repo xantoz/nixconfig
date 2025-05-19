@@ -7,6 +7,7 @@
 
   programs.sway = {
     enable = true;
+    # TODO: Figure out which ones of these env variable definitions that are no longer neccessary
     extraSessionCommands = ''
       # Fix Java on non-reparenting WM:s
       export _JAVA_AWT_WM_NONREPARENTING=1
@@ -47,6 +48,7 @@
       acpi
       grim
       sway-contrib.grimshot
+      swayimg
 
       # TODO: Split out those other compositors to their own profile (or better yet: Make a module for wlroots/other minor compositors?
       #       Even better would be to make a module for all compositors
