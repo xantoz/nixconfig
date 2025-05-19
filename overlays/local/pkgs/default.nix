@@ -215,17 +215,7 @@ with super.lib; {
   #   });
 
   # Fix build-issue with CUDA
-  # Also bump the package to latest gitlab while we are at it, because why not
   basalt-monado = super.basalt-monado.overrideAttrs(old: {
-    src = super.fetchFromGitLab {
-      domain = "gitlab.freedesktop.org";
-      owner = "mateosss";
-      repo = "basalt";
-      rev = "bm9a71a94376ee85ea0ffadb19b5ac6b52d01159d";
-      hash = "sha256-lhCgFVXvGW/Nytm462JMYrLeNJY2I/TH03/hzchelqw=";
-      fetchSubmodules = true;
-    };
-    version = "0-unstable-2025-02-27";
     # TODO: Make this conditional on config.nixpkgs.config.cudaSupport
     buildInputs = old.buildInputs ++ [
         super.cudaPackages.cuda_cudart
