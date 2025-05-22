@@ -127,7 +127,7 @@
   users.users.tewi_inaba = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "scanner" "cdrom" "floppy" "networkmanager" ];
+    extraGroups = [ "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "scanner" "cdrom" "floppy" "networkmanager" "pipewire" ];
     packages = with pkgs; [
       wineWowPackages.full
       dolphin-emu-beta

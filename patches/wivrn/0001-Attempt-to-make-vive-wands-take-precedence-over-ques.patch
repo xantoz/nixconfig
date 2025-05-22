@@ -1,0 +1,43 @@
+From d79022b6c746999b98c94dbe303498ff3bf5eda4 Mon Sep 17 00:00:00 2001
+From: xantoz <bountyjedi@gmail.com>
+Date: Wed, 5 Feb 2025 22:27:13 +0100
+Subject: [PATCH] Attempt to make vive wands take precedence over quest
+ controllers
+
+---
+ server/driver/wivrn_session.cpp | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/server/driver/wivrn_session.cpp b/server/driver/wivrn_session.cpp
+index f757d48..591a41c 100644
+--- a/server/driver/wivrn_session.cpp
++++ b/server/driver/wivrn_session.cpp
+@@ -170,11 +170,25 @@ wivrn::wivrn_session::wivrn_session(std::unique_ptr<wivrn_connection> connection
+ 
+ 	if (use_steamvr_lh && steamvr_lh_create_devices(&lhdevs) == XRT_SUCCESS)
+ 	{
++		int any_hand_controller_count = 0;
+ 		for (int i = 0; i < lhdevs->xdev_count; i++)
+ 		{
+ 			auto lhdev = lhdevs->xdevs[i];
+ 			switch (lhdev->device_type)
+ 			{
++				case XRT_DEVICE_TYPE_ANY_HAND_CONTROLLER:
++					if (any_hand_controller_count == 0)
++					{
++						roles.left = xdev_count;
++						static_roles.hand_tracking.left = lhdev;
++					}
++					else
++					{
++						roles.right = xdev_count;
++						static_roles.hand_tracking.right = lhdev;
++					}
++					any_hand_controller_count++;
++					break;
+ 				case XRT_DEVICE_TYPE_LEFT_HAND_CONTROLLER:
+ 					roles.left = xdev_count;
+ 					static_roles.hand_tracking.left = lhdev;
+-- 
+2.47.1
+

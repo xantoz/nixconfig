@@ -17,23 +17,39 @@
     ratpoison
     icewm
     xorg.twm
-    xsel
+    xsel xclip
     glxinfo
     # drm_info
     vulkan-tools
     xfontsel
-    pavucontrol
-    pamixer
-    pulsemixer
-    ponymix
     mpv
 
     qt5.qtbase # for some reason I need to add this manually now to have xcb platform
 
     tigervnc
 
+    dmenu
+
+    # Matrix client
+    element-desktop
+
+    ################################################################################
+    ## Pulseaudio mixers etc
+    ################################################################################
+    pavucontrol
+    pamixer
+    pulsemixer
+    ponymix
+    ################################################################################
+    ## Pipewire mixers and patchbays etc.
+    ################################################################################
+    patchage # JACK patchbay thingy (usable for parts of pipewire due to backwards compat). nixpkgs version is not latest version though... (TODO: add to overlay?)
+    patchance # a slightly different patchage kind of
     qpwgraph # pipewire patchbay thingy
     helvum # another pipewire patchbay thingy
+    coppwr # another patchbay thingy/low-level control
+    sonusmix # another thing to control pipewire connections, but now different
+    pwvucontrol # pipewire replpacement for pavucontrol
   ];
 
   fonts.packages = with pkgs; [
@@ -82,9 +98,10 @@
   services.dbus.packages = with pkgs; [ dconf ];
 
   # Audio settings (pipewire)
-  hardware.pulseaudio.enable = false; # Because we want pipewire instead
+  services.pulseaudio.enable = false; # Because we want pipewire instead
   services.pipewire = {
     enable = true;
+    systemWide = false;          # Let's run pipewire system-wide, yay
     pulse.enable = true;
     jack.enable = true;
     alsa.enable = true;

@@ -1,8 +1,13 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./wayland-general.nix
+  ];
+
   programs.sway = {
     enable = true;
+    # TODO: Figure out which ones of these env variable definitions that are no longer neccessary
     extraSessionCommands = ''
       # Fix Java on non-reparenting WM:s
       export _JAVA_AWT_WM_NONREPARENTING=1
@@ -36,17 +41,26 @@
     extraPackages = with pkgs; [
       swaybg swaylock swayidle
       waybar
+      sfwbar
       xwayland
       qt5.qtwayland
-      dmenu bemenu
       mako
       acpi
       grim
       sway-contrib.grimshot
+      swayimg
 
-      # Usable minimal wayland-native terminals
-      foot
-      #stupidterm
+      # TODO: Split out those other compositors to their own profile (or better yet: Make a module for wlroots/other minor compositors?
+      #       Even better would be to make a module for all compositors
+
+      # Wayfire stuff
+      wayfire-with-plugins wf-config wf-recorder wf-touch
+
+      # niri
     ];
   };
+
+  xz.obs.plugins = with pkgs.obs-studio-plugins; [
+    wlrobs # Screencapture for wlroots compositors (I guess this is different from using pipewire?)
+  ];
 }

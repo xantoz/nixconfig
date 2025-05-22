@@ -6,7 +6,10 @@
   services.printing = {
     enable = true;
     browsed.enable = false;     # I don't trust this one
-    drivers = with pkgs; [ hplipWithPlugin ];
+    drivers = with pkgs; [
+      hplipWithPlugin
+      postscript-lexmark
+    ];
   };
   services.ipp-usb.enable = true;
 

@@ -24,36 +24,52 @@ with super.lib; {
   emacs28 = super.emacs28.override {
     withX = true;
     withGTK3 = false;
+    withNativeCompilation = false;
     toolkit = "no";
   };
 
   emacs29 = super.emacs29.override {
     withX = true;
     withGTK3 = false;
+    withNativeCompilation = false;
     toolkit = "no";
   };
 
-  emacsNativeNoAOT = (super.emacs.override {
-    withX = true;
-    withGTK3 = false;
-    toolkit = "no";
-  }).overrideAttrs(old: {
-    env = super.lib.attrsets.overrideExisting old.env { NATIVE_FULL_AOT = "0"; };
-  });
-
-  emacsNoNativeComp = super.emacs.override {
+  emacs30 = super.emacs30.override {
     withX = true;
     withGTK3 = false;
     withNativeCompilation = false;
     toolkit = "no";
   };
 
-  emacsPgtkNoNativeComp = super.emacs.override {
-    withX = false;
-    withGTK3 = true;
-    withPgtk = true;
+  emacs = super.emacs30.override {
+    withX = true;
+    withGTK3 = false;
     withNativeCompilation = false;
+    toolkit = "no";
   };
+
+  # emacsNativeNoAOT = (super.emacs.override {
+  #   withX = true;
+  #   withGTK3 = false;
+  #   toolkit = "no";
+  # }).overrideAttrs(old: {
+  #   env = super.lib.attrsets.overrideExisting old.env { NATIVE_FULL_AOT = "0"; };
+  # });
+
+  # emacsNoNativeComp = super.emacs.override {
+  #   withX = true;
+  #   withGTK3 = false;
+  #   withNativeCompilation = false;
+  #   toolkit = "no";
+  # };
+
+  # emacsPgtkNoNativeComp = super.emacs.override {
+  #   withX = false;
+  #   withGTK3 = true;
+  #   withPgtk = true;
+  #   withNativeCompilation = false;
+  # };
 
   mpv-unwrapped = super.mpv-unwrapped.override {
     openalSupport = true;
@@ -149,6 +165,14 @@ with super.lib; {
   #   nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.qttools ];
   # });
 
+
+
+  # put this here while waiting on https://github.com/NixOS/nixpkgs/pull/396149 to get merged
+  wivrn = super.callPackage ./wivrn/package.nix { };
+  # wivrn = super.wivrn.overrideAttrs(old: {
+  #   patches = [ ../../../patches/wivrn/0001-Attempt-to-make-vive-wands-take-precedence-over-ques.patch];
+  # });
+
   redshift = (super.redshift.override { withGeolocation = false; });
 
   # # Die, networkmanager, die!
@@ -164,7 +188,49 @@ with super.lib; {
 
   simpleserver = super.callPackage ./simpleserver { };
 
-  mcomix-lite = super.callPackage ./mcomix-lite { };
+  # mcomix-lite = super.callPackage ./mcomix-lite { };
+  # mcomix-lite =
+  #   let
+  #     version = "c4906bda9ba54045a476a4d6fb88b5b236f913fe";
+  #   in super.mcomix.overrideAttrs(old: {
+  #     name = "mcomix-lite-${version}";
+  #     version = version;
+  #     src = super.fetchFromGitHub {
+  #       owner = "thermitegod";
+  #       repo = "mcomix-lite";
+  #       rev = version;
+  #     sha256 = "sha256-xbeSKIIfJxBAUZ67jh3FMkts272dt4tIWaAa2cHCMkA=";
+  #     fetchSubmodules = true;
+  #   };
+  #   # meta = {
+  #   #   description = "A fork of mcomix, a GTK3 image viewer for comic book archives";
+  #   #   longDescription = ''
+  #   #     MComix-Lite is a manga/comic reader written in Python3 / Gtk+3
 
-  lsix = super.callPackage ./lsix { };
+  #   #     MComix-Lite is a fork of MComix3 which is a fork of MComix
+  #   #     which is a fork of Comix.
+
+  #   #     The main focus is ONLY on the reader and all other features,
+  #   #     i.e. library, have been removed or could be subject to a
+  #   #     future removal.
+  #   #   '';
+  #   #   homepage = https://github.com/thermitegod/mcomix-lite;
+  #   # };
+  #   });
+
+  # Fix build-issue with CUDA
+  basalt-monado = super.basalt-monado.overrideAttrs(old: {
+    # TODO: Make this conditional on config.nixpkgs.config.cudaSupport
+    buildInputs = old.buildInputs ++ [
+        super.cudaPackages.cuda_cudart
+        super.cudaPackages.cuda_cccl # <thrust/*>
+        super.cudaPackages.libnpp # npp.h
+        super.nvidia-optical-flow-sdk
+        super.cudaPackages.libcublas # cublas_v2.h
+        super.cudaPackages.libcufft # cufft.h
+      ];
+    nativeBuildInputs = old.nativeBuildInputs ++ [
+      super.cudaPackages.cuda_nvcc
+    ];
+  });
 }

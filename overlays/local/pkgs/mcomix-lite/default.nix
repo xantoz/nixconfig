@@ -1,17 +1,17 @@
-{ stdenv, lib, fetchFromGitHub, python39Packages,
+{ stdenv, lib, fetchFromGitHub, python312Packages,
   gobject-introspection, gtk3, gdk-pixbuf,
   wrapGAppsHook
 }:
 
-python39Packages.buildPythonApplication rec {
+python312Packages.buildPythonApplication rec {
     name = "mcomix-lite-${version}";
-    version = "v3.3.0";
+    version = "c4906bda9ba54045a476a4d6fb88b5b236f913fe";
 
     src = fetchFromGitHub {
       owner = "thermitegod";
-      repo = "mcomix-ilte";
+      repo = "mcomix-lite";
       rev = "${version}";
-      sha256 = "9oydg0Vei8O6eogwn/+qezsXMLqvNhGu8ARpJPoCB2w=";
+      sha256 = "sha256-xbeSKIIfJxBAUZ67jh3FMkts272dt4tIWaAa2cHCMkA=";
       fetchSubmodules = true;
     };
 
@@ -19,7 +19,8 @@ python39Packages.buildPythonApplication rec {
 
     nativeBuildInputs = [ wrapGAppsHook ];
 
-    propagatedBuildInputs = with python39Packages; [
+    propagatedBuildInputs = with python312Packages; [
+      setuptools
       libarchive-c
       urllib3
       pillow

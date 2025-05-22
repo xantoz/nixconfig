@@ -28,3 +28,6 @@
 [submodule "fromElisp"]
 	path = emacs-parse/fromElisp
 	url = https://github.com/talyz/fromElisp.git
+[submodule "overlays/nixpkgs-xr"]
+	path = overlays/nixpkgs-xr
+	url = https://github.com/nix-community/nixpkgs-xr.git

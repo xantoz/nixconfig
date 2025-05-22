@@ -1,0 +1,26 @@
+From b39ff9b2d96c55ea14e63955297e16150fd628d9 Mon Sep 17 00:00:00 2001
+From: Anton Kindestam <antonki@kth.se>
+Date: Sun, 2 Feb 2025 12:12:08 +0100
+Subject: [PATCH] behave like cap_sys_nice is always set
+
+For SteamVR on NixOS
+---
+ kernel-open/nvidia/os-interface.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kernel-open/nvidia/os-interface.c b/kernel-open/nvidia/os-interface.c
+index 6d949e3b..a6db5b5f 100644
+--- a/kernel-open/nvidia/os-interface.c
++++ b/kernel-open/nvidia/os-interface.c
+@@ -387,7 +387,7 @@ NvBool NV_API_CALL os_check_access(RsAccessRight accessRight)
+         }
+         case RS_ACCESS_NICE:
+         {
+-            return capable(CAP_SYS_NICE);
++            return true;
+         }
+         default:
+         {
+-- 
+2.47.1
+

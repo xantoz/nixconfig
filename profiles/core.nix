@@ -16,7 +16,7 @@
     nixPath = [
       "/etc/nixos"
       "nixpkgs=/etc/nixos/nixpkgs"
-      "nixpkgs-overlays=/etc/nixos/overlays/local"
+      # "nixpkgs-overlays=/etc/nixos/overlays/local"
       "nixos-config=/etc/nixos/configuration.nix"
     ];
     settings = {
@@ -29,6 +29,7 @@
     nix-btm nix-output-monitor
     wget pv tree htop btop zile
     silver-searcher jq file
+    fd # that rust-based find replacement that is faster than regular find, but has different syntax that is "better" (I kinda wish there was a drop-in replacement tbh)
     (pkgs.runCommand "filtered-busybox" {} "mkdir -p $out/bin && ln -s ${busybox}/bin/{busybox,vi,ash,killall} $out/bin/")
     git tig
     nload
@@ -67,6 +68,16 @@
 
     # Have a python interpreter at hand
     python3
+
+    doas-sudo-shim
+
+    # Useful alias for nix repl automatically loading default nixpkgs and also config
+    (writeShellScriptBin "nr" ''
+      exec nix repl --file \<nixpkgs\> "$@"
+    '')
+    (writeShellScriptBin "nro" ''
+      exec nix repl --file \<nixpkgs/nixos\> "$@"
+    '')
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
@@ -92,6 +103,9 @@
 
   services.dbus.enable = true;
 
+  # TODO: Switch over to the service in the nixpkgs "ssh" module?
+  #       Or the one in home-manager?
+  #       Or do we switch to use gpg-agent?
   systemd.user.services.ssh-agent = {
     enable = true;
     description="SSH key agent";
@@ -134,6 +148,8 @@
     HandlePowerKey=ignore
   '';
 
+  boot.kernel.sysctl."kernel.sysrq" = 502; # Enables more sysrq stuff
+
   boot.kernel.sysctl = { "net.ipv6.conf.all.use_tempaddr" = 2; };
   networking.dhcpcd.extraConfig = ''
     require dhcp_server_identifier
@@ -164,6 +180,8 @@
     enable = true;
     man.enable = true;
     dev.enable = true;
+    info.enable = true;
+    doc.enable = true;
     # Enabling the below apparently helps whatis and apropos a bit. Unfortunately it also makes build times very long, so do not enable it for now
     # man.generateCaches = true;
   };
