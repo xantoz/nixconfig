@@ -89,6 +89,10 @@ with super.lib; {
 
   doas = super.doas.override { withPAM = false; };
 
+  # vkdt = super.vkdt.overrideAttrs(old: {
+  #   makeFlags = old.makeFlags ++ [ "CFLAGS=-Wnoerror" ];
+  # });
+
   mpc-qt = super.mpc-qt.overrideAttrs(old: {
     src = super.fetchFromGitLab {
       owner = "mpc-qt";
