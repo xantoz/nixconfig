@@ -42,7 +42,7 @@ with super.lib; {
     toolkit = "no";
   };
 
-  emacs = super.emacs30.override {
+  emacs = super.emacs.override {
     withX = true;
     withGTK3 = false;
     withNativeCompilation = false;
