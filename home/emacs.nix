@@ -21,6 +21,7 @@ let
   emacsWithLanguageServers =
     pkgs.runCommand "emacs-with-language-servers" { nativeBuildInputs = [ pkgs.makeWrapper ]; } ''
       makeWrapper ${myEmacs}/bin/emacs $out/bin/emacs --prefix PATH : ${lib.makeBinPath languageServers}
+      ln -s ${myEmacs}/bin/{ctags,etags,ebrowse,emacsclient} $out/bin/
     '';
 in {
   home.packages = with pkgs; [
