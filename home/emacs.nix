@@ -3,7 +3,25 @@
 {
   services.emacs.enable = true;
   programs.emacs.enable = true;
-  programs.emacs.package = pkgs.emacs;
+  programs.emacs.package = let
+    languageServers = with pkgs; [
+      elixir_ls
+      gopls
+      clang-tools
+      lldb
+      gdb
+      cmake-language-server
+      cmake
+      nil
+      # nixd
+      nodePackages.bash-language-server
+      python3Packages.python-lsp-server
+    ];
+    emacsWithLanguageServers =
+      pkgs.runCommand "emacs-with-language-servers" { nativeBuildInputs = [ pkgs.makeWrapper ]; } ''
+      makeWrapper ${pkgs.emacs}/bin/emacs $out/bin/emacs --prefix PATH : ${lib.makeBinPath languageServers}
+    '';
+  in emacsWithLanguageServers;
   programs.emacs.extraPackages =
     ((import ../emacs-parse/parse.nix) { inherit pkgs; inherit lib; }).usePackagePkgs {
       config = ./config/emacs/init.el;
