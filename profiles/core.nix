@@ -61,7 +61,7 @@
     ntfsprogs
 
     poppler_utils # for pdfimages
-    lsix
+    lsix chafa timg
 
     # man page havings
     linux-manual man-pages man-pages-posix
