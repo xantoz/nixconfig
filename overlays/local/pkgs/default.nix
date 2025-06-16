@@ -233,4 +233,6 @@ with super.lib; {
       super.cudaPackages.cuda_nvcc
     ];
   });
+
+  ProjectBabble = super.callPackage ./ProjectBabble { };
 }
