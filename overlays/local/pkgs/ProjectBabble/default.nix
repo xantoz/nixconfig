@@ -115,11 +115,6 @@ python3Packages.buildPythonApplication rec {
     cat > setup.py <<__EOF__
     #!/usr/bin/env python
     from setuptools import setup, find_packages
-    from pathlib import Path
-
-    # Resolve paths relative to the BabbleApp/ directory
-    this_dir = Path(__file__).resolve().parent
-    reqs = [l.rstrip("; ") for l in (this_dir / "BabbleApp" / "requirements.txt").read_text().splitlines()]
 
     setup(
         name="project-babble",
