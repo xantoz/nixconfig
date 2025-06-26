@@ -5,6 +5,9 @@
   fetchPypi,
 
   onnxruntime,
+  opencv4,
+  v4l-utils,
+  gst_all_1,
 }:
 
 let
@@ -105,7 +108,8 @@ python3Packages.buildPythonApplication rec {
     python3Packages.onnxruntime
     python3Packages.torch
     python3Packages.torchvision
-    python3Packages.opencv-python
+    # python3Packages.opencv-python
+    python3Packages.opencv4
     python3Packages.pillow
     python3Packages.pydantic
     FreeSimpleGUI
@@ -121,7 +125,19 @@ python3Packages.buildPythonApplication rec {
     python3Packages.soundfile
   ];
 
-  dependencies = [ onnxruntime ] ++ pythonDeps;
+  dependencies = [
+    onnxruntime
+    opencv4
+    v4l-utils                   # needed ?
+
+    gst_all_1.gstreamer
+    gst_all_1.gstreamermm
+    gst_all_1.gst-plugins-good
+    gst_all_1.gst-plugins-bad
+    gst_all_1.gst-plugins-ugly
+    gst_all_1.gst-plugins-rs
+    gst_all_1.gst-vaapi
+  ] ++ pythonDeps;
 
   postPatch = ''
     sed -i '1 i\#!/usr/bin/env python3' BabbleApp/babbleapp.py
