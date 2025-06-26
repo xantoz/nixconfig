@@ -50,6 +50,38 @@ let
       hash = "sha256-foPAL3OT2og8eRube6PdERY7QtFeaNwJs+PZmm11t6Q=";
     };
   };
+
+  comtypes = python3Packages.buildPythonPackage rec {
+    pname = "comtypes";
+    # version = "1.4.8";
+    version = "1.4.11";
+
+    format = "pyproject";
+    nativeBuildInputs = with python3Packages; [ setuptools wheel ];
+
+    # For whatever reason we fail to fetch this from PyPi, so get it from GitHub instead
+    src = fetchFromGitHub {
+      owner = "enthought";
+      repo = pname;
+      rev = version;
+      hash = "sha256-wvLfZ6BCWgLE6wqbeycVZvzJ8dXhrxhD3ooQ6GslFAc=";
+    };
+  };
+
+  pygrabber = python3Packages.buildPythonPackage rec {
+    pname = "pygrabber";
+    version = "0.2";
+
+    format = "pyproject";
+    nativeBuildInputs = with python3Packages; [ setuptools wheel ];
+
+    dependencies = [ python3Packages.numpy comtypes ];
+
+    src = fetchPypi {
+      inherit pname version;
+      hash = "sha256-5YSxGdTJuajzOes00f5/3RYhSiv1oYdhcRRcrr255BM=";
+    };
+  };
 in
 python3Packages.buildPythonApplication rec {
 # python3Packages.buildPythonPackage rec {
@@ -81,7 +113,7 @@ python3Packages.buildPythonApplication rec {
     python3Packages.pyserial
     python3Packages.colorama
     # comtypes
-    # pygrabber
+    pygrabber
     python3Packages.psutil
     python3Packages.requests
     v4l2py
