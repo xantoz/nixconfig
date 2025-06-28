@@ -234,5 +234,5 @@ with super.lib; {
     ];
   });
 
-  ProjectBabble = super.callPackage ./ProjectBabble { };
+  ProjectBabble = super.callPackage ./XR/FT/ProjectBabble { };
 }
