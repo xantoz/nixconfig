@@ -124,8 +124,13 @@
   time.timeZone = "Europe/Stockholm";
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.openssh.settings.PasswordAuthentication = false;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      X11Forwarding = true;
+    };
+  };
 
   programs.ssh.askPassword = "";
 
