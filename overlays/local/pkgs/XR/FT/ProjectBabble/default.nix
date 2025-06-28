@@ -4,34 +4,36 @@
   fetchFromGitHub,
   fetchPypi,
 
-  onnxruntime,
-  opencv4,
+  # onnxruntime,
+  # opencv4,
   v4l-utils,
-  gst_all_1,
+  # gst_all_1,
 }:
 
 let
+  # TODO: Dedup
   FreeSimpleGUI = python3Packages.buildPythonPackage rec {
     pname = "freesimplegui";
-    # version = "5.1.1";
     version = "5.2.0";
+
+    pyproject = true;
+    build-system = with python3Packages; [ setuptools wheel ];
+
+    dependencies = with python3Packages; [ tkinter ];
 
     src = fetchPypi {
       inherit pname version;
       hash = "sha256-UMhpuNXYT0gXUmCiFp5Cc5T/GyKxCbUUGFjV9Q5jvvo=";
     };
-
-    dependencies = with python3Packages; [
-      tkinter
-    ];
   };
 
+  # TODO: Dedup
   python_osc = python3Packages.buildPythonPackage rec {
     pname = "python_osc";
     version = "1.9.0";
 
-    format = "pyproject";
-    nativeBuildInputs = with python3Packages; [ setuptools wheel ];
+    pyproject = true;
+    build-system = with python3Packages; [ setuptools wheel ];
 
     src = fetchPypi {
       inherit pname version;
@@ -43,8 +45,8 @@ let
     pname = "v4l2py";
     version = "3.0.0";
 
-    format = "pyproject";
-    nativeBuildInputs = with python3Packages; [ setuptools wheel ];
+    pyproject = true;
+    build-system = with python3Packages; [ setuptools wheel ];
 
     dependencies = with python3Packages; [ linuxpy ];
 
@@ -59,8 +61,8 @@ let
     # version = "1.4.8";
     version = "1.4.11";
 
-    format = "pyproject";
-    nativeBuildInputs = with python3Packages; [ setuptools wheel ];
+    pyproject = true;
+    build-system = with python3Packages; [ setuptools wheel ];
 
     # For whatever reason we fail to fetch this from PyPi, so get it from GitHub instead
     src = fetchFromGitHub {
@@ -75,8 +77,8 @@ let
     pname = "pygrabber";
     version = "0.2";
 
-    format = "pyproject";
-    nativeBuildInputs = with python3Packages; [ setuptools wheel ];
+    pyproject = true;
+    build-system = with python3Packages; [ setuptools wheel ];
 
     dependencies = [ python3Packages.numpy comtypes ];
 
@@ -87,13 +89,11 @@ let
   };
 in
 python3Packages.buildPythonApplication rec {
-# python3Packages.buildPythonPackage rec {
-  format = "pyproject";
-  nativeBuildInputs = with python3Packages; [ setuptools wheel ];
-
   pname = "ProjectBabble";
   version = "v2.0.7-149-gdfeeb87";
-  # pyproject = true;
+
+  pyproject = true;
+  build-system = with python3Packages; [ setuptools wheel ];
 
   src = fetchFromGitHub {
     owner = "Project-Babble";
@@ -108,7 +108,6 @@ python3Packages.buildPythonApplication rec {
     python3Packages.onnxruntime
     python3Packages.torch
     python3Packages.torchvision
-    # python3Packages.opencv-python
     python3Packages.opencv4
     python3Packages.pillow
     python3Packages.pydantic
@@ -116,7 +115,6 @@ python3Packages.buildPythonApplication rec {
     python_osc
     python3Packages.pyserial
     python3Packages.colorama
-    # comtypes
     pygrabber
     python3Packages.psutil
     python3Packages.requests
@@ -126,17 +124,19 @@ python3Packages.buildPythonApplication rec {
   ];
 
   dependencies = [
-    onnxruntime
-    opencv4
-    v4l-utils                   # needed ?
+    # onnxruntime
+    # opencv4
 
-    gst_all_1.gstreamer
-    gst_all_1.gstreamermm
-    gst_all_1.gst-plugins-good
-    gst_all_1.gst-plugins-bad
-    gst_all_1.gst-plugins-ugly
-    gst_all_1.gst-plugins-rs
-    gst_all_1.gst-vaapi
+    v4l-utils                   # Seems like this is needed for /dev/video0 to work
+
+    # # Are these gstreamer things really needed?
+    # gst_all_1.gstreamer
+    # gst_all_1.gstreamermm
+    # gst_all_1.gst-plugins-good
+    # gst_all_1.gst-plugins-bad
+    # gst_all_1.gst-plugins-ugly
+    # gst_all_1.gst-plugins-rs
+    # gst_all_1.gst-vaapi
   ] ++ pythonDeps;
 
   postPatch = ''
