@@ -125,6 +125,8 @@
       mcomix
 
       dolphin-emu
+
+      ProjectBabble
     ];
   };
 
