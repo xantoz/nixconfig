@@ -182,6 +182,8 @@ python3Packages.buildPythonApplication rec {
   meta = {
     description = "A DIY mouth tracking method for VR";
     homepage = "https://github.com/Project-Babble/ProjectBabble";
-    license = lib.licenses.unfree;
+    license = lib.licenses.unfreeRedistributable // {
+      url = "https://github.com/${src.owner}/${src.repo}/blob/${src.rev}/LICENSE.md";
+    };
   };
 }
