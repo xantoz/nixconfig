@@ -108,7 +108,8 @@ python3Packages.buildPythonApplication rec {
     python3Packages.onnxruntime
     python3Packages.torch
     python3Packages.torchvision
-    python3Packages.opencv4
+    # python3Packages.opencv4
+    python3Packages.opencv-python
     python3Packages.pillow
     python3Packages.pydantic
     FreeSimpleGUI
