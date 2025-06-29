@@ -235,4 +235,5 @@ with super.lib; {
   });
 
   ProjectBabble = super.callPackage ./XR/FT/ProjectBabble { };
+  EyeTrackVR = super.callPackage ./XR/FT/EyeTrackVR { };
 }
