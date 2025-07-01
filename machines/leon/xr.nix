@@ -55,10 +55,10 @@
   #   enable = true;
   #   openFirewall = true;
   # };
-  programs.alvr = {
-    enable = true;
-    openFirewall = true;
-  };
+  # programs.alvr = {
+  #   enable = true;
+  #   openFirewall = true;
+  # };
   programs.adb.enable = true;   # Add ADB for WiVRn etc. to quest 2
   services.wivrn = {
     enable = true;
