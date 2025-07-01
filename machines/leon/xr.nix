@@ -30,6 +30,9 @@
     '')
     wayvr-dashboard
     eepyxr
+
+    ProjectBabble
+    EyeTrackVR
   ];
 
   services.monado = {
