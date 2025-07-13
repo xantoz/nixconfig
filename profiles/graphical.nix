@@ -5,7 +5,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     webmacs
-    librewolf
     firefoxpwa                  # Needed for the Firefox PWA extension
 
     #alacritty
@@ -52,6 +51,12 @@
     sonusmix # another thing to control pipewire connections, but now different
     pwvucontrol # pipewire replpacement for pavucontrol
   ];
+
+  programs.firefox = {
+    enable = true;
+    package = pkgs.librewolf;
+    nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
+  };
 
   fonts.packages = with pkgs; [
     corefonts
