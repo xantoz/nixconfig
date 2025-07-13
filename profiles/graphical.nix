@@ -6,6 +6,7 @@
   environment.systemPackages = with pkgs; [
     webmacs
     librewolf
+    firefoxpwa                  # Needed for the Firefox PWA extension
 
     #alacritty
     # kitty
