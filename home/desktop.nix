@@ -6,11 +6,11 @@
     stalonetray
     dmenu
     wmname
-    redshift
+    # redshift
     xtermcontrol
 
     scrot
-    gimp
+    # gimp
     feh
     pqiv
     #imv  # not on aarch64
