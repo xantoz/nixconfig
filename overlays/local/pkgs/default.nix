@@ -234,6 +234,12 @@ with super.lib; {
     ];
   });
 
+  # Quick hack to fix a build issue I'm having on leon: Exclude
+  # libavif, we'll have to make do without support for AVIF for now
+  darktable = super.darktable.overrideAttrs(old: {
+    buildInputs = foldr remove old.buildInputs [ super.libavif ];
+  });
+
   ProjectBabble = super.callPackage ./XR/FT/ProjectBabble { };
   EyeTrackVR = super.callPackage ./XR/FT/EyeTrackVR { };
 }
