@@ -10,7 +10,7 @@
     xtermcontrol
 
     scrot
-    # gimp
+    gimp3
     feh
     pqiv
     #imv  # not on aarch64
