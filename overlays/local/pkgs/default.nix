@@ -231,10 +231,16 @@ with super.lib; {
     ];
   });
 
-  # Quick hack to fix a build issue I'm having on leon: Exclude
-  # libavif, we'll have to make do without support for AVIF for now
-  darktable = super.darktable.overrideAttrs(old: {
+  # Quick hack/downgrade of darktable to 5.0.1 as 5.2.0 fails to build
+  # for me on leon (issues with libavif and some other issue with
+  # undeclared functions...)
+  darktable = super.darktable.overrideAttrs(old: rec {
     buildInputs = foldr remove old.buildInputs [ super.libavif ];
+    version = "5.0.1";
+    src = super.fetchurl {
+      url = "https://github.com/darktable-org/darktable/releases/download/release-${version}/darktable-${version}.tar.xz";
+      hash = "sha256-SpGNCU67qYPvZ6EMxxXD1+jKc4AJkgqf9l0zQXtt2YQ=";
+    };
   });
 
   # Quick hack to fix build issues on leon with opencv (warning about
