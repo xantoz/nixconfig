@@ -243,12 +243,13 @@ with super.lib; {
   #   };
   # });
 
-  # # Quick hack to fix build issues on leon with opencv (warning about
-  # # missing nvcc compiler -> This could probably be fixed, but I don't
-  # # really need opencv support in monado anyway)
-  # monado = super.monado.overrideAttrs(old: {
-  #   buildInputs = foldr remove old.buildInputs [ super.opencv4 ];
-  # });
+  # Quick hack to fix build issues on leon with opencv (warning about
+  # missing nvcc compiler -> This could probably be fixed like
+  # basalt-monado above, but I don't really need opencv support in
+  # monado anyway)
+  monado = super.monado.overrideAttrs(old: {
+    buildInputs = foldr remove old.buildInputs [ super.opencv4 ];
+  });
 
   ProjectBabble = super.callPackage ./XR/FT/ProjectBabble { };
   EyeTrackVR = super.callPackage ./XR/FT/EyeTrackVR { };

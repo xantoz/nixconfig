@@ -35,6 +35,9 @@
     EyeTrackVR
   ];
 
+  # Get rid of basalt-monado
+  systemd.user.services.monado.environment.VIT_SYSTEM_LIBRARY_PATH = "";
+
   services.monado = {
     enable = true;
     # defaultRuntime = true; # Register as default OpenXR runtime
