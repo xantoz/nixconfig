@@ -13,7 +13,7 @@
     let
       nixpkgs-xr = import (builtins.fetchGit {
         url = "https://github.com/nix-community/nixpkgs-xr.git";
-        rev = "b4bb75d8ce4144b03647de82eda0a3a8151621be";
+        rev = "917ab9f15d5bbd6360e9266ec4ad3a2d86c2c7e2";
       });
     in [
       nixpkgs-xr.overlays.default
