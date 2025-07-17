@@ -25,7 +25,7 @@
   home-manager = {
     users.tewi_inaba = import ../../home/home.leon.nix;
     backupFileExtension = "back";
-    # useGlobalPkgs = true;
+    useGlobalPkgs = true;
     useUserPackages = true;
   };
 
