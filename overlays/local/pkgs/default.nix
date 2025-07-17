@@ -166,10 +166,6 @@ with super.lib; {
   # });
 
 
-
-  # put this here while waiting on https://github.com/NixOS/nixpkgs/pull/396149 to get merged
-
-  # wivrn = super.callPackage ./wivrn/package.nix { };
   # wivrn = super.wivrn.overrideAttrs(old: {
   #   patches = [ ../../../patches/wivrn/0001-Attempt-to-make-vive-wands-take-precedence-over-ques.patch];
   # });
