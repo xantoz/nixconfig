@@ -120,7 +120,7 @@
       vrrtest
 
       xsane
-      darktable
+      # darktable
       #ansel
       #vkdt
 
