@@ -265,7 +265,7 @@ with super.lib; {
   EyeTrackVR = super.callPackage ./XR/FT/EyeTrackVR { };
 
   # Use experimental2 branch for xrizer
-  xrizer-experimental2 = super.xrizer.overrideAttrs(old: {
+  xrizer = super.xrizer.overrideAttrs(old: {
     version = "9999";
     src = super.fetchFromGitHub {
         owner = "RinLovesYou";
