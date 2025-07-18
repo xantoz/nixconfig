@@ -264,6 +264,17 @@ with super.lib; {
   ProjectBabble = super.callPackage ./XR/FT/ProjectBabble { };
   EyeTrackVR = super.callPackage ./XR/FT/EyeTrackVR { };
 
+  # Use experimental2 branch for xrizer
+  xrizer-experimental2 = super.xrizer.overrideAttrs(old: {
+    src = super.fetchFromGitHub {
+        owner = "RinLovesYou";
+        repo = "xrizer";
+        rev = "f491eddd0d9839d85dbb773f61bd1096d5b004ef";
+        sha256 = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
+    };
+    cargoHash = "sha256-iiM7iiTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
+  });
+
   opencomposite = super.opencomposite.overrideAttrs(old: {
     patches = [ ../../../patches/opencomposite/0001-Always-use-estimated-thumb-curl-on-knuckles.patch ];
   });
