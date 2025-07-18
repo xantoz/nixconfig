@@ -278,4 +278,7 @@ with super.lib; {
   opencomposite = super.opencomposite.overrideAttrs(old: {
     patches = [ ../../../patches/opencomposite/0001-Always-use-estimated-thumb-curl-on-knuckles.patch ];
   });
+
+  # Commented out because this does not build on nixos 25.05 due to too old rust
+  # alcom = super.callPackage ./alcom/package.nix { };
 }
