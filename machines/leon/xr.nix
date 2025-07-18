@@ -22,6 +22,7 @@
   environment.systemPackages = with pkgs; [
     # VR related
     opencomposite
+    xrizer
     xrgears
     wlx-overlay-s
     motoc
