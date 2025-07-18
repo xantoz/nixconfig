@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
+  environment.systemPackages = with pkgs; [ lact ];
+
   # TODO: Perhaps make this into a machine-specific module (still leveraging my xz.nvidia which is a bit more generic)
 
   #################################################################################
