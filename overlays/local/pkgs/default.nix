@@ -263,4 +263,8 @@ with super.lib; {
 
   ProjectBabble = super.callPackage ./XR/FT/ProjectBabble { };
   EyeTrackVR = super.callPackage ./XR/FT/EyeTrackVR { };
+
+  opencomposite = super.opencomposite.overrideAttrs(old: {
+    patches = [ ../../../patches/opencomposite/0001-Always-use-estimated-thumb-curl-on-knuckles.patch ];
+  });
 }
