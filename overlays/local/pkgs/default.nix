@@ -282,6 +282,10 @@ with super.lib; {
     patches = [ ../../../patches/opencomposite/0001-Always-use-estimated-thumb-curl-on-knuckles.patch ];
   });
 
+
+  # Use version of lact backported from nixos-unstable
+  lact = super.callPackage ./lact/package.nix { };
+
   # Commented out because this does not build on nixos 25.05 due to too old rust
   # alcom = super.callPackage ./alcom/package.nix { };
 }
