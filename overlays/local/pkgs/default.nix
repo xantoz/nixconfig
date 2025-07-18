@@ -266,14 +266,14 @@ with super.lib; {
 
   # Use experimental2 branch for xrizer
   xrizer = super.xrizer.overrideAttrs(old: {
-    version = "9999";
+    version = "8888";
     src = super.fetchFromGitHub {
         owner = "RinLovesYou";
         repo = "xrizer";
         rev = "f491eddd0d9839d85dbb773f61bd1096d5b004ef";
         sha256 = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
     };
-    cargoHash = "sha256-iiiiiiTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
+    cargoHash = "";
     # Tests seem to break on this branch, so don't do them
     doCheck = false;
   });
