@@ -250,6 +250,8 @@ with super.lib; {
     # monado anyway)
     buildInputs = foldr remove old.buildInputs [ super.opencv4 ];
 
+    version = "9999";
+
     # Also use my own personal branch
     patches = [];
     src = super.fetchFromGitLab {
@@ -266,13 +268,14 @@ with super.lib; {
 
   # Use experimental2 branch for xrizer
   xrizer = super.xrizer.overrideAttrs(old: {
-    version = "8888";
+    version = "9999";
     src = super.fetchFromGitHub {
         owner = "RinLovesYou";
         repo = "xrizer";
         rev = "f491eddd0d9839d85dbb773f61bd1096d5b004ef";
         sha256 = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
     };
+    useFetchCargoVendor = false;
     cargoHash = "";
     # Tests seem to break on this branch, so don't do them
     doCheck = false;
