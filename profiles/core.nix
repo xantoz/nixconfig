@@ -38,7 +38,7 @@
     pciutils
     libarchive
     unrar
-    unzip
+    unzip zip
     unar
     calc
     sshfs
