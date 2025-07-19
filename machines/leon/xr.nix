@@ -19,6 +19,10 @@
   #     nixpkgs-xr.overlays.default
   #   ];
 
+  imports = [
+    ../../overlays/xr/xr-overlay.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     # VR related
     opencomposite
@@ -29,8 +33,8 @@
     (writeShellScriptBin "wivrn-dashboard-trackers" ''
        env ADB_LIBUSB=0 WIVRN_USE_STEAMVR_LH=1 LH_DISCOVER_WAIT_MS=6000 steam-run wivrn-dashboard
     '')
-    # wayvr-dashboard
-    # eepyxr
+    wayvr-dashboard
+    eepyxr
 
     ProjectBabble
     EyeTrackVR
@@ -87,7 +91,7 @@
     gamescopeSession.enable = true;
     # But this proton-ge-rtsp-bin (from nixpkgs-xr overlay) is kinda of tangetially XR related (better video playback in VRC)
     extraCompatPackages = [
-      # pkgs.proton-ge-rtsp-bin
+      pkgs.proton-ge-rtsp-bin
       pkgs.steam-play-none
     ];
     package = pkgs.steam.override {
