@@ -41,7 +41,7 @@
 
   services.monado = {
     enable = true;
-    # defaultRuntime = true; # Register as default OpenXR runtime
+    defaultRuntime = true; # Register as default OpenXR runtime
   };
   systemd.user.services.monado.environment = {
     STEAMVR_LH_ENABLE = "1";
@@ -74,7 +74,7 @@
   services.wivrn = {
     enable = true;
     openFirewall = true;
-    defaultRuntime = true;
+    # defaultRuntime = true;
   };
 
   # More generic game related things that ended up here anyway
