@@ -28,6 +28,7 @@
   environment.systemPackages = with pkgs; [
     nix-btm nix-output-monitor
     wget pv tree htop btop zile
+    ddrescue
     silver-searcher jq file
     fd # that rust-based find replacement that is faster than regular find, but has different syntax that is "better" (I kinda wish there was a drop-in replacement tbh)
     (pkgs.runCommand "filtered-busybox" {} "mkdir -p $out/bin && ln -s ${busybox}/bin/{busybox,vi,ash,killall} $out/bin/")
