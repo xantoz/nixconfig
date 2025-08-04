@@ -30,7 +30,7 @@
               image-dired-cmd-create-temp-image-program  "${pkgs.imagemagick}/bin/convert"
               image-dired-cmd-rotate-thumbnail-program   "${pkgs.imagemagick}/bin/mogrify"
               image-dired-cmd-rotate-original-program    "${pkgs.libjpeg_turbo}/bin/jpegtran"
-              image-dired-cmd-pngnq-program              "${pkgs.pngnq}/bin/pngnq"
+              image-dired-cmd-pngnq-program              nil  ; pngnq build is currently broken in nixpkgs, so don't set this
               image-dired-cmd-pngcrush-program           "${pkgs.pngcrush}/bin/pngcrush"
               image-dired-cmd-optipng-program            "${pkgs.optipng}/bin/optipng"
               image-dired-cmd-write-exif-data-program    "${pkgs.exiftool}/bin/exiftool"
