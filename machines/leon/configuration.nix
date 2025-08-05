@@ -129,7 +129,10 @@
       mcomix
 
       dolphin-emu
+
       hatari
+      fsuae
+      fsuae-launcher
     ];
   };
 
