@@ -4,6 +4,8 @@
   environment.systemPackages = with pkgs; [
     waypipe
     bemenu
+    wofi
+    fuzzel
 
     # Usable minimal wayland-native terminals
     foot
