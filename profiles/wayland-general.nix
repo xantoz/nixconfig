@@ -20,5 +20,6 @@
     # clipmon                   # supports persisting after app exists and supports more than text?
 
     cage
+    cagebreak
   ];
 }
