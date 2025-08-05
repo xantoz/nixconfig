@@ -129,6 +129,7 @@
       mcomix
 
       dolphin-emu
+      hatari
     ];
   };
 
