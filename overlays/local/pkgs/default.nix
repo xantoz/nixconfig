@@ -1,5 +1,11 @@
 self: super:
 
+let
+  pkgs_unstable = import (builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/bf9fa86a9b1005d932f842edf2c38eeecc98eef3.tar.gz";
+    sha256 = "1abs7hmg9c60h7chr8x9jkhh4cj32b13nr8n704myl4g8rm8sh91";
+  }) {};
+in
 with super.lib; {
   # xterm = super.xterm.overrideAttrs(old: {
   #   configureFlags = old.configureFlags ++ [ "--enable-exec-xterm" ];
@@ -285,10 +291,13 @@ with super.lib; {
     patches = [ ../../../patches/opencomposite/0001-Always-use-estimated-thumb-curl-on-knuckles.patch ];
   });
 
-
   # Use version of lact backported from nixos-unstable
+  #
+  # TODO: Maybe we could use `lact = pkgs_unstable.lact`?
+  # Although my current way of doing it has the benefit of not unneccessarily pulling in nixos-unstable dependencies,
+  # since the version-bumped lact seems to build just fine on top of nixos-25.05 deps.
   lact = super.callPackage ./lact/package.nix { };
 
-  # Commented out because this does not build on nixos 25.05 due to too old rust
-  # alcom = super.callPackage ./alcom/package.nix { };
+  # Need to use pkgs_unstable because the rust in nixos 25.05 is too old
+  alcom = pkgs_unstable.callPackage ./alcom/package.nix { };
 }
