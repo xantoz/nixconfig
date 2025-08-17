@@ -271,6 +271,7 @@ with super.lib; {
 
   ProjectBabble = super.callPackage ./XR/FT/ProjectBabble { };
   EyeTrackVR = super.callPackage ./XR/FT/EyeTrackVR { };
+  ReVision = super.callPackage ./XR/FT/ReVision/package.nix { };
 
   # Use experimental2 branch for xrizer
   xrizer = super.xrizer.overrideAttrs(old: {
@@ -281,8 +282,9 @@ with super.lib; {
         rev = "f491eddd0d9839d85dbb773f61bd1096d5b004ef";
         sha256 = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
     };
-    useFetchCargoVendor = false;
-    cargoHash = "";
+    # useFetchCargoVendor = false;
+    # cargoHash = "";
+    cargoHash = super.lib.fakeHash;
     # Tests seem to break on this branch, so don't do them
     doCheck = false;
   });
