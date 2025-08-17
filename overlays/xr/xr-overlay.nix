@@ -33,6 +33,9 @@ in
   #
   #       Perhaps the "stupid" way of just making making a default.nix like the one I have in the local overlay calling
   #       into each of the additional packages by hand is the way to go?
+  #
+  #       Alternatively we could perhaps even just merge this overlay thingy with that one. Might particularly be useful since
+  #       I have an xrizer override in there too.
   nixpkgs.overlays = [
     overlayFn
   ];

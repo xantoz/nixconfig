@@ -274,6 +274,14 @@ with super.lib; {
   ReVision = super.callPackage ./XR/FT/ReVision/package.nix { };
 
   # Use experimental2 branch for xrizer
+  # TODO: Reconcile this with nixpkgs-xr overlay also being used? For now what happened is I made my own XR overlay that
+  #       only includes the new packages from nixpkgs-xr and not the overrides (could perhaps include some of the
+  #       overrides selectively in the future) file that selectively gets packages from nixpkgs-xr, focusing mainly on
+  #       ones not in nixpkgs at all.
+  #
+  #       Alternatively I could somehow include the nixpkgs-xr xrizer package here and overrideAttrs on top of that?
+  #
+  #       Or perhaps best to move this here override into the xr overlay thingamajig?
   xrizer = super.xrizer.overrideAttrs(old: {
     version = "9999";
     src = super.fetchFromGitHub {
