@@ -181,6 +181,9 @@
     lrzsz                       # ZMODEM stuff!
     pt2-clone # ProTracker
 
+    #dosbox
+    dosbox-x
+    wine
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     zile
     wget
