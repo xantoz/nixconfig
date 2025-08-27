@@ -95,6 +95,13 @@
   # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_US.UTF-8";
+    extraLocales = [
+      "en_US/ISO-8859-1"
+      "sv_SE/ISO-8859-1"
+      "sv_SE.UTF-8/UTF-8"
+      "ja_JP.EUC-JP/EUC-JP"
+      "ja_JP.UTF-8/UTF-8"
+    ];
   };
 
   console = {
