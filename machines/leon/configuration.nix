@@ -29,6 +29,14 @@
     useUserPackages = true;
   };
 
+  boot.kernelPatches = [{
+    name = "atari-partitioning";
+    patch = null;
+    extraConfig = ''
+    ATARI_PARTITION y
+    '';
+  }];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
