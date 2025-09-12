@@ -61,10 +61,14 @@
       }
 
       alias mount-patchouli='sshfs -o reconnect patchouli:/ /mnt/patchouli'
+      alias mount-michiru='sshfs -o reconnect michiru.lan:/ /mnt/michiru'
 
       export PATH="$HOME/.local/bin:$PATH"
 
       export EDITOR='emacsclient -t'
+
+      export TIMG_DEFAULT_TITLE="%b (%wx%h)"
+      alias ils='timg --grid=3x1 --upscale=i --center --title --frames=1 -bgray -Bdarkgray'
 
       source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
     '';
