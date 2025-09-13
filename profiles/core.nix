@@ -64,6 +64,10 @@
     poppler_utils # for pdfimages
     lsix chafa timg
 
+
+    # Filter encodings and stuffs for interactive programs (use to telnet/ssh to Latin1 machines etc.)
+    luit
+
     # man page havings
     linux-manual man-pages man-pages-posix
 
