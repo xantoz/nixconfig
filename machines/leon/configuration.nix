@@ -125,6 +125,8 @@
       # kate
       # thunderbird
 
+      audacity
+
       # use this to import from the fuji finepix digicam
       gphoto2fs
       vrrtest
