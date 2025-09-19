@@ -26,6 +26,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    dos2unix
     nix-btm nix-output-monitor
     wget pv tree htop btop zile
     ddrescue
