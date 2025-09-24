@@ -292,7 +292,7 @@ with super.lib; {
     };
     # useFetchCargoVendor = false;
     # cargoHash = "";
-    cargoHash = super.lib.fakeHash;
+    cargoHash = super.lib.fakeHash; # Why does this not break things?
     # Tests seem to break on this branch, so don't do them
     doCheck = false;
   });
