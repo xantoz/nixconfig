@@ -264,8 +264,8 @@ with super.lib; {
       domain = "gitlab.freedesktop.org";
       owner = "xantoz";
       repo = "monado";
-      rev = "db79552122c75ad0dbbc3762fbd3f6a2b2947b4e";
-      hash = "sha256-Rv4H3nGE9WSCoYe7xOdviUDA/HJ5ilL2OEgAmi0x98s=";
+      rev = "d1474046923273187590caa294bfa386da9ced27"; # xz/personal-build-v19
+      hash = "sha256-c53oZMC0v74T9vGA+Bg+O4Eqr8VJviaM6/wS0kMo+84=";
     };
   });
 
