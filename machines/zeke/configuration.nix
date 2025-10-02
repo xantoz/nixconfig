@@ -19,6 +19,23 @@
       ../../home/home-manager/nixos
     ];
 
+  # Limit the amount of resources available to the nix daemon
+  #
+  # In theory this might make `nixos-rebuild switch` be more nice to
+  # other programs. OTOH I might simply have better results using
+  # something like: systemd-run --scope -p 'CPUAccounting=yes' -p 'AllowedCPUs=0-4' -p 'CPUWeight=50' -p 'MemoryHigh=14G' sh -c 'nixos-rebuild boot 2>&1 | nom'
+  systemd.services.nix-daemon.serviceConfig = {
+    AllowedCPUs = "0-6";
+    MemoryAccounting = "yes";
+    MemoryHigh = "8G";
+    MemoryMax = "9G";
+  };
+
+  boot.kernelParams = [
+    # Somewhat of a fix for modern insomniac laptops. At least the ones that actuall support S3 sleep
+    "mem_sleep_default=deep"
+  ];
+
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
     "armv7l-linux"
@@ -74,7 +91,7 @@
   services.flatpak.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -97,16 +114,19 @@
     isNormalUser = true;
     uid = 1000;
     description = "Anton Kindestam";
-    extraGroups = [ "networkmanager" "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "cdrom" "floppy" ];
+    extraGroups = [ "networkmanager" "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "cdrom" "floppy" "pipewire" ];
     packages = with pkgs; [
-      kalendar
-      kmail
-      kontact
-      blender
+      # kalendar
+      # kmail
+      # kontact
+      #blender
       # kate
       # thunderbird
+
       xsane
-      darktable
+      #darktable
+      #ansel
+      #vkdt
     ];
   };
 
@@ -115,23 +135,20 @@
   # CUDA support in Blender and more (See: https://discourse.nixos.org/t/how-to-get-cuda-working-in-blender/5918/12)
   nixpkgs.config.cudaSupport = true;
 
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    # (pkgs.writeShellScriptBin "nvidia-offload" ''
-    #   export __NV_PRIME_RENDER_OFFLOAD=1
-    #   export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-    #   export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    #   export __VK_LAYER_NV_optimus=NVIDIA_only
-    #   exec "$@"
-    # '')
+  # Add the nix-community cachix. This should hopefully give me binary cache for packages built with cuda enabled, so I don't have to rebuild blender all the time
+  # TODO: Migrate zeke to use the xz.nvidia module to configure nvidia stuff, then this setting will come as part of that module
+  nix.settings.substituters = [
+    "https://nix-community.cachix.org"
+  ];
+  nix.settings.trusted-public-keys = [
+    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
   ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;   # Optionally, you may need to select the appropriate driver version for your specific GPU.
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;   # Optionally, you may need to select the appropriate driver version for your specific GPU.
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
   hardware.nvidia.modesetting.enable = true;   # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway
   hardware.nvidia.open = false; # zeke is RTX 1050 => not turing => can't use the open kernel module
   hardware.nvidia.prime = {

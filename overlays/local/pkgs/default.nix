@@ -1,5 +1,11 @@
 self: super:
 
+let
+  pkgs_unstable = import (builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/bf9fa86a9b1005d932f842edf2c38eeecc98eef3.tar.gz";
+    sha256 = "1abs7hmg9c60h7chr8x9jkhh4cj32b13nr8n704myl4g8rm8sh91";
+  }) {};
+in
 with super.lib; {
   # xterm = super.xterm.overrideAttrs(old: {
   #   configureFlags = old.configureFlags ++ [ "--enable-exec-xterm" ];
@@ -24,14 +30,52 @@ with super.lib; {
   emacs28 = super.emacs28.override {
     withX = true;
     withGTK3 = false;
+    withNativeCompilation = false;
     toolkit = "no";
   };
 
   emacs29 = super.emacs29.override {
     withX = true;
     withGTK3 = false;
+    withNativeCompilation = false;
     toolkit = "no";
   };
+
+  emacs30 = super.emacs30.override {
+    withX = true;
+    withGTK3 = false;
+    withNativeCompilation = false;
+    toolkit = "no";
+  };
+
+  emacs = super.emacs.override {
+    withX = true;
+    withGTK3 = false;
+    withNativeCompilation = false;
+    toolkit = "no";
+  };
+
+  # emacsNativeNoAOT = (super.emacs.override {
+  #   withX = true;
+  #   withGTK3 = false;
+  #   toolkit = "no";
+  # }).overrideAttrs(old: {
+  #   env = super.lib.attrsets.overrideExisting old.env { NATIVE_FULL_AOT = "0"; };
+  # });
+
+  # emacsNoNativeComp = super.emacs.override {
+  #   withX = true;
+  #   withGTK3 = false;
+  #   withNativeCompilation = false;
+  #   toolkit = "no";
+  # };
+
+  # emacsPgtkNoNativeComp = super.emacs.override {
+  #   withX = false;
+  #   withGTK3 = true;
+  #   withPgtk = true;
+  #   withNativeCompilation = false;
+  # };
 
   mpv-unwrapped = super.mpv-unwrapped.override {
     openalSupport = true;
@@ -66,6 +110,10 @@ with super.lib; {
   #   });
 
   doas = super.doas.override { withPAM = false; };
+
+  # vkdt = super.vkdt.overrideAttrs(old: {
+  #   makeFlags = old.makeFlags ++ [ "CFLAGS=-Wnoerror" ];
+  # });
 
   mpc-qt = super.mpc-qt.overrideAttrs(old: {
     src = super.fetchFromGitLab {
@@ -123,6 +171,11 @@ with super.lib; {
   #   nativeBuildInputs = old.nativeBuildInputs ++ [ super.qt5.qttools ];
   # });
 
+
+  # wivrn = super.wivrn.overrideAttrs(old: {
+  #   patches = [ ../../../patches/wivrn/0001-Attempt-to-make-vive-wands-take-precedence-over-ques.patch];
+  # });
+
   redshift = (super.redshift.override { withGeolocation = false; });
 
   # # Die, networkmanager, die!
@@ -138,7 +191,123 @@ with super.lib; {
 
   simpleserver = super.callPackage ./simpleserver { };
 
-  mcomix-lite = super.callPackage ./mcomix-lite { };
+  # mcomix-lite = super.callPackage ./mcomix-lite { };
+  # mcomix-lite =
+  #   let
+  #     version = "c4906bda9ba54045a476a4d6fb88b5b236f913fe";
+  #   in super.mcomix.overrideAttrs(old: {
+  #     name = "mcomix-lite-${version}";
+  #     version = version;
+  #     src = super.fetchFromGitHub {
+  #       owner = "thermitegod";
+  #       repo = "mcomix-lite";
+  #       rev = version;
+  #     sha256 = "sha256-xbeSKIIfJxBAUZ67jh3FMkts272dt4tIWaAa2cHCMkA=";
+  #     fetchSubmodules = true;
+  #   };
+  #   # meta = {
+  #   #   description = "A fork of mcomix, a GTK3 image viewer for comic book archives";
+  #   #   longDescription = ''
+  #   #     MComix-Lite is a manga/comic reader written in Python3 / Gtk+3
 
-  lsix = super.callPackage ./lsix { };
+  #   #     MComix-Lite is a fork of MComix3 which is a fork of MComix
+  #   #     which is a fork of Comix.
+
+  #   #     The main focus is ONLY on the reader and all other features,
+  #   #     i.e. library, have been removed or could be subject to a
+  #   #     future removal.
+  #   #   '';
+  #   #   homepage = https://github.com/thermitegod/mcomix-lite;
+  #   # };
+  #   });
+
+  # Fix build-issue with CUDA
+  basalt-monado = super.basalt-monado.overrideAttrs(old: {
+    # TODO: Make this conditional on config.nixpkgs.config.cudaSupport
+    buildInputs = old.buildInputs ++ [
+        super.cudaPackages.cuda_cudart
+        super.cudaPackages.cuda_cccl # <thrust/*>
+        super.cudaPackages.libnpp # npp.h
+        super.nvidia-optical-flow-sdk
+        super.cudaPackages.libcublas # cublas_v2.h
+        super.cudaPackages.libcufft # cufft.h
+      ];
+    nativeBuildInputs = old.nativeBuildInputs ++ [
+      super.cudaPackages.cuda_nvcc
+    ];
+  });
+
+  # # Quick hack/downgrade of darktable to 5.0.1 as 5.2.0 fails to build
+  # # for me on leon (issues with libavif and some other issue with
+  # # undeclared functions...)
+  # darktable = super.darktable.overrideAttrs(old: rec {
+  #   buildInputs = foldr remove old.buildInputs [ super.libavif ];
+  #   version = "5.0.1";
+  #   src = super.fetchurl {
+  #     url = "https://github.com/darktable-org/darktable/releases/download/release-${version}/darktable-${version}.tar.xz";
+  #     hash = "sha256-SpGNCU67qYPvZ6EMxxXD1+jKc4AJkgqf9l0zQXtt2YQ=";
+  #   };
+  # });
+
+  monado = super.monado.overrideAttrs(old: {
+    # Quick hack to fix build issues on leon with opencv (warning about
+    # missing nvcc compiler -> This could probably be fixed like
+    # basalt-monado above, but I don't really need opencv support in
+    # monado anyway)
+    buildInputs = foldr remove old.buildInputs [ super.opencv4 ];
+
+    version = "9999";
+
+    # Also use my own personal branch
+    patches = [];
+    src = super.fetchFromGitLab {
+      domain = "gitlab.freedesktop.org";
+      owner = "xantoz";
+      repo = "monado";
+      rev = "db79552122c75ad0dbbc3762fbd3f6a2b2947b4e";
+      hash = "sha256-Rv4H3nGE9WSCoYe7xOdviUDA/HJ5ilL2OEgAmi0x98s=";
+    };
+  });
+
+  ProjectBabble = super.callPackage ./XR/FT/ProjectBabble { };
+  EyeTrackVR = super.callPackage ./XR/FT/EyeTrackVR { };
+  ReVision = super.callPackage ./XR/FT/ReVision/package.nix { };
+
+  # Use experimental2 branch for xrizer
+  # TODO: Reconcile this with nixpkgs-xr overlay also being used? For now what happened is I made my own XR overlay that
+  #       only includes the new packages from nixpkgs-xr and not the overrides (could perhaps include some of the
+  #       overrides selectively in the future) file that selectively gets packages from nixpkgs-xr, focusing mainly on
+  #       ones not in nixpkgs at all.
+  #
+  #       Alternatively I could somehow include the nixpkgs-xr xrizer package here and overrideAttrs on top of that?
+  #
+  #       Or perhaps best to move this here override into the xr overlay thingamajig?
+  xrizer = super.xrizer.overrideAttrs(old: {
+    version = "9999";
+    src = super.fetchFromGitHub {
+        owner = "RinLovesYou";
+        repo = "xrizer";
+        rev = "f491eddd0d9839d85dbb773f61bd1096d5b004ef";
+        sha256 = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
+    };
+    # useFetchCargoVendor = false;
+    # cargoHash = "";
+    cargoHash = super.lib.fakeHash;
+    # Tests seem to break on this branch, so don't do them
+    doCheck = false;
+  });
+
+  opencomposite = super.opencomposite.overrideAttrs(old: {
+    patches = [ ../../../patches/opencomposite/0001-Always-use-estimated-thumb-curl-on-knuckles.patch ];
+  });
+
+  # Use version of lact backported from nixos-unstable
+  #
+  # TODO: Maybe we could use `lact = pkgs_unstable.lact`?
+  # Although my current way of doing it has the benefit of not unneccessarily pulling in nixos-unstable dependencies,
+  # since the version-bumped lact seems to build just fine on top of nixos-25.05 deps.
+  lact = super.callPackage ./lact/package.nix { };
+
+  # Need to use pkgs_unstable because the rust in nixos 25.05 is too old
+  alcom = pkgs_unstable.callPackage ./alcom/package.nix { };
 }

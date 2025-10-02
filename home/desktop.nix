@@ -6,11 +6,11 @@
     stalonetray
     dmenu
     wmname
-    redshift
+    # redshift
     xtermcontrol
 
     scrot
-    gimp
+    gimp3
     feh
     pqiv
     #imv  # not on aarch64
@@ -33,6 +33,14 @@
     # slack     # same
 
     # audacity
+
+    (writeShellScriptBin "partycow" ''
+      while true; do printf 'Hello World!' | ${cowsay}/bin/cowsay | ${lolcat}/bin/lolcat; printf '\e[F\e[F\e[F\e[F\e[F\e[F\e[F\e[F'; done
+    '')
+
+    (writeShellScriptBin "partycow1" ''
+      while true; do printf 'Hello World!' | ${cowsay}/bin/cowsay | ${lolcat}/bin/lolcat; printf '\e[F\e[F\e[F\e[F\e[F\e[F\e[F'; done
+    '')
 
     (writeShellScriptBin "rtorrent" ''
       ${xtermcontrol}/bin/xtermcontrol --title=rtorrent

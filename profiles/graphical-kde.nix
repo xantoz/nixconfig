@@ -4,6 +4,7 @@
   # base it on our graphical.nix, but we then do some tweaks
   imports = [
     ./graphical.nix
+    ./wayland-general.nix
   ];
 
   # Override settings from profiles/graphical.nix, since we are going full ham KDE

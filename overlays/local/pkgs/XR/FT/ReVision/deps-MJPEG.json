@@ -1,0 +1,37 @@
+[
+  {
+    "pname": "EmbedIO",
+    "version": "3.5.2",
+    "hash": "sha256-e6GfVHXxYeUw3ntCrHokNoAS6mXArO7+vdMeUFnsSo8="
+  },
+  {
+    "pname": "ILRepack.Lib.MSBuild.Task",
+    "version": "2.0.37",
+    "hash": "sha256-r4Emy83CfR3Cg4zMFmP301v0AocIJ/ZwPpE93S0G3LY="
+  },
+  {
+    "pname": "Microsoft.Extensions.DependencyInjection.Abstractions",
+    "version": "9.0.2",
+    "hash": "sha256-WoTLgw/OlXhgN54Szip0Zpne7i/YTXwZ1ZLCPcHV6QM="
+  },
+  {
+    "pname": "Microsoft.Extensions.Logging.Abstractions",
+    "version": "9.0.2",
+    "hash": "sha256-mCxeuc+37XY0bmZR+z4p1hrZUdTZEg+FRcs/m6dAQDU="
+  },
+  {
+    "pname": "SixLabors.ImageSharp",
+    "version": "3.1.6",
+    "hash": "sha256-FQjLyC4158F1GyhlKjzjGo6TxAu698rYWTY9lkko/fA="
+  },
+  {
+    "pname": "System.ValueTuple",
+    "version": "4.5.0",
+    "hash": "sha256-niH6l2fU52vAzuBlwdQMw0OEoRS/7E1w5smBFoqSaAI="
+  },
+  {
+    "pname": "Unosquare.Swan.Lite",
+    "version": "3.1.0",
+    "hash": "sha256-PL8N3CqIz/wku8/mkRMC3X868Byv47C20/rBLBhkS3o="
+  }
+]

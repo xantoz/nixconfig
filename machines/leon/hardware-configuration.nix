@@ -8,26 +8,24 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/f405d00c-6466-4f6d-b942-1e4bc1796a83";
+    { device = "/dev/disk/by-label/leon-root";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."luks-964bac23-c2b7-49ad-9e77-f87790ce1f2a".device = "/dev/disk/by-uuid/964bac23-c2b7-49ad-9e77-f87790ce1f2a";
-
-  fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/A86D-DBA8";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-label/leon-EFI";
       fsType = "vfat";
-      options = [ "umask=0077" ]; # Fix bootctl complaining about /boot/efi accessibility
+      options = [ "fmask=0077" "dmask=0077" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/2abb6f32-00ea-4ecd-b689-bfd2fe7a8f08"; }
+    [ { device = "/dev/disk/by-label/leon-swap"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -35,9 +33,9 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp59s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault true;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

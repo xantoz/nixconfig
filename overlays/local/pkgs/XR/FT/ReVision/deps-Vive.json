@@ -1,0 +1,27 @@
+[
+  {
+    "pname": "ILRepack.Lib.MSBuild.Task",
+    "version": "2.0.34.2",
+    "hash": "sha256-UVhk3YadMtw9R7uEc1za648yZY6xhnXteZDpa93HWe4="
+  },
+  {
+    "pname": "Microsoft.Extensions.DependencyInjection.Abstractions",
+    "version": "9.0.2",
+    "hash": "sha256-WoTLgw/OlXhgN54Szip0Zpne7i/YTXwZ1ZLCPcHV6QM="
+  },
+  {
+    "pname": "Microsoft.Extensions.Logging.Abstractions",
+    "version": "9.0.2",
+    "hash": "sha256-mCxeuc+37XY0bmZR+z4p1hrZUdTZEg+FRcs/m6dAQDU="
+  },
+  {
+    "pname": "System.IO.Hashing",
+    "version": "9.0.1",
+    "hash": "sha256-IJru9BdFNsNs7FbG+F9djJdkkWdpoz2IxQ+GgvKvUOs="
+  },
+  {
+    "pname": "WCharT.Net",
+    "version": "0.1.2",
+    "hash": "sha256-6S23LQBhwi0b7dmH/rJx95c41zDb8xiYPDt+uRhk7Io="
+  }
+]

@@ -1,0 +1,37 @@
+From ee6e1a55278f53840f82e3bb8cd0f125d2bdc9eb Mon Sep 17 00:00:00 2001
+From: knah <knah@knah.me>
+Date: Thu, 27 Feb 2025 22:49:23 +0100
+Subject: [PATCH] Always use estimated thumb curl on knuckles
+
+This fixes gestures failing in VRC if Monado provides fully valid hand poses
+---
+ OpenOVR/Reimpl/BaseInput.cpp | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/OpenOVR/Reimpl/BaseInput.cpp b/OpenOVR/Reimpl/BaseInput.cpp
+index 220e212..9b10eed 100644
+--- a/OpenOVR/Reimpl/BaseInput.cpp
++++ b/OpenOVR/Reimpl/BaseInput.cpp
+@@ -2140,8 +2140,18 @@ EVRInputError BaseInput::GetSkeletalSummaryData(VRActionHandle_t actionHandle, E
+ 
+ 	ZeroMemory(pSkeletalSummaryData, sizeof(VRSkeletalSummaryData_t));
+ 
++	EVRSkeletalTrackingLevel level = VRSkeletalTracking_Estimated;
++	auto r = GetSkeletalTrackingLevel(actionHandle, &level);
++	if (r) return r;
++
+ 	if (xr_gbl->handTrackingProperties.supportsHandTracking) {
+-		return getRealSkeletalSummary(action->skeletalHand, pSkeletalSummaryData);
++		r = getRealSkeletalSummary(action->skeletalHand, pSkeletalSummaryData);
++		if (r || level == VRSkeletalTracking_Full) return r;
++
++		VRSkeletalSummaryData_t skeletalSummary = {};
++		r = getEstimatedSkeletalSummary(action->skeletalHand, &skeletalSummary);
++		pSkeletalSummaryData->flFingerCurl[VRFinger_Thumb] = skeletalSummary.flFingerCurl[VRFinger_Thumb];
++		return r;
+ 	}
+ 
+ 	return getEstimatedSkeletalSummary(action->skeletalHand, pSkeletalSummaryData);
+-- 
+2.49.0
+

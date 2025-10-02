@@ -26,9 +26,12 @@
   };
 
   environment.systemPackages = with pkgs; [
+    dos2unix
     nix-btm nix-output-monitor
     wget pv tree htop btop zile
+    ddrescue
     silver-searcher jq file
+    fd # that rust-based find replacement that is faster than regular find, but has different syntax that is "better" (I kinda wish there was a drop-in replacement tbh)
     (pkgs.runCommand "filtered-busybox" {} "mkdir -p $out/bin && ln -s ${busybox}/bin/{busybox,vi,ash,killall} $out/bin/")
     git tig
     nload
@@ -37,7 +40,7 @@
     pciutils
     libarchive
     unrar
-    unzip
+    unzip zip
     unar
     calc
     sshfs
@@ -60,20 +63,34 @@
     ntfsprogs
 
     poppler_utils # for pdfimages
-    lsix
+    lsix chafa timg
+
+
+    # Filter encodings and stuffs for interactive programs (use to telnet/ssh to Latin1 machines etc.)
+    luit
 
     # man page havings
     linux-manual man-pages man-pages-posix
 
     # Have a python interpreter at hand
     python3
+
+    doas-sudo-shim
+
+    # Useful alias for nix repl automatically loading default nixpkgs and also config
+    (writeShellScriptBin "nr" ''
+      exec nix repl --file \<nixpkgs\> "$@"
+    '')
+    (writeShellScriptBin "nro" ''
+      exec nix repl --file \<nixpkgs/nixos\> "$@"
+    '')
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
     "libsixel-1.8.6" # CVE-2020-11721 and CVE-2020-19668
   ];
 
-  programs.simpleserver.enable = true;
+  # programs.simpleserver.enable = true;
 
   programs.screen.screenrc = builtins.readFile ../home/config/dotfiles/src/.screenrc;
   programs.screen.enable = true;
@@ -83,6 +100,13 @@
   # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_US.UTF-8";
+    extraLocales = [
+      "en_US/ISO-8859-1"
+      "sv_SE/ISO-8859-1"
+      "sv_SE.UTF-8/UTF-8"
+      "ja_JP.EUC-JP/EUC-JP"
+      "ja_JP.UTF-8/UTF-8"
+    ];
   };
 
   console = {
@@ -92,6 +116,9 @@
 
   services.dbus.enable = true;
 
+  # TODO: Switch over to the service in the nixpkgs "ssh" module?
+  #       Or the one in home-manager?
+  #       Or do we switch to use gpg-agent?
   systemd.user.services.ssh-agent = {
     enable = true;
     description="SSH key agent";
@@ -110,8 +137,13 @@
   time.timeZone = "Europe/Stockholm";
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.openssh.settings.PasswordAuthentication = false;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      X11Forwarding = true;
+    };
+  };
 
   programs.ssh.askPassword = "";
 
@@ -133,6 +165,8 @@
     HandleLidSwitchExternalPower=ignore
     HandlePowerKey=ignore
   '';
+
+  boot.kernel.sysctl."kernel.sysrq" = 502; # Enables more sysrq stuff
 
   boot.kernel.sysctl = { "net.ipv6.conf.all.use_tempaddr" = 2; };
   networking.dhcpcd.extraConfig = ''
@@ -164,6 +198,8 @@
     enable = true;
     man.enable = true;
     dev.enable = true;
+    info.enable = true;
+    doc.enable = true;
     # Enabling the below apparently helps whatis and apropos a bit. Unfortunately it also makes build times very long, so do not enable it for now
     # man.generateCaches = true;
   };

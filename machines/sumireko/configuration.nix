@@ -57,6 +57,6 @@
   users.users.tewi_inaba = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "cdrom" "floppy" ];
+    extraGroups = [ "wheel" "systemd-journal" "audio" "video" "render" "dialout" "lp" "cdrom" "floppy" "pipewire" ];
   };
 }
