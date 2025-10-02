@@ -133,6 +133,9 @@
       dolphin-emu-beta
       # discord
 
+      pcmanfm
+      pcmanfm-qt
+
       cargo
       rustc
 
