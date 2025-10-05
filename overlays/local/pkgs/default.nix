@@ -308,6 +308,6 @@ with super.lib; {
   # since the version-bumped lact seems to build just fine on top of nixos-25.05 deps.
   lact = super.callPackage ./lact/package.nix { };
 
-  # Need to use pkgs_unstable because the rust in nixos 25.05 is too old
-  alcom = pkgs_unstable.callPackage ./alcom/package.nix { };
+  # # Need to use pkgs_unstable because the rust in nixos 25.05 is too old
+  # alcom = pkgs_unstable.callPackage ./alcom/package.nix { };
 }
