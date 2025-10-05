@@ -33,7 +33,8 @@
     iw
     iwgtk
 
-    my_xbattbar
+    # my_xbattbar
+    xbattbar
     btrfs-progs
     libva-utils
     libva1
