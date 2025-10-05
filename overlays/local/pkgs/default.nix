@@ -310,4 +310,6 @@ with super.lib; {
 
   # # Need to use pkgs_unstable because the rust in nixos 25.05 is too old
   # alcom = pkgs_unstable.callPackage ./alcom/package.nix { };
+
+  greaseweazle = super.callPackage ./greaseweazle/default.nix { };
 }
