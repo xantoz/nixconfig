@@ -273,31 +273,34 @@ with super.lib; {
   EyeTrackVR = super.callPackage ./XR/FT/EyeTrackVR { };
   ReVision = super.callPackage ./XR/FT/ReVision/package.nix { };
 
-  # Use experimental2 branch for xrizer
-  # TODO: Reconcile this with nixpkgs-xr overlay also being used? For now what happened is I made my own XR overlay that
-  #       only includes the new packages from nixpkgs-xr and not the overrides (could perhaps include some of the
-  #       overrides selectively in the future) file that selectively gets packages from nixpkgs-xr, focusing mainly on
-  #       ones not in nixpkgs at all.
-  #
-  #       Alternatively I could somehow include the nixpkgs-xr xrizer package here and overrideAttrs on top of that?
-  #
-  #       Or perhaps best to move this here override into the xr overlay thingamajig?
-  xrizer = super.xrizer.overrideAttrs(old: {
-    version = "9999";
-    patches = [];
-    src = super.fetchFromGitHub {
-        owner = "RinLovesYou";
-        repo = "xrizer";
-        rev = "f491eddd0d9839d85dbb773f61bd1096d5b004ef";
-        sha256 = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
-    };
-    # useFetchCargoVendor = false;
-    # cargoHash = "";
-    # cargoHash = super.lib.fakeHash; # Why does this not break things?
-    cargoSha256 = "5b96237efa0c878c64bd89c436f661be4e46b2f3eff1ebb976f7ef2321d2f58f";
-    # Tests seem to break on this branch, so don't do them
-    doCheck = false;
-  });
+  # # Use experimental2 branch for xrizer
+  # # TODO: Reconcile this with nixpkgs-xr overlay also being used? For now what happened is I made my own XR overlay that
+  # #       only includes the new packages from nixpkgs-xr and not the overrides (could perhaps include some of the
+  # #       overrides selectively in the future) file that selectively gets packages from nixpkgs-xr, focusing mainly on
+  # #       ones not in nixpkgs at all.
+  # #
+  # #       Alternatively I could somehow include the nixpkgs-xr xrizer package here and overrideAttrs on top of that?
+  # #
+  # #       Or perhaps best to move this here override into the xr overlay thingamajig?
+  # xrizer = super.xrizer.overrideAttrs(old: {
+  #   version = "9999";
+  #   patches = [];
+  #   src = super.fetchFromGitHub {
+  #       owner = "RinLovesYou";
+  #       repo = "xrizer";
+  #       rev = "f491eddd0d9839d85dbb773f61bd1096d5b004ef";
+  #       sha256 = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
+  #   };
+  #   useFetchCargoVendor = false;
+  #   # cargoHash = "";
+  #   # cargoHash = super.lib.fakeHash; # Why does this not break things?
+  #   # cargoSha256 = "5b96237efa0c878c64bd89c436f661be4e46b2f3eff1ebb976f7ef2321d2f58f";
+  #   # cargoSha256 = "fa4f8080344d4671fb4e831a13ad1e68092748387dfc4f55e356242fae12ce3e";
+  #   # Tests seem to break on this branch, so don't do them
+  #   doCheck = false;
+  # });
+
+  xrizer = super.callPackage ./xrizer-fbt/package.nix { };
 
   opencomposite = super.opencomposite.overrideAttrs(old: {
     patches = [ ../../../patches/opencomposite/0001-Always-use-estimated-thumb-curl-on-knuckles.patch ];
