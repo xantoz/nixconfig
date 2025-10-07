@@ -284,6 +284,7 @@ with super.lib; {
   #       Or perhaps best to move this here override into the xr overlay thingamajig?
   xrizer = super.xrizer.overrideAttrs(old: {
     version = "9999";
+    patches = [];
     src = super.fetchFromGitHub {
         owner = "RinLovesYou";
         repo = "xrizer";
@@ -292,7 +293,8 @@ with super.lib; {
     };
     # useFetchCargoVendor = false;
     # cargoHash = "";
-    cargoHash = super.lib.fakeHash; # Why does this not break things?
+    # cargoHash = super.lib.fakeHash; # Why does this not break things?
+    cargoSha256 = "5b96237efa0c878c64bd89c436f661be4e46b2f3eff1ebb976f7ef2321d2f58f";
     # Tests seem to break on this branch, so don't do them
     doCheck = false;
   });
