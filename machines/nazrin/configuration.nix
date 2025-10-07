@@ -33,7 +33,8 @@
     iw
     iwgtk
 
-    my_xbattbar
+    # my_xbattbar
+    xbattbar
     btrfs-progs
     libva-utils
     libva1
@@ -96,10 +97,10 @@
 
   networking.enableB43Firmware = true;
 
-#  services.xserver.videoDrivers = [ "intel" ];
-#  services.xserver.deviceSection = ''
-#    Option "TearFree" "on"
-#  '';
+ services.xserver.videoDrivers = [ "intel" ];
+ services.xserver.deviceSection = ''
+   Option "TearFree" "on"
+ '';
 
   # TODO: set default scheduler for SSD:s to deadline
 
@@ -132,6 +133,9 @@
       wineWowPackages.full
       dolphin-emu-beta
       # discord
+
+      pcmanfm
+      pcmanfm-qt
 
       cargo
       rustc
