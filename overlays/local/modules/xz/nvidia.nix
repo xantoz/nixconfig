@@ -73,8 +73,7 @@ in {
 
       hardware.nvidia = {
         # Hopefully this is 570.
-        package = config.boot.kernelPackages.nvidiaPackages.latest; # FIXME: This should probably be beta. But right now testing GSP off with 565 for whatever reason
-        # package = config.boot.kernelPackages.nvidiaPackages.beta;
+        package = config.boot.kernelPackages.nvidiaPackages.latest;
         # We patch the open kernel module to behave like CAP_SYS_NICE is always set for the benefit of SteamVR (since NixOS bwraps it and stuff)
         # FIXME: I'm not too sure that this actually applies the overriden package where we want it
         # package =
