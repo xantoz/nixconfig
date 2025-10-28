@@ -3,7 +3,11 @@
 {
   environment.systemPackages = with pkgs; [ lact ];
 
-  # TODO: Make settings making use of nouveau/nova and NVK?
+  # nouveau/NVK settings
+  # services.xserver.videoDrivers = [
+  #   "amdgpu"
+  #   "nouveau"
+  # ];
 
   # TODO: Perhaps make this into a machine-specific module (still leveraging my xz.nvidia which is a bit more generic)
 
