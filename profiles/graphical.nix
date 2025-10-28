@@ -48,7 +48,6 @@
     qpwgraph # pipewire patchbay thingy
     helvum # another pipewire patchbay thingy
     coppwr # another patchbay thingy/low-level control
-    sonusmix # another thing to control pipewire connections, but now different
     pwvucontrol # pipewire replpacement for pavucontrol
   ];
 
