@@ -208,6 +208,8 @@
     htop
     mangohud
     nvtopPackages.full                       # GPU stats like htop
+
+    brightnessctl
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
