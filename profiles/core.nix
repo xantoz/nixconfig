@@ -161,12 +161,13 @@
 
   programs.command-not-found.enable = true;
 
-  services.logind.extraConfig = ''
-    HandleLidSwitch=ignore
-    HandleLidSwitchDocked=ignore
-    HandleLidSwitchExternalPower=ignore
-    HandlePowerKey=ignore
-  '';
+  # TODO: replace with services.logind.settings.Login
+  # services.logind.extraConfig = ''
+  #   HandleLidSwitch=ignore
+  #   HandleLidSwitchDocked=ignore
+  #   HandleLidSwitchExternalPower=ignore
+  #   HandlePowerKey=ignore
+  # '';
 
   boot.kernel.sysctl."kernel.sysrq" = 502; # Enables more sysrq stuff
 
