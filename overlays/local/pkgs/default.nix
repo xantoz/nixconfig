@@ -306,12 +306,12 @@ with super.lib; {
     patches = [ ../../../patches/opencomposite/0001-Always-use-estimated-thumb-curl-on-knuckles.patch ];
   });
 
-  # Use version of lact backported from nixos-unstable
-  #
-  # TODO: Maybe we could use `lact = pkgs_unstable.lact`?
-  # Although my current way of doing it has the benefit of not unneccessarily pulling in nixos-unstable dependencies,
-  # since the version-bumped lact seems to build just fine on top of nixos-25.05 deps.
-  lact = super.callPackage ./lact/package.nix { };
+  # # Use version of lact backported from nixos-unstable
+  # #
+  # # TODO: Maybe we could use `lact = pkgs_unstable.lact`?
+  # # Although my current way of doing it has the benefit of not unneccessarily pulling in nixos-unstable dependencies,
+  # # since the version-bumped lact seems to build just fine on top of nixos-25.05 deps.
+  # lact = super.callPackage ./lact/package.nix { };
 
   # # Need to use pkgs_unstable because the rust in nixos 25.05 is too old
   # alcom = pkgs_unstable.callPackage ./alcom/package.nix { };
