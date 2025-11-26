@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 let
   languageServers = with pkgs; [
-    elixir_ls
+    elixir-ls
     gopls
     clang-tools
     lldb
