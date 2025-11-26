@@ -76,7 +76,7 @@
   # };
   programs.adb.enable = true;   # Add ADB for WiVRn etc. to quest 2
   services.wivrn = {
-    enable = false;
+    enable = true;
     openFirewall = true;
     # defaultRuntime = true;
     # TODO:
