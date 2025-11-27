@@ -17,7 +17,7 @@
     icewm
     xorg.twm
     xsel xclip
-    glxinfo
+    mesa-demos
     # drm_info
     vulkan-tools
     xfontsel
