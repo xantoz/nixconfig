@@ -62,7 +62,7 @@
     gptfdisk
     ntfsprogs
 
-    poppler_utils # for pdfimages
+    poppler-utils # for pdfimages
     lsix chafa timg
 
 
