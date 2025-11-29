@@ -1,8 +1,6 @@
 {
-  # buildDotnetModule,
   cargo-about,
   cargo-tauri,
-  # dotnetCorePackages,
   fetchFromGitHub,
   fetchNpmDeps,
   glib-networking,
@@ -31,22 +29,6 @@ let
   };
 
   subdir = "vrc-get-gui";
-
-  # dotnetSdk = dotnetCorePackages.sdk_8_0;
-  # dotnetRuntime = dotnetCorePackages.runtime_8_0;
-
-  # dotnetBuild = buildDotnetModule {
-  #   inherit pname version src;
-
-  #   dotnet-sdk = dotnetSdk;
-  #   dotnet-runtime = dotnetRuntime;
-
-  #   projectFile = [
-  #     "vrc-get-litedb/dotnet/vrc-get-litedb.csproj"
-  #     "vrc-get-litedb/dotnet/LiteDB/LiteDB/LiteDB.csproj"
-  #   ];
-  #   nugetDeps = ./deps.json;
-  # };
 in
 rustPlatform.buildRustPackage {
   inherit pname version src;
@@ -58,7 +40,6 @@ rustPlatform.buildRustPackage {
   nativeBuildInputs = [
     cargo-about
     cargo-tauri.hook
-    # dotnetSdk
     nodejs
     npmHooks.npmConfigHook
     wrapGAppsHook4
@@ -73,8 +54,6 @@ rustPlatform.buildRustPackage {
       makeBinaryWrapper
       webkitgtk_4_1
     ];
-    # ++ dotnetSdk.packages
-    # ++ dotnetBuild.nugetDeps;
 
   useFetchCargoVendor = true;
   cargoHash = "sha256-ePStRmFjixkLssT7V6Spg9lRZEbojWWdkH39evWEpFg=";
@@ -87,20 +66,10 @@ rustPlatform.buildRustPackage {
   };
   npmRoot = subdir;
 
-  # preConfigure = ''
-  #   dotnet restore "vrc-get-litedb/dotnet/vrc-get-litedb.csproj" \
-  #     -p:ContinuousIntegrationBuild=true \
-  #     -p:Deterministic=true
-  # '';
-
   postInstall = lib.optionalString stdenv.hostPlatform.isLinux ''
     wrapProgram $out/bin/ALCOM \
       --set APPIMAGE ALCOM
   '';
-
-  # passthru = {
-  #   inherit (dotnetBuild) fetch-deps;
-  # };
 
   meta = {
     description = "Experimental GUI application to manage VRChat Unity Projects";
