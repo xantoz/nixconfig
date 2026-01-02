@@ -22,7 +22,7 @@ let
     # (import ./pkgs/nixpkgs-xr/pkgs/overrides/monado.nix)
     # (import ./pkgs/nixpkgs-xr/pkgs/overrides/opencomposite.nix)
     # (import ./pkgs/nixpkgs-xr/pkgs/overrides/opencomposite-vendored.nix)
-    # (import ./pkgs/nixpkgs-xr/pkgs/overrides/wlx-overlay-s.nix)
+    (import ./pkgs/nixpkgs-xr/pkgs/overrides/wlx-overlay-s.nix)
     (import ./pkgs/nixpkgs-xr/pkgs/overrides/wivrn.nix)
     # (import ./pkgs/nixpkgs-xr/pkgs/overrides/xrizer.nix)
   ];
