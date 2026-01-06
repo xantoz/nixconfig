@@ -4,7 +4,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    firefoxpwa                  # Needed for the Firefox PWA extension
+    # firefoxpwa                  # Needed for the Firefox PWA extension
 
     #alacritty
     # kitty
@@ -53,7 +53,7 @@
   programs.firefox = {
     enable = true;
     package = pkgs.librewolf;
-    nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
+    # nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
   };
 
   fonts.packages = with pkgs; [

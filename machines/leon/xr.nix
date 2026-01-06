@@ -36,8 +36,8 @@
     wayvr-dashboard
     eepyxr
 
-    ProjectBabble
-    EyeTrackVR
+    # ProjectBabble
+    # EyeTrackVR
   ];
 
   # Get rid of basalt-monado
@@ -96,7 +96,7 @@
     gamescopeSession.enable = true;
     # But this proton-ge-rtsp-bin (from nixpkgs-xr overlay) is kinda of tangetially XR related (better video playback in VRC)
     extraCompatPackages = [
-      pkgs.proton-ge-rtsp-bin
+      # pkgs.proton-ge-rtsp-bin
       pkgs.proton-ge-bin
       pkgs.steam-play-none
     ];
