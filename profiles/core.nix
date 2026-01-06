@@ -136,7 +136,8 @@
   };
 
   # Set your time zone.
-  time.timeZone = "Europe/Stockholm";
+  # time.timeZone = "Europe/Stockholm";
+  time.timeZone = null;         # timezone should be state
 
   # Enable the OpenSSH daemon.
   services.openssh = {
