@@ -12,7 +12,7 @@
       osd-font-size=20
 
       vo=gpu
-      video-sync=display-resample
+      # video-sync=display-resample
 
       [hq]
       profile=gpu-hq
