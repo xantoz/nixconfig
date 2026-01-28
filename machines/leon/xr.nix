@@ -36,8 +36,8 @@
     wayvr-dashboard
     eepyxr
 
-    # ProjectBabble
-    # EyeTrackVR
+    ProjectBabble
+    EyeTrackVR
   ];
 
   # Get rid of basalt-monado
