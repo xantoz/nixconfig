@@ -17,7 +17,7 @@
       ../../profiles/bluetooth.nix
       ../../profiles/laptop.nix
       ../../profiles/sway.nix
-      # ../../profiles/printing-and-scanning.nix
+      ../../profiles/printing-and-scanning.nix
       ../../profiles/appimage.nix
       ../../home/home-manager/nixos
     ];
@@ -131,7 +131,7 @@
       gphoto2fs
       vrrtest
 
-      # xsane
+      xsane
       darktable
       #ansel
       #vkdt
