@@ -38,6 +38,8 @@
 
     ProjectBabble
     EyeTrackVR
+
+    android-tools   # Add ADB for WiVRn etc. to quest 2
   ];
 
   # Get rid of basalt-monado
@@ -74,7 +76,6 @@
   #   enable = true;
   #   openFirewall = true;
   # };
-  programs.adb.enable = true;   # Add ADB for WiVRn etc. to quest 2
   services.wivrn = {
     enable = true;
     openFirewall = true;
