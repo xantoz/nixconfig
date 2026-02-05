@@ -210,6 +210,8 @@
     nvtopPackages.full                       # GPU stats like htop
 
     brightnessctl
+
+    fastfetch
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
