@@ -45,7 +45,6 @@
     patchage # JACK patchbay thingy (usable for parts of pipewire due to backwards compat). nixpkgs version is not latest version though... (TODO: add to overlay?)
     patchance # a slightly different patchage kind of
     qpwgraph # pipewire patchbay thingy
-    helvum # another pipewire patchbay thingy
     coppwr # another patchbay thingy/low-level control
     pwvucontrol # pipewire replpacement for pavucontrol
   ];
