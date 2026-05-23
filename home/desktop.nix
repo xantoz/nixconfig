@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    xorg.transset
+    transset
     stalonetray
     dmenu
     wmname
