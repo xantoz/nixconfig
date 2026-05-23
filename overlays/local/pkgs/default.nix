@@ -300,7 +300,7 @@ with super.lib; {
   #   doCheck = false;
   # });
 
-  xrizer = super.callPackage ./xrizer-fbt/package.nix { };
+  # xrizer = super.callPackage ./xrizer-fbt/package.nix { };
 
   opencomposite = super.opencomposite.overrideAttrs(old: {
     patches = [ ../../../patches/opencomposite/0001-Always-use-estimated-thumb-curl-on-knuckles.patch ];
