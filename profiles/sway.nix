@@ -53,8 +53,8 @@
       # TODO: Split out those other compositors to their own profile (or better yet: Make a module for wlroots/other minor compositors?
       #       Even better would be to make a module for all compositors
 
-      # Wayfire stuff
-      wayfire-with-plugins wf-config wf-recorder wf-touch
+      # # Wayfire stuff
+      # wayfire-with-plugins wf-config wf-recorder wf-touch
 
       # niri
     ];
