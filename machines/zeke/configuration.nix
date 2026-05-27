@@ -12,7 +12,7 @@
       ./hardware-configuration.nix
       ../../profiles/core.nix
       ../../profiles/graphical-kde.nix
-      ../../profiles/input-methods-ibus.nix
+      ../../profiles/input-methods.nix
       ../../profiles/bluetooth.nix
       ../../profiles/laptop.nix
       # ../../profiles/sway.nix
