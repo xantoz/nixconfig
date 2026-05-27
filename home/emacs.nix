@@ -10,7 +10,7 @@ let
     cmake
     nil
     # nixd
-    nodePackages.bash-language-server
+    # nodePackages.bash-language-server
     python3Packages.python-lsp-server
   ];
   extraPackages = ((import ../emacs-parse/parse.nix) { inherit pkgs; inherit lib; }).usePackagePkgs {
