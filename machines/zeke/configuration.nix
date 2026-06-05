@@ -10,6 +10,7 @@
   # NOTE: no profiles/wireless.nix because we use networkmanager on zeke
   imports = [
       ./hardware-configuration.nix
+      ./libvirt.nix
       ../../profiles/core.nix
       ../../profiles/graphical-kde.nix
       ../../profiles/input-methods.nix
