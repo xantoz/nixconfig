@@ -9,7 +9,8 @@
     parallelShutdown = 4;
     shutdownTimeout = 100;
     qemu = {
-      runAsRoot = false;        # Run as unprivileged user qemu-libvirtd (should be fine unless I want to have VMs with direct disk access?)
+      runAsRoot = true;
+      # runAsRoot = false;        # Run as unprivileged user qemu-libvirtd (should be fine unless I want to have VMs with direct disk access?)
     };
     nss = {
       enable = false;
