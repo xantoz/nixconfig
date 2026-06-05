@@ -77,6 +77,8 @@
 
     doas-sudo-shim
 
+    fastfetch
+
     # Useful alias for nix repl automatically loading default nixpkgs and also config
     (writeShellScriptBin "nr" ''
       exec nix repl --file \<nixpkgs\> "$@"
