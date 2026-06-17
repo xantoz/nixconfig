@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  environment.systemPackages = with pkgs; [
+    spice-gtk
+    virt-viewer
+  ];
   programs.virt-manager.enable = true;
   virtualisation.libvirtd = {
     enable = true;
@@ -17,4 +21,5 @@
       enableGuest = true;       # Use only the newer NSS module that uses the libvirt guest name
     };
   };
+  virtualisation.spiceUSBRedirection.enable = true;
 }
