@@ -128,6 +128,9 @@
       #darktable
       #ansel
       #vkdt
+
+      ProjectBabble
+      EyeTrackVR
     ];
   };
 
