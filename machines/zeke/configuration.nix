@@ -131,6 +131,8 @@
 
       ProjectBabble
       EyeTrackVR
+
+      aseprite
     ];
   };
 
