@@ -139,30 +139,26 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  # CUDA support in Blender and more (See: https://discourse.nixos.org/t/how-to-get-cuda-working-in-blender/5918/12)
-  # nixpkgs.config.cudaSupport = true;
-  nixpkgs.config.cudaSupport = false;
-  # TODO: Switch to using the xz.nvidia module to set up nvidia graphics
 
-  # Add the nix-community cachix. This should hopefully give me binary cache for packages built with cuda enabled, so I don't have to rebuild blender all the time
-  # TODO: Migrate zeke to use the xz.nvidia module to configure nvidia stuff, then this setting will come as part of that module
-  nix.settings = {
-    substituters = [ "https://cache.nixos-cuda.org" ];
-    trusted-public-keys = [ "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M=" ];
-  };
-
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.graphics.enable = true;
-  hardware.graphics.enable32Bit = true;
-  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;   # Optionally, you may need to select the appropriate driver version for your specific GPU.
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
-  hardware.nvidia.modesetting.enable = true;   # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway
-  hardware.nvidia.open = false; # zeke is RTX 1050 => not turing => can't use the open kernel module
-  hardware.nvidia.prime = {
-    offload.enable = true;
-    offload.enableOffloadCmd = true; # Gives us the nvidia-offload convenience script
-    intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:1:0:0";
+  services.xserver.videoDrivers = [
+    "intel"
+    "nvidia"
+  ];
+  xz.nvidia = {
+    enable = true;
+    rmIntrLockingMode = false;
+    # gspMode = "no-without-modesetting";
+    # disableOthers = true;
+    #gspMode = "no-without-simpledrm";
+    #disableOthers = true;
+    gspMode = "yes-with-open-driver";
+    disableOthers = false;
+    prime = {
+      offload.enable = true;
+      offload.enableOffloadCmd = true; # Gives us the nvidia-offload convenience script
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are
