@@ -146,11 +146,8 @@
   ];
   xz.nvidia = {
     enable = true;
+    cudaSupport = false;
     rmIntrLockingMode = false;
-    # gspMode = "no-without-modesetting";
-    # disableOthers = true;
-    #gspMode = "no-without-simpledrm";
-    #disableOthers = true;
     gspMode = "yes-with-open-driver";
     disableOthers = false;
     prime = {
