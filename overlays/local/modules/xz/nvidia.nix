@@ -6,11 +6,20 @@ in {
   options.xz.nvidia = {
     enable = lib.mkEnableOption "Xantoz custom nvidia module";
 
+    cudaSupport = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = ''
+        passed on to nixpkgs.config.cudaSupport
+      '';
+    };
+
     rmIntrLockingMode = lib.mkEnableOption ''
       Whether to use nvidia.NVreg_RegistryDwords=RMIntrLockingMode=1 or not.
       This options exists since nvidia driver 570, and gives potentially less stuttering in VR.
       It has issues with VRR displays though.
     '';
+
     gspMode = lib.mkOption {
       type = lib.types.enum [
         "no"
@@ -49,10 +58,10 @@ in {
       gspEnabled = (cfg.gspMode == "yes" || cfg.gspMode == "yes-with-open-driver");
       useOpenModule = (cfg.gspMode == "yes-with-open-driver");
     in lib.mkIf cfg.enable {
-      nixpkgs.config.cudaSupport = true;
+      nixpkgs.config.cudaSupport = cfg.cudaSupport;
 
       # Add the CUDA binary cache. This should hopefully give me binary cache for packages built with cuda enabled, so I don't have to rebuild blender all the time
-      nix.settings = {
+      nix.settings = lib.optionalAttrs cfg.cudaSupport {
         substituters = [ "https://cache.nixos-cuda.org" ];
         trusted-public-keys = [ "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M=" ];
       };
